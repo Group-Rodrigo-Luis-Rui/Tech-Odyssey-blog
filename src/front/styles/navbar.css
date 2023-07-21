@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+header {
+    background-color: black; 
+}
+
+
+.primary-header {
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    z-index: 2;
+}
+
+.ff-sans-cond {
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
+    color: white;
+}
