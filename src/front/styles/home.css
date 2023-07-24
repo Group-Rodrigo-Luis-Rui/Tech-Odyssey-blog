@@ -5,3 +5,87 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+body{
+    background-image: url(https://img.freepik.com/premium-photo/blue-purple-technology-circuit_73426-205.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;}
+
+.card{
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.8px);
+    -webkit-backdrop-filter: blur(4.8px);
+    color: white;
+}
+.card2{
+    width: 500px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.8px);
+    -webkit-backdrop-filter: blur(4.8px);
+    color: white;
+}
+
+.scrolling-container {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin-top: 10px; 
+  }
+  .scrolling-container::-webkit-scrollbar-thumb {
+    background-color: #000216b2;
+    border-radius: 5px; 
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px; 
+  }
+  .scrolling-container::-webkit-scrollbar {
+    width: 10px;
+  }
+.btn {
+  align-items: center;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 10px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.btn:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.btn:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
