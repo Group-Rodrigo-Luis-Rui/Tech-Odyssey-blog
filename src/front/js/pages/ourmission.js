@@ -29,6 +29,7 @@ export const OurMission = () => {
 			<p>We'll also dive into the world of augmented reality (AR) and virtual reality (VR), where creativity knows no bounds, and boundaries between real and digital experiences blur.</p>
 			<br/>
 			<hr/>
+			<hr/>
 			<br/>
 			<p>Join us on this thrilling tech adventure, where we'll unravel the mysteries of cutting-edge innovations, examine how technology is reshaping various industries, and envision a future where the boundaries between different tech categories dissolve, giving rise to a world of boundless possibilities. Stay tuned for mind-boggling insights, expert opinions, and thought-provoking discussions, right here on our Tech Odyssey blog!</p>
 			<h4>Tech Odyssey Team</h4>
