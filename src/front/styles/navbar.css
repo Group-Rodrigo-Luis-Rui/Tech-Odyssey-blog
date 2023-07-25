@@ -132,7 +132,7 @@ span:hover{
  }
 
 
-/*.menu-item::after{
+.menu-item::after{
     content:'';
     display:block;
     height: 4px;
@@ -146,13 +146,17 @@ span:hover{
 
 
 
+
+
+
+
 .menu-item:hover::after{
     transform: scaleX(1);
 }
 
 .menu-item1:hover::after{
     transform: scaleX(1);
-}*/
+}
 
 .fav {
     padding-left: 0em;
@@ -181,12 +185,40 @@ span:hover{
     display: none;
 }
 
-header .navigation .menu{
-   
-   
+.fa-book:hover::before{
+    color: rgb(53, 15, 156);
+    transition: 0.5s ease;  
+}
+.fa-book{
+    color: #469DFF;
+     
+}
+
+.fa-cloud-sun-rain:hover::before{
+    color: rgb(53, 15, 156);
+    transition: 0.5s ease;  
+}
+
+
+.fa-cloud-sun-rain{
+    color: #469DFF;
+}
+
+.menu-open{
+    z-index: 1000;
+    position: fixed;
+    display: block;
+    background: hsl(var(--clr-dark) /.65);
+    background: linear-gradient(to bottom, hsl(var(--clr-dark) /1), hsl( var(--clr-light) / .2));
+    backdrop-filter: blur(1.5rem);
+    min-width: 10rem;
+    height: 100vh;
+    top: 0;
     right: 0;
-    
+    padding: 90px 50px;    
 } 
+
+
 
 
 
@@ -202,7 +234,7 @@ header .navigation .menu{
         min-width: 10rem;
         height: 100vh;
         top: 0;
-        right: -100%;
+        right: -200%;
         padding: 90px 50px;    
     } 
     
@@ -214,16 +246,9 @@ header .navigation .menu{
         display: block;
     }
 
-    header {
-        padding: 5px 5px;
-    }
-}
- 
     
-
- 
-
-
+}
+     
 /* Utility classes*/
 /*-----------------------
 /* screen reader only, related to assisted technologies reading the page 
