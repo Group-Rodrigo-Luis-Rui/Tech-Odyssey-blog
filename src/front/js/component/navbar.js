@@ -14,6 +14,7 @@ export const Navbar = () => {
 
 		const handleToggleMenu = () => {
 			setCloseBtn((prevCloseBtn) => !prevCloseBtn);
+			setHamBtn((prevHamBtn) => !prevHamBtn);
 		};
 
 	return (
@@ -24,11 +25,16 @@ export const Navbar = () => {
 					Tech Odyssey
 				</a>
 			</div>
-			<div className="navigation">
+			<div className={`navigation ${closeBtn? "menu-open":""}`}>
 				
 				<ul className="menu">
 					
-					<div><img src={clsbtn} onClick={handleToggleMenu} className= {`close-btn ${closeBtn? 'menu-open': "disableBtn"}`}/></div>
+					<div><img 
+						src={clsbtn} 
+						onClick={handleToggleMenu} 
+						className= {`close-btn ${closeBtn? 'disableBtn': "active-menu"}`}
+						/>
+					</div>
 					<Link to="/">
 						<li className="active menu-item ff-sans-cond letter-spacing-3 fs-500">
 							<a href="#"><span>00</span>Home</a>
@@ -36,7 +42,8 @@ export const Navbar = () => {
 					</Link>
 
 					<li className="ff-sans-cond letter-spacing-3 fs-500">
-						<a className="menu-item1" data-bs-toggle="modal" data-bs-target="#exampleModal"><span>01</span>Wheather</a>
+						<a className="menu-item1" data-bs-toggle="modal" data-bs-target="#exampleModal"><span>01</span>Wheather<i class="fa-solid fa-cloud-sun-rain"></i></a>
+						
 					</li>			
 					<li className="ff-sans-cond letter-spacing-3 fs-500">
 						<a className="menu-item1" data-bs-toggle="modal" data-bs-target="#exampleModal1"><span>02</span>Login</a>
@@ -54,7 +61,7 @@ export const Navbar = () => {
 						</li>
 					</Link>
 						<li className="fav menu-item ff-sans-cond letter-spacing-3 fs-500">
-							<a href="#"><span>05</span>Whislist</a>
+							<a href="#"><span>05</span>Whislist<i class="px-1 fa-solid fa-book"></i></a>
 						</li>	
 				</ul>
 					<div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -106,7 +113,13 @@ export const Navbar = () => {
 						</div>
 					</div>	
 			</div>
-				<div><img src={hambtn} onClick={handleToggleMenu} className={`hamburger-btn ${hambtn? 'menu':"disableMenu"}`}/></div>
+				<div>
+					<img 
+						src={hambtn} 
+						onClick={handleToggleMenu} 
+						className={`hamburger-btn ${hambtn? 'menu-active':"disableMenu"}`}
+					/>
+				</div>
 		</header>
 	);
 };
