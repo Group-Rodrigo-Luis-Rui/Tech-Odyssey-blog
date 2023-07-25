@@ -1,41 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.css";
 import logo from "../../img/blogger-logo-icon.png";
 import clsbtn from "../../img/power-button.png";
 import hambtn from "../../img/hamburger-icon.png";
+
+
 export const Navbar = () => {
-	
-	
-	
+		
+		
+		const [closeBtn, setCloseBtn] = useState(false);
+		const [hamBtn, setHamBtn] = useState(false);
+
+		const handleToggleMenu = () => {
+			setCloseBtn((prevCloseBtn) => !prevCloseBtn);
+		};
+
 	return (
 		<header className="metallic-element">
-			<div>
+			<div className="d-flex justify-content-center align-items-center">
 				<img src={logo} alt="" className="logoB"/>
-				<a href="#" className="logo uppercase ff-sans-cond letter-spacing-1">Tech Odissey</a>
+				<a href="#" className="logo uppercase ff-sans-cond letter-spacing-2">
+					Tech Odyssey
+				</a>
 			</div>
 			<div className="navigation">
+				
 				<ul className="menu">
 					
+					<div><img src={clsbtn} onClick={handleToggleMenu} className= {`close-btn ${closeBtn? 'menu-open': "disableBtn"}`}/></div>
 					<Link to="/">
-						<li className="active menu-item uppercase ff-sans-cond letter-spacing-2"><a className="menu-item"
-						href="#"><span>00</span>Home</a></li>
+						<li className="active menu-item ff-sans-cond letter-spacing-3 fs-500">
+							<a href="#"><span>00</span>Home</a>
+						</li>	
 					</Link>
 
-					<li className="menu-item uppercase ff-sans-cond letter-spacing-2"><a className="menu-item" data-bs-toggle="modal" data-bs-target="#exampleModal"><span>01</span>Wheather</a></li>			
-					<li className="menu-item uppercase ff-sans-cond letter-spacing-2"><a className="menu-item" data-bs-toggle="modal" data-bs-target="#exampleModal1"><span>02</span>Login</a></li>
+					<li className="ff-sans-cond letter-spacing-3 fs-500">
+						<a className="menu-item1" data-bs-toggle="modal" data-bs-target="#exampleModal"><span>01</span>Wheather</a>
+					</li>			
+					<li className="ff-sans-cond letter-spacing-3 fs-500">
+						<a className="menu-item1" data-bs-toggle="modal" data-bs-target="#exampleModal1"><span>02</span>Login</a>
+					</li>
 							
 					<Link to="/ourmission">
-						<li className="menu-item uppercase ff-sans-cond letter-spacing-2"><a 
-						href="#"><span>00</span>Our Mission</a></li>
+						<li className="menu-item ff-sans-cond letter-spacing-3 fs-500">
+							<a href="#"><span>03</span>Our Mission</a>
+						</li>
 					</Link>
 
 					<Link to="/signup">
-						<li className="menu-item uppercase ff-sans-cond letter-spacing-2"><a 
-						href="#"><span>00</span>Sign Up</a></li>
+						<li className="menu-item ff-sans-cond letter-spacing-3 fs-500">
+							<a href="#"><span>04</span>Sign Up</a>
+						</li>
 					</Link>
-						<li className="menu-item uppercase ff-sans-cond letter-spacing-2"><a 
-						href="#"><span>00</span>Whislist</a></li>	
+						<li className="fav menu-item ff-sans-cond letter-spacing-3 fs-500">
+							<a href="#"><span>05</span>Whislist</a>
+						</li>	
 				</ul>
 					<div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div className="modal-dialog">
@@ -86,8 +106,7 @@ export const Navbar = () => {
 						</div>
 					</div>	
 			</div>
-
-
+				<div><img src={hambtn} onClick={handleToggleMenu} className={`hamburger-btn ${hambtn? 'menu':"disableMenu"}`}/></div>
 		</header>
 	);
 };

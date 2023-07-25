@@ -27,12 +27,6 @@
 /*-----------------------*/
 /* Box sizing 
 
-*, 
-*::before,
-*::after {
-    box-sizing: border-box;
-}*/
-
 /* Reset margins*/
 * {
     margin: 0;
@@ -42,32 +36,15 @@
     box-sizing: border-box;
 }
 
-/* set up the body
-header{
-    font-family: var(--ff-sans-normal);
-    font-size: var(--fs-400);
-    color: hsl(var(--clr-white) );
-    background-color: hsl(var(--clr-dark) );
-    line-height: 1.5;
-    min-height: 10vh;
-}*/
-
 .logoB {
     width: 5rem;
     height: 5rem;  
 }
 .metallic-element {
-    /* Background gradient */
     background: linear-gradient(to bottom, hsl(var(--clr-dark) /1), hsl( var(--clr-light) / .2));
     
 }
     
-  
-  
- 
-  
-
-
 header {
     z-index:999;
     top: 0;
@@ -77,9 +54,8 @@ header {
     justify-content: space-between;
     align-items: center;
     background: hsl(var(--clr-dark) /1);
-    
     box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
-    padding: 0 7rem;
+    padding: 0 1rem;
     transition: 0.5s;
 
 }
@@ -88,8 +64,7 @@ header .logo {
     color: hsl( var(--clr-white) / 1);
     font-size: 1.8em;
     font-weight: 700;
-    text-decoration: none;
-   
+    text-decoration: none;  
 }
 
 header .logo:hover {
@@ -97,7 +72,6 @@ header .logo:hover {
     color: #469DFF;
     transition: 0.9s;
 }
-
 
 header .navigation{
     position: relative;
@@ -109,6 +83,7 @@ header .navigation .menu{
     position: relative;
     display: flex;
     justify-content: center;
+    align-items: center;
     list-style: none;
     user-select: none;
     
@@ -121,11 +96,18 @@ header .navigation .menu{
     padding: 25px 0;
 }
 
+.menu-item1 { 
+    color: hsl( var(--clr-white) / .9);
+    text-decoration: none;
+    margin: 0.5rem;
+    padding: 25px 0;
+}
+
 span {
     color: hsl( var(--clr-light) / .5);
     font-weight: 800; 
     margin: 0.5rem;
-    font-size: 1.1rem;  
+    font-size: 1.6rem;  
 }
 
 span:hover{
@@ -137,11 +119,77 @@ span:hover{
     text-decoration: none;
  }
 
- .menu-item a:hover{
+ .menu-item a:hover {
     color:#469DFF;
     transition: 0.3s;
 
  }
+
+ .menu-item1:hover {
+    color:#469DFF;
+    transition: 0.3s;
+
+ }
+
+
+/*.menu-item::after{
+    content:'';
+    display:block;
+    height: 4px;
+    width: 100%;
+    background-color:#469DFF;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+
+
+
+.menu-item:hover::after{
+    transform: scaleX(1);
+}
+
+.menu-item1:hover::after{
+    transform: scaleX(1);
+}*/
+
+.fav {
+    padding-left: 0em;
+}
+
+ .close-btn{
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-size: 1.5rem;
+    background-position: center;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    margin: 50px;
+    display: none;  
+}
+
+.hamburger-btn{
+    width: 3rem;
+    height: 3rem;
+    background-size: 1.5rem;
+    background-position: center;
+    cursor: pointer;
+    margin: 10px;
+    display: none;
+}
+
+header .navigation .menu{
+   
+   
+    right: 0;
+    
+} 
+
+
+
 
  @media (max-width: 90rem) {
     header .navigation .menu{
@@ -154,78 +202,30 @@ span:hover{
         min-width: 10rem;
         height: 100vh;
         top: 0;
-        right: 0;
+        right: -100%;
         padding: 90px 50px;    
     } 
+    
     .close-btn{
-        position: absolute;
-        width: 2.5rem;
-        height: 2.5rem;
-        background-size: 1.5rem;
-        background-position: center;
-        top: 0;
-        left: 0;
-        cursor: pointer;
-        margin: 50px;
+        display: block;    
     }
+       
     .hamburger-btn{
-        width: 2.5rem;
-        height: 2.5rem;
-        background-size: 1.5rem;
-        background-position: center;
-        cursor: pointer;
-        margin: 50px;
-
+        display: block;
     }
 
+    header {
+        padding: 5px 5px;
+    }
 }
+ 
+    
 
+ 
 
-
-   
-
-
-
-/* make images easier to work with 
-/*img, 
-picture  {
-    max-width: 100%;
-    display: block;
-}*/
-
-/* make form elements easier to work with 
-input,
-button,
-textarea,
-select {
-    font: inherit;
-}*/
-
-/* remove animations for people who've turned them off 
-@media (prefers-reduced-motion: reduce) {  
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-  }*/
 
 /* Utility classes*/
 /*-----------------------
-
-.flex {
-    display: flex;
-    gap: var(--gap, 1rem);
-}
-
-.container {
-    padding-inline: 2em;
-    margin-inline: auto;
-    max-width: 80rem;
-}
 /* screen reader only, related to assisted technologies reading the page 
 .sr-only {
     position: absolute;
@@ -275,34 +275,3 @@ select {
 .fs-600 {
     line-height: 1.1;
 }
-
-
-
-/*
-.primary-navigation a {
-    text-decoration: none;
-}
-
-.primary-navigation a > span {
-    font-weight: 700;
-    margin-right: .5em;
-}
-
-.underline-indicators > * {
-    cursor: pointer;
-    padding: var(--underline-gap, 1rem) 0;
-    border: 0;
-    border-bottom: .2rem solid hsl( var(--clr-white) / 0 );
-}
-
-.underline-indicators > *:hover,
-.underline-indicators > *:focus{
-    border-color: hsl( var(--clr-white) / .5 );
-}
-
-.underline-indicators > .active a,
-.underline-indicators > [aria-selected="true"] {
-    color:hsl( var(--clr-white) / 1);
-    border-color: hsl( var(--clr-white) / 1 );
-}*/
- 
