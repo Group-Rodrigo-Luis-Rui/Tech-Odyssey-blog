@@ -1,15 +1,20 @@
-.bkg_img {
-    background-image: url("https://images.ctfassets.net/hrltx12pl8hq/4ACnMj4WVSOZRZt0jHu9h5/1506f652bcd70f4dc3e88219fefea858/shutterstock_739595833-min.jpg?fit=fill&w=600&h=400");
-    height: 500px;
-    background-position: center;
-    background-repeat: no-repeat;
+body {
+    background-image: url("/workspaces/4Geeks-Final-Project-Team-1/src/front/img/our_mission_image.jpg");
+    width: 100%;
     background-size: cover;
-    position: relative;
-    opacity: 0.2;
+    color: #080808;
+    padding: 20px;
+    font-family: "Barlow";
   }
 
 ul{
     list-style: none;
+}
+
+li{
+  /* padding-top: 10px; */
+  font-size: 1.4em;
+  margin: 1.1em;
 }
 
 ul li::before {
@@ -20,3 +25,19 @@ ul li::before {
     width: 1.2em;
     margin-left: -1em;
   }
+
+i:hover{
+  font-size:1.1em;
+  transition: 0.5s ease-out;
+}
+
+i {
+  background-color: rgba(108, 182, 241, 0.3);
+  padding: 5px 5px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 20px;
+}
+
+
+
