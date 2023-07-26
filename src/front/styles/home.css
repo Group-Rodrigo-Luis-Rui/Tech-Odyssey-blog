@@ -21,7 +21,7 @@
     color: rgb(255, 255, 255);
 }
 .card2{
-    width: 500px;
+    width: 700px;
     height: 300px;
     background: rgba(255, 255, 255, 0.219);
     border-radius: 16px;
@@ -30,6 +30,9 @@
     -webkit-backdrop-filter: blur(4.8px);
     color: white;
     display: flex;
+    white-space: normal;
+    position: relative;
+
 }
 .card2 img{
     height: 200px;
@@ -37,7 +40,7 @@
     justify-content: space-around;
 }
 .img{
-  display: flex;
+ 
 }
 .text{
   overflow: auto;
@@ -101,6 +104,9 @@
 .btn:active {
   box-shadow: #D6D6E7 0 3px 7px inset;
   transform: translateY(2px);
+}
+.btncard2{
+  width: 100px;
 }
 
 #carouselExampleControls{

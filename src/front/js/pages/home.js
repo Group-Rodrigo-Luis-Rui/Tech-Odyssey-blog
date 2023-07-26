@@ -125,7 +125,7 @@ export const Home = () => {
 							}}
 						>
 							<div className="">
-								<div className="card2 row">
+								<div className="card2 row me-3">
 										<div className="img col-6">
 											<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
 										</div>
@@ -133,7 +133,7 @@ export const Home = () => {
 											<h5 className="card-title">Card title</h5>
 											<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 									</div>
-									<a href="#" className="btn btn-primary">Go somewhere</a>
+									<a href="#" className="btn btncard2 btn-primary">Go here</a>
 								</div>
 							</div>
 						</div>
