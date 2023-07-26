@@ -9,6 +9,9 @@ import { Single } from "./pages/single";
 import { Createpost } from "./pages/createpost";
 import { OurMission } from "./pages/ourmission";
 import { SignUp } from "./pages/signup";
+import { MyReadings } from "./pages/myreadings";
+import { MyProfile } from "./pages/myprofile";
+
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -34,6 +37,8 @@ const Layout = () => {
                         <Route element={<Createpost />} path="/createpost" />
                         <Route element={<OurMission />} path="/ourmission" />
                         <Route element={<Single />} path="/single/:theid" />
+                        <Route element={<MyReadings />} path="/myreadings" />
+                        <Route element={<MyProfile />} path="/myprofile" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
