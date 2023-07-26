@@ -6,9 +6,9 @@ import "../../styles/ourmission.css";
 export const OurMission = () => {
 
 	return (
-		<div>
+		<div className="background" style={{backgroundImage:'url(' + backgroundimage + ')'}}>
 			<div className="container background" style={{backgroundImage:'url(' + backgroundimage + ')'}}>
-				<h2><strong>Tech Odyssey to delete</strong>: Exploring the Cutting-Edge Convergence of Computers, Movie Tech, AI, EV Mobility, and More!</h2><br/>
+				<h2><strong>Tech Odyssey</strong>: Exploring the Cutting-Edge Convergence of Computers, Movie Tech, AI, EV Mobility, and More!</h2><br/>
 				<p><em>Welcome to our Tech Odyssey - Where Boundaries Blur and Innovations Unite!</em></p>
 				<p>In the ever-evolving landscape of technology, groundbreaking advancements are revolutionizing every aspect of our lives. From the fascinating world of computers to the captivating magic of movie tech, the limitless potential of artificial intelligence, and the eco-conscious realm of electric vehicle (EV) mobility, there's an array of exciting topics to explore. Join us on a journey through the realm of technology, where barriers between different domains dissolve, and extraordinary synergies are discovered.</p>
 				<h3>Beyond Binary: Unraveling the Future of Computers</h3>
@@ -37,7 +37,7 @@ export const OurMission = () => {
 						<div class="col-sm-3 teamName">
 							<h5>Luís Santos</h5>
 						</div>
-						<div class="col-sm-2">
+						<div class="col-sm-3">
 							<i class="fab fa-facebook"></i>
 							<i class="fab fa-linkedin"></i>
 						</div>
@@ -46,7 +46,7 @@ export const OurMission = () => {
 						<div class="col-sm-3 teamName">
 							<h5>Rodrigo Almeida</h5>
 						</div>
-						<div class="col-sm-2">
+						<div class="col-sm-3">
 							<i class="fab fa-facebook"></i>
 							<i class="fab fa-linkedin"></i>
 						</div>
@@ -55,7 +55,7 @@ export const OurMission = () => {
 						<div class="col-sm-3 teamName">
 							<h5>Rui Silva</h5>
 						</div>
-						<div class="col-sm-2">
+						<div class="col-sm-3">
 							<i class="fab fa-facebook"></i>
 							<i class="fab fa-linkedin"></i>
 						</div>
