@@ -1,5 +1,4 @@
 
-
 .background{
   padding-top: 10px;
   background-size: cover;
@@ -7,9 +6,14 @@
   background-attachment: fixed;
   background-position: center center;
   background-size: cover;
-  color: rgb(255, 255, 255);
   font-family: "Barlow";
   font-size: large;
+}
+
+.textBackground{
+  background: rgb(0, 0, 0); 
+  background: rgba(0, 0, 0, 0.5); 
+  color: #f1f1f1;
 }
 
 p{
@@ -23,13 +27,13 @@ h5{
   padding-top: 0.5rem;
 }
 
-i:hover{
+.icon:hover{
   font-size:1rem;
   transition: 0.1s ease-out;
   cursor: pointer;
 }
 
-i {
+.icon {
   background-color: rgba(108, 182, 241, 0.3);
   padding: 5px 5px;
   border-radius: 10px;
