@@ -172,6 +172,12 @@ figcaption{
   justify-content: end;
   align-items: end;
 }
+.img{
+  display: flex;
+}
+.text{
+  overflow: auto;
+}
 
 .scrolling-container {
     display: flex;

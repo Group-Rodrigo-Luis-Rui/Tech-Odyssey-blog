@@ -215,10 +215,17 @@ export const Home = () => {
 	};
 
 	return (
-		<div  className="container-fluid background" style={{backgroundImage:'url(' + backgroundurl + ')'}}>
-			<div className="row text-center d-flex justify-content-center" >
-				<div className="card-carousel-header mt-5 d-flex justify-content-center">
-					{/* carousel*/}
+		<div  className="background" style={{backgroundImage:'url(' + backgroundurl + ')'}}>
+			<div className="row text-center mt-5" >
+				<div className="card-carousel-header d-flex">
+					<div class="card col-6 card-top me-2">
+						<div class="card-body">
+							<h5 class="card-title">Card title</h5>
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+							<img src="https://images.unsplash.com/photo-1480506132288-68f7705954bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTk3fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
+						</div>
+					</div>
 					<div id="carouselExampleControls" class=" col-6 carousel slide d-block " data-bs-ride="carousel">
 						<div className="carousel-inner">
 							<div className="carousel-indicators">
@@ -289,21 +296,10 @@ export const Home = () => {
 								>
 									<div className="card2 row">
 										<div className="img col-6">
-<<<<<<< HEAD
-											<figure>
-												<img src={post.Url} class="card-img-top" alt="..." />
-												<figcaption className="fig position-absolute bottom-0 start-0 p-3">
-													<p>{post.abstract}</p>
-												</figcaption>
-											</figure>
-											{/* fontAwsome icons (like, heart and favorites) */}
-											{/* ... */}
-=======
 											<img src={post.image_post} class="card-img-top" alt="..." />
 											<figcaption className="fig position-absolute bottom-0 start-0 p-3">
 												<p>{post.abstract}</p>
 											</figcaption>
->>>>>>> 8f079590b1f0fc0c59e1d342994e8c91e7f1530a
 										</div>
 										<div className="col-6 text">
 											<div className="d-flex justify-content-end mt-2" title="Add to My readings list">
@@ -359,31 +355,14 @@ export const Home = () => {
 								transform: `translateX(${(index - scrollPositions2) * 10}px)`,
 							}}
 						>
-							<div className="card2 row">
-								<div className="img col-6">
-									<img src={posts2.image_post} class="card-img-top" alt="..." />
-									<figcaption className="fig position-absolute bottom-0 start-0 p-3">
-										<p>{posts2.abstract}</p>
-									</figcaption>
-									{/* fontAwsome icons (like, heart and favorites) */}
-									{/* ... */}
-								</div>
-								<div className="col-6 text">
-									<div className="d-flex justify-content-end mt-2" title="Add to My readings list">
-										<button type="button" className="btn" onClick={() => addReadings(posts2.id)}>
-											<i class="fa-regular fa-star"></i>
-										</button>
+							<div className="">
+								<div className="card2">
+									<div className="img">
+										<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
 									</div>
-									<h3 className="card-title">{posts2.title}</h3>
-									<p>{posts2.description}</p>
-									<p>{posts2.abstract}</p>
-									<div className="readmore">
-										<Link to={`/single/${posts2.id}`}>
-											<button className="btn col">
-												Read More
-											</button>
-										</Link>
-									</div>
+									<h5 className="card-title">Card title</h5>
+									<p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+									<a href="#" className="btn btn-primary">Go somewhere</a>
 								</div>
 							</div>
 						</div>
@@ -410,8 +389,15 @@ export const Home = () => {
 							iteration="infinite"
 							fillMode="both"
 						>
-							{Title3}
-						</MovingComponent>
+								<div className="card2">
+									<div className="img">
+										<img src="https://images.unsplash.com/photo-1421757381940-5d269570b21c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA0fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="..."/>
+									</div>
+									<h5 className="card-title">Card title</h5>
+									<p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+									<a href="#" className="btn btn-primary">Go somewhere</a>
+								</div>
+							</div>
 					))}
 				</div>
 				{/* scrolling cards*/}
@@ -424,31 +410,14 @@ export const Home = () => {
 								transform: `translateX(${(index - scrollPositions3) * 10}px)`,
 							}}
 						>
-							<div className="card2 row">
-								<div className="img col-6">
-								<img src={posts3.image_post} class="card-img-top" alt="..." />
-									<figcaption className="fig position-absolute bottom-0 start-0 p-3">
-										<p>{posts3.abstract}</p>
-									</figcaption>
-									{/* fontAwsome icons (like, heart and favorites) */}
-									{/* ... */}
-								</div>
-								<div className="col-6 text">
-									<div className="d-flex justify-content-end mt-2" title="Add to My readings list">
-										<button type="button" className="btn" onClick={() => addReadings(posts3.id)}>
-											<i class="fa-regular fa-star"></i>
-										</button>
+							<div className="">
+								<div className="card2">
+									<div className="img">
+										<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
 									</div>
-									<h3 className="card-title">{posts3.title}</h3>
-									<p>{posts3.description}</p>
-									<p>{posts3.abstract}</p>
-									<div className="readmore">
-										<Link to={`/single/${posts3.id}`}>
-											<button className="btn col">
-												Read More
-											</button>
-										</Link>
-									</div>
+									<h5 className="card-title">Card title</h5>
+									<p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+									<a href="#" className="btn btn-primary">Go somewhere</a>
 								</div>
 							</div>
 						</div>
@@ -489,31 +458,16 @@ export const Home = () => {
 								transform: `translateX(${(index - scrollPositions4) * 10}px)`,
 							}}
 						>
-							<div className="card2 row">
-								<div className="img col-6">
-								<img src={posts4.image_post} class="card-img-top" alt="..." />
-									<figcaption className="fig position-absolute bottom-0 start-0 p-3">
-										<p>{posts4.abstract}</p>
-									</figcaption>
-									{/* fontAwsome icons (like, heart and favorites) */}
-									{/* ... */}
-								</div>
-								<div className="col-6 text">
-									<div className="d-flex justify-content-end mt-2" title="Add to My readings list">
-										<button type="button" className="btn" onClick={() => addReadings(posts4.id)}>
-											<i class="fa-regular fa-star"></i>
-										</button>
+							<div className="">
+								<div className="card2 row">
+										<div className="img col-6">
+											<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
+										</div>
+										<div className="col-6 text">
+											<h5 className="card-title">Card title</h5>
+											<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 									</div>
-									<h3 className="card-title">{posts4.title}</h3>
-									<p>{posts4.description}</p>
-									<p>{posts4.abstract}</p>
-									<div className="readmore">
-										<Link to={`/single/${posts4.id}`}>
-											<button className="btn col">
-												Read More
-											</button>
-										</Link>
-									</div>
+									<a href="#" className="btn btn-primary">Go somewhere</a>
 								</div>
 							</div>
 						</div>
