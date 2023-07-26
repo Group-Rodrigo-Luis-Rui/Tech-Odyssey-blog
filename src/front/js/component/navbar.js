@@ -8,13 +8,9 @@ import hambtn from "../../img/hamburger-icon.png";
 
 export const Navbar = () => {
 		
-		
 		const [closeBtn, setCloseBtn] = useState(false);
-		const [hamBtn, setHamBtn] = useState(false);
-
 		const handleToggleMenu = () => {
-			setCloseBtn((prevCloseBtn) => !prevCloseBtn);
-			setHamBtn((prevHamBtn) => !prevHamBtn);
+			setCloseBtn((prevCloseBtn) => !prevCloseBtn);	
 		};
 
 	return (
@@ -25,44 +21,69 @@ export const Navbar = () => {
 					Tech Odyssey
 				</a>
 			</div>
-			<div className={`navigation ${closeBtn? "menu-open":""}`}>
+			<div className={`navigation ${closeBtn? "menu-active":""}`}>
 				
-				<ul className="menu">
+				<ul className={`menu-${closeBtn? "active":"unactive"}`}>
 					
 					<div><img 
 						src={clsbtn} 
 						onClick={handleToggleMenu} 
-						className= {`close-btn ${closeBtn? 'disableBtn': "active-menu"}`}
+						className= "close-btn"
 						/>
 					</div>
 					<Link to="/">
 						<li className="active menu-item ff-sans-cond letter-spacing-3 fs-500">
-							<a href="#"><span>00</span>Home</a>
+							<a href="#"><span>00</span><i class="fa-solid fa-house"></i></a>
 						</li>	
 					</Link>
-
-					<li className="ff-sans-cond letter-spacing-3 fs-500">
-						<a className="menu-item1" data-bs-toggle="modal" data-bs-target="#exampleModal"><span>01</span>Wheather<i class="fa-solid fa-cloud-sun-rain"></i></a>
-						
-					</li>			
-					<li className="ff-sans-cond letter-spacing-3 fs-500">
-						<a className="menu-item1" data-bs-toggle="modal" data-bs-target="#exampleModal1"><span>02</span>Login</a>
-					</li>
-							
 					<Link to="/ourmission">
 						<li className="menu-item ff-sans-cond letter-spacing-3 fs-500">
-							<a href="#"><span>03</span>Our Mission</a>
+							<a href="#"><span>01</span>Our Mission</a>
 						</li>
 					</Link>
-
+					<li className="ff-sans-cond letter-spacing-3 fs-500">
+						<a className="menu-item1" data-bs-toggle="modal" data-bs-target="#exampleModal"><span>02</span>Wheather<i class="fa-solid fa-cloud-sun-rain"></i></a>	
+					</li>			
+					<li className="ff-sans-cond letter-spacing-3 fs-500">
+						<a className="menu-item1" data-bs-toggle="modal" data-bs-target="#exampleModal1"><span>03</span><i class="fa-solid fa-right-to-bracket"></i></a>
+					</li>
 					<Link to="/signup">
 						<li className="menu-item ff-sans-cond letter-spacing-3 fs-500">
 							<a href="#"><span>04</span>Sign Up</a>
 						</li>
 					</Link>
-						<li className="fav menu-item ff-sans-cond letter-spacing-3 fs-500">
-							<a href="#"><span>05</span>Whislist<i class="px-1 fa-solid fa-book"></i></a>
-						</li>	
+					<Link to="/createpost">
+						<li className="menu-item ff-sans-cond letter-spacing-3 fs-500">
+							<a href="#"><span>05</span>Create Post</a>
+						</li>
+					</Link>	
+					<div className="select-menu">
+						<li className="menu-item ff-sans-cond letter-spacing-3 fs-500">
+								
+								
+								<a href="#"><span>06</span>My Stuff<i class="px-5 fa-solid fa-chevron-down"></i></a>
+									<ul className="dropdown">
+										<Link to="/mydetails">
+											<li className="dropdown-item">
+												<i class="fa-solid fa-user"></i>
+												<span className="item-text">My Profile</span>	
+											</li>
+										</Link>	
+										<Link to="/myreadings">
+											<li className="dropdown-item">
+												<i class="fa-sharp fa-solid fa-book-open"></i>
+												<span className="item-text">My Readings</span>	
+											</li>
+										</Link>	
+											
+									</ul>
+						</li>			
+					</div>
+						
+						
+							
+						
+							
 				</ul>
 					<div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div className="modal-dialog">
@@ -117,7 +138,7 @@ export const Navbar = () => {
 					<img 
 						src={hambtn} 
 						onClick={handleToggleMenu} 
-						className={`hamburger-btn ${hambtn? 'menu-active':"disableMenu"}`}
+						className="hamburger-btn"
 					/>
 				</div>
 		</header>
