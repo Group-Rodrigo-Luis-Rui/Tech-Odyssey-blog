@@ -36,6 +36,12 @@
     width: 300px;
     justify-content: space-around;
 }
+.img{
+  display: flex;
+}
+.text{
+  overflow: auto;
+}
 
 .scrolling-container {
     display: flex;
