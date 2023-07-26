@@ -21,13 +21,15 @@ export const Navbar = () => {
 					Tech Odyssey
 				</a>
 			</div>
+
 			<div className={`navigation ${closeBtn? "menu-active":""}`}>
 				
 				<ul className={`menu-${closeBtn? "active":"unactive"}`}>
-					
+
 					<div><img 
 						src={clsbtn} 
 						onClick={handleToggleMenu} 
+
 						className= "close-btn"
 						/>
 					</div>
@@ -80,11 +82,6 @@ export const Navbar = () => {
 						</li>			
 					</div>
 						
-						
-							
-						
-							
-				</ul>
 					<div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div className="modal-dialog">
 							<div className="modal-content ">
@@ -138,7 +135,9 @@ export const Navbar = () => {
 					<img 
 						src={hambtn} 
 						onClick={handleToggleMenu} 
+
 						className="hamburger-btn"
+
 					/>
 				</div>
 		</header>
