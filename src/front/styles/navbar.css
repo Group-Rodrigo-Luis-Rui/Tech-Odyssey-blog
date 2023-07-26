@@ -75,39 +75,46 @@ header .logo:hover {
 
 header .navigation{
     position: relative;
-    line-height: 4.5rem;
+    line-height: 4rem;
    
 }
 
-header .navigation .menu{
+.menu {
+    margin-bottom: 0;
+}
+
+
+header .navigation .menu-unactive,header .navigation .menu-active{
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     list-style: none;
     user-select: none;
+    box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
+    border-radius: 0.5em;
     
 }
 
-.menu-item > a {
+.menu-item a {
     color: hsl( var(--clr-white) / .9);
     text-decoration: none;
-    margin: 0.5rem;
-    padding: 25px 0;
+   
+   
 }
 
 .menu-item1 { 
     color: hsl( var(--clr-white) / .9);
     text-decoration: none;
-    margin: 0.5rem;
-    padding: 25px 0;
+   
+    
 }
 
 span {
     color: hsl( var(--clr-light) / .5);
-    font-weight: 800; 
-    margin: 0.5rem;
-    font-size: 1.6rem;  
+    /*font-weight: 800; */
+    margin-right: 0.5rem;
+    /*font-size: 1.6rem;  */
 }
 
 span:hover{
@@ -122,45 +129,12 @@ span:hover{
  .menu-item a:hover {
     color:#469DFF;
     transition: 0.3s;
-
  }
 
  .menu-item1:hover {
     color:#469DFF;
     transition: 0.3s;
-
  }
-
-
-.menu-item::after{
-    content:'';
-    display:block;
-    height: 4px;
-    width: 100%;
-    background-color:#469DFF;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-}
-
-
-
-
-
-
-
-
-.menu-item:hover::after{
-    transform: scaleX(1);
-}
-
-.menu-item1:hover::after{
-    transform: scaleX(1);
-}
-
-.fav {
-    padding-left: 0em;
-}
 
  .close-btn{
     position: absolute;
@@ -185,13 +159,20 @@ span:hover{
     display: none;
 }
 
-.fa-book:hover::before{
-    color: rgb(53, 15, 156);
-    transition: 0.5s ease;  
+
+.fa-house, .fa-right-to-bracket, .fa-user, .fa-book-open{
+    scale: 0.6;
+    
 }
-.fa-book{
-    color: #469DFF;
-     
+
+.fa-user, .fa-book-open{
+    scale: 0.6;
+    color: hsl( var(--clr-white) / .9);
+}
+
+
+.fa-chevron-down {
+    scale: 0.5;
 }
 
 .fa-cloud-sun-rain:hover::before{
@@ -199,32 +180,27 @@ span:hover{
     transition: 0.5s ease;  
 }
 
-
-.fa-cloud-sun-rain{
-    color: #469DFF;
+.select-menu{
+    width: auto;
+    
+}
+.select-menu .dropdown{
+    position: absolute;
+    margin-top: 2rem;
+    padding: 2px;
+    border-radius: 8px;
+    background: rgb(16, 184, 16);
+    box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
 }
 
-.menu-open{
-    z-index: 1000;
-    position: fixed;
-    display: block;
-    background: hsl(var(--clr-dark) /.65);
-    background: linear-gradient(to bottom, hsl(var(--clr-dark) /1), hsl( var(--clr-light) / .2));
-    backdrop-filter: blur(1.5rem);
-    min-width: 10rem;
-    height: 100vh;
-    top: 0;
-    right: 0;
-    padding: 90px 50px;    
-} 
 
 
-
-
-
-
- @media (max-width: 90rem) {
-    header .navigation .menu{
+ @media (max-width: 1600px) {
+    header .navigation .menu-unactive{
+       display: none;    
+    } 
+    
+    header .navigation .menu-active{
         z-index: 1000;
         position: fixed;
         display: block;
@@ -234,10 +210,11 @@ span:hover{
         min-width: 10rem;
         height: 100vh;
         top: 0;
-        right: -200%;
+        right: 0;
         padding: 90px 50px;    
     } 
-    
+
+
     .close-btn{
         display: block;    
     }
@@ -294,9 +271,3 @@ span:hover{
 .fs-200 { font-size: var(--fs-200); }
 
 
-.fs-900,
-.fs-800,
-.fs-700,
-.fs-600 {
-    line-height: 1.1;
-}
