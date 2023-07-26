@@ -5,8 +5,8 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
-body{
-    background-image: url(https://img.freepik.com/premium-photo/blue-purple-technology-circuit_73426-205.jpg);
+.background{
+    padding-top: 10px;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -18,17 +18,23 @@ body{
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(4.8px);
     -webkit-backdrop-filter: blur(4.8px);
-    color: white;
+    color: rgb(255, 255, 255);
 }
 .card2{
     width: 500px;
     height: 300px;
-    background: rgba(255, 255, 255, 0.09);
+    background: rgba(255, 255, 255, 0.219);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(4.8px);
     -webkit-backdrop-filter: blur(4.8px);
     color: white;
+    display: flex;
+}
+.card2 img{
+    height: 200px;
+    width: 300px;
+    justify-content: space-around;
 }
 
 .scrolling-container {
@@ -36,6 +42,7 @@ body{
     overflow-x: auto;
     white-space: nowrap;
     margin-top: 10px; 
+    height: 400px;
   }
   .scrolling-container::-webkit-scrollbar-thumb {
     background-color: #000216b2;
@@ -88,4 +95,21 @@ body{
 .btn:active {
   box-shadow: #D6D6E7 0 3px 7px inset;
   transform: translateY(2px);
+}
+
+#carouselExampleControls{
+  width: 50%;
+}
+
+@media only screen and (max-width:600px) {
+  .card-carousel-header{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .card-top{
+    width: 100%;
+  }
+  #carouselExampleControls{
+  width: 100%;
+  }
 }
