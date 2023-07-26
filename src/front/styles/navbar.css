@@ -99,21 +99,21 @@ header .navigation .menu-unactive,header .navigation .menu-active{
 .menu-item a {
     color: hsl( var(--clr-white) / .9);
     text-decoration: none;
-    /*margin: 0.5rem;*/
+   
    
 }
 
 .menu-item1 { 
     color: hsl( var(--clr-white) / .9);
     text-decoration: none;
-    margin: 0.5rem;
+   
     
 }
 
 span {
     color: hsl( var(--clr-light) / .5);
     /*font-weight: 800; */
-    margin: 0.5rem;
+    margin-right: 0.5rem;
     /*font-size: 1.6rem;  */
 }
 
@@ -192,9 +192,6 @@ span:hover{
     background: rgb(16, 184, 16);
     box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
 }
-
-
-
 
 
 

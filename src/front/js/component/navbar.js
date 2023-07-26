@@ -32,33 +32,33 @@ export const Navbar = () => {
 						/>
 					</div>
 					<Link to="/">
-						<li className="active menu-item ff-sans-cond letter-spacing-3 fs-500">
+						<li className="px-3 active menu-item ff-sans-cond letter-spacing-3 fs-500">
 							<a href="#"><span>00</span><i class="fa-solid fa-house"></i></a>
 						</li>	
 					</Link>
 					<Link to="/ourmission">
-						<li className="menu-item ff-sans-cond letter-spacing-3 fs-500">
+						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-500">
 							<a href="#"><span>01</span>Our Mission</a>
 						</li>
 					</Link>
 					<li className="ff-sans-cond letter-spacing-3 fs-500">
 						<a className="menu-item1" data-bs-toggle="modal" data-bs-target="#exampleModal"><span>02</span>Wheather<i class="fa-solid fa-cloud-sun-rain"></i></a>	
 					</li>			
-					<li className="ff-sans-cond letter-spacing-3 fs-500">
+					<li className="px-3 ff-sans-cond letter-spacing-3 fs-500">
 						<a className="menu-item1" data-bs-toggle="modal" data-bs-target="#exampleModal1"><span>03</span><i class="fa-solid fa-right-to-bracket"></i></a>
 					</li>
 					<Link to="/signup">
-						<li className="menu-item ff-sans-cond letter-spacing-3 fs-500">
+						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-500">
 							<a href="#"><span>04</span>Sign Up</a>
 						</li>
 					</Link>
 					<Link to="/createpost">
-						<li className="menu-item ff-sans-cond letter-spacing-3 fs-500">
+						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-500">
 							<a href="#"><span>05</span>Create Post</a>
 						</li>
 					</Link>	
 					<div className="select-menu">
-						<li className="menu-item ff-sans-cond letter-spacing-3 fs-500">
+						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-500">
 								
 								
 								<a href="#"><span>06</span>My Stuff<i class="px-5 fa-solid fa-chevron-down"></i></a>
