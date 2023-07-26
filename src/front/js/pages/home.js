@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import backgroundurl from "../../img/backgroundimage2.jpg"
 import { Link } from "react-router-dom";
@@ -95,6 +94,51 @@ export const Home = () => {
 		.catch(error => console.error(error));
 	
 	}
+	const goToSinglePost = (postID) => {
+		navigate(`/single/${postID}`);
+	}
+	const userID = localStorage.getItem("userID");
+
+	const [isAddedToReadings, setIsAddedToReadings] = useState(false);
+
+
+	const addReadings = (postID) => {
+		fetch(process.env.BACKEND_URL + "/api/myreading", { 
+			method: "POST",
+			headers: { 
+				"Content-Type": 
+				"application/json" 
+			},
+			body: JSON.stringify({user_id: userID, post_id: postID}) 
+		})
+		.then((res) => res.json())
+		.then((result) => {
+			console.log('Added to My Readings:', result);
+			setIsAddedToReadings(true);
+
+		}).catch((err) => {
+			console.log(err);
+		})
+		console.log('add to my readings');
+	}
+
+	const [allposts, setAllPosts] = useState([]);
+
+	const getAllPosts = (limit = 10) => {
+		fetch(`${process.env.BACKEND_URL}/api/posts?limit=${limit}`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
+		.then(res => {
+			if (!res.ok) throw Error(res.statusText);
+			return res.json();
+		})
+		.then(response => setAllPosts(response)) 
+		.catch(error => console.error(error));
+	}	
+	
 
 	useEffect(() => {
 		getPosts();
@@ -102,18 +146,26 @@ export const Home = () => {
 		getPosts3();
 		getPosts4();
 		getPosts5();
+		getAllPosts(3);
+		const initialAddedToReadings = posts.reduce((acc, post) => {
+			acc[post.id] = false;
+			return acc;
+		}, {});
+		setIsAddedToReadings(initialAddedToReadings);
 	},[]);
+
+
 
 	const { store, actions } = useContext(Context);
 
-	const Letters = ["W","E","L","C","O","M","E","-","T","O",
-	"-","T","H","E","-","T","E","C","H","-","W","O","R","L","D"];
+	const Letters = ["T","H","I","S","-","I","S","-","T","H",
+	"E","-","T","E","C","H","-","W","O","R","L","D"];
 	
-	const Title1 = ["C","o","m","p","u","t","e","r","s"];
-	const Title2 = ["M","o","v","i","e","-","T","e","c","h"];
-	const Title3 = ["A","I","-","T","e","c","h","n","o","l","o","g","y"];
-	const Title4 = ["E","V","-","M","o","b","i","l","i","t","y"];
-	const Title5 = ["O","t","h","e","r","-","S","t","u","f","f"];
+	const Title1 = ["C","O","M","P","U","T","E","R","S"];
+	const Title2 = ["M","O","V","I","E","-","T","E","C","H"];
+	const Title3 = ["A","I","-","T","E","C","H"];
+	const Title4 = ["E","V","-","M","O","B","I","L","I","T","Y"];
+	const Title5 = ["O","T","H","E","R","-","S","T","U","F","F"];
 
 
 	const [scrollPosition, setScrollPosition] = useState(0);
@@ -122,6 +174,15 @@ export const Home = () => {
 	const [scrollPositions4, setScrollPositions4] = useState(0);
 	const [scrollPositions5, setScrollPositions5] = useState(0);
 
+
+
+	// const scrollleft =()=>{
+		
+	// }
+
+	// const scrollright =()=>{
+		
+	// }
 	  // Function to scroll the cards to the left
 	const scrollLeft = (className) => {
         if (className === "container1" && scrollPosition > 0) {
@@ -137,48 +198,32 @@ export const Home = () => {
         }
     };
 	
-	  // Function to scroll the cards to the right
+	//   // Function to scroll the cards to the right
 	const scrollRight = (className) => {
-		if (className === "container1" && scrollPosition < (posts.length * 45.5)) {
+	 	if (className === "container1" && scrollPosition < (posts.length * 45.5)) {
             setScrollPosition(prevPosition => prevPosition + 90);
-        } else if (className === "container2" && scrollPositions2 < (posts.length * 45.5)) {
+         } else if (className === "container2" && scrollPositions2 < (posts.length * 45.5)) {
             setScrollPositions2(prevPosition => prevPosition + 90);
-        } else if (className === "container3" && scrollPositions3 < (posts.length * 45.5)) {
+         } else if (className === "container3" && scrollPositions3 < (posts.length * 45.5)) {
             setScrollPositions3(prevPosition => prevPosition + 90);
-        } else if (className === "container4" && scrollPositions4 < (posts.length * 45.5)) {
+         } else if (className === "container4" && scrollPositions4 < (posts.length * 45.5)) {
             setScrollPositions4(prevPosition => prevPosition + 90);
-        } else if (className === "container5" && scrollPositions5 < (posts.length * 45.5)) {
+         } else if (className === "container5" && scrollPositions5 < (posts.length * 45.5)) {
             setScrollPositions5(prevPosition => prevPosition + 90);
-        }
-		console.log("this is the log of the scroll right: "+scrollPosition);
+    }
+	console.log("this is the log of the scroll right: "+scrollPosition);
 	};
 
 	return (
 		<div  className="container-fluid background" style={{backgroundImage:'url(' + backgroundurl + ')'}}>
-			<div className="row text-center mt-5 d-flex justify-content-center" >
-				<div className="letters-card">
-					{Letters.map((letter, index) => (
-						<MovingComponent
-							key={index}
-							type="effect3D"
-							duration="1100ms"
-							delay={index * 100 + "ms"} 
-							direction="alternate-reverse"
-							timing="ease"
-							iteration="infinite"
-							fillMode="both"
-						>
-							{letter}
-						</MovingComponent>
-					))}
-				</div>
-				<div className="card-carousel-header d-flex justify-content-center">
+			<div className="row text-center d-flex justify-content-center" >
+				<div className="card-carousel-header mt-5 d-flex justify-content-center">
 					{/* carousel*/}
 					<div id="carouselExampleControls" class=" col-6 carousel slide d-block " data-bs-ride="carousel">
 						<div className="carousel-inner">
 							<div className="carousel-indicators">
 								<button type="button" data-bs-target="#carouselExampleIndicators"
-									data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
+									data-bs-slide-to="0" classd="active" aria-current="true" aria-label="Slide 1">
 								</button>
 								<button type="button" data-bs-target="#carouselExampleIndicators"
 									data-bs-slide-to="1" aria-label="Slide 2">
@@ -188,13 +233,20 @@ export const Home = () => {
 								</button>
 							</div>
 							<div className="carousel-item active">
-								<img src="https://img.freepik.com/free-photo/technology-human-touch-background-modern-remake-creation-adam_53876-129794.jpg?size=626&ext=jpg&ga=GA1.1.849661921.1679516116&semt=sph" class="d-block w-100" alt="..."/>
-							</div>
-							<div className="carousel-item">
-								<img src="https://img.freepik.com/free-photo/rpa-concept-with-blurry-hand-touching-screen_23-2149311914.jpg?size=626&ext=jpg&ga=GA1.1.849661921.1679516116&semt=sph" class="d-block w-100" alt="..."/>
-							</div>
-							<div className="carousel-item">
-								<img src="https://img.freepik.com/free-photo/man-hand-holding-virtual-world-with-internet-connection-metaverse-global-business-marketing-banking-financial-pass-thru-application-technology-concept_616485-32.jpg?size=626&ext=jpg&ga=GA1.1.849661921.1679516116&semt=sph" className="d-block w-100" alt="..."/>
+								{allposts.slice(0, 3).map((allPosts, index) => {
+									console.log(allPosts); // Add this line to check the data
+									return (
+										<div key={allPosts.id} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+											<div className="carousel-caption-title">
+												<p>{allPosts.title}</p>
+											</div>
+											<img src={allPosts.image_post} className="d-block w-100" alt="..." />
+											<div className="carousel-caption">
+												<p>{allPosts.abstract}</p>
+											</div>
+										</div>
+									);
+								})}
 							</div>
 						</div>
 						<button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -207,10 +259,7 @@ export const Home = () => {
 						</button>
 						</div>
 					</div>
-					<div className="container-fluid container-cardmiddle d-flex justify-content-center">
-						<div className="cardmiddle">
-							Everything you must to know about tech
-						</div>
+					<div className="container-fluid container-cardmiddle d-flex justify-content-center mt-5">
 					</div>
 					<div className="cardtitle mt-5">
 						{Title1.map((Title1, index) => (
@@ -240,6 +289,7 @@ export const Home = () => {
 								>
 									<div className="card2 row">
 										<div className="img col-6">
+<<<<<<< HEAD
 											<figure>
 												<img src={post.Url} class="card-img-top" alt="..." />
 												<figcaption className="fig position-absolute bottom-0 start-0 p-3">
@@ -248,17 +298,26 @@ export const Home = () => {
 											</figure>
 											{/* fontAwsome icons (like, heart and favorites) */}
 											{/* ... */}
+=======
+											<img src={post.image_post} class="card-img-top" alt="..." />
+											<figcaption className="fig position-absolute bottom-0 start-0 p-3">
+												<p>{post.abstract}</p>
+											</figcaption>
+>>>>>>> 8f079590b1f0fc0c59e1d342994e8c91e7f1530a
 										</div>
 										<div className="col-6 text">
+											<div className="d-flex justify-content-end mt-2" title="Add to My readings list">
+												<button type="button" className="btn" onClick={() => addReadings(post.id)}>
+													<i className={`fa-regular fa-star ${isAddedToReadings ? 'added-to-readings' : ''}`}></i>
+												</button>
+											</div>
 											<h3 className="card-title">{post.title}</h3>
 											<p>{post.description}</p>
 											<p>{post.abstract}</p>
 											<div className="readmore">
-												<Link to={`/single/${post.id}`}>
-													<button className="btn col">
+													<button className="btn col" onClick={() => goToSinglePost(item.id)}>
 														Read More
 													</button>
-												</Link>
 											</div>
 										</div>
 									</div>
@@ -302,7 +361,7 @@ export const Home = () => {
 						>
 							<div className="card2 row">
 								<div className="img col-6">
-									<img src={posts2.Url} class="card-img-top" alt="..." />
+									<img src={posts2.image_post} class="card-img-top" alt="..." />
 									<figcaption className="fig position-absolute bottom-0 start-0 p-3">
 										<p>{posts2.abstract}</p>
 									</figcaption>
@@ -310,6 +369,11 @@ export const Home = () => {
 									{/* ... */}
 								</div>
 								<div className="col-6 text">
+									<div className="d-flex justify-content-end mt-2" title="Add to My readings list">
+										<button type="button" className="btn" onClick={() => addReadings(posts2.id)}>
+											<i class="fa-regular fa-star"></i>
+										</button>
+									</div>
 									<h3 className="card-title">{posts2.title}</h3>
 									<p>{posts2.description}</p>
 									<p>{posts2.abstract}</p>
@@ -362,7 +426,7 @@ export const Home = () => {
 						>
 							<div className="card2 row">
 								<div className="img col-6">
-									<img src={posts3.Url} class="card-img-top" alt="..." />
+								<img src={posts3.image_post} class="card-img-top" alt="..." />
 									<figcaption className="fig position-absolute bottom-0 start-0 p-3">
 										<p>{posts3.abstract}</p>
 									</figcaption>
@@ -370,6 +434,11 @@ export const Home = () => {
 									{/* ... */}
 								</div>
 								<div className="col-6 text">
+									<div className="d-flex justify-content-end mt-2" title="Add to My readings list">
+										<button type="button" className="btn" onClick={() => addReadings(posts3.id)}>
+											<i class="fa-regular fa-star"></i>
+										</button>
+									</div>
 									<h3 className="card-title">{posts3.title}</h3>
 									<p>{posts3.description}</p>
 									<p>{posts3.abstract}</p>
@@ -422,7 +491,7 @@ export const Home = () => {
 						>
 							<div className="card2 row">
 								<div className="img col-6">
-									<img src={posts4.Url} class="card-img-top" alt="..." />
+								<img src={posts4.image_post} class="card-img-top" alt="..." />
 									<figcaption className="fig position-absolute bottom-0 start-0 p-3">
 										<p>{posts4.abstract}</p>
 									</figcaption>
@@ -430,6 +499,11 @@ export const Home = () => {
 									{/* ... */}
 								</div>
 								<div className="col-6 text">
+									<div className="d-flex justify-content-end mt-2" title="Add to My readings list">
+										<button type="button" className="btn" onClick={() => addReadings(posts4.id)}>
+											<i class="fa-regular fa-star"></i>
+										</button>
+									</div>
 									<h3 className="card-title">{posts4.title}</h3>
 									<p>{posts4.description}</p>
 									<p>{posts4.abstract}</p>
@@ -482,7 +556,7 @@ export const Home = () => {
 						>
 							<div className="card2 row">
 								<div className="img col-6">
-									<img src={posts5.Url} class="card-img-top" alt="..." />
+								<img src={posts5.image_post} class="card-img-top" alt="..." />
 									<figcaption className="fig position-absolute bottom-0 start-0 p-3">
 										<p>{posts5.abstract}</p>
 									</figcaption>
@@ -490,6 +564,11 @@ export const Home = () => {
 									{/* ... */}
 								</div>
 								<div className="col-6 text">
+									<div className="d-flex justify-content-end mt-2" title="Add to My readings list">
+										<button type="button" className="btn" onClick={() => addReadings(posts5.id)}>
+											<i class="fa-regular fa-star"></i>
+										</button>
+									</div>
 									<h3 className="card-title">{posts5.title}</h3>
 									<p>{posts5.description}</p>
 									<p>{posts5.abstract}</p>

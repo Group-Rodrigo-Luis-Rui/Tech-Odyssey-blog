@@ -10,13 +10,12 @@ export const MyProfile = () => {
 	const [email, setEmail] = useState();
 	const [name, setName] = useState();
 	const [posts, setPosts] = useState([])
+	const [imageUser, setImageUser] = useState();
+	const [postImage, setPostImage] = useState();
 
 	const getOneUser = () => {
-		// delete the next line after updating navbar
-		const userID = store.userId
-
-		//uncomment this line after updating navbar
-		// const userID = localStorage.getItem("userID");
+		
+		const userID = localStorage.getItem("userID");
 
 		fetch(process.env.BACKEND_URL + "/api/user/" + userID, { 
 			method: "GET",
@@ -28,6 +27,8 @@ export const MyProfile = () => {
 		.then((result) => {
 			setName(result.name);
 			setEmail(result.email);
+			setImageUser(result.user_image);
+			// setPostImage(result.image_post);
 		})
 		.catch((err) => {
 			console.log(err);
@@ -35,11 +36,8 @@ export const MyProfile = () => {
 	}
 	
 	const getPostsByUser = () => {
-		// delete the next line after updating navbar
-		const userID = store.userId
 
-		//uncomment this line after updating navbar
-		// const userID = localStorage.getItem("userID");
+		const userID = localStorage.getItem("userID");
 
 		fetch(process.env.BACKEND_URL + "/api/user/" + userID + "/posts", { 
 			method: "GET",
@@ -100,7 +98,6 @@ export const MyProfile = () => {
 		})
 		.then((res) => res.json())
 		.then((result) => {
-			console.log(result);
 			const updatedPosts = posts.filter((post) => post.id !== id);
 			setPosts(updatedPosts);
 
@@ -113,36 +110,32 @@ export const MyProfile = () => {
 		<div className="backgroundProfile" style={{backgroundImage:'url(' + backgroundimage + ')'}}>
 			<div className="container textBackgroundProfile text-center">
 				<div className="userAvatar d-flex justify-content-center align-items-center mt-5 mb-5">
-					<img src="https://loremflickr.com/g/320/240/paris,man/all" alt="User Avatar" className="avatarImage rounded-circle" />
+					<img src={imageUser} alt="User Avatar" className="avatarImage" />
 					<div className="myBoxBackground">
 						<h3><strong>{name}</strong>'s profile</h3>
 					</div>
 				</div>
-				<div className="myBoxBackground mb-5">
-					<h4>Email:&nbsp;&nbsp;{email}</h4>
+				<div className="myEmailBoxBackground mb-5">
+					<h4>Email:&nbsp;&nbsp;<strong>{email}</strong></h4>
 				</div>
 				<div>
 					<h3 className="myBoxBackground mb-2 pb-1">My Posts</h3>
 					<ul className="list-group">
 						{posts.map((item, index) => (
 							<li key={index}>
-								<div class="card mb-3 cardContainer">
+								<div class="card mb-3 cardContainerProfile">
 									<div class="row g-0">
 										<div class="col-md-5">
-											<img src="https://picsum.photos/300" class="img-fluid rounded-start" alt="some image"/>
-											<div className="buttonProfileDiv">
-												<button type="button" 
-												class="btn btn-secondary btn-sm fs-6"
-												onClick={() => goToSinglePost(item.id)}
-												>
-													View Post
-												</button>
-											</div>
+											<img src={item.image_post} class="img-fluid mt-2 rounded-start imagePostProfile" alt="some image"/>
 										</div>
 										<div class="col-md-7">
 											<div class="card-body">
-												<div className="container d-flex justify-content-between m-2">
-													<h4 class="card-title pText pe-2"><strong>{item.title}</strong></h4>
+												<div className="container d-flex justify-content-between titleCardProfile">
+													<h4 
+														class="card-title pText pe-2 titleTextProfile"
+														onClick={() => goToSinglePost(item.id)}
+													>
+														<strong>{item.title}</strong></h4>
 													<div 
 														href="#" 
 														className="iconLink" 

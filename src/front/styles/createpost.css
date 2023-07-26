@@ -1,34 +1,41 @@
 .backgroundcreate{
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  font-family: "Barlow";
+  font-size: large;
+  min-height: 100rem;
   }
 
 .textBackgroundcreate{
-  background: rgba(1, 0, 41, 0.7); 
-  color: #ffffff;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  font-family: "Barlow";
+  background: rgba(255, 255, 255, 0.8); 
+color: #00336D;
+padding-top: 1rem;
+padding-bottom: 1rem;
 }
 
 .titlesText{
-  color: #469DFF;
-  font-size:x-large;
+  color: #00336D;
+  font-size:larger;
+  font-weight: bold;
 }
 
 .textAreaCreate::placeholder{
   color: #b9b9b9;
   font-size: small;
 }
-
+.buttonCreate{
+  background-color: #8b8b8b5f;
+}
 .buttonCreate:hover{
-  background-color: #469DFF;
+  background-color: #00336D;
   color: white;
 }
-
 .buttonCreate label:hover{
   color: white;
   cursor: pointer;
+}
+.cancelButtonCreate{
+  background-color: #8b8b8b5f;
 }

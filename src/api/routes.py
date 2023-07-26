@@ -12,10 +12,10 @@ api = Blueprint('api', __name__)
 
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
-    # populate_user()
-    # populate_post_user1()
-    # populate_post_user2()
-    # populate_post_user3()
+    populate_user()
+    populate_post_user1()
+    populate_post_user2()
+    populate_post_user3()
     response_body = {
         "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
     }
@@ -120,7 +120,7 @@ def delete_user():
 
 #POST endpoints
 @api.route('/post', methods=['POST'])
-@jwt_required()
+# @jwt_required()
 def create_post():
     try:
         data = request.get_json()
@@ -129,8 +129,9 @@ def create_post():
         category = data.get("category")
         abstract = data.get("abstract")
         main_text = data.get("main_text")
+        image_post = data.get("image_post")
 
-        new_post = Post(user_id=user_id, title=title, category=category, abstract=abstract, main_text=main_text)
+        new_post = Post(user_id=user_id, title=title, category=category, abstract=abstract, main_text=main_text, image_post=image_post)
         db.session.add(new_post)
         db.session.commit()
 
@@ -264,32 +265,58 @@ def get_my_readings(id):
     except NameError:
         return jsonify({"error" : "Namerror"}), 500
 
-@api.route('/myreading/<int:id>/post/<int:post_id>', methods=['DELETE'])
-def delete_my_readings(id, post_id):
+# create a endpoit to remove a post from myreading
+@api.route('/myreading/<int:id>/post/<int:post_id>', methods=['PUT'])
+def remove_post_from_my_readings(id, post_id):
     try:
         # Get the MyReading for the given user_id from the database
         myreading = MyReading.query.get(id)
 
         if not myreading:
             return jsonify({"My readings not found"}), 404
+        
+        post_to_remove = Post.query.get(post_id)
 
-        post_to_delete = None
+        if not post_to_remove:
+            return jsonify({"Post not found"}), 404
+        
+        post_to_remove.myreading_id = None
 
-        for post in myreading.posts:
-            if post.id == post_id:
-                post_to_delete = post
-                break
-
-        if not post_to_delete:
-            return jsonify({"Post not found!"}), 404
-
-        db.session.delete(post_to_delete)
         db.session.commit()
 
-        return jsonify({"message": "My readings deleted successfully"}), 200
+        return jsonify({"message": "My reading updated successfully"}), 200
 
     except NameError:
         return jsonify({"error" : "Namerror"}), 500
+
+#not needed
+# @api.route('/myreading/<int:id>/post/<int:post_id>', methods=['DELETE'])
+# def delete_my_readings(id, post_id):
+#     try:
+#         # Get the MyReading for the given user_id from the database
+#         myreading = MyReading.query.get(id)
+
+#         if not myreading:
+#             return jsonify({"My readings not found"}), 404
+        
+#         post_to_delete = None
+
+#         for post in myreading.posts:
+#             if post.id == post_id:
+#                 post_to_delete = post
+#                 break
+
+#         if not post_to_delete:
+#             return jsonify({"Post not found!"}), 404
+        
+#         db.session.delete(post_to_delete)
+#         db.session.commit()
+
+#         return jsonify({"message": "My reading deleted successfully"}), 200
+
+    except NameError:
+        return jsonify({"error" : "Namerror"}), 500
+
 
 # COMMENT endpoints
 @api.route('/comment', methods=['POST'])
