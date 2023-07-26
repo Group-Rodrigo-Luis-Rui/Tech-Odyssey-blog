@@ -18,7 +18,7 @@ export const Navbar = () => {
 			<div className="d-flex justify-content-center align-items-center">
 				<img src={logo} alt="" className="logoB"/>
 				<a href="#" className="logo uppercase ff-sans-cond letter-spacing-2">
-					Tech Odyssey
+					Tech Odyssey testing
 				</a>
 			</div>
 
