@@ -220,10 +220,10 @@ export const Home = () => {
 				<div className="card-carousel-header d-flex">
 					<div class="card col-6 card-top me-2">
 						<div class="card-body">
+							<img src="https://images.unsplash.com/photo-1480506132288-68f7705954bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTk3fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
 							<h5 class="card-title">Card title</h5>
 							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 							<a href="#" class="btn btn-primary">Go somewhere</a>
-							<img src="https://images.unsplash.com/photo-1480506132288-68f7705954bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTk3fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
 						</div>
 					</div>
 					<div id="carouselExampleControls" class=" col-6 carousel slide d-block " data-bs-ride="carousel">
