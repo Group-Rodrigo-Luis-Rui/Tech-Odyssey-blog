@@ -38,7 +38,7 @@ export const OurMission = () => {
 							<h5 className="teamName">Luís Santos</h5>
 						</div>
 						<div class="col-sm-3 iconDiv">
-						 	<a href="" target="blank"><i class="fab fa-facebook icon"></i></a>
+						 	<a href="https://www.facebook.com/profile.php?id=100000565674865" target="blank"><i class="fab fa-facebook icon"></i></a>
 							<a href="https://www.linkedin.com/in/lu%C3%ADs-miguel-lopes-santos-5a669370/" target="blank"><i class="fab fa-linkedin icon"></i></a>		
 						</div>
 					</div>
