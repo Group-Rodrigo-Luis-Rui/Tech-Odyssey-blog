@@ -8,7 +8,7 @@ export const OurMission = () => {
 	return (
 		<div className="background" style={{backgroundImage:'url(' + backgroundimage + ')'}}>
 			<div className="container textBackground">
-				<h2><strong>Tech Odyssey</strong>: Exploring the Cutting-Edge Convergence of Computers, Movie Tech, AI, EV Mobility, and More!</h2><br/>
+				<h2 className="pt-3"><strong>Tech Odyssey</strong>: Exploring the Cutting-Edge Convergence of Computers, Movie Tech, AI, EV Mobility, and More!</h2><br/>
 				<p><em>Welcome to our Tech Odyssey - Where Boundaries Blur and Innovations Unite!</em></p>
 				<p>In the ever-evolving landscape of technology, groundbreaking advancements are revolutionizing every aspect of our lives. From the fascinating world of computers to the captivating magic of movie tech, the limitless potential of artificial intelligence, and the eco-conscious realm of electric vehicle (EV) mobility, there's an array of exciting topics to explore. Join us on a journey through the realm of technology, where barriers between different domains dissolve, and extraordinary synergies are discovered.</p>
 				<h3>Beyond Binary: Unraveling the Future of Computers</h3>
@@ -31,37 +31,36 @@ export const OurMission = () => {
 				<hr/>
 
 				<p>Join us on this thrilling tech adventure, where we'll unravel the mysteries of cutting-edge innovations, examine how technology is reshaping various industries, and envision a future where the boundaries between different tech categories dissolve, giving rise to a world of boundless possibilities. Stay tuned for mind-boggling insights, expert opinions, and thought-provoking discussions, right here on our Tech Odyssey blog!</p>
-				<h3 className="mb-2">Tech Odyssey Team</h3>
+				<h3 className="mb-4">Tech Odyssey Team</h3>
 				<div class="container text-center">
 					<div class="row mb-2">
 						<div class="col-sm-3 teamName">
-							<h5>Luís Santos</h5>
+							<h5 className="teamName">Luís Santos</h5>
 						</div>
-						<div class="col-sm-3">
-							<i class="fab fa-facebook icon"></i>
-							<i class="fab fa-linkedin icon"></i>
-						</div>
-					</div>
-					<div class="row mb-2">
-						<div class="col-sm-3 teamName">
-							<h5>Rodrigo Almeida</h5>
-						</div>
-						<div class="col-sm-3">
-							<i class="fab fa-facebook icon"></i>
-							<i class="fab fa-linkedin icon"></i>
+						<div class="col-sm-3 iconDiv">
+						 	<a href="" target="blank"><i class="fab fa-facebook icon"></i></a>
+							<a href="https://www.linkedin.com/in/lu%C3%ADs-miguel-lopes-santos-5a669370/" target="blank"><i class="fab fa-linkedin icon"></i></a>		
 						</div>
 					</div>
 					<div class="row mb-2">
-						<div class="col-sm-3 teamName">
-							<h5>Rui Silva</h5>
-						</div>
 						<div class="col-sm-3">
-							<i class="fab fa-facebook icon"></i>
-							<i class="fab fa-linkedin icon"></i>
+							<h5 className="teamName">Rodrigo Almeida</h5>
+						</div>
+						<div class="col-sm-3 iconDiv">
+							<a href="https://www.facebook.com/profile.php?id=100015951918492" target="blank"><i class="fab fa-facebook icon"></i></a>
+							<a href="https://www.linkedin.com/in/rodrigo-almeida-99181a277/" target="blank"><i class="fab fa-linkedin icon"></i></a>
+						</div>
+					</div>
+					<div class="row mb-2">
+						<div class="col-sm-3">
+							<h5 className="teamName">Rui Silva</h5>
+						</div>
+						<div class="col-sm-3 iconDiv">
+							<a href="https://www.facebook.com/rui775" target="blank"><i class="fab fa-facebook icon"></i></a>
+							<a href="https://www.linkedin.com/in/rui-silva-3183a6a1/" target="blank"><i class="fab fa-linkedin icon"></i></a>
 						</div>
 					</div>
 				</div>
-				<Link to = {"/"}><span>Home</span></Link>
 			</div>
 		</div>
 		

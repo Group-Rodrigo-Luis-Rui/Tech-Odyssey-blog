@@ -1,19 +1,18 @@
 
 .background{
-  padding-top: 10px;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
-  background-size: cover;
   font-family: "Barlow";
   font-size: large;
 }
 
 .textBackground{
-  background: rgb(0, 0, 0); 
-  background: rgba(0, 0, 0, 0.5); 
+  background: rgba(0, 0, 0, 0.87); 
   color: #f1f1f1;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 p{
@@ -21,15 +20,17 @@ p{
   text-justify: inter-word;
 }
 
-h5{
-  margin-bottom: 0;
+.teamName{
   text-align: center;
-  padding-top: 0.5rem;
+}
+
+.iconDiv{
+  display: flex;
+  justify-content: left;
 }
 
 .icon:hover{
-  font-size:1rem;
-  transition: 0.1s ease-out;
+  background-color: rgba(91, 181, 255, 0.5);
   cursor: pointer;
 }
 
@@ -41,6 +42,8 @@ h5{
   font-size: 1.5rem;
   margin-right: 1.1rem;
 }
+
+
 
 
 
