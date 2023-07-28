@@ -1,4 +1,4 @@
-body {
+/*body {
     color: rgb(255, 255, 255);
     font-family: "Barlow";
   }
@@ -10,7 +10,7 @@ body {
   background-attachment: fixed;
   background-position: center center;}
 
-p{
+/*p{
   text-align: justify;
   text-justify: inter-word;
 }
@@ -21,7 +21,7 @@ h5{
   padding-top: 0.5rem;
 }
 
-i:hover{
+/*i:hover{
   font-size:1rem;
   transition: 0.1s ease-out;
   cursor: pointer;
@@ -34,7 +34,7 @@ i {
   color: #fff;
   font-size: 1.5rem;
   margin-right: 1.1rem;
-}
+}*/
 
 
 
