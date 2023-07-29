@@ -37,8 +37,8 @@
 }
 
 .logoB {
-    width: 3.5rem;
-    height: 3.5rem;  
+    width: 3rem;
+    height: 3rem;  
 }
 /*.metallic-element {
     background: linear-gradient(to bottom, hsl(var(--clr-dark) /1), hsl( var(--clr-light) / .9));   
@@ -53,14 +53,16 @@ header {
     justify-content: space-between;
     align-items: center;
     /*background: rgb(128, 128, 228);*/
-    background: hsl(var(--clr-dark) /1);
-    box-shadow: 0 0px 5px rgb(0 0 0 / 50%);
+    background: hsl(var(--clr-white) /1);
+    /*box-shadow: 0 0px 5px rgb(0 0 0 / 50%);*/
+    border-bottom: 1px black solid;
     padding: 0 1rem;
     transition: 0.5s;
+    height: 5rem;
 }
 
 header .logo {
-    color: hsl( var(--clr-white) / 1);
+    color: hsl( var(--clr-dark) / 1);
     font-size: 1.8em;
     font-weight: 700;
     text-decoration: none;  
@@ -68,7 +70,7 @@ header .logo {
 
 header .logo:hover {
     font-weight: 900;
-    color: rgb(128 128 0 / 100%);
+    color: rgb(42, 158, 204);
     transition: 0.9s;
 }
 
@@ -92,24 +94,25 @@ header .navigation .menu-unactive,header .navigation .menu-active{
 }
 
 .menu-item,.linkit {
-    color: hsl( var(--clr-white) / 1);
+    color: hsl( var(--clr-dark) / 1);
     text-decoration: none; 
 }
 
 .menu-item1 { 
-    color: hsl( var(--clr-white) / 1);
-    text-decoration: none;   
+    color: hsl( var(--clr-dark) / 1);
+    text-decoration: none;  
+    cursor: pointer; 
 }
 
 .num {
-    color: hsl( var(--clr-light) / .7);
+    color: hsl( var(--clr-dark) / .7);
     /*font-weight: 800; */
     margin-right: 0.5rem;
     /*font-size: 1.6rem; */
 }
 
 .num:hover{
-    color:rgb(128 128 0 / 100%);
+    color:rgb(42, 158, 204);
     transition: 0.5s;
 }
 
@@ -119,12 +122,12 @@ header .navigation .menu-unactive,header .navigation .menu-active{
  }
 
  .menu-item a:hover {
-    color:rgb(128 128 0 / 100%);
+    color:rgb(42, 158, 204);
     transition: 0.3s;
  }
 
  .menu-item1:hover {
-    color:rgb(128 128 0 / 100%);
+    color:rgb(42, 158, 204);
     transition: 0.3s;
  }
 
@@ -157,7 +160,7 @@ header .navigation .menu-unactive,header .navigation .menu-active{
 
 .fa-user, .fa-book-open{
     scale: 0.6;
-    color: hsl( var(--clr-white) / 1);
+    color: hsl( var(--clr-dark) / 1);
 }
 
 .fa-chevron-down {
@@ -180,7 +183,7 @@ header .navigation .menu-unactive,header .navigation .menu-active{
     padding:2px;
     width: 245px;
     border-radius: 8px;
-    background-color: hsl( var(--clr-light) / 1);
+    background-color: hsl( var(--clr-white) / 1);
     box-shadow: 0 0px 5px rgb(0 0 0 / 40%);
 }
 
@@ -192,7 +195,7 @@ header .navigation .menu-unactive,header .navigation .menu-active{
     padding:2px;
     width: 25px;
     height: 25px;
-    background-color: hsl( var(--clr-dark) / 1);
+    background-color: hsl( var(--clr-white) / 1);
     transform: rotate(45deg);
     border-left: 1px solid rgb(0 0 0 / 40%);
     border-top: 1px solid rgb(0 0 0 / 40%);  
@@ -203,28 +206,28 @@ header .navigation .menu-unactive,header .navigation .menu-active{
     justify-content: space-between;
     align-items: center;
     border:0.5px white solid;
-    background-color: hsl( var(--clr-dark) / 1);
+    background-color: hsl( var(--clr-white) / 1);
     border-radius: 8px;
 }
 
 .dropdown-item, .item-text {
-    color:white;
+    color:black;
 }
 
 .menu-item,.select-btn {
-    color: hsl( var(--clr-white) / 1);
+    color: hsl( var(--clr-dark) / 1);
     text-decoration: none; 
 }
 
 .num-btn {
-    color: hsl( var(--clr-light) / .7);
+    color: hsl( var(--clr-dark) / .7);
     /*font-weight: 800; */
     margin-right: 0.5rem;
     /*font-size: 1.6rem; */
 }
 
 .num-btn:hover{
-    color:rgb(128 128 0 / 100%);
+    color:rgb(42, 158, 204);
     transition: 0.5s;
 }
 
@@ -239,7 +242,7 @@ header .navigation .menu-unactive,header .navigation .menu-active{
         position: fixed;
         display: block;
         background: hsl(var(--clr-dark) /.65);
-        background: linear-gradient(to bottom, hsl(var(--clr-dark) /1), hsl( var(--clr-light) / .2));
+        background: linear-gradient(to bottom, hsl(var(--clr-light) /.3), hsl( var(--clr-light) / .2));
         backdrop-filter: blur(1.5rem);
         min-width: 5rem;
         height: 100vh;
@@ -255,7 +258,7 @@ header .navigation .menu-unactive,header .navigation .menu-active{
         padding:2px;
         width: 245px;
         border-radius: 8px;
-        background-color: hsl( var(--clr-dark) / 1);
+        background-color: hsl( var(--clr-white) / 1);
         box-shadow: 0 0px 5px rgb(0 0 0 / 40%);
     }
 
@@ -267,7 +270,7 @@ header .navigation .menu-unactive,header .navigation .menu-active{
         padding:2px;
         width: 25px;
         height: 25px;
-        background-color: hsl( var(--clr-dark) / 1);
+        background-color: hsl( var(--clr-white) / 1);
         transform: rotate(45deg);
         border-left: 1px solid rgb(0 0 0 / 40%);
         border-top: 1px solid rgb(0 0 0 / 40%);   
@@ -279,12 +282,184 @@ header .navigation .menu-unactive,header .navigation .menu-active{
        
     .hamburger-btn{
         display: block;
-    }   
+    }  
+    
+    
 }
   
-.modal-header, .btn {
-    background-color: rgb(128, 128, 228);
+.back-weather{
+    position: absolute; 
+    top: 0;
+    left: 0;
+    height: 150px !important;
+    object-fit: cover !important;
     
+  }
+
+.btn-close{
+    position: absolute;
+    right: 30px;   
+}
+
+.wrapper {
+    position: absolute;
+    top: 10rem;
+    left: 45rem;
+    width: 25rem;
+    height: 27.5rem;
+    background: linear-gradient(to bottom, hsl(var(--clr-light) /.3), hsl( var(--clr-light) / .2));
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 1.2rem;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.wrapper
+
+
+
+
+
+.wrapper .form-box{
+    width: 100%;
+    padding: 40px;
+}
+
+.wrapper .icon-close{
+    position: absolute;
+    top:0;
+    right:0;
+    width: 45px;
+    height: 45px;
+    background: hsl( var(--clr-dark) / 1);
+    font-size: 2em;
+    color: hsl( var(--clr-white) / 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    z-index: 1;
+    
+}
+
+.title-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-login .icon{
+    font-size: 3.5em;
+}
+
+.form-box h2{
+    font-size: 2em;
+    color: hsl( var(--clr-dark) / 1);
+    text-align: center;
+}
+
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid hsl( var(--clr-dark) / 1);
+    margin: 30px 0;
+}
+
+.input-box label {
+    position: absolute;
+    top:50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color:  hsl( var(--clr-dark) / 1);
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus~label, 
+.input-box input:valid~label{
+    top: -5px;
+}
+
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: hsl( var(--clr-dark) / 1);
+    font-weight: 600;
+    padding: 0 35px o 5px;
+}
+
+.input-box .icon{
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: hsl( var(--clr-dark) / 1);
+    line-height: 57px;
+}
+
+.remember-forgot{
+    font-size: .9em;
+    color: hsl( var(--clr-dark) / 1);
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.remember-forgot label input{
+    accent-color: hsl( var(--clr-dark) / 1);
+    margin-right: 3px;
+}
+
+.remember-forgot a{
+    color: hsl( var(--clr-dark) / 1);
+}
+
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+
+.btn-submit{
+    width: 100%;
+    height: 45px;
+    background: hsl( var(--clr-dark) / 1);
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    font-size: 1em;
+    color: hsl( var(--clr-white) / 1);
+    font-weight: 500;
+}
+
+.login-register {
+    font-size: .9em;
+    color:hsl( var(--clr-dark) / 1);
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+
+.login-register p a{
+    color:hsl( var(--clr-dark) / 1);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-register p a:hover{
+    text-decoration: underline;
 }
 
 

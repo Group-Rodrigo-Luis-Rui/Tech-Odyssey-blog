@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.css";
-import logo from "../../img/blogger-logo-icon.png";
+import logo from "../../img/Tech-Odyssey-Logo.png";
 import clsbtn from "../../img/power-button.png";
 import hambtn from "../../img/hamburger-icon.png";
-import cloudyWeatherImage from "../../img/cloudy wheather.jpg";
+import cloudy from "../../img/cloudy-wheather.jpg";
 
 
 export const Navbar = () => {
@@ -14,13 +14,15 @@ export const Navbar = () => {
 			setCloseBtn((prevCloseBtn) => !prevCloseBtn);	
 		};
 
-
-
 		const [shownMenu, setShowMenu] = useState(false);
 		const toggleMenu = ()=> {
 			setShowMenu(!shownMenu);
 		};
 
+		const [showLoginCard, setShowLoginCard] = useState(false);
+		const toggleLogin = ()=>{
+			setShowLoginCard(!showLoginCard);
+		}
 
 	return (
 		<header className="metallic-element">
@@ -52,10 +54,10 @@ export const Navbar = () => {
 						</li>
 					</Link>
 					<li className=" px-3 ff-sans-cond letter-spacing-3 fs-500">
-						<a className="menu-item1" data-bs-toggle="modal" data-bs-target="#exampleModal"><span className="num">02</span>Wheather<i class="fa-solid fa-cloud-sun-rain"></i></a>	
+						<a className="menu-item1" data-bs-toggle="modal" data-bs-target="#exampleModal"><span className="num">02</span>Wheather<i className="fa-solid fa-cloud-sun-rain"></i></a>	
 					</li>			
 					<li className="px-3 ff-sans-cond letter-spacing-3 fs-500">
-						<a className="menu-item1" data-bs-toggle="modal" data-bs-target="#exampleModal1"><span className="num">03</span><i class="fa-solid fa-right-to-bracket"></i></a>
+						<a className="menu-item1" onClick ={toggleLogin}><span className="num">03</span><i className="fa-solid fa-right-to-bracket"></i></a>
 					</li>
 					<Link to="/signup">
 						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-500">
@@ -88,26 +90,26 @@ export const Navbar = () => {
 									</ul>
 									)}
 						</li>			
-					</div>
-					
+					</div>	
 				</ul>		
 					<div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div className="modal-dialog">
-							<div className="modal-content ">
-								<div className="modal-header"> 
-									<h5 className="modal-title text-white" id="exampleModalLabel">Search Wheather</h5>
-									<button className="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+							<div className="modal-content p-0 rounded-bottom">
+								<div className="modal-header p-0">
+									<img className="back-wheather w-100 rounded-top" style={{height:100, objectFit:"cover"}} src={cloudy}/>
+									<h5 className="modal-title fs-4 fw-semibold ps-3 position-absolute ff-sans-normal" style={{color:"black"}} id="exampleModalLabel">Search Wheather</h5>
+									<button className="btn-close" style={{color:"white", opacity:1}} type="button" data-bs-dismiss="modal" aria-label="Close"></button>
 								</div>
 								<div className="modal-body">
 									<div className="mb-3">
-										<label for="textArea1" className="form-label">City:</label>
-										<textarea className="form-control" id="textArea1" placeholder="Search for your city here" rows="2"></textarea>
+										<label for="textArea1" className="form-label fw-semibold ff-sans-normal">City:</label>
+										<textarea className="form-control ff-sans-normal" id="textArea1" placeholder="Search for your city here" rows="2"></textarea>
 									</div>
 									<div>
-										<button type="button" className="btn"><i className="fa-solid fa-location-dot"></i></button> 
+										<button type="button" className="btn btn-info"><i className="fa-solid fa-location-dot"></i></button> 
 									</div>
 								</div>
-								<div className="modal-footer">
+								<div className="modal-footer ff-sans-normal">
 									<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 									<button type="button" className="btn btn-success">Load</button>
 								</div>              
@@ -115,30 +117,32 @@ export const Navbar = () => {
 						</div>
 					</div>	
 					
-					<div className="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModal1Label" aria-hidden="true">
+					{/*<div className="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModal1Label" aria-hidden="true">
 						<div className="modal-dialog">
 							<div className="modal-content">
 								<div className="modal-header">
-									<h5 className="modal-title text-white" id="exampleModal1Label">Login</h5>
+									<h5 className="modal-title fs-4 fw-semibold ff-sans-normal" style={{color:"black"}} id="exampleModal1Label">Login</h5>
 									<button className="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
 								</div>
-								<form className="ms-2 me-2">
+								<form className="ms-2 me-2 ff-sans-normal">
 									<div className="mb-3">
-										<label for="exampleInputEmail1" className="form-label">Email address:</label>
+										<label for="exampleInputEmail1" className="form-label">Email ID:</label>
 										<input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
 									</div>
 									<div className="mb-3">
 										<label for="exampleInputPassword1" className="form-label">Password:</label>
 										<input type="password" className="form-control" id="exampleInputPassword1"/>
 									</div>
-									
-										<button type="submit" className="btn text-white mb-2">Submit</button>
-								</form>
-								           
+									<div className="modal-footer">
+										<button type="submit" className="btn text-white btn-primary mb-2">Submit</button>
+										
+									</div>
+								</form>	           
 							</div>
 						</div>
-					</div>	
+					</div>	*/}
 			</div>
+			
 				<div>
 					<img 
 						src={hambtn} 
@@ -146,6 +150,43 @@ export const Navbar = () => {
 						className="hamburger-btn"
 					/>
 				</div>
+				
+				{showLoginCard && (
+				<div className="wrapper ff-sans-normal" >
+					<span className="icon-close" onClick ={toggleLogin}><i className="fa-solid fa-xmark" ></i></span>
+					<div className="form-box login">
+						<div className="title-login">
+							<span className="icon"><i className="fa-regular fa-user"></i></span>
+							<h2>Login</h2>
+						</div>
+						<form action="#">
+							<div className="input-box">
+								<span className="icon"><i className="fa-solid fa-envelope"></i></span>
+								<input type="email" required/>
+								<label>Email ID:</label>
+							</div>
+							<div className="input-box">
+								<span className="icon"><i className="fa-solid fa-lock"></i></span>
+								<input type="password" required />
+								<label>Password</label>
+							</div>
+							<div className="remember-forgot">
+								<label><input type="checkbox"/>Remember me</label>
+								<a href="#">Forgot Password?</a>
+							</div>
+							<button type="submit" className="btn-submit">Login</button>
+							<div className="login-register">
+								<p>Don't have an account? 
+								<Link to="/signup">
+									<a href="#" className="register-link">Register</a>
+								</Link>
+								</p>	
+							</div>
+						</form>
+
+					</div>
+				</div>
+				)}
 		</header>
 	);
 };
