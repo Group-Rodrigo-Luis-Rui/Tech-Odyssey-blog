@@ -154,17 +154,17 @@ export const Navbar = () => {
 					<span className="icon-close" onClick ={toggleLogin}><i className="fa-solid fa-xmark" ></i></span>
 					<div className="form-box login">
 						<div className="title-login">
-							<span className="icon"><i className="fa-regular fa-user"></i></span>
+							<span className="iconUser"><i className="fa-regular fa-user"></i></span>
 							<h2>Login</h2>
 						</div>
 						<form action="#">
 							<div className="input-box">
-								<span className="icon"><i className="fa-solid fa-envelope"></i></span>
+								<span className="iconlog"><i className="fa-solid fa-envelope"></i></span>
 								<input type="email" required/>
 								<label>Email ID:</label>
 							</div>
 							<div className="input-box">
-								<span className="icon"><i className="fa-solid fa-lock"></i></span>
+								<span className="iconlog"><i className="fa-solid fa-lock"></i></span>
 								<input type="password" required />
 								<label>Password</label>
 							</div>

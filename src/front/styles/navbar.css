@@ -352,7 +352,7 @@ header .navigation .menu-unactive,header .navigation .menu-active{
     align-items: center;
 }
 
-.title-login .icon{
+.title-login .iconUser{
     font-size: 3.5em;
 }
 
@@ -400,7 +400,7 @@ header .navigation .menu-unactive,header .navigation .menu-active{
     padding: 0 35px o 5px;
 }
 
-.input-box .icon{
+.input-box .iconlog{
     position: absolute;
     right: 8px;
     font-size: 1.2em;
