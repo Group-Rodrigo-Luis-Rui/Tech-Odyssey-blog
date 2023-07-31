@@ -34,9 +34,7 @@ export const Navbar = () => {
 			</div>
 
 			<div className={`navigation ${closeBtn? "menu-active":""}`}>
-				
 				<ul className={`menu-${closeBtn? "active":"unactive"}`}>
-
 					<div><img 
 							src={clsbtn} 
 							onClick={handleToggleMenu} 

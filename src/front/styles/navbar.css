@@ -52,9 +52,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /*background: rgb(128, 128, 228);*/
     background: hsl(var(--clr-white) /1);
-    /*box-shadow: 0 0px 5px rgb(0 0 0 / 50%);*/
     border-bottom: 1px black solid;
     padding: 0 1rem;
     transition: 0.5s;
@@ -96,12 +94,14 @@ header .navigation .menu-unactive,header .navigation .menu-active{
 .menu-item,.linkit {
     color: hsl( var(--clr-dark) / 1);
     text-decoration: none; 
+    font-weight: 500;
 }
 
 .menu-item1 { 
     color: hsl( var(--clr-dark) / 1);
     text-decoration: none;  
     cursor: pointer; 
+    font-weight: 500;
 }
 
 .num {
@@ -284,7 +284,7 @@ header .navigation .menu-unactive,header .navigation .menu-active{
         display: block;
     }  
     
-    
+        
 }
   
 .back-weather{
@@ -302,9 +302,10 @@ header .navigation .menu-unactive,header .navigation .menu-active{
 }
 
 .wrapper {
+    z-index: 1001;
     position: absolute;
     top: 10rem;
-    left: 45rem;
+    left: 46rem;
     width: 25rem;
     height: 27.5rem;
     background: linear-gradient(to bottom, hsl(var(--clr-light) /.3), hsl( var(--clr-light) / .2));
@@ -316,13 +317,8 @@ header .navigation .menu-unactive,header .navigation .menu-active{
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    
 }
-
-.wrapper
-
-
-
-
 
 .wrapper .form-box{
     width: 100%;
@@ -343,8 +339,11 @@ header .navigation .menu-unactive,header .navigation .menu-active{
     align-items: center;
     border-bottom-left-radius: 20px;
     cursor: pointer;
-    z-index: 1;
-    
+    z-index: 1;  
+}
+
+.icon-close:hover{
+    color: rgb(185, 49, 49);
 }
 
 .title-login{
