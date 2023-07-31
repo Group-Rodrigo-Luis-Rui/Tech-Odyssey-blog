@@ -15,33 +15,64 @@
 .card{
     background: rgba(255, 255, 255, 0.09);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     backdrop-filter: blur(4.8px);
     -webkit-backdrop-filter: blur(4.8px);
     color: rgb(255, 255, 255);
+    height: 450px;
+}
+.cardtitle{
+  display: flex;
+  justify-content: start;
+  padding-left: 50px;
+  margin-top: 100px;
+  box-shadow: rgba(255, 255, 255, 0.144) -5px 5px, rgba(255, 255, 255, 0.226) -10px 10px, rgba(255, 255, 255, 0.2) -15px 15px, rgba(255, 255, 255, 0.1) -20px 20px, rgba(82, 46, 240, 0.05) -25px 25px;
+}
+
+.card img{
+  height: 300px;
 }
 .card2{
     width: 700px;
     height: 300px;
     background: rgba(255, 255, 255, 0.219);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 20px 70px 4px;
     backdrop-filter: blur(4.8px);
     -webkit-backdrop-filter: blur(4.8px);
     color: white;
     display: flex;
     white-space: normal;
     position: relative;
-
+    margin-left: 10px;
 }
 .card2 img{
-    height: 200px;
-    width: 300px;
-    justify-content: space-around;
+    height: 300px;
+    width: 350px; 
+    margin-left: -12px;
+    border-radius: 16px;
 }
-.img{
- 
+.font{
+  position: absolute;
+  top: 10px;
+  left: 5px;
 }
+.font1{
+  position: absolute;
+  top: 60px;
+  left: 5px;
+}
+.font2{
+  position: absolute;
+  top: 10px;
+  left: 300px;
+}
+.readmore{
+  position: absolute;
+  top: 240px;
+  left: 570px;
+}
+
 .text{
   overflow: auto;
 }
@@ -54,9 +85,9 @@
     height: 400px;
   }
   .scrolling-container::-webkit-scrollbar-thumb {
-    background-color: #000216b2;
+    background-color: #00021600;
     border-radius: 5px; 
-    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px; 
+    box-shadow: rgba(45, 35, 66, 0) 0 4px 8px; 
   }
   .scrolling-container::-webkit-scrollbar {
     width: 10px;
@@ -107,6 +138,9 @@
 }
 .btncard2{
   width: 100px;
+}
+#favbtn{
+  margin-bottom: 20px;
 }
 
 #carouselExampleControls{

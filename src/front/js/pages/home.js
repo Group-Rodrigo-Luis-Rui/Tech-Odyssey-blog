@@ -29,8 +29,14 @@ export const Home = () => {
 							<a href="#" class="btn btn-primary">Go somewhere</a>
 						</div>
 					</div>
+					{/* carousel*/}
 					<div id="carouselExampleControls" class=" col-6 carousel slide d-block " data-bs-ride="carousel">
 						<div class="carousel-inner">
+							<div class="carousel-indicators">
+								<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+								<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+								<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+							</div>
 							<div class="carousel-item active">
 								<img src="https://img.freepik.com/free-photo/technology-human-touch-background-modern-remake-creation-adam_53876-129794.jpg?size=626&ext=jpg&ga=GA1.1.849661921.1679516116&semt=sph" class="d-block w-100" alt="..."/>
 							</div>
@@ -51,89 +57,46 @@ export const Home = () => {
 						</button>
 						</div>
 					</div>
-				<div className="scrolling-container mt-5">
+					<div className="cardtitle mt-5">
+						<h4>Title</h4>
+					</div>
+				{/* scrolling cards*/}
+				<div className="scrolling-container mt-1">
 					{cards.map(src => (
 						<div
 							key={src}
-							className="card2 mt-3 me-3 "
+							className="mt-3 me-3 "
 							style={{
-								backgroundImage: `url(${src})`
 							}}
 						>
-							<div className="">
-								<div className="card2">
-									<div className="img">
-										<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
+							<div className="card2 row">
+								<div className="img col-6">
+									<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
+									{/* fontAwsome icons (like, heart and favorites)*/}
+									<div className="font">
+										<a href="#" className=" col-2 mt-2 ms-2 mt-1">
+											<i class="me-0 fa solid fa-thumbs-up"></i>
+										</a>
 									</div>
-									<h5 className="card-title">Card title</h5>
-									<p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<a href="#" className="btn btn-primary">Go somewhere</a>
+									<div className="font1">
+										<a href="#" className="col-2 mt-2 ms-2 mt-1">
+											<i class="me-0 fa-solid fa-heart"></i>
+										</a>
+									</div>
+									<div className="font2">
+										<a href="#" className="col-2 mt-2 ms-2 mt-1">
+										<i class="me-0 fa duotone fa-bookmark"></i>
+										</a>
+									</div>
+									<div className="readmore">
+										<a href="#" className="btn col btn-primary">
+										Read More
+										</a>
+									</div>
 								</div>
-							</div>
-						</div>
-					))}
-				</div>
-				<div className="scrolling-container mt-5">
-					{cards.map(src => (
-						<div
-							key={src}
-							className="card2 mt-3 me-3 "
-							style={{
-								backgroundImage: `url(${src})`
-							}}
-						>
-								<div className="card2">
-									<div className="img">
-										<img src="https://images.unsplash.com/photo-1421757381940-5d269570b21c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA0fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="..."/>
-									</div>
+								<div className="col-6 text">
 									<h5 className="card-title">Card title</h5>
-									<p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<a href="#" className="btn btn-primary">Go somewhere</a>
-								</div>
-							</div>
-					))}
-				</div>
-				<div className="scrolling-container mt-5">
-					{cards.map(src => (
-						<div
-							key={src}
-							className="card2 mt-3 me-3 "
-							style={{
-								backgroundImage: `url(${src})`
-							}}
-						>
-							<div className="">
-								<div className="card2">
-									<div className="img">
-										<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
-									</div>
-									<h5 className="card-title">Card title</h5>
-									<p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<a href="#" className="btn btn-primary">Go somewhere</a>
-								</div>
-							</div>
-						</div>
-					))}
-				</div>
-				<div className="scrolling-container mt-5">
-					{cards.map(src => (
-						<div
-							key={src}
-							className="card2 mt-3 me-3 "
-							style={{
-								backgroundImage: `url(${src})`
-							}}
-						>
-							<div className="">
-								<div className="card2 row me-3">
-										<div className="img col-6">
-											<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
-										</div>
-										<div className="col-6 text">
-											<h5 className="card-title">Card title</h5>
-											<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									</div>
-									<a href="#" className="btn btncard2 btn-primary">Go here</a>
+									<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 								</div>
 							</div>
 						</div>
