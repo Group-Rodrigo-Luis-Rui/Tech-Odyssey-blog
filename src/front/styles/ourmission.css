@@ -1,40 +1,54 @@
-/*body {
-    color: rgb(255, 255, 255);
-    font-family: "Barlow";
-  }
-
 .background{
-  padding-top: 10px;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: center center;}
+  background-position: center center;
+  font-family: "Barlow";
+  font-size: large;
+}
 
-/*p{
+.textBackground{
+  background: rgba(0, 0, 0, 0.87); 
+  color: #f1f1f1;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.text{
   text-align: justify;
   text-justify: inter-word;
 }
 
-h5{
-  margin-bottom: 0;
+.teamName{
   text-align: center;
-  padding-top: 0.5rem;
 }
 
-/*i:hover{
-  font-size:1rem;
-  transition: 0.1s ease-out;
+.iconDiv{
+  display: flex;
+  justify-content: left;
+}
+
+.icon:hover{
+  background-color: rgba(91, 181, 255, 0.5);
   cursor: pointer;
 }
 
-i {
+.icon {
   background-color: rgba(108, 182, 241, 0.3);
   padding: 5px 5px;
   border-radius: 10px;
   color: #fff;
   font-size: 1.5rem;
   margin-right: 1.1rem;
-}*/
+}
+
+
+
+
+
+
+
+
 
 
 
