@@ -32,6 +32,29 @@
 .card img{
   height: 300px;
 }
+.img img{
+  transition:  opacity .3s ease;
+}
+.img:hover img{
+  opacity: 1;
+}
+figcaption{
+  opacity: 0;
+  background-color: rgba(0,0,0,0.6);
+  transition: opacity .3s ease;
+  align-items: center;
+}
+.img:hover figcaption{
+  opacity: 1;
+}
+.fig{
+  border-radius: 10px;
+  width: 350px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+}
+
 .card2{
     width: 700px;
     height: 300px;
@@ -143,8 +166,56 @@
   margin-bottom: 20px;
 }
 
+.scrolling-container {
+  position: relative;
+  overflow: hidden; /* Ensure the buttons don't overflow outside the container */
+}
+
+.scroll-control-prev,
+.scroll-control-next {
+  position: absolute;
+  top: 41.5%;
+  z-index: 1; /* Ensure the buttons are above the cards */
+  padding: 8px 12px; /* Adjust padding as needed */
+  color: #fff; /* Adjust text color as needed */
+  background-color: rgba(1, 0, 87, 0.5); /* Adjust background color and opacity as needed */
+  border: none; /* Remove border */
+  outline: none; /* Remove outline */
+  cursor: pointer; /* Add cursor on hover */
+  transition: background-color 0.5s; /* Add a smooth transition on background color change */
+  width: 60px;
+  height: 300px;
+}
+
+.scroll-control-prev {
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.scroll-control-next {
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.scroll-control-prev:hover,
+.scroll-control-next:hover {
+  background-color: rgba(1, 0, 77, 0.8);
+  transition: background-color 0.5s;
+  width: 200px;
+}
+.sliding-card {
+  transition: transform 0.7s ease;
+}
+
+
 #carouselExampleControls{
   width: 50%;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.carousel-item{
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 @media only screen and (max-width:600px) {
