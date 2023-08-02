@@ -50,7 +50,7 @@ header {
     left: 0;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background: hsl(var(--clr-white) /1);
     border-bottom: 1px black solid;
@@ -241,9 +241,9 @@ header .navigation .menu-unactive,header .navigation .menu-active{
         z-index: 1000;
         position: fixed;
         display: block;
-        background: hsl(var(--clr-dark) /.65);
-        background: linear-gradient(to bottom, hsl(var(--clr-light) /.3), hsl( var(--clr-light) / .2));
-        backdrop-filter: blur(1.5rem);
+        background: hsl(var(--clr-white) /1);
+        background: linear-gradient(to bottom, hsl(var(--clr-light) /1), hsl( var(--clr-light) / .2));
+        backdrop-filter: blur(1.0rem);
         min-width: 5rem;
         height: 100vh;
         top: 0;
@@ -282,9 +282,7 @@ header .navigation .menu-unactive,header .navigation .menu-active{
        
     .hamburger-btn{
         display: block;
-    }  
-    
-        
+    }         
 }
   
 .back-weather{
@@ -292,9 +290,8 @@ header .navigation .menu-unactive,header .navigation .menu-active{
     top: 0;
     left: 0;
     height: 150px !important;
-    object-fit: cover !important;
-    
-  }
+    object-fit: cover !important;   
+}
 
 .btn-close{
     position: absolute;
@@ -304,11 +301,14 @@ header .navigation .menu-unactive,header .navigation .menu-active{
 .wrapper {
     z-index: 1001;
     position: absolute;
-    top: 10rem;
-    left: 46rem;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
     width: 25rem;
     height: 27.5rem;
-    background: linear-gradient(to bottom, hsl(var(--clr-light) /.3), hsl( var(--clr-light) / .2));
+    background: linear-gradient(to bottom, hsl(var(--clr-light) /1), hsl( var(--clr-light) / .2));
     border: 2px solid rgba(255, 255, 255, .5);
     border-radius: 1.2rem;
     backdrop-filter: blur(20px);
@@ -317,12 +317,16 @@ header .navigation .menu-unactive,header .navigation .menu-active{
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    
 }
-
 .wrapper .form-box{
     width: 100%;
     padding: 40px;
+}
+
+
+.wrapper .form-box.register{
+    position: absolute;
+    transform: translateX(400px);
 }
 
 .wrapper .icon-close{
@@ -350,10 +354,12 @@ header .navigation .menu-unactive,header .navigation .menu-active{
     display: flex;
     justify-content: center;
     align-items: center;
+   
 }
 
 .title-login .iconUser{
     font-size: 3.5em;
+   
 }
 
 .form-box h2{

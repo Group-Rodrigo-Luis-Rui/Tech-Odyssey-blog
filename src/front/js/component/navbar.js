@@ -20,8 +20,13 @@ export const Navbar = () => {
 		};
 
 		const [showLoginCard, setShowLoginCard] = useState(false);
-		const toggleLogin = ()=>{
+		const toggleLogin = () => {
 			setShowLoginCard(!showLoginCard);
+		}
+
+		const [showRegisterCard, setShowRegisterCard] = useState(false);
+		const toggleRegister = () => {
+			setShowRegisterCard(!showRegisterCard);
 		}
 
 	return (
@@ -57,20 +62,16 @@ export const Navbar = () => {
 					<li className="px-3 ff-sans-cond letter-spacing-3 fs-500">
 						<a className="menu-item1" onClick ={toggleLogin}><span className="num">03</span><i className="fa-solid fa-right-to-bracket"></i></a>
 					</li>
-					<Link to="/signup">
-						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-500">
-							<a className="linkit" href="#"><span className="num">04</span>Sign Up</a>
-						</li>
-					</Link>
+					
 					<Link to="/createpost">
 						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-500">
-							<a className="linkit" href="#"><span className="num">05</span>Create Post</a>
+							<a className="linkit" href="#"><span className="num">04</span>Create Post</a>
 						</li>
 					</Link>	
 					
 					<div className="select-menu">
 						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-500">
-								<a className="select-btn" onClick ={toggleMenu} href="#"><span className="num-btn">06</span>My Stuff<i class="px-5 fa-solid fa-chevron-down"></i></a>
+								<a className="select-btn" onClick ={toggleMenu} href="#"><span className="num-btn">05</span>My Stuff<i class="px-5 fa-solid fa-chevron-down"></i></a>
 									{shownMenu && (
 									<ul className="dropdown">
 										<Link className="abc" to="/myprofile">
@@ -170,21 +171,63 @@ export const Navbar = () => {
 							</div>
 							<div className="remember-forgot">
 								<label><input type="checkbox"/>Remember me</label>
-								<a href="#">Forgot Password?</a>
+								<a href="#">I agree to the terms & conditions</a>
 							</div>
 							<button type="submit" className="btn-submit">Login</button>
 							<div className="login-register">
 								<p>Don't have an account? 
-								<Link to="/signup">
-									<a href="#" className="register-link">Register</a>
-								</Link>
+								
+									<a href="#" className="register-link" onClick ={toggleRegister}>Register</a>
+								
 								</p>	
 							</div>
 						</form>
-
 					</div>
+					{showRegisterCard && (
+					<div className="form-box register">
+						<div className="title-login">
+							<span className="iconRegist"><i class="fa-regular fa-id-card"></i></span>
+							<h2>Registration</h2>
+						</div>
+						<form action="#">
+							<div className="input-box">
+								<span className="iconlog"><i class="fa-solid fa-user"></i></span>
+								<input type="text" required/>
+								<label>Username:</label>
+							</div>
+							<div className="input-box">
+								<span className="iconlog"><i class="fa-solid fa-envelope"></i></span>
+								<input type="email" required/>
+								<label>Email ID:</label>
+							</div>
+							<div className="input-box">
+								<span className="iconlog"><i className="fa-solid fa-lock"></i></span>
+								<input type="password" required />
+								<label>Password</label>
+							</div>
+							<div className="remember-forgot">
+								<label><input type="checkbox"/>I agree to the terms & conditions</label>
+								
+							</div>
+							<button type="submit" className="btn-submit">Register</button>
+							<div className="login-register">
+								<p>Already have an account? 
+								
+									<a href="#" className="login-link" onClick ={toggleRegister}>Login</a>
+								
+								</p>	
+							</div>
+						</form>
+					</div>
+					)}
+
 				</div>
 				)}
+
+
+
+
+
 		</header>
 	);
 };
