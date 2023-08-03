@@ -43,6 +43,11 @@
   margin-right: 1.1rem;
 }
 
+@media (max-width: 575px) {
+  .iconDiv{
+    justify-content: center;
+  }
+}
 
 
 
