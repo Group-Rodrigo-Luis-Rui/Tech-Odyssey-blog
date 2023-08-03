@@ -42,8 +42,8 @@ def add_user():
 
         return jsonify({"message": "User added successfully"}), 201
 
-    except Exception as e:
-        return jsonify({"message": str(e)}), 500
+    except NameError:
+        return jsonify({"error" : "Namerror"}), 500
 
 @api.route('/user/<int:id>', methods=['GET'])
 def get_user(user_id):
@@ -60,8 +60,8 @@ def get_user(user_id):
 
         return jsonify(response_body), 200
 
-    except Exception as e:
-        return jsonify({"message": str(e)}), 500
+    except NameError:
+        return jsonify({"error" : "Namerror"}), 500
 
 @api.route('/user/<int:id>', methods=['PUT'])
 def update_user(user_id):
@@ -85,8 +85,8 @@ def update_user(user_id):
 
         return jsonify({"message": "User updated successfully"}), 200
 
-    except Exception as e:
-        return jsonify({"message": str(e)}), 500
+    except NameError:
+        return jsonify({"error" : "Namerror"}), 500
 
 @api.route('/user/<int:id>', methods=['DELETE'])
 def delete_user(user_id):
@@ -101,8 +101,8 @@ def delete_user(user_id):
 
         return jsonify({"message": "User deleted successfully"}), 200
 
-    except Exception as e:
-        return jsonify({"message": str(e)}), 500
+    except NameError:
+        return jsonify({"error" : "Namerror"}), 500
 
 # POST endpoints
 @api.route('/posts', methods=['GET'])
@@ -114,8 +114,8 @@ def get_all_posts():
 
         return jsonify(serialized_posts), 200
 
-    except Exception as e:
-        return jsonify({"message": str(e)}), 500
+    except NameError:
+        return jsonify({"error" : "Namerror"}), 500
 
 @api.route('/posts/category/<string:category>', methods=['GET'])
 def get_posts_by_category(category):
@@ -131,8 +131,8 @@ def get_posts_by_category(category):
 
         return jsonify(categorized_posts), 200
 
-    except Exception as e:
-        return jsonify({"message": str(e)}), 500
+    except NameError:
+        return jsonify({"error" : "Namerror"}), 500
 
 @api.route('/post/<int:id>', methods=['GET'])
 def get_one_post(post_id):
@@ -146,8 +146,8 @@ def get_one_post(post_id):
 
         return jsonify(serialized_post), 200
 
-    except Exception as e:
-        return jsonify({"message": str(e)}), 500
+    except NameError:
+        return jsonify({"error" : "Namerror"}), 500
 
 @api.route('/post/<int:id>', methods=['DELETE'])
 def delete_post(post_id):
@@ -163,8 +163,8 @@ def delete_post(post_id):
 
         return jsonify({"message": "Post deleted successfully"}), 200
 
-    except Exception as e:
-        return jsonify({"message": str(e)}), 500
+    except NameError:
+        return jsonify({"error" : "Namerror"}), 500
 
 # MYREADINGS
 @api.route('/myreadings', methods=['POST'])
@@ -183,8 +183,8 @@ def add_my_readings():
 
         return jsonify({"message": "My readings added successfully"}), 201
 
-    except Exception as e:
-        return jsonify({"message": str(e)}), 500
+    except NameError:
+        return jsonify({"error" : "Namerror"}), 500
 
 @api.route('/myreadings/<int:id>', methods=['GET'])
 def get_my_readings(user_id):
@@ -198,8 +198,8 @@ def get_my_readings(user_id):
 
         return jsonify(serialized_myreading), 200
 
-    except Exception as e:
-        return jsonify({"message": str(e)}), 500
+    except NameError:
+        return jsonify({"error" : "Namerror"}), 500
 
 @api.route('/myreadings/<int:user_id>', methods=['DELETE'])
 def delete_my_readings(user_id):
@@ -215,8 +215,8 @@ def delete_my_readings(user_id):
 
         return jsonify({"message": "My readings deleted successfully"}), 200
 
-    except Exception as e:
-        return jsonify({"message": str(e)}), 500
+    except NameError:
+        return jsonify({"error" : "Namerror"}), 500
 
 # COMMENT endpoints
 @api.route('/comment', methods=['POST'])
@@ -240,8 +240,8 @@ def add_comment():
         
         return jsonify({"message": "Comment added successfully"}), 201
 
-    except Exception as e:
-        return jsonify({"message": str(e)}), 500
+    except NameError:
+        return jsonify({"error" : "Namerror"}), 500
     
 @api.route('/comments/<int:id>', methods=['GET'])
 def get_comments_by_post(post_id):
@@ -257,8 +257,8 @@ def get_comments_by_post(post_id):
 
         return jsonify(serialized_comments), 200
 
-    except Exception as e:
-        return jsonify({"message": str(e)}), 500
+    except NameError:
+        return jsonify({"error" : "Namerror"}), 500
 
 @api.route('/comment/<int:id>', methods=['DELETE'])
 def delete_comment(comment_id):
@@ -273,8 +273,8 @@ def delete_comment(comment_id):
 
         return jsonify({"message": "Comment deleted successfully"}), 200
 
-    except Exception as e:
-        return jsonify({"message": str(e)}), 500
+    except NameError:
+        return jsonify({"error" : "Namerror"}), 500
 
 
 # AUTHENTICATION
