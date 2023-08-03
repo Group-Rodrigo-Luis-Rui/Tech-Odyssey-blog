@@ -1,0 +1,26 @@
+.backgroundcreate{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+  }
+
+.textBackgroundcreate{
+  background: rgba(0, 0, 0, 0.5); 
+  color: #ffffff;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-family: "Barlow";
+}
+
+.textAreaCreate{
+  background-color : #d1d1d1;
+}
+
+.textAreaCreate::placeholder{
+  color: #5bc0de;
+}
+
+.buttonCreate:hover{
+  background-color: #5bc0de;
+}
