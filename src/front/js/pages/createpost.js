@@ -18,13 +18,13 @@ export const Createpost = () => {
 							</div>
 							<div className="form-group mb-4">
 								<label for="exampleFormControlSelect1" className="mb-1 titlesText">Select category</label>
-								<select className="form-control textAreaCreate optionText" id="exampleFormControlSelect1">
-									<option>Choose one</option>
-									<option>Computers</option>
-									<option>Movie Tech</option>
-									<option>AI - Artificial intelligence</option>
-									<option>EV Mobility</option>
-									<option>Other Stuff</option>
+								<select className="form-control" id="exampleFormControlSelect1">
+									<option value="" selected disabled hidden>Choose here</option>
+									<option value="1">Computers</option>
+									<option value="2">Movie Tech</option>
+									<option value="3">AI - Artificial intelligence</option>
+									<option value="4">EV Mobility</option>
+									<option value="5">Other Stuff</option>
 								</select>
 							</div>
 							<div className="form-group mb-4">
@@ -44,7 +44,7 @@ export const Createpost = () => {
 							</div>
 							<div className="form-group mb-4">
 								<label for="description" className="mb-1 titlesText">My text</label>
-								<textarea rows="50" className="form-control textAreaCreate" name="description" placeholder="Max 5000 characters"></textarea>
+								<textarea rows="30" className="form-control textAreaCreate" name="description" placeholder="Max 5000 characters"></textarea>
 							</div>
 							<div className="form-group d-flex justify-content-center">
 								<button type="submit" className="btn me-5 buttonCreate">

@@ -18,16 +18,8 @@
   font-size:x-large;
 }
 
-.optionText{
-  color: #469DFF;
-}
-
-.textAreaCreate{
-  background-color : #d1d1d1;
-}
-
 .textAreaCreate::placeholder{
-  color: #469DFF;
+  color: #b9b9b9;
   font-size: small;
 }
 
