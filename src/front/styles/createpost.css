@@ -13,14 +13,30 @@
   font-family: "Barlow";
 }
 
+.titlesText{
+  color: #469DFF;
+  font-size:x-large;
+}
+
+.optionText{
+  color: #469DFF;
+}
+
 .textAreaCreate{
   background-color : #d1d1d1;
 }
 
 .textAreaCreate::placeholder{
-  color: #5bc0de;
+  color: #469DFF;
+  font-size: small;
 }
 
 .buttonCreate:hover{
-  background-color: #5bc0de;
+  background-color: #469DFF;
+  color: white;
+}
+
+.buttonCreate label:hover{
+  color: white;
+  cursor: pointer;
 }
