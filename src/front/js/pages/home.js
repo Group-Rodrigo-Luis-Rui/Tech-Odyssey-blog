@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import backgroundurl from "../../img/background.jpg"
+import { Link } from "react-router-dom";
 export const Home = () => {
 
 	const { store, actions } = useContext(Context);
@@ -127,9 +128,11 @@ export const Home = () => {
 										<h5 className="card-title">Card title</h5>
 										<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 										<div className="readmore">
-											<button className="btn col btn-primary">
-											Read More
-											</button>
+											<Link to={"/single"}>
+												<button className="btn col btn-primary">
+													Read More
+												</button>
+											</Link>
 										</div>
 									</div>
 								</div>
