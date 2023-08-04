@@ -1,0 +1,17 @@
+.backgroundProfile{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    font-family: "Barlow";
+    font-size: large;
+    min-height: 100rem;
+  }
+  
+  .textBackgroundProfile{
+    background: rgba(0, 0, 0, 0.87); 
+    color: #f1f1f1;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    min-height: 100rem;
+  }

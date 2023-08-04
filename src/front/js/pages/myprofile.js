@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import backgroundimage from "../../img/backgroundimage.jpg";
+import "../../styles/myprofile.css";
 
 export const MyProfile = () => {
 
 	return (
-		<div className="container">
-			<h1>Here you have account details and myposts in brief</h1>
-            <Link to = {"/"}><span>Home</span></Link>
+		<div className="backgroundProfile" style={{backgroundImage:'url(' + backgroundimage + ')'}}>
+			<div className="container textBackgroundProfile">
+				<h5>User Name</h5>
+			</div>
 		</div>
 	);
 };
