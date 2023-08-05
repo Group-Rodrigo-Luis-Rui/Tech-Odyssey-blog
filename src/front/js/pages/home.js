@@ -128,7 +128,7 @@ export const Home = () => {
 										<h5 className="card-title">Card title</h5>
 										<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 										<div className="readmore">
-											<Link to={"/single"}>
+											<Link to={"/single/1"}>
 												<button className="btn col btn-primary">
 													Read More
 												</button>
