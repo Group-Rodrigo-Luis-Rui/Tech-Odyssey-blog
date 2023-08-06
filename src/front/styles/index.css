@@ -7,6 +7,31 @@
 
 }
 .card-single{
-    width: 1500px;
+    width: 1190px;
 
+}
+.main-container{
+    overflow: auto; 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container-top{
+    background-color: azure;
+    height: 250px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+.container-card{
+    background: rgba(1, 0, 41, 0.534);
+    border-radius: 16px;
+    box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    backdrop-filter: blur(4.8px);
+    -webkit-backdrop-filter: blur(4.8px);
+    color: rgb(255, 255, 255);
+    margin-bottom: 50px;
 }
