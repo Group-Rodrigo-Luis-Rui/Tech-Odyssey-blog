@@ -6,11 +6,30 @@
     on that page only (the ones not reused in other pages).
 */
 .background{
-    padding-top: 10px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center center;}
+  padding-top: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+}
+
+.letters-card{
+  width: 700px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.795);
+  border-radius: 16px;
+  border: none;
+  box-shadow: rgba(255, 255, 255, 0.8) 0 2px 4px,rgba(10, 0, 53, 0.3) 0 7px 13px -3px,#000038 0 -3px 0 inset;
+  backdrop-filter: blur(4.8px);
+  -webkit-backdrop-filter: blur(4.8px);
+  color: rgba(0, 5, 63, 0.363);
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  padding-bottom: 10px;
+}
 
 .card{
     background: rgba(1, 0, 37, 0.8);
@@ -48,13 +67,22 @@
   
 }
 .cardtitle{
-  background: rgba(1, 0, 77, 0.637);
+  background: rgba(255, 255, 255, 0.795);
   border-radius: 16px;
-  box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  border: none;
+  box-shadow: rgba(255, 255, 255, 0.8) 0 2px 4px,rgba(10, 0, 53, 0.3) 0 7px 13px -3px,#000038 0 -3px 0 inset;
   backdrop-filter: blur(4.8px);
   -webkit-backdrop-filter: blur(4.8px);
-  color: rgb(255, 255, 255);
+  color: rgba(0, 1, 39, 0.397);
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+  font-size: 30px;
+  height: 60px;
   width: 200px;
+  margin-bottom: -10px;
 }
 
 .card img{

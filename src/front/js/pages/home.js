@@ -4,10 +4,18 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import backgroundurl from "../../img/background.jpg"
 import { Link } from "react-router-dom";
+import MovingComponent from "../component/movingcomponent";
+
 
 export const Home = () => {
 
 	const { store, actions } = useContext(Context);
+
+	const Letters = ["W","e","l","c","o","m","e","-","T","o",
+	"-","T","h","e","-","T","e","c","h","-","W","o","r","l","d"];
+	
+	const Title1 = ["C","o","m","p","u","t","e","r","s"];
+	const Title2 = ["M","o","v","i","e","-","T","e","c","h"];
 
 	const cards = [
 		"/card1",
@@ -53,7 +61,23 @@ export const Home = () => {
 
 	return (
 		<div  className="container-fluid background" style={{backgroundImage:'url(' + backgroundurl + ')'}}>
-			<div className="row text-center mt-5" >
+			<div className="row text-center mt-5 d-flex justify-content-center" >
+				<div className="letters-card">
+					{Letters.map((letter, index) => (
+						<MovingComponent
+							key={index}
+							type="effect3D"
+							duration="1100ms"
+							delay={index * 100 + "ms"} // Corrected delay syntax
+							direction="alternate-reverse"
+							timing="ease"
+							iteration="infinite"
+							fillMode="both"
+						>
+							{letter}
+						</MovingComponent>
+					))}
+		  		</div>
 				<div className="card-carousel-header d-flex">
 					<div class="card col-6 card-top me-2">
 						<div class="card-body">
@@ -116,7 +140,20 @@ export const Home = () => {
 						</div>
 					</div>
 					<div className="cardtitle mt-5">
-						<h4>Title</h4>
+					{Title1.map((Title1, index) => (
+						<MovingComponent
+							key={index}
+							type="effect3D"
+							duration="1100ms"
+							delay={index * 100 + "ms"}
+							direction="alternate-reverse"
+							timing="ease"
+							iteration="infinite"
+							fillMode="both"
+						>
+							{Title1}
+						</MovingComponent>
+					))}
 					</div>
 				{/* scrolling cards*/}
 				<div className="scrolling-container mt-1">
@@ -174,8 +211,21 @@ export const Home = () => {
 						<span className="visually-hidden">Next</span>
 					</button>
 				</div>
-				<div className="cardtitle mt-5">
-						<h4>Title</h4>
+				<div className="cardtitle">
+					{Title2.map((Title2, index) => (
+						<MovingComponent
+							key={index}
+							type="effect3D"
+							duration="1100ms"
+							delay={index * 100 + "ms"}
+							direction="alternate-reverse"
+							timing="ease"
+							iteration="infinite"
+							fillMode="both"
+						>
+							{Title2}
+						</MovingComponent>
+					))}
 					</div>
 				{/* scrolling cards*/}
 				<div className="scrolling-container mt-1">
