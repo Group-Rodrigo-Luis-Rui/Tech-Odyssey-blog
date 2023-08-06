@@ -35,29 +35,19 @@ export const Home = () => {
 		Array(cards.length).fill(0)
 	);
 
-	// Function to scroll the specific container to the left
-	const scrollLeft = (containerIndex, setScrollPositions) => {
-		if (setScrollPositions[containerIndex] > 0) {
-			setScrollPositions((prevPositions) => {
-			const newPositions = [...prevPositions];
-			newPositions[containerIndex] -= 90;
-			return newPositions;
-			});
-		}
-		console.log("Scrolling left", containerIndex);
+	  // Function to scroll the cards to the left
+	  const scrollLeft = () => {
+		if (scrollPosition > 0) {
+		setScrollPosition((prevPosition) => prevPosition - 90);
+	  }
 	};
-
-	// Function to scroll the specific container to the right
-	const scrollRight = (containerIndex, setScrollPositions) => {
-		if (setScrollPositions[containerIndex] < (cards.length - 1) * 90) {
-			setScrollPositions((prevPositions) => {
-			const newPositions = [...prevPositions];
-			newPositions[containerIndex] += 90;
-			return newPositions;
-			});
+	
+	  // Function to scroll the cards to the right
+	  const scrollRight = () => {
+		if(scrollPosition < (cards.length * 45.5)){
+			setScrollPosition((prevPosition) => prevPosition + 90);
 		}
-		console.log("Scrolling right", containerIndex);
-	};
+	  };
 
 	return (
 		<div  className="container-fluid background" style={{backgroundImage:'url(' + backgroundurl + ')'}}>
@@ -202,11 +192,11 @@ export const Home = () => {
 						</div>					
 					))}	
 					{/* Scroll buttons */}
-					<button className="scroll-control-prev" type="button" onClick={() => scrollLeft(0, setScrollPositions1)}>
+					<button className="scroll-control-prev" type="button" onClick={scrollLeft}>
 						<span className="carousel-control-prev-icon" aria-hidden="true"></span>
 						<span className="visually-hidden">Previous</span>
 					</button>
-					<button className="scroll-control-next" type="button" onClick={() => scrollRight(0, setScrollPositions1)}>
+					<button className="scroll-control-next" type="button" onClick={scrollRight}>
 						<span className="carousel-control-next-icon" aria-hidden="true"></span>
 						<span className="visually-hidden">Next</span>
 					</button>
