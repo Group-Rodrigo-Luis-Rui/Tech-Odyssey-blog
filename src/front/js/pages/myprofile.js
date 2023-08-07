@@ -25,13 +25,36 @@ export const MyProfile = () => {
 					</div>
 				</div>
 				<div className="myBoxBackground mb-5">
-					<h4>Email: {user.email}</h4>
+					<h4>Email:{user.email}</h4>
 				</div>
 				<div>
 					<h3 className="myBoxBackground mb-2 pb-1">My Posts</h3>
 					<ul className="list-group">
 						{myPosts.map((postTitle, index) => (
-							<li key={index} className="list-group-item">{postTitle}</li>
+							<li key={index}>
+								<div class="card mb-3 cardContainer">
+									<div class="row g-0">
+										<div class="col-md-5">
+											<img src={avatarImage} class="img-fluid rounded-start" alt="..."/>
+											<div className="buttonProfile">
+												<button type="button" class="btn btn-secondary btn-sm">Small button</button>
+											</div>
+										</div>
+										<div class="col-md-7">
+											<div class="card-body">
+												<div className="container d-flex justify-content-between m-2">
+													<h4 class="card-title"><strong>{postTitle}</strong></h4>
+													<a href="..." className="iconLink">
+														<i class="far fa-bookmark pe-2 fs-3 "></i>
+													</a>
+												</div>
+												<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+												<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
 						))}
 					</ul>
 				</div>
