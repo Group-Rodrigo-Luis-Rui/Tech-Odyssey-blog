@@ -61,10 +61,31 @@
 .cardmiddle h5{
   margin: 20px;
   margin-top: -110px;
+
 }
 .cardmiddle p{
   padding-top: 120px;
   
+}
+.glass-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.glass-image {
+  background-color: rgba(255, 255, 255, 0.1); 
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2); 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.glass-image img {
+  display: block;
+  border-radius: 10px;
 }
 .cardtitle{
   background: rgba(255, 255, 255, 0.795);
@@ -162,6 +183,7 @@ figcaption{
     white-space: nowrap;
     margin-top: 10px; 
     height: 400px;
+    transition: transform 0.3s;
   }
   .scrolling-container::-webkit-scrollbar-thumb {
     background-color: #00021600;
@@ -170,6 +192,13 @@ figcaption{
   }
   .scrolling-container::-webkit-scrollbar {
     width: 10px;
+  }
+  .top-scrolling-container{
+    position: relative;
+  }
+  .viewport{
+    overflow: hidden;
+    width: 100%;
   }
   .card-body img{
     border-radius: 15px;

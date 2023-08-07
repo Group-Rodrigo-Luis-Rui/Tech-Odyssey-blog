@@ -40,6 +40,7 @@ export const Home = () => {
 		if (scrollPosition > 0) {
 		setScrollPosition((prevPosition) => prevPosition - 90);
 	  }
+	  console.log("this is the log of the scroll left: "+scrollPosition);
 	};
 	
 	  // Function to scroll the cards to the right
@@ -47,6 +48,7 @@ export const Home = () => {
 		if(scrollPosition < (cards.length * 45.5)){
 			setScrollPosition((prevPosition) => prevPosition + 90);
 		}
+		console.log("this is the log of the scroll right: "+scrollPosition);
 	  };
 
 	return (
@@ -122,7 +124,7 @@ export const Home = () => {
 						</button>
 						</div>
 					</div>
-					<div className="container-fluid">
+					<div className="container-fluid container-cardmiddle">
 						<div className="cardmiddle" style={{ backgroundImage: 'url("https://imageio.forbes.com/specials-images/imageserve/61d52d4e3a76ed81ac034ea8/0x0.jpg?format=jpg&width=1200")' }}>
 							<h5>Here you will find</h5>
 							Everything you must to know about tech
@@ -146,51 +148,54 @@ export const Home = () => {
 					))}
 					</div>
 				{/* scrolling cards*/}
-				<div className="scrolling-container mt-1">
-					{cards.map((src,index) => (
-						<div
-							key={src}
-							className="mt-3 me-3 sliding-card"
-							style={{
-								transform: `translateX(${-scrollPositions1[index]}px)`,}}
-						>
-							<div className="card2 row">
-								<div className="img col-6">
-									<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
-									<figcaption className="fig position-absolute bottom-0 start-0 p-3">
-										<p>something</p>
-									</figcaption>
-									{/* fontAwsome icons (like, heart and favorites)*/}
-									<div className="font">
-										<a href="#" className=" col-2 mt-2 ms-2 mt-1">
-											<i class="me-0 fa solid fa-thumbs-up"></i>
-										</a>
+				<div className="top-scrolling-container">
+					<div className="viewport">
+						<div className="scrolling-container mt-1"  
+							style={{transform: `translateX(${-scrollPosition}px)`}}>										
+							{cards.map((src) => (
+								<div
+									key={src}
+									className="mt-3 me-3 sliding-card"
+								>
+									<div className="card2 row">
+										<div className="img col-6">
+											<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
+											<figcaption className="fig position-absolute bottom-0 start-0 p-3">
+												<p>something</p>
+											</figcaption>
+											{/* fontAwsome icons (like, heart and favorites)*/}
+											<div className="font">
+												<a href="#" className=" col-2 mt-2 ms-2 mt-1">
+													<i class="me-0 fa solid fa-thumbs-up"></i>
+												</a>
+											</div>
+											<div className="font1">
+												<a href="#" className="col-2 mt-2 ms-2 mt-1">
+													<i class="me-0 fa-solid fa-heart"></i>
+												</a>
+											</div>
+											<div className="font2">
+												<a href="#" className="col-2 mt-2 ms-2 mt-1">
+													<i class="me-0 fa duotone fa-bookmark"></i>
+												</a>
+											</div>
+										</div>
+										<div className="col-6 text">
+											<h5 className="card-title">Card title</h5>
+											<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+											<div className="readmore">
+												<Link to={"/single"}>
+													<button className="btn col ">
+														Read More
+													</button>
+												</Link>
+											</div>
+										</div>
 									</div>
-									<div className="font1">
-										<a href="#" className="col-2 mt-2 ms-2 mt-1">
-											<i class="me-0 fa-solid fa-heart"></i>
-										</a>
-									</div>
-									<div className="font2">
-										<a href="#" className="col-2 mt-2 ms-2 mt-1">
-											<i class="me-0 fa duotone fa-bookmark"></i>
-										</a>
-									</div>
-								</div>
-								<div className="col-6 text">
-									<h5 className="card-title">Card title</h5>
-									<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<div className="readmore">
-										<Link to={"/single"}>
-											<button className="btn col ">
-												Read More
-											</button>
-										</Link>
-									</div>
-								</div>
-							</div>
-						</div>					
-					))}	
+								</div>					
+							))}	
+						</div>
+					</div>
 					{/* Scroll buttons */}
 					<button className="scroll-control-prev" type="button" onClick={scrollLeft}>
 						<span className="carousel-control-prev-icon" aria-hidden="true"></span>
