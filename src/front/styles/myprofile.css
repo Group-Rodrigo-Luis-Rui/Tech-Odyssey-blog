@@ -6,12 +6,27 @@
     font-family: "Barlow";
     font-size: large;
     min-height: 100rem;
-  }
-  
-  .textBackgroundProfile{
-    background: rgba(0, 0, 0, 0.87); 
-    color: #f1f1f1;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    min-height: 100rem;
-  }
+}
+
+.textBackgroundProfile{
+  background: rgba(0, 0, 0, 0.87); 
+  color: #f1f1f1;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  min-height: 100rem;
+}
+.myBoxBackground{
+backdrop-filter: invert(20%);
+padding: 0.3rem;
+padding-bottom: 0.1rem;
+border-radius: 5px;
+}
+.avatarImage{
+height: 10rem;
+padding-right: 3rem;
+}
+
+.emailBox::value{
+color: #ffffff;
+font-size: small;
+}
