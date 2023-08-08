@@ -4,6 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from api.models import db, User, Post, Comment, MyReading, Category
+from api.data import populate_user, populate_post_user1, populate_post_user2, populate_post_user3
 from api.utils import generate_sitemap, APIException
 
 api = Blueprint('api', __name__)
@@ -11,7 +12,9 @@ api = Blueprint('api', __name__)
 
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
-
+    populate_post_user1()
+    populate_post_user2()
+    populate_post_user3()
     response_body = {
         "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
     }
@@ -24,8 +27,10 @@ def add_user():
     try:
 
         data = request.get_json()
+        name = data.get("name")
         email = data.get("email")
         password = data.get("password")
+        is_active = data.get("is_active")
 
         if not email or not password:
             return jsonify({"Invalid input data"}), 400
@@ -36,7 +41,7 @@ def add_user():
             return jsonify({"User with this email already exists"}), 409
 
         # Create a new User object and add it to the database
-        new_user = User(email=email, password=password)
+        new_user = User(name=name, email=email, password=password, is_active=is_active)
         db.session.add(new_user)
         db.session.commit()
 
@@ -46,38 +51,43 @@ def add_user():
         return jsonify({"error" : "Namerror"}), 500
 
 @api.route('/user/<int:id>', methods=['GET'])
-def get_user(user_id):
+def get_user(id):
     try:
-        user = User.query.get(user_id)
+        user = User.query.get(id)
 
         if not user:
             return jsonify({"User not found"}), 404
 
-        response_body = {
-            "id": user.id,
-            "email": user.email,
-        }
+        # response_body = {
+        #     "id": user.id,
+        #     "name": user.name,
+        #     "email": user.email,
+        # }
+        serialized_user = user.serialize()
 
-        return jsonify(response_body), 200
+        return jsonify(serialized_user), 200
 
     except NameError:
         return jsonify({"error" : "Namerror"}), 500
 
 @api.route('/user/<int:id>', methods=['PUT'])
-def update_user(user_id):
+def update_user(id):
     try:
         # Get the user from the database using the user_id
-        user = User.query.get(user_id)
+        user = User.query.get(id)
 
         if not user:
             return jsonify({"User not found"}), 404
 
         data = request.get_json()
+        name = data.get("name")
         email = data.get("email")
         password = data.get("password")
 
         if email:
             user.email = email
+        if name:
+            user.name = name
         if password:
             user.password = password
 
@@ -89,9 +99,9 @@ def update_user(user_id):
         return jsonify({"error" : "Namerror"}), 500
 
 @api.route('/user/<int:id>', methods=['DELETE'])
-def delete_user(user_id):
+def delete_user(id):
     try:
-        user = User.query.get(user_id)
+        user = User.query.get(id)
 
         if not user:
             return jsonify({"User not found"}), 404
@@ -122,10 +132,27 @@ def get_posts_by_category(category):
     try:
         # Check if the given category exists in the Category enum
 
-        if category not in [c.value for c in Category]:
+        if category not in Category.__members__:
             return jsonify({"Invalid category"}), 400
 
-        posts = Post.query.filter_by(category=Category(category)).all()
+        posts = Post.query.filter_by(category=Category[category]).all()
+
+        categorized_posts = [post.serialize() for post in posts]
+
+        return jsonify(categorized_posts), 200
+
+    except NameError:
+        return jsonify({"error" : "Namerror"}), 500
+
+@api.route('/posts/category/<string:category>', methods=['GET'])
+def get_posts_by_user(category):
+    try:
+        # Check if the given category exists in the Category enum
+
+        if category not in Category.__members__:
+            return jsonify({"Invalid category"}), 400
+
+        posts = Post.query.filter_by(category=Category[category]).all()
 
         categorized_posts = [post.serialize() for post in posts]
 
@@ -135,9 +162,9 @@ def get_posts_by_category(category):
         return jsonify({"error" : "Namerror"}), 500
 
 @api.route('/post/<int:id>', methods=['GET'])
-def get_one_post(post_id):
+def get_one_post(id):
     try:
-        post = Post.query.get(post_id)
+        post = Post.query.get(id)
 
         if not post:
             return jsonify({"Post not found"}), 404
@@ -150,10 +177,10 @@ def get_one_post(post_id):
         return jsonify({"error" : "Namerror"}), 500
 
 @api.route('/post/<int:id>', methods=['DELETE'])
-def delete_post(post_id):
+def delete_post(id):
     try:
         # Get the post from the database using the post_id
-        post = Post.query.get(post_id)
+        post = Post.query.get(id)
 
         if not post:
             return jsonify({"Post not found"}), 404
@@ -187,9 +214,9 @@ def add_my_readings():
         return jsonify({"error" : "Namerror"}), 500
 
 @api.route('/myreadings/<int:id>', methods=['GET'])
-def get_my_readings(user_id):
+def get_my_readings(id):
     try:
-        myreading = MyReading.query.filter_by(user_id=user_id).first()
+        myreading = MyReading.query.filter_by(user_id=id).first()
 
         if not myreading:
             return jsonify({"My readings not found"}), 404
@@ -202,10 +229,10 @@ def get_my_readings(user_id):
         return jsonify({"error" : "Namerror"}), 500
 
 @api.route('/myreadings/<int:user_id>', methods=['DELETE'])
-def delete_my_readings(user_id):
+def delete_my_readings(id):
     try:
         # Get the MyReading for the given user_id from the database
-        myreading = MyReading.query.filter_by(user_id=user_id).first()
+        myreading = MyReading.query.filter_by(user_id=id).first()
 
         if not myreading:
             return jsonify({"My readings not found"}), 404
@@ -244,9 +271,9 @@ def add_comment():
         return jsonify({"error" : "Namerror"}), 500
     
 @api.route('/comments/<int:id>', methods=['GET'])
-def get_comments_by_post(post_id):
+def get_comments_by_post(id):
     try:
-        post = Post.query.get(post_id)
+        post = Post.query.get(id)
 
         if not post:
             return jsonify({"Post not found"}), 404
