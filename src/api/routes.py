@@ -12,6 +12,7 @@ api = Blueprint('api', __name__)
 
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
+    populate_user()
     populate_post_user1()
     populate_post_user2()
     populate_post_user3()
