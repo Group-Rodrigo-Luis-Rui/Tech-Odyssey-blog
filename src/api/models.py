@@ -72,7 +72,7 @@ class Post(db.Model):
             "abstract": self.abstract,
             "main_text": self.main_text,
             "date_created": self.date_created,
-            "comments": self.comments
+            "comments": [comments.serialize() for comments in self.comments]
         }
     
 
@@ -93,7 +93,7 @@ class Comment(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "text": self.text.serialize(),
+            "text": self.text
         }
 
 
@@ -111,5 +111,6 @@ class MyReading(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "posts": self.posts,
+            "posts": [post.serialize() for post in self.posts],
+            "user": self.user_id
         }

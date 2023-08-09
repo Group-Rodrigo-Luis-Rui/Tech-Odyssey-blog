@@ -145,22 +145,22 @@ def get_posts_by_category(category):
     except NameError:
         return jsonify({"error" : "Namerror"}), 500
 
-@api.route('/posts/category/<string:category>', methods=['GET'])
-def get_posts_by_user(category):
+@api.route('/user/<int:id>/posts>', methods=['GET'])
+def get_posts_by_user(id):
     try:
-        # Check if the given category exists in the Category enum
+        user = User.query.get(id)
 
-        if category not in Category.__members__:
-            return jsonify({"Invalid category"}), 400
+        if not user:
+            return jsonify({"User not found"}), 404
 
-        posts = Post.query.filter_by(category=Category[category]).all()
+        posts = Post.query.filter_by(user_id=id).all()
 
-        categorized_posts = [post.serialize() for post in posts]
+        serialized_posts = [post.serialize() for post in posts]
 
-        return jsonify(categorized_posts), 200
+        return jsonify(serialized_posts), 200
 
     except NameError:
-        return jsonify({"error" : "Namerror"}), 500
+        return jsonify({"error": "NameError"}), 500
 
 @api.route('/post/<int:id>', methods=['GET'])
 def get_one_post(id):
@@ -195,7 +195,7 @@ def delete_post(id):
         return jsonify({"error" : "Namerror"}), 500
 
 # MYREADINGS
-@api.route('/myreadings', methods=['POST'])
+@api.route('/myreading', methods=['POST'])
 def add_my_readings():
     try:
         data = request.get_json()
@@ -214,13 +214,13 @@ def add_my_readings():
     except NameError:
         return jsonify({"error" : "Namerror"}), 500
 
-@api.route('/myreadings/<int:id>', methods=['GET'])
+@api.route('/myreading/<int:id>', methods=['GET'])
 def get_my_readings(id):
     try:
         myreading = MyReading.query.filter_by(user_id=id).first()
 
         if not myreading:
-            return jsonify({"My readings not found"}), 404
+            return jsonify({"message": "My readings not found"}), 404
 
         serialized_myreading = myreading.serialize()
 
@@ -229,11 +229,11 @@ def get_my_readings(id):
     except NameError:
         return jsonify({"error" : "Namerror"}), 500
 
-@api.route('/myreadings/<int:user_id>', methods=['DELETE'])
+@api.route('/myreading/<int:id>', methods=['DELETE'])
 def delete_my_readings(id):
     try:
         # Get the MyReading for the given user_id from the database
-        myreading = MyReading.query.filter_by(user_id=id).first()
+        myreading = MyReading.query.get(id)
 
         if not myreading:
             return jsonify({"My readings not found"}), 404
@@ -255,33 +255,24 @@ def add_comment():
         post_id = data.get("post_id")
         text = data.get("text")
 
-        user = User.query.get(user_id)
-        if not user:
-            return jsonify({"User not found"}), 404
-
-        post = Post.query.get(post_id)
-        if not post:
-            return jsonify({"Post not found"}), 404
-
         new_comment = Comment(user_id=user_id, post_id=post_id, text=text)
         db.session.add(new_comment)
+        db.session.commit()
         
         return jsonify({"message": "Comment added successfully"}), 201
 
     except NameError:
         return jsonify({"error" : "Namerror"}), 500
     
-@api.route('/comments/<int:id>', methods=['GET'])
+@api.route('/comment/<int:id>', methods=['GET'])
 def get_comments_by_post(id):
     try:
-        post = Post.query.get(id)
+        comment = Comment.query.get(id)
 
-        if not post:
-            return jsonify({"Post not found"}), 404
+        if not comment:
+            return jsonify({"Comment not found"}), 404
 
-        comments = Comment.query.filter_by(post_id=post_id).all()
-
-        serialized_comments = [comment.serialize() for comment in comments]
+        serialized_comments = comment.serialize()
 
         return jsonify(serialized_comments), 200
 
@@ -289,9 +280,9 @@ def get_comments_by_post(id):
         return jsonify({"error" : "Namerror"}), 500
 
 @api.route('/comment/<int:id>', methods=['DELETE'])
-def delete_comment(comment_id):
+def delete_comment(id):
     try:
-        comment = Comment.query.get(comment_id)
+        comment = Comment.query.get(id)
 
         if not comment:
             return jsonify({"Comment not found"}), 404

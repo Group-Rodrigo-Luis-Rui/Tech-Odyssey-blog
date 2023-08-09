@@ -1,4 +1,4 @@
-from api.models import db, User,Post,Comment, Category
+from api.models import db, User,Post,Comment,Category,MyReading
 
 def populate_user():
     Post.query.delete()
@@ -203,11 +203,13 @@ def populate_post_user3():
     db.session.commit()
 
 
-# def populate_comments():
-#     user = User.query.filter_by(email = "abc@4geeks.com")
+# def populate_comments_user1():
+#     user = User.query.filter_by(email = "Luís_Santos@jmail.com")
+#     post = Post.quer
 #     user = list(map(lambda x: x.serialize(), user))
 
-#     db.session.add(Post(title = 'Riding in a paradise', category = Category.COM, abstract='Great horse riding experience! You are surrounded by nature and/or beautiful views. Horses are taken care of and the place is clean. ', main_text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam lorem mi, non congue magna molestie sit amet. Proin eu ipsum sit amet leo cursus pellentesque id sed purus. Aenean augue libero, sodales nec lacus vitae, porta eleifend mi. Mauris eget dolor est. Maecenas bibendum nulla ut nulla convallis, ut tincidunt sem vulputate. Phasellus placerat, orci a volutpat semper, augue metus viverra turpis, ac dignissim leo quam vitae massa. Vivamus auctor pulvinar nulla. Donec metus tortor, ornare sollicitudin aliquam eu, iaculis ac purus. Proin porttitor imperdiet orci a ullamcorper. Suspendisse blandit molestie ipsum a ornare. Donec a sagittis ex, in.", user_id=user[0]['id']))
+#     db.session.add(Comment(text= "This post shows a very interesting matter about technology. It's a good approach to the new tendencies.", 
+#                            user_id=user[0]['id']))
 
 #     db.session.commit()
 
