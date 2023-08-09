@@ -30,10 +30,10 @@ padding-right: 3rem;
 color: #ffffff;
 font-size: small;
 }
-.buttonProfile{
+.buttonProfileDiv{
   margin-top: 2em;
 }
-.buttonProfile button:hover{
+.buttonProfileDiv button:hover{
   background-color: #469DFF;;
 }
 .iconLink{
@@ -41,4 +41,16 @@ font-size: small;
 }
 .cardContainer{
   box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+}
+
+@media (max-width: 767px) {
+  .pText{
+    font-size:medium;
+  }
+  .buttonProfileDiv{
+    margin-top: 1em;
+  }
+  .cardTextProfile {
+    display: none;
+  }
 }

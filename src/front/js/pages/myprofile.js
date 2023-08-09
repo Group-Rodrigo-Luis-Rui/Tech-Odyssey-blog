@@ -11,8 +11,8 @@ export const MyProfile = () => {
 	};
 
 	const myPosts = [
-		"Title of Post 1",
-		"Title of Post 2",
+		"5G Connectivity: Powering the Internet of Things",
+		"Blockchain Beyond Cryptocurr.: Diverse Applications Unveiled",
 		"Title of Post 3"
 	];
 	return (
@@ -36,20 +36,21 @@ export const MyProfile = () => {
 									<div class="row g-0">
 										<div class="col-md-5">
 											<img src={avatarImage} class="img-fluid rounded-start" alt="..."/>
-											<div className="buttonProfile">
-												<button type="button" class="btn btn-secondary btn-sm">Small button</button>
+											<div className="buttonProfileDiv">
+												<button type="button" class="btn btn-secondary btn-sm fs-6">View Post</button>
 											</div>
 										</div>
 										<div class="col-md-7">
 											<div class="card-body">
 												<div className="container d-flex justify-content-between m-2">
-													<h4 class="card-title"><strong>{postTitle}</strong></h4>
-													<a href="..." className="iconLink">
+													<h4 class="card-title pText pe-2"><strong>{postTitle}</strong></h4>
+													<a href="..." className="iconLink" title="Add to my reading list">
 														<i class="far fa-bookmark pe-2 fs-3 "></i>
 													</a>
 												</div>
-												<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-												<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+												<div className="cardTextProfile">
+													<p>Virtual Reality (VR) has evolved beyond gaming to find applications in education, training, therapy, and more. This post explores VR's journey, its diverse applications, and the potential it holds for transforming various aspects of our lives.<br/><br/>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+												</div>
 											</div>
 										</div>
 									</div>
