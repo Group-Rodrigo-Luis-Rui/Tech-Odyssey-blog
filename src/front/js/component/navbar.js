@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.css";
 import logo from "../../img/Tech-Odyssey-Logo.png";
 import clsbtn from "../../img/power-button.png";
 import hambtn from "../../img/hamburger-icon.png";
-import cloudy from "../../img/cloudy-wheather.jpg";
+import Wheather from "../../img/Wheather_image1_api.png";
 
 
 export const Navbar = () => {
@@ -19,15 +19,92 @@ export const Navbar = () => {
 			setShowMenu(!shownMenu);
 		};
 
-		const [showLoginCard, setShowLoginCard] = useState(false);
-		const toggleLogin = () => {
-			setShowLoginCard(!showLoginCard);
+		//  Open the login modal
+		const [isLoginVisible, setIsLoginVisible] = useState(true);
+		
+		const toggleIsVisibleLogin = () => {
+			setIsLoginVisible(!isLoginVisible);
 		}
 
-		const [showRegisterCard, setShowRegisterCard] = useState(false);
-		const toggleRegister = () => {
-			setShowRegisterCard(!showRegisterCard);
+		// Opens the register modal
+		const [isModalOpen, setIsModalOpen] = useState(false);
+
+		const toggleIsModalOpen = ()=> {
+			setIsModalOpen(!isModalOpen);
 		}
+
+		// Open the weather modal
+		const [isWeather, setIsWeather] = useState(false);
+
+		const toggleIsWeatherOpen = () => {
+			setIsWeather(!isWeather);
+		}
+
+		// Wheather API
+		
+		const [city, setCity] = useState("");
+		const [temperature, setTemperature] = useState("");
+		const [description, setDescription] = useState("");
+		const [wind, setWind] = useState("");
+		const [icon, setIcon] = useState("");
+		const [country, setCountry] = useState("");
+		
+		// useEffect(()=>{]
+		// 	getWeatherFromApi();
+		// },[]);
+ 
+		// https://api.openweathermap.org/data/2.5/weather?q=Madrid&appid=39486e411db3bb85cdcbb9d6fd2b3970&units=metric
+		const getWeatherFromApi = () => {
+			
+				fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.KEY}&units=metric`)
+
+				.then(response => {
+					if (!response.ok) {
+						throw Error (response.statusText);
+					}
+					//Read the response as json
+					return response.json();
+				   })
+				
+				.then(responseAsJson => {
+					
+					setTemperature(responseAsJson.main.temp);
+					setDescription(responseAsJson.weather[0].description)	
+					setWind(responseAsJson.wind.speed);
+					setIcon(responseAsJson.weather[0].icon);
+					setCountry(responseAsJson.sys.country);
+				})
+
+				.catch(error => {
+					console.error("Looks like there was a problem: \n", error);
+			   });
+			
+		}
+
+		
+
+		// check if the location was typed
+		const checkCity = () => {
+			if(city==="") { 
+				alert("Insert a location name please!...")
+			} else {
+				getWeatherFromApi();  
+			}
+		}
+
+		const dateBuilder = (d) => {
+			let months = ["January", "February", "March", "April", "May", "June", "July", "August",
+			"September", "October", "November", "December"];
+			let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+			let day = days[d.getDay()];
+			let date = d.getDate();
+			let month = months[d.getMonth()];
+			let year = d.getFullYear();
+
+			return `${day} ${date} ${month} ${year}`
+		}
+
 
 	return (
 		<header className="metallic-element">
@@ -48,7 +125,7 @@ export const Navbar = () => {
 					</div>
 					<Link to="/">
 						<li className="px-3 active menu-item ff-sans-cond letter-spacing-3 fs-500">
-							<a className="linkit" href="#"><span className="num">00</span><i class="fa-solid fa-house"></i></a>
+							<a className="linkit" href="#"><span className="num">00</span><i className="fa-solid fa-house"></i></a>
 						</li>	
 					</Link>
 					<Link to="/ourmission">
@@ -56,11 +133,13 @@ export const Navbar = () => {
 							<a className="linkit" href="#"><span className="num">01</span>Our Mission</a>
 						</li>
 					</Link>
-					<li className=" px-3 ff-sans-cond letter-spacing-3 fs-500">
-						<a className="menu-item1" data-bs-toggle="modal" data-bs-target="#exampleModal"><span className="num">02</span>Wheather<i className="fa-solid fa-cloud-sun-rain"></i></a>	
-					</li>			
+					
 					<li className="px-3 ff-sans-cond letter-spacing-3 fs-500">
-						<a className="menu-item1" onClick ={toggleLogin}><span className="num">03</span><i className="fa-solid fa-right-to-bracket"></i></a>
+						<a className="menu-item1" onClick ={toggleIsWeatherOpen }><span className="num">02</span>Weather<i className="fa-solid fa-cloud-sun-rain"></i></a>
+					</li>
+
+					<li className="px-3 ff-sans-cond letter-spacing-3 fs-500">
+						<a className="menu-item1" onClick ={toggleIsModalOpen}><span className="num">03</span><i className="fa-solid fa-right-to-bracket"></i></a>
 					</li>
 					
 					<Link to="/createpost">
@@ -71,7 +150,7 @@ export const Navbar = () => {
 					
 					<div className="select-menu">
 						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-500">
-								<a className="select-btn" onClick ={toggleMenu} href="#"><span className="num-btn">05</span>My Stuff<i class="px-5 fa-solid fa-chevron-down"></i></a>
+								<a className="select-btn" onClick ={toggleMenu} href="#"><span className="num-btn">05</span>My Stuff<i className="px-5 fa-solid fa-chevron-down"></i></a>
 									{shownMenu && (
 									<ul className="dropdown">
 										<Link className="abc" to="/myprofile">
@@ -90,58 +169,55 @@ export const Navbar = () => {
 									)}
 						</li>			
 					</div>	
-				</ul>		
-					<div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div className="modal-dialog">
-							<div className="modal-content p-0 rounded-bottom">
-								<div className="modal-header p-0">
-									<img className="back-wheather w-100 rounded-top" style={{height:100, objectFit:"cover"}} src={cloudy}/>
-									<h5 className="modal-title fs-4 fw-semibold ps-3 position-absolute ff-sans-normal" style={{color:"black"}} id="exampleModalLabel">Search Wheather</h5>
-									<button className="btn-close" style={{color:"white", opacity:1}} type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-								</div>
-								<div className="modal-body">
-									<div className="mb-3">
-										<label for="textArea1" className="form-label fw-semibold ff-sans-normal">City:</label>
-										<textarea className="form-control ff-sans-normal" id="textArea1" placeholder="Search for your city here" rows="2"></textarea>
-									</div>
-									<div>
-										<button type="button" className="btn btn-info"><i className="fa-solid fa-location-dot"></i></button> 
-									</div>
-								</div>
-								<div className="modal-footer ff-sans-normal">
-									<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-									<button type="button" className="btn btn-success">Load</button>
-								</div>              
-							</div>
-						</div>
-					</div>	
-					
-					{/*<div className="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModal1Label" aria-hidden="true">
-						<div className="modal-dialog">
-							<div className="modal-content">
-								<div className="modal-header">
-									<h5 className="modal-title fs-4 fw-semibold ff-sans-normal" style={{color:"black"}} id="exampleModal1Label">Login</h5>
-									<button className="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-								</div>
-								<form className="ms-2 me-2 ff-sans-normal">
-									<div className="mb-3">
-										<label for="exampleInputEmail1" className="form-label">Email ID:</label>
-										<input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-									</div>
-									<div className="mb-3">
-										<label for="exampleInputPassword1" className="form-label">Password:</label>
-										<input type="password" className="form-control" id="exampleInputPassword1"/>
-									</div>
-									<div className="modal-footer">
-										<button type="submit" className="btn text-white btn-primary mb-2">Submit</button>
-										
-									</div>
-								</form>	           
-							</div>
-						</div>
-					</div>	*/}
+				</ul>				
 			</div>
 			
+			{(isWeather) && (
+			<div className="wrapper-weather" >
+				
+				<span className="icon-close-wt" onClick={toggleIsWeatherOpen}><i className="fa-solid fa-xmark" ></i></span>
+				<div className="weather-container">
+					<div className="search-box"> 
+						<input 
+							type="text"
+							className="search-bar"
+							placeholder="Search..."
+							defaultValue={city}
+							onChange={event => setCity(event.target.value)}	
+						/>
+						<button><i	className="fa-solid fa-magnifying-glass" 
+									type="submit" 
+									onClick={checkCity}>
+								</i>
+						</button>
+					</div>
+					
+					<div className="location-box">
+						<div className="location">{city}</div>
+						<div className="date">{dateBuilder(new Date())}</div>	
+					</div>
+					<div className="weather-box">
+						
+						<div className="temp">
+							{temperature !==""? `${temperature}ºC`:""}
+						</div>
+						<div className="description">{description}</div>
+						{icon !==""?<img className="symbolString" src={`https://openweathermap.org/img/wn/${icon}@2x.png`}/>:""} 
+						<div className="wind">
+							
+							{wind !==""? `${wind} km/h`:""}
+						</div>
+							
+					</div>
+				</div>
+				
+			
+			</div>
+				)}
+
+
+
+
 				<div>
 					<img 
 						src={hambtn} 
@@ -149,11 +225,11 @@ export const Navbar = () => {
 						className="hamburger-btn"
 					/>
 				</div>
-				
-				{showLoginCard && (
+				{/* login form */}
+				{( isModalOpen && isLoginVisible) && (
 				<div className="wrapper ff-sans-normal" >
-					<span className="icon-close" onClick ={toggleLogin}><i className="fa-solid fa-xmark" ></i></span>
-					<div className="form-box login">
+					<span className="icon-close" onClick={toggleIsModalOpen}><i className="fa-solid fa-xmark" ></i></span>
+					<div className="form-box-login">
 						<div className="title-login">
 							<span className="iconUser"><i className="fa-regular fa-user"></i></span>
 							<h2>Login</h2>
@@ -173,61 +249,68 @@ export const Navbar = () => {
 								<label><input type="checkbox"/>Remember me</label>
 								<a href="#">I agree to the terms & conditions</a>
 							</div>
-							<button type="submit" className="btn-submit">Login</button>
+							
+							<div className="btn-login-parent">
+								<button type="submit" className="btn-submit">Login</button>
+							</div>
+							
+
 							<div className="login-register">
 								<p>Don't have an account? 
-								
-									<a href="#" className="register-link" onClick ={toggleRegister}>Register</a>
-								
-								</p>	
-							</div>
-						</form>
-					</div>
-					{showRegisterCard && (
-					<div className="form-box register">
-						<div className="title-login">
-							<span className="iconRegist"><i class="fa-regular fa-id-card"></i></span>
-							<h2>Registration</h2>
-						</div>
-						<form action="#">
-							<div className="input-box">
-								<span className="iconlog"><i class="fa-solid fa-user"></i></span>
-								<input type="text" required/>
-								<label>Username:</label>
-							</div>
-							<div className="input-box">
-								<span className="iconlog"><i class="fa-solid fa-envelope"></i></span>
-								<input type="email" required/>
-								<label>Email ID:</label>
-							</div>
-							<div className="input-box">
-								<span className="iconlog"><i className="fa-solid fa-lock"></i></span>
-								<input type="password" required />
-								<label>Password</label>
-							</div>
-							<div className="remember-forgot">
-								<label><input type="checkbox"/>I agree to the terms & conditions</label>
-								
-							</div>
-							<button type="submit" className="btn-submit">Register</button>
-							<div className="login-register">
-								<p>Already have an account? 
-								
-									<a href="#" className="login-link" onClick ={toggleRegister}>Login</a>
+									<a href="#" className="register-link" onClick={toggleIsVisibleLogin}>Register</a>
 								
 								</p>	
 							</div>
 						</form>
 					</div>
-					)}
-
 				</div>
-				)}
-
-
-
-
-
+				)}		
+			
+			{/* Register form */}
+				{(isModalOpen && !isLoginVisible) && (
+					<div className="wrapper ff-sans-normal" >
+					<span className="icon-close" onClick={toggleIsModalOpen}><i className="fa-solid fa-xmark" ></i></span>
+						<div className="form-box-register">
+							<div className="title-login mt-4">
+								<span className="iconRegist"><i className="fa-regular fa-id-card"></i></span>
+								<h2>Registration</h2>
+							</div>
+							<form action="#">
+								<div className="input-box">
+									<span className="iconlog"><i className="fa-solid fa-user userGraph"></i></span>
+									<input type="text" required/>
+									<label>Username:</label>
+								</div>
+								<div className="input-box">
+									<span className="iconlog"><i className="fa-solid fa-envelope"></i></span>
+									<input type="email" required/>
+									<label>Email ID:</label>
+								</div>
+								<div className="input-box">
+									<span className="iconlog"><i className="fa-solid fa-lock"></i></span>
+									<input type="password" required />
+									<label>Password</label>
+								</div>
+								<div className="remember-forgot">
+									<label><input type="checkbox"/>I agree to the terms & conditions</label>
+									
+								</div>
+								
+								<div className="btn-register-parent">
+									<button type="submit" className="btn-submit">Register</button>
+								</div>
+								<div className="login-register">
+									<p>Already have an account? 
+									
+										<a href="#" className="login-link" onClick ={toggleIsVisibleLogin}>Login</a>
+									
+									</p>	
+								</div>
+							</form>
+						</div>
+					</div>
+					)
+				}
 		</header>
 	);
 };
