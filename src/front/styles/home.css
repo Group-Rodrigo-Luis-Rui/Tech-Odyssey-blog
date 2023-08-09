@@ -5,3 +5,253 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+.background{
+    padding-top: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;}
+
+.card{
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    backdrop-filter: blur(4.8px);
+    -webkit-backdrop-filter: blur(4.8px);
+    color: rgb(255, 255, 255);
+    height: 440px;
+}
+.cardmiddle{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-position: center center;
+  color: rgba(0, 0, 0, 0.397); 
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  backdrop-filter: blur(4.8px);
+  -webkit-backdrop-filter: blur(4.8px);
+  color: rgb(255, 255, 255);
+  height: 200px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cardtitle{
+  display: flex;
+  justify-content: start;
+  padding-left: 50px;
+  margin-top: 100px;
+  box-shadow: rgba(255, 255, 255, 0.103)  -5px 5px, rgba(255, 255, 255, 0.11) -10px 10px, rgba(255, 255, 255, 0.062) -15px 15px, rgba(255, 255, 255, 0.178) -20px 20px, rgba(255, 255, 255, 0.13) -25px 25px;
+}
+
+.card img{
+  height: 300px;
+}
+.img img{
+  transition:  opacity .3s ease;
+}
+.img:hover img{
+  opacity: 1;
+}
+figcaption{
+  opacity: 0;
+  background-color: rgba(0,0,0,0.6);
+  transition: opacity .3s ease;
+  align-items: center;
+}
+.img:hover figcaption{
+  opacity: 1;
+}
+.fig{
+  border-radius: 10px;
+  width: 350px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.card2{
+    width: 700px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.219);
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 20px 70px 4px;
+    backdrop-filter: blur(4.8px);
+    -webkit-backdrop-filter: blur(4.8px);
+    color: white;
+    display: flex;
+    white-space: normal;
+    position: relative;
+    margin-left: 10px;
+}
+.card2 img{
+    height: 300px;
+    width: 350px; 
+    margin-left: -12px;
+    border-radius: 16px;
+}
+.font{
+  position: absolute;
+  top: 10px;
+  left: 5px;
+}
+.font1{
+  position: absolute;
+  top: 60px;
+  left: 5px;
+}
+.font2{
+  position: absolute;
+  top: 10px;
+  left: 300px;
+}
+.readmore{
+  position: absolute;
+  top: 240px;
+  left: 570px;
+}
+
+.text{
+  overflow: auto;
+}
+
+.scrolling-container {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin-top: 10px; 
+    height: 400px;
+  }
+  .scrolling-container::-webkit-scrollbar-thumb {
+    background-color: #00021600;
+    border-radius: 5px; 
+    box-shadow: rgba(45, 35, 66, 0) 0 4px 8px; 
+  }
+  .scrolling-container::-webkit-scrollbar {
+    width: 10px;
+  }
+  .card-body img{
+    border-radius: 15px;
+  }
+  .btn1card{
+    margin-top: -65px;
+  }
+.btn {
+  align-items: center;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 10px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.btn:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.btn:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+.btncard2{
+  width: 100px;
+}
+#favbtn{
+  margin-bottom: 20px;
+}
+
+.scrolling-container {
+  position: relative;
+  overflow: hidden; 
+}
+
+.scroll-control-prev,
+.scroll-control-next {
+  position: absolute;
+  top: 41.5%;
+  z-index: 1; 
+  padding: 8px 12px;
+  color: #fff;
+  background-color: rgba(1, 0, 87, 0.5); 
+  border: none;
+  outline: none;
+  cursor: pointer; 
+  transition: background-color 0.5s; 
+  width: 60px;
+  height: 320px;
+  border-radius: 15px;
+}
+
+.scroll-control-prev {
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.scroll-control-next {
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.scroll-control-prev:hover,
+.scroll-control-next:hover {
+  background-color: rgba(1, 0, 77, 0.8);
+  transition: background-color 0.5s;
+  width: 200px;
+  transition: .5s ease;
+}
+.sliding-card {
+  transition: transform 0.7s ease;
+}
+
+
+#carouselExampleControls{
+  width: 50%;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.carousel-item{
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+@media only screen and (max-width:600px) {
+  .card-carousel-header{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .card-top{
+    width: 100%;
+  }
+  #carouselExampleControls{
+  width: 100%;
+  }
+}
