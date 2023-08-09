@@ -4,7 +4,7 @@ import "../../styles/navbar.css";
 import logo from "../../img/Tech-Odyssey-Logo.png";
 import clsbtn from "../../img/power-button.png";
 import hambtn from "../../img/hamburger-icon.png";
-import Wheather from "../../img/Wheather_image1_api.png";
+
 
 
 export const Navbar = () => {
@@ -49,25 +49,17 @@ export const Navbar = () => {
 		const [icon, setIcon] = useState("");
 		const [country, setCountry] = useState("");
 		
-		// useEffect(()=>{]
-		// 	getWeatherFromApi();
-		// },[]);
- 
-		// https://api.openweathermap.org/data/2.5/weather?q=Madrid&appid=39486e411db3bb85cdcbb9d6fd2b3970&units=metric
-		const getWeatherFromApi = () => {
-			
-				fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.KEY}&units=metric`)
-
+		const getWeatherFromApi = () => {	
+			fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.KEY}&units=metric`)
 				.then(response => {
 					if (!response.ok) {
-						throw Error (response.statusText);
+					throw Error (response.statusText);
 					}
-					//Read the response as json
+				//Read the response as json
 					return response.json();
-				   })
-				
-				.then(responseAsJson => {
-					
+				})
+							
+				.then(responseAsJson => {				
 					setTemperature(responseAsJson.main.temp);
 					setDescription(responseAsJson.weather[0].description)	
 					setWind(responseAsJson.wind.speed);
@@ -77,11 +69,8 @@ export const Navbar = () => {
 
 				.catch(error => {
 					console.error("Looks like there was a problem: \n", error);
-			   });
-			
+				});		
 		}
-
-		
 
 		// check if the location was typed
 		const checkCity = () => {
@@ -91,7 +80,7 @@ export const Navbar = () => {
 				getWeatherFromApi();  
 			}
 		}
-
+		// Creating a date field
 		const dateBuilder = (d) => {
 			let months = ["January", "February", "March", "April", "May", "June", "July", "August",
 			"September", "October", "November", "December"];
@@ -104,7 +93,6 @@ export const Navbar = () => {
 
 			return `${day} ${date} ${month} ${year}`
 		}
-
 
 	return (
 		<header className="metallic-element">
@@ -181,11 +169,11 @@ export const Navbar = () => {
 						<input 
 							type="text"
 							className="search-bar"
-							placeholder="Search..."
+							placeholder="Search City..."
 							defaultValue={city}
 							onChange={event => setCity(event.target.value)}	
 						/>
-						<button><i	className="fa-solid fa-magnifying-glass" 
+						<button className="search-icon"><i	className="fa-solid fa-magnifying-glass" 
 									type="submit" 
 									onClick={checkCity}>
 								</i>
@@ -193,7 +181,7 @@ export const Navbar = () => {
 					</div>
 					
 					<div className="location-box">
-						<div className="location">{city}</div>
+						{country !==""?<div className="location">{city}<span className="px-2">{country}</span></div>:""}
 						<div className="date">{dateBuilder(new Date())}</div>	
 					</div>
 					<div className="weather-box">
