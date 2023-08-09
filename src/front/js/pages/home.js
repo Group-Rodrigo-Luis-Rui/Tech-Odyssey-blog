@@ -16,6 +16,9 @@ export const Home = () => {
 	
 	const Title1 = ["C","o","m","p","u","t","e","r","s"];
 	const Title2 = ["M","o","v","i","e","-","T","e","c","h"];
+	const Title3 = ["A","I","-","T","e","c","h","n","o","l","o","g","y"];
+	const Title4 = ["E","V","-","M","o","b","i","l","i","t","y"];
+	const Title5 = ["O","t","h","e","r","-","S","t","u","f","f"];
 
 	const cards = [
 		"/card1",
@@ -27,27 +30,80 @@ export const Home = () => {
 		"/card7",
 		"/card8",
 	];
+	const cards2 = [
+		"/card1",
+		"/card2",
+		"/card3",
+		"/card4",
+		"/card5",
+		"/card6",
+		"/card7",
+		"/card8",
+	];
+	const cards3 = [
+		"/card1",
+		"/card2",
+		"/card3",
+		"/card4",
+		"/card5",
+		"/card6",
+		"/card7",
+		"/card8",
+	];
+	const cards4 = [
+		"/card1",
+		"/card2",
+		"/card3",
+		"/card4",
+		"/card5",
+		"/card6",
+		"/card7",
+		"/card8",
+	];
+	const cards5 = [
+		"/card1",
+		"/card2",
+		"/card3",
+		"/card4",
+		"/card5",
+		"/card6",
+		"/card7",
+		"/card8",
+	];
 	const [scrollPosition, setScrollPosition] = useState(0);
-	const [scrollPositions1, setScrollPositions1] = useState(
-		Array(cards.length).fill(0)
-	);
-	const [scrollPositions2, setScrollPositions2] = useState(
-		Array(cards.length).fill(0)
-	);
+	const [scrollPositions2, setScrollPositions2] = useState(0);
+	const [scrollPositions3, setScrollPositions3] = useState(0);
+	const [scrollPositions4, setScrollPositions4] = useState(0);
+	const [scrollPositions5, setScrollPositions5] = useState(0);
 
 	  // Function to scroll the cards to the left
-	  const scrollLeft = () => {
-		if (scrollPosition > 0) {
-		setScrollPosition((prevPosition) => prevPosition - 90);
-	  }
-	  console.log("this is the log of the scroll left: "+scrollPosition);
-	};
+	const scrollLeft = (className) => {
+        if (className === "container1" && scrollPosition > 0) {
+            setScrollPosition(prevPosition => prevPosition - 90);
+        } else if (className === "container2" && scrollPositions2 > 0) {
+            setScrollPositions2(prevPosition => prevPosition - 90);
+        } else if (className === "container3" && scrollPositions3 > 0) {
+            setScrollPositions3(prevPosition => prevPosition - 90);
+        } else if (className === "container4" && scrollPositions4 > 0) {
+            setScrollPositions4(prevPosition => prevPosition - 90);
+        } else if (className === "container5" && scrollPositions5 > 0) {
+            setScrollPositions5(prevPosition => prevPosition - 90);
+        }
+    };
 	
 	  // Function to scroll the cards to the right
-	  const scrollRight = () => {
-		if(scrollPosition < (cards.length * 45.5)){
-			setScrollPosition((prevPosition) => prevPosition + 90);
-		}
+	const scrollRight = (className) => {
+		if (className === "container1" && scrollPosition < (cards.length * 45.5)) {
+            setScrollPosition(prevPosition => prevPosition + 90);
+        } else if (className === "container2" && scrollPositions2 < (cards.length * 45.5)) {
+            setScrollPositions2(prevPosition => prevPosition + 90);
+        } else if (className === "container3" && scrollPositions3 < (cards.length * 45.5)) {
+            setScrollPositions3(prevPosition => prevPosition + 90);
+        } else if (className === "container4" && scrollPositions4 < (cards.length * 45.5)) {
+            setScrollPositions4(prevPosition => prevPosition + 90);
+        } else if (className === "container5" && scrollPositions5 < (cards.length * 45.5)) {
+            setScrollPositions5(prevPosition => prevPosition + 90);
+        }
 		console.log("this is the log of the scroll right: "+scrollPosition);
 	  };
 
@@ -60,7 +116,7 @@ export const Home = () => {
 							key={index}
 							type="effect3D"
 							duration="1100ms"
-							delay={index * 100 + "ms"} // Corrected delay syntax
+							delay={index * 100 + "ms"} 
 							direction="alternate-reverse"
 							timing="ease"
 							iteration="infinite"
@@ -69,7 +125,7 @@ export const Home = () => {
 							{letter}
 						</MovingComponent>
 					))}
-		  		</div>
+				</div>
 				<div className="card-carousel-header d-flex">
 					<div class="card col-6 card-top me-2">
 						<div class="card-body">
@@ -125,37 +181,37 @@ export const Home = () => {
 						</div>
 					</div>
 					<div className="container-fluid container-cardmiddle">
-						<div className="cardmiddle" style={{ backgroundImage: 'url("https://imageio.forbes.com/specials-images/imageserve/61d52d4e3a76ed81ac034ea8/0x0.jpg?format=jpg&width=1200")' }}>
+						<div className="cardmiddle">
 							<h5>Here you will find</h5>
 							Everything you must to know about tech
 							<p>And much more...</p>
 						</div>
 					</div>
 					<div className="cardtitle mt-5">
-					{Title1.map((Title1, index) => (
-						<MovingComponent
-							key={index}
-							type="effect3D"
-							duration="1100ms"
-							delay={index * 100 + "ms"}
-							direction="alternate-reverse"
-							timing="ease"
-							iteration="infinite"
-							fillMode="both"
-						>
-							{Title1}
-						</MovingComponent>
-					))}
+						{Title1.map((Title1, index) => (
+							<MovingComponent
+								key={index}
+								type="effect3D"
+								duration="1100ms"
+								delay={index * 100 + "ms"}
+								direction="alternate-reverse"
+								timing="ease"
+								iteration="infinite"
+								fillMode="both"
+							>
+								{Title1}
+							</MovingComponent>
+						))}
 					</div>
-				{/* scrolling cards*/}
-				<div className="top-scrolling-container">
-					<div className="viewport">
-						<div className="scrolling-container mt-1"  
-							style={{transform: `translateX(${-scrollPosition}px)`}}>										
-							{cards.map((src) => (
+						{/* scrolling cards*/}
+						<div className="scrolling-container container1 mt-1"  >										
+							{cards.map((src, index) => (
 								<div
 									key={src}
 									className="mt-3 me-3 sliding-card"
+									style={{
+										transform: `translateX(${(index - scrollPosition) * 10}px)`,
+									}}
 								>
 									<div className="card2 row">
 										<div className="img col-6">
@@ -194,14 +250,12 @@ export const Home = () => {
 									</div>
 								</div>					
 							))}	
-						</div>
-					</div>
 					{/* Scroll buttons */}
-					<button className="scroll-control-prev" type="button" onClick={scrollLeft}>
+					<button className="scroll-control-prev" type="button" onClick={()=>scrollLeft('container1')}>
 						<span className="carousel-control-prev-icon" aria-hidden="true"></span>
 						<span className="visually-hidden">Previous</span>
 					</button>
-					<button className="scroll-control-next" type="button" onClick={scrollRight}>
+					<button className="scroll-control-next" type="button" onClick={()=>scrollRight('container1')}>
 						<span className="carousel-control-next-icon" aria-hidden="true"></span>
 						<span className="visually-hidden">Next</span>
 					</button>
@@ -221,61 +275,279 @@ export const Home = () => {
 							{Title2}
 						</MovingComponent>
 					))}
-					</div>
+				</div>
 				{/* scrolling cards*/}
-				<div className="scrolling-container mt-1">
-					{cards.map((src, index) => (
-						<div
-							key={src}
-							className="mt-3 me-3 sliding-card"
-							style={{
-								// Calculate the transform based on the scroll position
-								transform: `translateX(${(index - scrollPositions2) * 10}px)`,
-							}}
-						>
-							<div className="card2 row">
-								<div className="img col-6">
-									<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
-									<figcaption className="fig position-absolute bottom-0 start-0 p-3">
-										<p>something</p>
-									</figcaption>
-									{/* fontAwsome icons (like, heart and favorites)*/}
-									<div className="font">
-										<a href="#" className=" col-2 mt-2 ms-2 mt-1">
-											<i class="me-0 fa solid fa-thumbs-up"></i>
-										</a>
+				<div className="scrolling-container container3 mt-1"  >										
+							{cards3.map((src, index) => (
+								<div
+									key={src}
+									className="mt-3 me-3 sliding-card"
+									style={{
+										transform: `translateX(${(index - scrollPositions3) * 10}px)`,
+									}}
+								>
+									<div className="card2 row">
+										<div className="img col-6">
+											<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
+											<figcaption className="fig position-absolute bottom-0 start-0 p-3">
+												<p>something</p>
+											</figcaption>
+											{/* fontAwsome icons (like, heart and favorites)*/}
+											<div className="font">
+												<a href="#" className=" col-2 mt-2 ms-2 mt-1">
+													<i class="me-0 fa solid fa-thumbs-up"></i>
+												</a>
+											</div>
+											<div className="font1">
+												<a href="#" className="col-2 mt-2 ms-2 mt-1">
+													<i class="me-0 fa-solid fa-heart"></i>
+												</a>
+											</div>
+											<div className="font2">
+												<a href="#" className="col-2 mt-2 ms-2 mt-1">
+													<i class="me-0 fa duotone fa-bookmark"></i>
+												</a>
+											</div>
+										</div>
+										<div className="col-6 text">
+											<h5 className="card-title">Card title</h5>
+											<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+											<div className="readmore">
+												<Link to={"/single"}>
+													<button className="btn col ">
+														Read More
+													</button>
+												</Link>
+											</div>
+										</div>
 									</div>
-									<div className="font1">
-										<a href="#" className="col-2 mt-2 ms-2 mt-1">
-											<i class="me-0 fa-solid fa-heart"></i>
-										</a>
-									</div>
-									<div className="font2">
-										<a href="#" className="col-2 mt-2 ms-2 mt-1">
-										<i class="me-0 fa duotone fa-bookmark"></i>
-										</a>
-									</div>
-								</div>
-								<div className="col-6 text">
-									<h5 className="card-title">Card title</h5>
-									<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-									<div className="readmore">
-										<Link to={"/single"}>
-											<button className="btn col ">
-												Read More
-											</button>
-										</Link>
-									</div>
-								</div>
-							</div>
-						</div>					
-					))}	
+								</div>					
+							))}	
 					{/* Scroll buttons */}
-					<button className="scroll-control-prev" type="button" onClick={() => scrollLeft(0, setScrollPositions2)}>
+					<button className="scroll-control-prev" type="button" onClick={()=>scrollLeft('container3')}>
 						<span className="carousel-control-prev-icon" aria-hidden="true"></span>
 						<span className="visually-hidden">Previous</span>
 					</button>
-					<button className="scroll-control-next" type="button" onClick={() => scrollRight(0, setScrollPositions2)}>
+					<button className="scroll-control-next" type="button" onClick={()=>scrollRight('container3')}>
+						<span className="carousel-control-next-icon" aria-hidden="true"></span>
+						<span className="visually-hidden">Next</span>
+					</button>
+				</div>
+				<div className="cardtitle">
+					{Title3.map((Title3, index) => (
+						<MovingComponent
+							key={index}
+							type="effect3D"
+							duration="1100ms"
+							delay={index * 100 + "ms"}
+							direction="alternate-reverse"
+							timing="ease"
+							iteration="infinite"
+							fillMode="both"
+						>
+							{Title3}
+						</MovingComponent>
+					))}
+				</div>
+				{/* scrolling cards*/}
+				<div className="scrolling-container container4 mt-1"  >										
+							{cards4.map((src, index) => (
+								<div
+									key={src}
+									className="mt-3 me-3 sliding-card"
+									style={{
+										transform: `translateX(${(index - scrollPositions4) * 10}px)`,
+									}}
+								>
+									<div className="card2 row">
+										<div className="img col-6">
+											<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
+											<figcaption className="fig position-absolute bottom-0 start-0 p-3">
+												<p>something</p>
+											</figcaption>
+											{/* fontAwsome icons (like, heart and favorites)*/}
+											<div className="font">
+												<a href="#" className=" col-2 mt-2 ms-2 mt-1">
+													<i class="me-0 fa solid fa-thumbs-up"></i>
+												</a>
+											</div>
+											<div className="font1">
+												<a href="#" className="col-2 mt-2 ms-2 mt-1">
+													<i class="me-0 fa-solid fa-heart"></i>
+												</a>
+											</div>
+											<div className="font2">
+												<a href="#" className="col-2 mt-2 ms-2 mt-1">
+													<i class="me-0 fa duotone fa-bookmark"></i>
+												</a>
+											</div>
+										</div>
+										<div className="col-6 text">
+											<h5 className="card-title">Card title</h5>
+											<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+											<div className="readmore">
+												<Link to={"/single"}>
+													<button className="btn col ">
+														Read More
+													</button>
+												</Link>
+											</div>
+										</div>
+									</div>
+								</div>					
+							))}	
+					{/* Scroll buttons */}
+					<button className="scroll-control-prev" type="button" onClick={()=>scrollLeft('container4')}>
+						<span className="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span className="visually-hidden">Previous</span>
+					</button>
+					<button className="scroll-control-next" type="button" onClick={()=>scrollRight('container4')}>
+						<span className="carousel-control-next-icon" aria-hidden="true"></span>
+						<span className="visually-hidden">Next</span>
+					</button>
+				</div>
+				<div className="cardtitle">
+					{Title4.map((Title4, index) => (
+						<MovingComponent
+							key={index}
+							type="effect3D"
+							duration="1100ms"
+							delay={index * 100 + "ms"}
+							direction="alternate-reverse"
+							timing="ease"
+							iteration="infinite"
+							fillMode="both"
+						>
+							{Title4}
+						</MovingComponent>
+					))}
+				</div>
+				{/* scrolling cards*/}
+				<div className="scrolling-container container2 mt-1"  >										
+							{cards5.map((src, index) => (
+								<div
+									key={src}
+									className="mt-3 me-3 sliding-card"
+									style={{
+										transform: `translateX(${(index - scrollPositions5) * 10}px)`,
+									}}
+								>
+									<div className="card2 row">
+										<div className="img col-6">
+											<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
+											<figcaption className="fig position-absolute bottom-0 start-0 p-3">
+												<p>something</p>
+											</figcaption>
+											{/* fontAwsome icons (like, heart and favorites)*/}
+											<div className="font">
+												<a href="#" className=" col-2 mt-2 ms-2 mt-1">
+													<i class="me-0 fa solid fa-thumbs-up"></i>
+												</a>
+											</div>
+											<div className="font1">
+												<a href="#" className="col-2 mt-2 ms-2 mt-1">
+													<i class="me-0 fa-solid fa-heart"></i>
+												</a>
+											</div>
+											<div className="font2">
+												<a href="#" className="col-2 mt-2 ms-2 mt-1">
+													<i class="me-0 fa duotone fa-bookmark"></i>
+												</a>
+											</div>
+										</div>
+										<div className="col-6 text">
+											<h5 className="card-title">Card title</h5>
+											<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+											<div className="readmore">
+												<Link to={"/single"}>
+													<button className="btn col ">
+														Read More
+													</button>
+												</Link>
+											</div>
+										</div>
+									</div>
+								</div>					
+							))}	
+					{/* Scroll buttons */}
+					<button className="scroll-control-prev" type="button" onClick={()=>scrollLeft('container5')}>
+						<span className="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span className="visually-hidden">Previous</span>
+					</button>
+					<button className="scroll-control-next" type="button" onClick={()=>scrollRight('container5')}>
+						<span className="carousel-control-next-icon" aria-hidden="true"></span>
+						<span className="visually-hidden">Next</span>
+					</button>
+				</div>
+				<div className="cardtitle">
+					{Title5.map((Title5, index) => (
+						<MovingComponent
+							key={index}
+							type="effect3D"
+							duration="1100ms"
+							delay={index * 100 + "ms"}
+							direction="alternate-reverse"
+							timing="ease"
+							iteration="infinite"
+							fillMode="both"
+						>
+							{Title5}
+						</MovingComponent>
+					))}
+				</div>
+				{/* scrolling cards*/}
+				<div className="scrolling-container container2 mt-1"  >										
+							{cards2.map((src, index) => (
+								<div
+									key={src}
+									className="mt-3 me-3 sliding-card"
+									style={{
+										transform: `translateX(${(index - scrollPositions2) * 10}px)`,
+									}}
+								>
+									<div className="card2 row">
+										<div className="img col-6">
+											<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
+											<figcaption className="fig position-absolute bottom-0 start-0 p-3">
+												<p>something</p>
+											</figcaption>
+											{/* fontAwsome icons (like, heart and favorites)*/}
+											<div className="font">
+												<a href="#" className=" col-2 mt-2 ms-2 mt-1">
+													<i class="me-0 fa solid fa-thumbs-up"></i>
+												</a>
+											</div>
+											<div className="font1">
+												<a href="#" className="col-2 mt-2 ms-2 mt-1">
+													<i class="me-0 fa-solid fa-heart"></i>
+												</a>
+											</div>
+											<div className="font2">
+												<a href="#" className="col-2 mt-2 ms-2 mt-1">
+													<i class="me-0 fa duotone fa-bookmark"></i>
+												</a>
+											</div>
+										</div>
+										<div className="col-6 text">
+											<h5 className="card-title">Card title</h5>
+											<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+											<div className="readmore">
+												<Link to={"/single"}>
+													<button className="btn col ">
+														Read More
+													</button>
+												</Link>
+											</div>
+										</div>
+									</div>
+								</div>					
+							))}	
+					{/* Scroll buttons */}
+					<button className="scroll-control-prev" type="button" onClick={()=>scrollLeft('container2')}>
+						<span className="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span className="visually-hidden">Previous</span>
+					</button>
+					<button className="scroll-control-next" type="button" onClick={()=>scrollRight('container2')}>
 						<span className="carousel-control-next-icon" aria-hidden="true"></span>
 						<span className="visually-hidden">Next</span>
 					</button>
