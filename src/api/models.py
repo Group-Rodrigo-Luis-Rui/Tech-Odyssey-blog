@@ -8,6 +8,7 @@ db = SQLAlchemy()
 class User(db.Model):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
@@ -16,7 +17,7 @@ class User(db.Model):
     comments = db.relationship("Comment", back_populates="user")
 
     myreading = db.relationship('MyReading', backref='user', lazy=True, uselist=False)
-    # myreadings = db.relationship("MyReading", back_populates="user")
+
 
     def __repr__(self):
         return '<User %r>' % self.email
@@ -24,9 +25,10 @@ class User(db.Model):
     def serialize(self):
         return {
             "id": self.id,
+            "name": self.name,
             "email": self.email,
-            "posts": self.posts,
-            "comments": self.comments
+            # "posts": self.posts.serialize(),
+            # "comments": self.comments.serialize()
             # do not serialize the password, its a security breach
         }
     
@@ -64,13 +66,13 @@ class Post(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "category": self.category,
+            "category": self.category.name,
             "title": self.title,
             "subtitle": self.subtitle,
             "abstract": self.abstract,
             "main_text": self.main_text,
             "date_created": self.date_created,
-            "comments": self.comments
+            "comments": [comments.serialize() for comments in self.comments]
         }
     
 
@@ -91,7 +93,7 @@ class Comment(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "text": self.text.serialize(),
+            "text": self.text
         }
 
 
@@ -109,5 +111,6 @@ class MyReading(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "posts": self.posts,
+            "posts": [post.serialize() for post in self.posts],
+            "user": self.user_id
         }

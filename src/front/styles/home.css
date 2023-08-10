@@ -6,16 +6,35 @@
     on that page only (the ones not reused in other pages).
 */
 .background{
-    padding-top: 10px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center center;}
+  padding-top: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+}
+
+.letters-card{
+  width: 700px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.795);
+  border-radius: 16px;
+  border: none;
+  box-shadow: rgba(255, 255, 255, 0.8) 0 2px 4px,rgba(10, 0, 53, 0.3) 0 7px 13px -3px,#000038 0 -3px 0 inset;
+  backdrop-filter: blur(4.8px);
+  -webkit-backdrop-filter: blur(4.8px);
+  color: rgba(158, 134, 0, 0.719);
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  padding-bottom: 10px;
+}
 
 .card{
-    background: rgba(255, 255, 255, 0.09);
+    background: rgba(1, 0, 37, 0.8);
     border-radius: 16px;
-    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
     backdrop-filter: blur(4.8px);
     -webkit-backdrop-filter: blur(4.8px);
     color: rgb(255, 255, 255);
@@ -25,25 +44,46 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: center;
-  background-position: center center;
-  color: rgba(0, 0, 0, 0.397); 
+  background-position: center left;
+  background: rgba(1, 0, 37, 0.925);
   border-radius: 16px;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-  backdrop-filter: blur(4.8px);
-  -webkit-backdrop-filter: blur(4.8px);
+  border: 1px solid rgb(255, 255, 255);
+  box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
   color: rgb(255, 255, 255);
   height: 200px;
   margin-top: 50px;
   display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-right: 400px;
+}
+.cardmiddle h5{
+  margin: 20px;
+  margin-top: -110px;
+
+}
+.cardmiddle p{
+  padding-top: 120px;
+  
+}
+
+.cardtitle{
+  background: rgba(255, 255, 255, 0.795);
+  border-radius: 16px;
+  border: none;
+  box-shadow: rgba(255, 255, 255, 0.8) 0 2px 4px,rgba(10, 0, 53, 0.3) 0 7px 13px -3px,#000038 0 -3px 0 inset;
+  backdrop-filter: blur(4.8px);
+  -webkit-backdrop-filter: blur(4.8px);
+  color: rgba(190, 162, 0, 0.719);
+  margin-bottom: 50px;
+  display: flex;
   justify-content: center;
   align-items: center;
-}
-.cardtitle{
-  display: flex;
-  justify-content: start;
-  padding-left: 50px;
-  margin-top: 100px;
-  box-shadow: rgba(255, 255, 255, 0.103)  -5px 5px, rgba(255, 255, 255, 0.11) -10px 10px, rgba(255, 255, 255, 0.062) -15px 15px, rgba(255, 255, 255, 0.178) -20px 20px, rgba(255, 255, 255, 0.13) -25px 25px;
+  padding-bottom: 10px;
+  font-size: 30px;
+  height: 60px;
+  width: 200px;
+  margin-bottom: -10px;
 }
 
 .card img{
@@ -75,9 +115,9 @@ figcaption{
 .card2{
     width: 700px;
     height: 300px;
-    background: rgba(255, 255, 255, 0.219);
+    background: rgba(1, 0, 29, 0.8);
     border-radius: 16px;
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 20px 70px 4px;
+    box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
     backdrop-filter: blur(4.8px);
     -webkit-backdrop-filter: blur(4.8px);
     color: white;
@@ -123,6 +163,7 @@ figcaption{
     white-space: nowrap;
     margin-top: 10px; 
     height: 400px;
+    transition: transform 0.3s;
   }
   .scrolling-container::-webkit-scrollbar-thumb {
     background-color: #00021600;
@@ -131,6 +172,13 @@ figcaption{
   }
   .scrolling-container::-webkit-scrollbar {
     width: 10px;
+  }
+  .top-scrolling-container{
+    position: relative;
+  }
+  .viewport{
+    overflow: hidden;
+    width: 100%;
   }
   .card-body img{
     border-radius: 15px;
@@ -144,7 +192,7 @@ figcaption{
   background-color: #FCFCFD;
   border-radius: 10px;
   border-width: 0;
-  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
   box-sizing: border-box;
   color: #36395A;
   cursor: pointer;
@@ -199,15 +247,11 @@ figcaption{
   position: absolute;
   top: 41.5%;
   z-index: 1; 
+  border: none;
   padding: 8px 12px;
   color: #fff;
-  background-color: rgba(1, 0, 87, 0.5); 
-  border: none;
-  outline: none;
-  cursor: pointer; 
-  transition: background-color 0.5s; 
-  width: 60px;
-  height: 320px;
+  background-color: rgba(1, 0, 87, 0.5);
+  box-shadow: rgba(255, 255, 255, 0.25) 0px 13px 27px -5px, rgba(255, 255, 255, 0.3) 0px 8px 16px -8px;  height: 320px;
   border-radius: 15px;
 }
 
@@ -223,7 +267,7 @@ figcaption{
 
 .scroll-control-prev:hover,
 .scroll-control-next:hover {
-  background-color: rgba(1, 0, 77, 0.8);
+  background-color: rgba(1, 0, 41, 0.8);
   transition: background-color 0.5s;
   width: 200px;
   transition: .5s ease;
