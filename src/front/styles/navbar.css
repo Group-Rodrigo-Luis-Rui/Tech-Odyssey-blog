@@ -13,7 +13,7 @@
     --fs-700: 3.5rem;
     --fs-600: 2rem;
     --fs-500: 1.75rem;
-    --fs-400: 1.125rem;
+    --fs-400: 1.5rem;
     --fs-300: 1rem;
     --fs-200: 0.875rem;
 
@@ -65,7 +65,7 @@ header .logo {
 
 header .logo:hover {
     font-weight: 900;
-    color: rgb(42, 158, 204);
+    color: #469DFF;
     transition: 0.9s;
 }
 
@@ -110,7 +110,7 @@ header .navigation .menu-unactive,header .navigation .menu-active{
 }
 
 .num:hover{
-    color:rgb(42, 158, 204);
+    color:#469DFF;
     transition: 0.5s;
 }
 
@@ -120,12 +120,12 @@ header .navigation .menu-unactive,header .navigation .menu-active{
  }
 
  .menu-item a:hover {
-    color:rgb(42, 158, 204);
+    color:#469DFF;
     transition: 0.3s;
  }
 
  .menu-item1:hover {
-    color:rgb(42, 158, 204);
+    color:#469DFF;
     transition: 0.3s;
  }
 
@@ -229,12 +229,12 @@ ul.dropdown{
 }
 
 .num-btn:hover{
-    color:rgb(42, 158, 204);
+    color:#469DFF;
     transition: 0.5s;
 }
 
 
-@media (max-width:1600px) {
+@media (max-width:1320px) {
     header .navigation .menu-unactive{
        display: none;    
     } 
@@ -510,7 +510,7 @@ ul.dropdown{
 /*Modal Weather API */ 
 .wrapper-weather {
     position: absolute;
-    width:30rem;
+    width:auto;
     height:auto;
     top: 50%;
     left: 50%;
