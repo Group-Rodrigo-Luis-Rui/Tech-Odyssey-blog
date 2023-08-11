@@ -9,9 +9,9 @@ import MovingComponent from "../component/movingcomponent";
 
 export const Home = () => {
 
-	fetch('process.env', {
-		method: 'PUT', // or 'POST'
-		body: JSON.stringify(data), // data can be a `string` or  an {object} which comes from somewhere further above in our application
+	fetch(process.env.BACKEND_URL + "/api/posts/category/<string:category", {
+		method: 'GET',
+		body: JSON.stringify(data), 
 		headers:{
 			'Content-Type': 'application/json'
 		}
@@ -233,17 +233,7 @@ export const Home = () => {
 											<figcaption className="fig position-absolute bottom-0 start-0 p-3">
 												<p>something</p>
 											</figcaption>
-											{/* fontAwsome icons (like, heart and favorites)*/}
-											<div className="font">
-												<a href="#" className=" col-2 mt-2 ms-2 mt-1">
-													<i class="me-0 fa solid fa-thumbs-up"></i>
-												</a>
-											</div>
-											<div className="font1">
-												<a href="#" className="col-2 mt-2 ms-2 mt-1">
-													<i class="me-0 fa-solid fa-heart"></i>
-												</a>
-											</div>
+											{/* fontAwsome icons (favorites)*/}
 											<div className="font2">
 												<a href="#" className="col-2 mt-2 ms-2 mt-1">
 													<i class="me-0 fa duotone fa-bookmark"></i>
