@@ -1,0 +1,56 @@
+.backgroundProfile{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  font-family: "Barlow";
+  font-size: large;
+  min-height: 100rem;
+}
+
+.textBackgroundProfile{
+background: rgba(1, 0, 41, 0.534); 
+color: #f1f1f1;
+padding-top: 1rem;
+padding-bottom: 1rem;
+/* min-height: 100rem; */
+}
+.myBoxBackground{
+backdrop-filter: invert(20%);
+padding: 0.3rem;
+padding-bottom: 0.1rem;
+border-radius: 5px;
+}
+.avatarImage{
+height: 10rem;
+padding-right: 3rem;
+}
+
+.emailBox::value{
+color: #ffffff;
+font-size: small;
+}
+.buttonProfileDiv{
+  margin-top: 2em;
+}
+.buttonProfileDiv button:hover{
+  background-color: #469DFF;;
+}
+.iconLink{
+  cursor: pointer;
+}
+.cardContainer{
+  box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+}
+
+@media (max-width: 767px) {
+  .pText{
+    font-size:medium;
+  }
+  .buttonProfileDiv{
+    margin-top: 1em;
+  }
+  .cardTextProfile {
+    display: none;
+  }
+}
