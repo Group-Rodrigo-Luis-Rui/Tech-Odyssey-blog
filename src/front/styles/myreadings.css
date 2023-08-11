@@ -1,0 +1,61 @@
+.backgroundReadings{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    font-family: "Barlow";
+    font-size: large;
+    min-height: 100rem;
+  }
+  
+  .textBackgroundReadings{
+  background: rgba(1, 0, 41, 0.534); 
+  color: #f1f1f1;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  /* min-height: 100rem; */
+  }
+  .myBoxBackgroundReadings{
+  backdrop-filter: invert(20%);
+  padding: 0.3rem;
+  padding-bottom: 0.1rem;
+  border-radius: 5px;
+  }
+  .avatarImageReadings{
+  height: 10rem;
+  padding-right: 3rem;
+  }
+/*   
+  .emailBoxReadings::value{
+  color: #ffffff;
+  font-size: small;
+  } */
+  .buttonProfileDivReadings{
+    margin-top: 2em;
+  }
+  .buttonProfileDivReadings button:hover{
+    background-color: #469DFF;
+  }
+  .iconLinkReadings{
+    cursor: pointer;
+    color: rgb(255, 1, 1);
+  }
+  .iconLinkReadings:hover{
+    color: gray;
+  }
+  .cardContainerReadings{
+    box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  }
+  
+  @media (max-width: 767px) {
+    .pTextReadings{
+      font-size:medium;
+    }
+    .buttonProfileDivReadings{
+      margin-top: 1em;
+    }
+    .cardTextProfileReadings {
+      display: none;
+    }
+  }
+  
