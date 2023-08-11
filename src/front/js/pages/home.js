@@ -119,7 +119,7 @@ export const Home = () => {
             setScrollPositions5(prevPosition => prevPosition + 90);
         }
 		console.log("this is the log of the scroll right: "+scrollPosition);
-	  };
+	};
 
 	return (
 		<div  className="container-fluid background" style={{backgroundImage:'url(' + backgroundurl + ')'}}>
