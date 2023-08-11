@@ -88,38 +88,34 @@ export const Single = props => {
 				</div>
 			</div>
 			<div className="container-card card-single">
-						<h3 className="comments-title">Comments:</h3>
-						<div className="single-comments">
-							(user) <p>some comment</p>
-							<button className="btn me-4" type="button">
-								<i class="fa-regular fa-thumbs-up"></i>
-							</button>
-							<button className="btn" type="button">
-								<i class="fa-regular fa-thumbs-down"></i>
-							</button>
-							<button className="btn ms-4" type="button">
-								<i class="fa-regular fa-comment-dots"> - Reply</i>
-							</button>
-							<div className="reply-comments">
-								(user) <p>The reply comes here</p>
-								<button className="btn-reply me-4" type="button">
-									<i class="fa-regular fa-thumbs-up fa-xs"></i>
-								</button>
-								<button className="btn-reply" type="button">
-									<i class="fa-regular fa-thumbs-down fa-xs"></i>
-								</button>
-								<button className="btn-reply ms-4" type="button">
-								<i class="fa-regular fa-comment-dots fa-xs"> - Reply</i>
-							</button>
-							</div>
-						</div>
-						<div className="single-comments">
-						(user) <p>some other comment</p>
-						</div>
-						<div className="single-comments">
-						(user) <p>some other comment</p>
-						</div>
+				<h3 className="comments-title">Comments:</h3>
+				<div className="single-comments">
+					(user) <p>some comment</p>
+					<button className="btn ms-1" type="button">
+						<i class="fa-regular fa-comment-dots"> - Reply</i>
+					</button>
+					<div className="reply-comments">
+						(user) <p>The reply comes here</p>
+						<button className="btn-reply ms-1" type="button">
+						<i class="fa-regular fa-comment-dots fa-xs"> - Reply</i>
+						</button>
 					</div>
+				</div>
+				<div className="single-comments">
+					(user) <p>some other comment</p>
+					</div>
+					<div className="single-comments">
+					(user) <p>some other comment</p>
+				</div>
+				<div className="mb-3">
+					<label for="exampleFormControlTextarea1" class="form-label">Make a comment</label>
+					<textarea className="form-control" id="exampleFormControlTextarea1" placeholder="Add a comment"
+					rows="3"></textarea>
+					<button className="btn ms-1 mt-3" type="button">
+						Comment
+					</button>
+				</div>
+			</div>
 		</div>
 	);
 };
