@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.css";
 import logo from "../../img/Tech-Odyssey-Logo.png";
 import clsbtn from "../../img/power-button.png";
 import hambtn from "../../img/hamburger-icon.png";
-
-
+import { Context } from "../store/appContext";
+import {useNavigate} from "react-router-dom";
 
 export const Navbar = () => {
-		
+		const {store, actions} =  useContext(Context);
+		const navigate = useNavigate();
+
 		const [closeBtn, setCloseBtn] = useState(false);
 		const handleToggleMenu = () => {
 			setCloseBtn((prevCloseBtn) => !prevCloseBtn);	
@@ -41,14 +43,18 @@ export const Navbar = () => {
 		}
 
 		// Wheather API
-		
 		const [city, setCity] = useState("");
 		const [temperature, setTemperature] = useState("");
 		const [description, setDescription] = useState("");
 		const [wind, setWind] = useState("");
 		const [icon, setIcon] = useState("");
 		const [country, setCountry] = useState("");
-		
+
+		// Login variables
+		const [email, setEmail] = useState("");
+		const [password, setPassword] = useState("");
+
+
 		const getWeatherFromApi = () => {	
 			fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.KEY}&units=metric`)
 				.then(response => {
@@ -94,6 +100,37 @@ export const Navbar = () => {
 			return `${day} ${date} ${month} ${year}`
 		}
 
+		const submit=()=> {
+			if(email.trim() === ""){
+				alert("Please Insert the email");
+			} else if (password === ""){
+				alert ("Please Insert the password");
+			} else {
+				fetch(process.env.BACKEND_URL + "/api/login", { 
+					method: "POST",
+					headers: { 
+						"Content-Type": 
+						"application/json" 
+					},
+					body: JSON.stringify({ email: email.trim(), password}) 
+				 })
+				.then((res) => res.json())
+				.then((result) => {
+	
+					console.log("Token is here!", result);
+					localStorage.setItem("jwt-token", result.token);
+					actions.storeUserId(result.user_id);
+					setEmail();
+					setPassword();
+					alert("You are logged in!");
+					toggleIsModalOpen();
+	
+				}).catch((err) => {
+					console.log(err);
+				})
+			}
+		}
+
 	return (
 		<header className="metallic-element">
 			<div className="d-flex justify-content-center align-items-center">
@@ -112,32 +149,32 @@ export const Navbar = () => {
 						/>
 					</div>
 					<Link to="/">
-						<li className="px-3 active menu-item ff-sans-cond letter-spacing-3 fs-500">
+						<li className="px-3 active menu-item ff-sans-cond letter-spacing-3 fs-400">
 							<a className="linkit" href="#"><span className="num">00</span><i className="fa-solid fa-house"></i></a>
 						</li>	
 					</Link>
 					<Link to="/ourmission">
-						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-500">
+						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-400">
 							<a className="linkit" href="#"><span className="num">01</span>Our Mission</a>
 						</li>
 					</Link>
 					
-					<li className="px-3 ff-sans-cond letter-spacing-3 fs-500">
+					<li className="px-3 ff-sans-cond letter-spacing-3 fs-400">
 						<a className="menu-item1" onClick ={toggleIsWeatherOpen }><span className="num">02</span>Weather<i className="fa-solid fa-cloud-sun-rain"></i></a>
 					</li>
 
-					<li className="px-3 ff-sans-cond letter-spacing-3 fs-500">
+					<li className="px-3 ff-sans-cond letter-spacing-3 fs-400">
 						<a className="menu-item1" onClick ={toggleIsModalOpen}><span className="num">03</span><i className="fa-solid fa-right-to-bracket"></i></a>
 					</li>
 					
 					<Link to="/createpost">
-						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-500">
+						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-400">
 							<a className="linkit" href="#"><span className="num">04</span>Create Post</a>
 						</li>
 					</Link>	
 					
 					<div className="select-menu">
-						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-500">
+						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-400">
 								<a className="select-btn" onClick ={toggleMenu} href="#"><span className="num-btn">05</span>My Stuff<i className="px-5 fa-solid fa-chevron-down"></i></a>
 									{shownMenu && (
 									<ul className="dropdown">
@@ -161,8 +198,7 @@ export const Navbar = () => {
 			</div>
 			
 			{(isWeather) && (
-			<div className="wrapper-weather" >
-				
+			<div className="wrapper-weather" >	
 				<span className="icon-close-wt" onClick={toggleIsWeatherOpen}><i className="fa-solid fa-xmark" ></i></span>
 				<div className="weather-container">
 					<div className="search-box"> 
@@ -192,19 +228,12 @@ export const Navbar = () => {
 						<div className="description">{description}</div>
 						{icon !==""?<img className="symbolString" src={`https://openweathermap.org/img/wn/${icon}@2x.png`}/>:""} 
 						<div className="wind">
-							
 							{wind !==""? `${wind} km/h`:""}
-						</div>
-							
+						</div>		
 					</div>
 				</div>
-				
-			
 			</div>
 				)}
-
-
-
 
 				<div>
 					<img 
@@ -223,26 +252,32 @@ export const Navbar = () => {
 							<h2>Login</h2>
 						</div>
 						<form action="#">
-							<div className="input-box">
+							<div className="input-box">		
 								<span className="iconlog"><i className="fa-solid fa-envelope"></i></span>
-								<input type="email" required/>
+								<input 
+									type="email" required
+									value={email}
+									onChange={(e)=> setEmail(e.target.value)}
+								/>	
 								<label>Email ID:</label>
 							</div>
 							<div className="input-box">
+									
 								<span className="iconlog"><i className="fa-solid fa-lock"></i></span>
-								<input type="password" required />
+								<input 
+									type="password" required
+									value={password}
+									onChange={(e)=> setPassword(e.target.value)} 
+								/>	
 								<label>Password</label>
 							</div>
 							<div className="remember-forgot">
 								<label><input type="checkbox"/>Remember me</label>
 								<a href="#">I agree to the terms & conditions</a>
 							</div>
-							
 							<div className="btn-login-parent">
-								<button type="submit" className="btn-submit">Login</button>
+								<button type="submit" className="btn-submit" onClick = {submit}>Login</button>
 							</div>
-							
-
 							<div className="login-register">
 								<p>Don't have an account? 
 									<a href="#" className="register-link" onClick={toggleIsVisibleLogin}>Register</a>
@@ -280,18 +315,14 @@ export const Navbar = () => {
 									<label>Password</label>
 								</div>
 								<div className="remember-forgot">
-									<label><input type="checkbox"/>I agree to the terms & conditions</label>
-									
+									<label><input type="checkbox"/>I agree to the terms & conditions</label>	
 								</div>
-								
 								<div className="btn-register-parent">
 									<button type="submit" className="btn-submit">Register</button>
 								</div>
 								<div className="login-register">
 									<p>Already have an account? 
-									
 										<a href="#" className="login-link" onClick ={toggleIsVisibleLogin}>Login</a>
-									
 									</p>	
 								</div>
 							</form>
