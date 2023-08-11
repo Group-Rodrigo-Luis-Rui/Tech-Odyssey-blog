@@ -9,6 +9,20 @@ import MovingComponent from "../component/movingcomponent";
 
 export const Home = () => {
 
+	fetch('process.env', {
+		method: 'PUT', // or 'POST'
+		body: JSON.stringify(data), // data can be a `string` or  an {object} which comes from somewhere further above in our application
+		headers:{
+			'Content-Type': 'application/json'
+		}
+	})
+	.then(res => {
+		if (!res.ok) throw Error(res.statusText);
+		return res.json();
+	})
+	.then(response => console.log('Success:', response))
+	.catch(error => console.error(error));
+
 	const { store, actions } = useContext(Context);
 
 	const Letters = ["W","e","l","c","o","m","e","-","T","o",
