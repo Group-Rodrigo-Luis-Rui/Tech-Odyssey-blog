@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.css";
 import logo from "../../img/Tech-Odyssey-Logo.png";
 import clsbtn from "../../img/power-button.png";
 import hambtn from "../../img/hamburger-icon.png";
-
-
+import { Context } from "../store/appContext";
+import {useNavigate} from "react-router-dom";
 
 export const Navbar = () => {
-		
+		const {store, actions} =  useContext(Context);
+		const navigate = useNavigate();
+
 		const [closeBtn, setCloseBtn] = useState(false);
 		const handleToggleMenu = () => {
 			setCloseBtn((prevCloseBtn) => !prevCloseBtn);	
@@ -41,14 +43,18 @@ export const Navbar = () => {
 		}
 
 		// Wheather API
-		
 		const [city, setCity] = useState("");
 		const [temperature, setTemperature] = useState("");
 		const [description, setDescription] = useState("");
 		const [wind, setWind] = useState("");
 		const [icon, setIcon] = useState("");
 		const [country, setCountry] = useState("");
-		
+
+		// Login variables
+		const [email, setEmail] = useState("");
+		const [password, setPassword] = useState("");
+
+
 		const getWeatherFromApi = () => {	
 			fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.KEY}&units=metric`)
 				.then(response => {
@@ -92,6 +98,37 @@ export const Navbar = () => {
 			let year = d.getFullYear();
 
 			return `${day} ${date} ${month} ${year}`
+		}
+
+		const submit=()=> {
+			if(email.trim() === ""){
+				alert("Please Insert the email");
+			} else if (password === ""){
+				alert ("Please Insert the password");
+			} else {
+				fetch(process.env.BACKEND_URL + "/api/login", { 
+					method: "POST",
+					headers: { 
+						"Content-Type": 
+						"application/json" 
+					},
+					body: JSON.stringify({ email: email.trim(), password}) 
+				 })
+				.then((res) => res.json())
+				.then((result) => {
+	
+					console.log("Token is here!", result);
+					localStorage.setItem("jwt-token", result.token);
+					actions.storeUserId(result.user_id);
+					setEmail();
+					setPassword();
+					alert("You are logged in!");
+					toggleIsModalOpen();
+	
+				}).catch((err) => {
+					console.log(err);
+				})
+			}
 		}
 
 	return (
@@ -215,14 +252,23 @@ export const Navbar = () => {
 							<h2>Login</h2>
 						</div>
 						<form action="#">
-							<div className="input-box">
+							<div className="input-box">		
 								<span className="iconlog"><i className="fa-solid fa-envelope"></i></span>
-								<input type="email" required/>
+								<input 
+									type="email" required
+									value={email}
+									onChange={(e)=> setEmail(e.target.value)}
+								/>	
 								<label>Email ID:</label>
 							</div>
 							<div className="input-box">
+									
 								<span className="iconlog"><i className="fa-solid fa-lock"></i></span>
-								<input type="password" required />
+								<input 
+									type="password" required
+									value={password}
+									onChange={(e)=> setPassword(e.target.value)} 
+								/>	
 								<label>Password</label>
 							</div>
 							<div className="remember-forgot">
@@ -230,7 +276,7 @@ export const Navbar = () => {
 								<a href="#">I agree to the terms & conditions</a>
 							</div>
 							<div className="btn-login-parent">
-								<button type="submit" className="btn-submit">Login</button>
+								<button type="submit" className="btn-submit" onClick = {submit}>Login</button>
 							</div>
 							<div className="login-register">
 								<p>Don't have an account? 

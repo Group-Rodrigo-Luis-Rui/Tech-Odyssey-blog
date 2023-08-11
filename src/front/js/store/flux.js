@@ -13,7 +13,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			userId: null
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -46,7 +47,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+
+			storeUserId: (id) => {
+				const store = getStore();
+				setStore({ ...store ,userId: id })
 			}
+
 		}
 	};
 };
