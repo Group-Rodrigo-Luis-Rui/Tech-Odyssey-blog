@@ -346,15 +346,3 @@ def login_user():
     # create a new token with the user id inside
     access_token = create_access_token(identity=user.id)
     return jsonify({ "token": access_token, "user_id": user.id })
-
-# no need for this project
-# @api.route('/tasks', methods=['GET'])
-# @jwt_required()
-# def get_tasks():
-
-#     current_user_id = get_jwt_identity()
-#     user = User.query.get(current_user_id)
-#     res_user = user.serialize()
-
-#     print(' Authenticated Users Data', user)
-#     return jsonify(res_user), 200
