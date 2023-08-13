@@ -12,18 +12,19 @@ export const MyProfile = () => {
 	const [abstract, setAbstract] = useState("");
 	const [posts, setPosts] = useState([])
 
+	const userID = store.userID
+
 	const getOneUser = () => {
-		fetch(process.env.BACKEND_URL + "/api/user/" + store.id, { 
+		fetch(process.env.BACKEND_URL + "/api/user/" + userID, { 
 			method: "GET",
 			headers: { 
 				"Content-Type": "application/json" 
 			},
 		})
 		.then((res) => res.json())
-		.then((data) => {
-			console.log("hello");
-			setName(data.name);
-			setEmail(data.email);
+		.then((result) => {
+			setName(result.name);
+			setEmail(result.email);
 		})
 		.catch((err) => {
 			console.log(err);
@@ -31,7 +32,7 @@ export const MyProfile = () => {
 	}
 
 	const getPostsByUser = () => {
-		fetch(process.env.BACKEND_URL + "/user/" + store.userId + "/posts", { 
+		fetch(process.env.BACKEND_URL + "/user/" + userID + "/posts", { 
 			method: "GET",
 			headers: { 
 				"Content-Type": "application/json" 
@@ -55,23 +56,11 @@ export const MyProfile = () => {
 	
 
 	// This his a help array
-	const myPosts = [
-		"5G Connectivity: Powering the Internet of Things",
-		"Blockchain Beyond Cryptocurr.: Diverse Applications Unveiled",
-		"Title of Post 3"
-	];
-
-	if (!email) {
-		return (
-			<div className="backgroundProfile" style={{backgroundImage:'url(' + backgroundimage + ')'}}>
-				<div className="container textBackgroundProfile text-center pt-5">
-					<div className="myBoxBackground mt-5">
-						<h4>Login or register please...</h4>
-					</div>
-				</div>
-			</div>
-		)
-	}
+	// const myPosts = [
+	// 	"5G Connectivity: Powering the Internet of Things",
+	// 	"Blockchain Beyond Cryptocurr.: Diverse Applications Unveiled",
+	// 	"Title of Post 3"
+	// ];
 
 	return (
 		<div className="backgroundProfile" style={{backgroundImage:'url(' + backgroundimage + ')'}}>
