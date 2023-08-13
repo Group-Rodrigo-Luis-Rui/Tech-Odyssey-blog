@@ -4,6 +4,34 @@ import avatarImage from "../../img/rigo-baby.jpg";
 import "../../styles/myreadings.css";
 
 export const MyReadings = () => {
+
+	const deleteReading = () => {
+
+	}
+
+	fetch(process.env.BACKEND_URL + "/api/login", { 
+		method: "POST",
+		headers: { 
+			"Content-Type": 
+			"application/json" 
+		},
+		body: JSON.stringify({ email: email.trim(), password}) 
+	 })
+	.then((res) => res.json())
+	.then((result) => {
+
+		console.log("Token is here!", result);
+		localStorage.setItem("jwt-token", result.token);
+		actions.storeUserId(result.user_id);
+		setEmail();
+		setPassword();
+		alert("You are logged in!");
+		toggleIsModalOpen();
+
+	}).catch((err) => {
+		console.log(err);
+	})
+	
 	const user = {
 		name: "John Doe",
 		email: "john@example.com",
