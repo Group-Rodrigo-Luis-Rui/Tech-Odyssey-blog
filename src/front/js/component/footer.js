@@ -1,10 +1,14 @@
 import React, { Component } from "react";
+import "../../styles/footer.css";
+import logo from "../../img/Tech-Odyssey-Logo.png";
 
 export const Footer = () => (
-	<footer className="footer mt-auto py-3 text-center">
-		<p>
-			Made with <i className="fa fa-heart text-danger" /> by{" "}
-			<a href="http://www.4geeksacademy.com">4Geeks Academy</a>
-		</p>
+	<footer>
+		<div className="footer-content uppercase-footer ff-sans-cond letter-spacing-2">
+			<div className="logo-space">
+				<img src={logo} className="footer-logo"/>
+			</div>	
+			<p className="footer-text">&copy;2023-Tech Odyssey.All rights reserved</p>	
+		</div>
 	</footer>
 );
