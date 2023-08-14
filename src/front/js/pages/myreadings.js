@@ -50,8 +50,8 @@ export const MyReadings = () => {
 
 	useEffect(() => {
 		getOneUser();
-		// getMyReadings();
-	})
+		getMyReadings();
+	},[])
 
 	// const deleteReading = () => {
 	// 	fetch(process.env.BACKEND_URL + "/api//myreading" + userID, { 
