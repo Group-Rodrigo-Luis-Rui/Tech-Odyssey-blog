@@ -1,3 +1,127 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+
+.card-body-single{
+    text-align: center;
+
+}
+.card-single{
+    width: 1190px;
+    padding-left: 100px;
+    padding-right: 100px;
+
+}
+.main-container{
+    overflow: auto; 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container-top{
+    background-color: azure;
+    height: 250px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+.container-card{
+    background: rgba(1, 0, 41, 0.534);
+    border-radius: 16px;
+    box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    backdrop-filter: blur(4.8px);
+    -webkit-backdrop-filter: blur(4.8px);
+    color: rgb(255, 255, 255);
+    margin-bottom: 50px;
+}
+.card-text{
+    padding-bottom: 50px;
+    display: flex;
+    text-align: justify;
+}
+.comments{
+    margin-left: 10px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.247);
+    border-top: 1px solid rgba(255, 255, 255, 0.247);
+    width: 965px;
+}
+.btn-comments{
+    border: none;
+    background-color: transparent;
+    color: white;
+}
+.single-image{
+    height: 600px;
+    width: 970px;
+    margin-bottom: 20px;
+}
+.single-comments{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.247);
+}
+.comments-title{
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.247);
+}
+.reply-comments{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.062);
+    font-size: 12px;
+}
+.btn-reply {
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 10px;
+    border-width: 0;
+    box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#000055d3 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+    height: 25px;
+}
+.btn-reply:focus {
+    box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.btn-reply:hover {
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+
+.btn-reply:active {
+    box-shadow: #D6D6E7 0 3px 7px inset;
+    transform: translateY(2px);
+}
+.form-control{
+    box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+
+}
