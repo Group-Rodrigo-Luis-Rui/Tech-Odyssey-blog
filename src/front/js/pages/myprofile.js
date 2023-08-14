@@ -30,19 +30,19 @@ export const MyProfile = () => {
 			console.log(err);
 		});
 	}
-
+	
 	const getPostsByUser = () => {
-		fetch(process.env.BACKEND_URL + "/user/" + userID + "/posts", { 
+		fetch(process.env.BACKEND_URL + "/api/user/" + userID + "/posts", { 
 			method: "GET",
 			headers: { 
 				"Content-Type": "application/json" 
 			},
 		})
-		.then((res) => res.json())
+		.then((res) =>{ 
+			return res.json()
+		})
 		.then((result) => {
-
-			console.log("hello");
-			setPosts(result.posts)
+			setPosts(result)
 		})
 		.catch((err) => {
 			console.log(err);
@@ -55,13 +55,13 @@ export const MyProfile = () => {
 	},[])
 	
 	const addReadings = () => {
-		fetch(process.env.BACKEND_URL + "/myreading", { 
+		fetch(process.env.BACKEND_URL + "/api/myreading", { 
 			method: "POST",
 			headers: { 
 				"Content-Type": 
 				"application/json" 
 			},
-			body: JSON.stringify(posts, user) 
+			body: JSON.stringify(post.id) 
 		})
 		.then((res) => res.json())
 		.then((result) => {
@@ -71,7 +71,6 @@ export const MyProfile = () => {
 			console.log(err);
 		})
 	}
-
 
 	return (
 		<div className="backgroundProfile" style={{backgroundImage:'url(' + backgroundimage + ')'}}>
@@ -88,7 +87,7 @@ export const MyProfile = () => {
 				<div>
 					<h3 className="myBoxBackground mb-2 pb-1">My Posts</h3>
 					<ul className="list-group">
-						{posts.map((title, abstract, index) => (
+						{posts.map((item, index) => (
 							<li key={index}>
 								<div class="card mb-3 cardContainer">
 									<div class="row g-0">
@@ -101,13 +100,13 @@ export const MyProfile = () => {
 										<div class="col-md-7">
 											<div class="card-body">
 												<div className="container d-flex justify-content-between m-2">
-													<h4 class="card-title pText pe-2"><strong>{title}</strong></h4>
+													<h4 class="card-title pText pe-2"><strong>{item.title}</strong></h4>
 													<a href="..." className="iconLink" title="Add to my reading list">
 														<i class="far fa-bookmark pe-2 fs-3 "></i>
 													</a>
 												</div>
 												<div className="cardTextProfile">
-													<p>{abstract}</p>
+													<p>{item.abstract}</p>
 												</div>
 											</div>
 										</div>
