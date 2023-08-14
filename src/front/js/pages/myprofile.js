@@ -73,7 +73,6 @@ export const MyProfile = () => {
 	}
 
 
-
 	return (
 		<div className="backgroundProfile" style={{backgroundImage:'url(' + backgroundimage + ')'}}>
 			<div className="container textBackgroundProfile text-center">
