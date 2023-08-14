@@ -7,6 +7,24 @@ export const Single = props => {
 	// const { store, actions } = useContext(Context);
 	// const params = useParams();
 
+	const [comments,setComments] = useState([]);
+
+	const getComments =()=>{
+		fetch(process.env.BACKEND_URL + "/api/comments", {
+			method: 'GET',
+			headers:{
+				'Content-Type': 'application/json'
+			}
+		})
+		.then(res => {
+			if (!res.ok) throw Error(res.statusText);
+			return res.json();
+		})
+		.then(response => setComments(response))
+		.catch(error => console.error(error));
+	
+	}
+
 
 	return (
 		<div className="container-fluid background main-container" style={{backgroundImage:'url(' + backgroundurl + ')'}}>
