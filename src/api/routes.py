@@ -120,7 +120,7 @@ def delete_user():
 
 #POST endpoints
 @api.route('/post', methods=['POST'])
-@jwt_required()
+# @jwt_required()
 def create_post():
     try:
         data = request.get_json()
