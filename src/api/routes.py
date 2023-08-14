@@ -71,11 +71,12 @@ def get_user(id):
     except NameError:
         return jsonify({"error" : "Namerror"}), 500
 
-@api.route('/user/<int:id>', methods=['PUT'])
-def update_user(id):
-    try:
-        # Get the user from the database using the user_id
-        user = User.query.get(id)
+@api.route('/user', methods=['PUT'])
+@jwt_required()
+def update_user():
+    try:     
+        current_user_id = get_jwt_identity()
+        user = User.query.get(current_user_id)
 
         if not user:
             return jsonify({"User not found"}), 404
@@ -99,10 +100,12 @@ def update_user(id):
     except NameError:
         return jsonify({"error" : "Namerror"}), 500
 
-@api.route('/user/<int:id>', methods=['DELETE'])
-def delete_user(id):
+@api.route('/user', methods=['DELETE'])
+@jwt_required()
+def delete_user():
     try:
-        user = User.query.get(id)
+        current_user_id = get_jwt_identity()
+        user = User.query.get(current_user_id)
 
         if not user:
             return jsonify({"User not found"}), 404
@@ -115,7 +118,27 @@ def delete_user(id):
     except NameError:
         return jsonify({"error" : "Namerror"}), 500
 
-# POST endpoints
+#POST endpoints
+@api.route('/post', methods=['POST'])
+@jwt_required()
+def create_post():
+    try:
+        data = request.get_json()
+        user_id = data.get("user_id")
+        title = data.get("title")
+        category = data.get("category")
+        abstract = data.get("abstract")
+        main_text = data.get("main_text")
+
+        new_post = Post(user_id=user_id, title=title, category=category, abstract=abstract, main_text=main_text)
+        db.session.add(new_post)
+        db.session.commit()
+
+        return jsonify({"message": "Post added successfully"}), 201
+
+    except NameError:
+        return jsonify({"error": "NameError"}), 500
+
 @api.route('/posts', methods=['GET'])
 def get_all_posts():
     try:
@@ -323,14 +346,3 @@ def login_user():
     # create a new token with the user id inside
     access_token = create_access_token(identity=user.id)
     return jsonify({ "token": access_token, "user_id": user.id })
-
-@api.route('/tasks', methods=['GET'])
-@jwt_required()
-def get_tasks():
-
-    current_user_id = get_jwt_identity()
-    user = User.query.get(current_user_id)
-    res_user = user.serialize()
-
-    print(' Authenticated Users Data', user)
-    return jsonify(res_user), 200
