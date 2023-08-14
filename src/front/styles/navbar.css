@@ -672,12 +672,13 @@ ul.dropdown{
 .signout-btn{
     border: none;
     background-color: transparent;
+    scale: 0.6;
 }
 
 .signout-btn:hover{
    color:#469DFF;
    transition: 0.3s;
-   scale: 0.6;
+   
 }
 
 

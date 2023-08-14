@@ -28,7 +28,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					// fetching data from the backend
 					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
 					const data = await resp.json()
-					setStore({ message: data.message })
+					setStore({...store, message: data.message })
 					// don't forget to return something, that is how the async resolves
 					return data;
 				}catch(error){
@@ -47,11 +47,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 
 				//reset the global store
-				setStore({ demo: demo });
+				setStore({...store, demo: demo });
 			},
 
 			storeUserId: (id) => {
-				setStore({ userId: id })
+				const store = getStore();
+				setStore({...store, userId: id })
 			},
 		}
 	};
