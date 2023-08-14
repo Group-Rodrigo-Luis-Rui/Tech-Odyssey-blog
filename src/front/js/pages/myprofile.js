@@ -39,10 +39,10 @@ export const MyProfile = () => {
 			},
 		})
 		.then((res) => res.json())
-		.then((data) => {
+		.then((result) => {
 
 			console.log("hello");
-			setPosts(data.posts)
+			setPosts(result.posts)
 		})
 		.catch((err) => {
 			console.log(err);
@@ -54,30 +54,25 @@ export const MyProfile = () => {
 		getPostsByUser();
 	},[])
 	
-	// const addReadings = () => {
-	// 	fetch(process.env.BACKEND_URL + "/myreading", { 
-	// 		method: "POST",
-	// 		headers: { 
-	// 			"Content-Type": 
-	// 			"application/json" 
-	// 		},
-	// 		body: JSON.stringify(id, posts, user) 
-	// 	 })
-	// 	.then((res) => res.json())
-	// 	.then((result) => {
-	// 		// i need to push the post (post id ??) to my readings
+	const addReadings = () => {
+		fetch(process.env.BACKEND_URL + "/myreading", { 
+			method: "POST",
+			headers: { 
+				"Content-Type": 
+				"application/json" 
+			},
+			body: JSON.stringify(posts, user) 
+		})
+		.then((res) => res.json())
+		.then((result) => {
+			// i need to push the post (post id ??) to my readings
 
-	// 	}).catch((err) => {
-	// 		console.log(err);
-	// 	})
-	// }
+		}).catch((err) => {
+			console.log(err);
+		})
+	}
 
-	// This his a help array
-	// const myPosts = [
-	// 	"5G Connectivity: Powering the Internet of Things",
-	// 	"Blockchain Beyond Cryptocurr.: Diverse Applications Unveiled",
-	// 	"Title of Post 3"
-	// ];
+
 
 	return (
 		<div className="backgroundProfile" style={{backgroundImage:'url(' + backgroundimage + ')'}}>
@@ -89,7 +84,7 @@ export const MyProfile = () => {
 					</div>
 				</div>
 				<div className="myBoxBackground mb-5">
-					<h4>Email:{email}</h4>
+					<h4>Email:&nbsp;&nbsp;{email}</h4>
 				</div>
 				<div>
 					<h3 className="myBoxBackground mb-2 pb-1">My Posts</h3>
