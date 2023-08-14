@@ -11,7 +11,7 @@ export const MyReadings = () => {
 	const [email, setEmail] = useState();
 	const [name, setName] = useState();
 
-	const userID = store.userID
+	const userID = store.userId
 
 	const getOneUser = () => {
 		fetch(process.env.BACKEND_URL + "/api/user/" + userID, { 
@@ -30,8 +30,26 @@ export const MyReadings = () => {
 		});
 	}
 
+		const getMyReadings = () => {
+		fetch(process.env.BACKEND_URL + "/api//myreading" + userID, { 
+			method: "GET",
+			headers: { 
+				"Content-Type": 
+				"application/json" 
+			},
+		})
+		.then((res) => res.json())
+		.then((result) => {
+
+
+		}).catch((err) => {
+			console.log(err);
+		})
+	}
+
 	useEffect(() => {
 		getOneUser();
+		getMyReadings();
 	})
 
 	const deleteReading = () => {
@@ -56,7 +74,6 @@ export const MyReadings = () => {
 	const user = {
 		name: "John Doe",
 		email: "john@example.com",
-		password: "**********", // This is just a placeholder, NEVER display passwords like this
 	};
 
 	const myPosts = [
@@ -68,7 +85,7 @@ export const MyReadings = () => {
 		<div className="backgroundReadings" style={{backgroundImage:'url(' + backgroundimage + ')'}}>
 			<div className="container textBackgroundReadings text-center">
 				<div className="userAvatar d-flex justify-content-center align-items-center mt-5 mb-5">
-					<img src={avatarImage} alt="User Avatar" className="avatarImageReadings rounded-circle" />
+					<img src="https://loremflickr.com/g/320/240/paris,man/all" alt="User Avatar" className="avatarImageReadings rounded-circle" />
 					<div className="myBoxBackgroundReadings">
 						<h3><strong>{name}</strong>'s profile</h3>
 					</div>
@@ -84,7 +101,7 @@ export const MyReadings = () => {
 								<div class="card mb-3 cardContainerReadings">
 									<div class="row g-0">
 										<div class="col-md-5">
-											<img src={avatarImage} class="img-fluid rounded-start" alt="..."/>
+											<img src="https://picsum.photos/300" class="img-fluid rounded-start" alt="..."/>
 											<div className="buttonProfileDivReadings">
 												<button type="button" class="btn btn-secondary btn-sm fs-6">View Post</button>
 											</div>

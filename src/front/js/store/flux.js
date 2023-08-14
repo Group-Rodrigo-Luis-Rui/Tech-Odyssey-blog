@@ -51,14 +51,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			storeUserId: (id) => {
-				const store = getStore();
-				setStore({ ...store, userId: id })
+				setStore({ userId: id })
 			},
-
-			storeReadings: (id) => {
-				const store = getStore();
-				setStore({ ...store, readingsID: id })	
-			}
 		}
 	};
 };
