@@ -9,6 +9,8 @@ import {useNavigate} from "react-router-dom";
 
 export const Navbar = () => {
 		const {store, actions} =  useContext(Context);
+		const token = localStorage.getItem("jwt-token");
+		
 		const navigate = useNavigate();
 
 		const [closeBtn, setCloseBtn] = useState(false);
@@ -127,7 +129,6 @@ export const Navbar = () => {
 				 })
 				.then((res) => res.json())
 				.then((result) => {
-	
 					console.log("Token is here!", result);
 					localStorage.setItem("jwt-token", result.token);
 					actions.storeUserId(result.user_id);
@@ -142,11 +143,10 @@ export const Navbar = () => {
 			};
 		}
 
-		const ifUserLoggIn = () => {
-			const token = localStorage.getItem("jwt-token");
+		const ifUserLoggIn = () => {	
 			if(token){
 				setIsLoggedIn(true);
-				// alert("You are logged in!")
+				// alert("You are logged in!");
 			}
 		}
 
@@ -154,14 +154,14 @@ export const Navbar = () => {
 			const token = localStorage.removeItem("jwt-token");
 			if(!token){
 				setIsLoggedOut(true);
-				alert("You are logged out!")
+				alert("You are logged out!");
 			}
 		}
 
 		
 		useEffect(()=>{
 			ifUserLoggIn();
-		},[])
+		},[token])
 
 		// Register a user
 		const registerUser=()=> {
@@ -196,7 +196,6 @@ export const Navbar = () => {
 				.then((result) => {
 	
 					console.log(result);
-					
 					actions.storeUserId(result.user_id);
 					setRegUserName("");
 					setRegEmail("");
@@ -255,6 +254,7 @@ export const Navbar = () => {
 						</li>
 					</Link>
 					}
+					
 					{isLoggedIn &&
 					<div className="select-menu">
 						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-400">
@@ -280,7 +280,7 @@ export const Navbar = () => {
 					}
 					{isLoggedIn &&
 					<li className="px-3 ff-sans-cond letter-spacing-3 fs-400">
-						<button className="" onClick ={ifUserLoggout}><i class="fa-solid fa-right-from-bracket"></i></button>
+						<button className="signout-btn" onClick ={ifUserLoggout}><i className="fa-solid fa-right-from-bracket"></i></button>
 					</li>
 					}
 				</ul>				

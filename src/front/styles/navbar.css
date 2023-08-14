@@ -669,6 +669,16 @@ ul.dropdown{
     text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
 }
 
+.signout-btn{
+    border: none;
+    background-color: transparent;
+}
+
+.signout-btn:hover{
+   color:#469DFF;
+   transition: 0.3s;
+   scale: 0.6;
+}
 
 
 
