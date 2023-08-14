@@ -155,10 +155,10 @@ export const Navbar = () => {
 			if(!token){
 				setIsLoggedOut(true);
 				alert("You are logged out!");
+				navigate("/");
 			}
 		}
 
-		
 		useEffect(()=>{
 			ifUserLoggIn();
 		},[token])
@@ -244,7 +244,7 @@ export const Navbar = () => {
 					</li>
 					{!isLoggedIn &&
 					<li className="px-3 ff-sans-cond letter-spacing-3 fs-400">
-						<a className="menu-item1" onClick ={toggleIsModalOpen}><span className="num">03</span><i className="fa-solid fa-right-to-bracket"></i></a>
+						<a className="menu-item1" onClick ={toggleIsModalOpen} title="Login"><span className="num">03</span><i className="fa-solid fa-right-to-bracket"></i></a>
 					</li>
 					}
 					{isLoggedIn &&
@@ -280,7 +280,7 @@ export const Navbar = () => {
 					}
 					{isLoggedIn &&
 					<li className="px-3 ff-sans-cond letter-spacing-3 fs-400">
-						<button className="signout-btn" onClick ={ifUserLoggout}><i className="fa-solid fa-right-from-bracket"></i></button>
+						<button className="signout-btn" onClick ={ifUserLoggout} title="Logout"><i className="fa-solid fa-right-from-bracket"></i></button>
 					</li>
 					}
 				</ul>				
