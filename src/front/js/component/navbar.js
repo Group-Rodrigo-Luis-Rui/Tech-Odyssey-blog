@@ -171,16 +171,16 @@ export const Navbar = () => {
 				alert("Please insert a valid email address");
 			} else if(regPassword ===""|| regPassword.length <8){
 				alert("The Password should have a minimum of 8 (eight) characters!");
-			} else if(regIsActive = false){
+			} else if(!regIsActive){
 				alert("You must agree with the terms and conditions");
 			} else {
 
 				// the user register data
 				const userData = {
-					"regsUserName": regUserName,
-					"regEmail": regEmail,
-					"regPassword": regPassword,
-					"regIsActive": regIsActive,
+					"name": regUserName,
+					"email": regEmail,
+					"password": regPassword,
+					"is_active": regIsActive,
 					"userId": store.userId
 				}
 				
@@ -416,10 +416,11 @@ export const Navbar = () => {
 									<label>Password</label>
 								</div>
 								<div className="remember-forgot">
-									<label><input 
+									<label htmlFor="termsCheckbox"><input 
 												type="checkbox"
-												value={regIsActive}
-												onChange={(e)=> setRegIsActive(e.target.value)} 
+												id="termsCheckbox"
+												checked={regIsActive}
+												onChange={(e)=> setRegIsActive(e.target.checked)} 
 											/>
 										I agree to the terms & conditions
 									</label>	
