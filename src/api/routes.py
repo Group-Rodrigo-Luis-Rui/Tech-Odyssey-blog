@@ -168,7 +168,7 @@ def get_posts_by_category(category):
     except NameError:
         return jsonify({"error" : "Namerror"}), 500
 
-@api.route('/user/<int:id>/posts>', methods=['GET'])
+@api.route('/user/<int:id>/posts', methods=['GET'])
 def get_posts_by_user(id):
     try:
         user = User.query.get(id)
