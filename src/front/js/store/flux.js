@@ -15,7 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			userId: null,
-			readings: []
+			
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -59,8 +59,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 				setStore({ ...store, readingsID: id })	
 			}
-
-
 		}
 	};
 };
