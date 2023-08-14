@@ -12,7 +12,7 @@ export const MyProfile = () => {
 	const [abstract, setAbstract] = useState("");
 	const [posts, setPosts] = useState([])
 
-	const userID = store.userID
+	const userID = store.userId
 
 	const getOneUser = () => {
 		fetch(process.env.BACKEND_URL + "/api/user/" + userID, { 
@@ -54,23 +54,23 @@ export const MyProfile = () => {
 		getPostsByUser();
 	},[])
 	
-	const addReadings = () => {
-		fetch(process.env.BACKEND_URL + "/myreading", { 
-			method: "POST",
-			headers: { 
-				"Content-Type": 
-				"application/json" 
-			},
-			body: JSON.stringify(id, posts, user) 
-		 })
-		.then((res) => res.json())
-		.then((result) => {
-			// i need to push the post to my readings
+	// const addReadings = () => {
+	// 	fetch(process.env.BACKEND_URL + "/myreading", { 
+	// 		method: "POST",
+	// 		headers: { 
+	// 			"Content-Type": 
+	// 			"application/json" 
+	// 		},
+	// 		body: JSON.stringify(id, posts, user) 
+	// 	 })
+	// 	.then((res) => res.json())
+	// 	.then((result) => {
+	// 		// i need to push the post (post id ??) to my readings
 
-		}).catch((err) => {
-			console.log(err);
-		})
-	}
+	// 	}).catch((err) => {
+	// 		console.log(err);
+	// 	})
+	// }
 
 	// This his a help array
 	// const myPosts = [
