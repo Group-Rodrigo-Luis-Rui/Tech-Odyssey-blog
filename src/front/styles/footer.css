@@ -1,0 +1,26 @@
+.footer-content {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 5rem;
+    margin-top: 2rem;
+}
+
+.footer-text {
+    margin-top: 0.2em;
+}
+
+.footer-logo {
+    width:1.5em;
+    height:1.5em;
+}
+
+.logo-space {
+    padding-right: 2em;
+}
+
+
+/* Utility classes*/
+/*-----------------------*/
+.uppercase-footer { text-transform: uppercase; }
+
