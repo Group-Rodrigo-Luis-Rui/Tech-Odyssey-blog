@@ -1,36 +1,57 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Context } from "../store/appContext";
 import backgroundimage from "../../img/backgroundimage.jpg";
 import avatarImage from "../../img/rigo-baby.jpg";
 import "../../styles/myreadings.css";
 
 export const MyReadings = () => {
 
-	const deleteReading = () => {
+	const {store, actions} =  useContext(Context);
 
+	const [email, setEmail] = useState();
+	const [name, setName] = useState();
+
+	const userID = store.userID
+
+	const getOneUser = () => {
+		fetch(process.env.BACKEND_URL + "/api/user/" + userID, { 
+			method: "GET",
+			headers: { 
+				"Content-Type": "application/json" 
+			},
+		})
+		.then((res) => res.json())
+		.then((result) => {
+			setName(result.name);
+			setEmail(result.email);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 	}
 
-	fetch(process.env.BACKEND_URL + "/api/login", { 
-		method: "POST",
-		headers: { 
-			"Content-Type": 
-			"application/json" 
-		},
-		body: JSON.stringify({ email: email.trim(), password}) 
-	 })
-	.then((res) => res.json())
-	.then((result) => {
-
-		console.log("Token is here!", result);
-		localStorage.setItem("jwt-token", result.token);
-		actions.storeUserId(result.user_id);
-		setEmail();
-		setPassword();
-		alert("You are logged in!");
-		toggleIsModalOpen();
-
-	}).catch((err) => {
-		console.log(err);
+	useEffect(() => {
+		getOneUser();
 	})
+
+	const deleteReading = () => {
+		fetch(process.env.BACKEND_URL + "/api//myreading" + userID, { 
+			method: "DELETE",
+			headers: { 
+				"Content-Type": 
+				"application/json" 
+			},
+		})
+		.then((res) => res.json())
+		.then((result) => {
+
+
+		}).catch((err) => {
+			console.log(err);
+		})
+	}
+
+	
 	
 	const user = {
 		name: "John Doe",
@@ -49,11 +70,11 @@ export const MyReadings = () => {
 				<div className="userAvatar d-flex justify-content-center align-items-center mt-5 mb-5">
 					<img src={avatarImage} alt="User Avatar" className="avatarImageReadings rounded-circle" />
 					<div className="myBoxBackgroundReadings">
-						<h3><strong>{user.name}</strong>'s profile</h3>
+						<h3><strong>{name}</strong>'s profile</h3>
 					</div>
 				</div>
 				<div className="myBoxBackgroundReadings mb-5">
-					<h4>Email:{user.email}</h4>
+					<h4>Email:&nbsp;&nbsp;{email}</h4>
 				</div>
 				<div>
 					<h3 className="myBoxBackgroundReadings mb-2 pb-1">My Readings</h3>
