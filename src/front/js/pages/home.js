@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
-import backgroundurl from "../../img/background.jpg"
+import backgroundurl from "../../img/backgroundimage2.jpg"
 import { Link } from "react-router-dom";
 import MovingComponent from "../component/movingcomponent";
 
@@ -106,8 +106,8 @@ export const Home = () => {
 
 	const { store, actions } = useContext(Context);
 
-	const Letters = ["W","e","l","c","o","m","e","-","T","o",
-	"-","T","h","e","-","T","e","c","h","-","W","o","r","l","d"];
+	const Letters = ["W","E","L","C","O","M","E","-","T","O",
+	"-","T","H","E","-","T","E","C","H","-","W","O","R","L","D"];
 	
 	const Title1 = ["C","o","m","p","u","t","e","r","s"];
 	const Title2 = ["M","o","v","i","e","-","T","e","c","h"];
@@ -172,26 +172,7 @@ export const Home = () => {
 						</MovingComponent>
 					))}
 				</div>
-				<div className="card-carousel-header d-flex">
-					<div class="card col-6 card-top me-2">
-						<div class="card-body">
-							<img src="https://static.vecteezy.com/system/resources/previews/006/430/145/original/technology-background-concept-circuit-board-electronic-system-futuristic-hi-tech-light-on-dark-blue-free-vector.jpg" class="card-img-top" alt="..."/>
-							<div className="row">
-								<div className="col-6">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">Some quick example text to build on
-										the card title and make up the bulk of the card's content.
-									</p>
-								</div>
-								<div className="col-6">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">Some quick example text to build on
-										the card title and make up the bulk of the card's content.
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
+				<div className="card-carousel-header d-flex justify-content-center">
 					{/* carousel*/}
 					<div id="carouselExampleControls" class=" col-6 carousel slide d-block " data-bs-ride="carousel">
 						<div className="carousel-inner">
@@ -226,11 +207,9 @@ export const Home = () => {
 						</button>
 						</div>
 					</div>
-					<div className="container-fluid container-cardmiddle">
+					<div className="container-fluid container-cardmiddle d-flex justify-content-center">
 						<div className="cardmiddle">
-							<h5>Here you will find</h5>
 							Everything you must to know about tech
-							<p>And much more...</p>
 						</div>
 					</div>
 					<div className="cardtitle mt-5">
