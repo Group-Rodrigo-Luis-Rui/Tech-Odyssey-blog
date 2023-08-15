@@ -12,9 +12,8 @@ export const MyReadings = () => {
 	const [name, setName] = useState();
 	const [readings, setReadings] = useState()
 
-	const userID = store.userId
-
 	const getOneUser = () => {
+		const userID = store.userId
 		fetch(process.env.BACKEND_URL + "/api/user/" + userID, { 
 			method: "GET",
 			headers: { 
@@ -32,6 +31,7 @@ export const MyReadings = () => {
 	}
 
 	const getMyReadings = () => {
+		const userID = store.userId
 		fetch(process.env.BACKEND_URL + "/api/myreading/" + userID, { 
 			method: "GET",
 			headers: { 
@@ -41,12 +41,12 @@ export const MyReadings = () => {
 		.then((res) => res.json())
 		.then((result) => {
 			console.log(result);
+			// setReadings();
 		})
 		.catch((err) => {
 			console.log(err);
 		});
 	}
-
 
 	useEffect(() => {
 		getOneUser();
