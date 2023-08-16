@@ -109,11 +109,11 @@ export const Home = () => {
 	const Letters = ["W","E","L","C","O","M","E","-","T","O",
 	"-","T","H","E","-","T","E","C","H","-","W","O","R","L","D"];
 	
-	const Title1 = ["C","o","m","p","u","t","e","r","s"];
-	const Title2 = ["M","o","v","i","e","-","T","e","c","h"];
-	const Title3 = ["A","I","-","T","e","c","h","n","o","l","o","g","y"];
-	const Title4 = ["E","V","-","M","o","b","i","l","i","t","y"];
-	const Title5 = ["O","t","h","e","r","-","S","t","u","f","f"];
+	const Title1 = ["C","O","M","P","U","T","E","R","S"];
+	const Title2 = ["M","O","V","I","E","-","T","E","C","H"];
+	const Title3 = ["A","I","-","T","E","C","H"];
+	const Title4 = ["E","V","-","M","O","B","I","L","I","T","Y"];
+	const Title5 = ["O","T","H","E","R","-","S","T","U","F","F"];
 
 
 	const [scrollPosition, setScrollPosition] = useState(0);

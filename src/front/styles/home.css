@@ -111,7 +111,7 @@ figcaption{
   opacity: 1;
 }
 .fig{
-  border-radius: 10px;
+  border-radius: 15px;
   width: 350px;
   height: 300px;
   display: flex;
@@ -121,12 +121,12 @@ figcaption{
 .card2{
     width: 700px;
     height: 300px;
-    background: rgba(70, 68, 109, 0.747);
+    background: rgba(255, 255, 255, 0.555);
     border-radius: 16px;
-    box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    box-shadow: rgba(0, 0, 0, 0.4) 0 2px 4px,rgba(0, 0, 0, 0.3) 0 7px 13px -3px,#00005a 0 -2px 0 inset;
     backdrop-filter: blur(4.8px);
     -webkit-backdrop-filter: blur(4.8px);
-    color: white;
+    color: black;
     display: flex;
     white-space: normal;
     position: relative;
@@ -256,8 +256,8 @@ figcaption{
   border: none;
   padding: 8px 12px;
   color: #fff;
-  background-color: rgba(167, 167, 167, 0.747);
-  box-shadow: rgba(255, 255, 255, 0.25) 0px 13px 27px -5px, rgba(255, 255, 255, 0.3) 0px 8px 16px -8px;  height: 320px;
+  background-color: rgba(0, 2, 90, 0.418);
+  box-shadow: rgb(0, 0, 0) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;  height: 320px;
   border-radius: 15px;
 }
 
