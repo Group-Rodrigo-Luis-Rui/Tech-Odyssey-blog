@@ -37,30 +37,30 @@ export const Navbar = () => {
 			setIsModalOpen(!isModalOpen);
 		}
 
-		// Open the weather modal
-		const [isWeather, setIsWeather] = useState(false);
+		// // Open the weather modal
+		// const [isWeather, setIsWeather] = useState(false);
 
-		const toggleIsWeatherOpen = () => {
-			setIsWeather(!isWeather);
-		}
+		// const toggleIsWeatherOpen = () => {
+		// 	setIsWeather(!isWeather);
+		// }
 
-		// Wheather API
-		const [city, setCity] = useState("");
-		const [temperature, setTemperature] = useState("");
-		const [description, setDescription] = useState("");
-		const [wind, setWind] = useState("");
-		const [icon, setIcon] = useState("");
-		const [country, setCountry] = useState("");
+		// // Wheather API
+		// const [city, setCity] = useState("");
+		// const [temperature, setTemperature] = useState("");
+		// const [description, setDescription] = useState("");
+		// const [wind, setWind] = useState("");
+		// const [icon, setIcon] = useState("");
+		// const [country, setCountry] = useState("");
 
 		// Login variables
 		const [email, setEmail] = useState("");
 		const [password, setPassword] = useState("");
 
 		// is user logged in
-		const [isLoggedIn, setIsLoggedIn] =useState(false);
+		const [isLogedIn, setIsLogedIn] =useState(false);
 
 		// to loggout the user
-		const [isLoggedout, setIsLoggedOut] =useState(false);
+		const [isLogedout, setIsLogedOut] =useState(false);
 
 		// Register variables
 		const [regUserName, setRegUserName]=useState("");
@@ -68,50 +68,50 @@ export const Navbar = () => {
 		const [regPassword, setRegPassword]=useState("");
 		const [regIsActive, setRegIsActive]=useState(false);
 
-		const getWeatherFromApi = () => {	
-			fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.KEY}&units=metric`)
-				.then(response => {
-					if (!response.ok) {
-					throw Error (response.statusText);
-					}
-				//Read the response as json
-					return response.json();
-				})
+		// const getWeatherFromApi = () => {	
+		// 	fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.KEY}&units=metric`)
+		// 		.then(response => {
+		// 			if (!response.ok) {
+		// 			throw Error (response.statusText);
+		// 			}
+		// 		//Read the response as json
+		// 			return response.json();
+		// 		})
 							
-				.then(responseAsJson => {				
-					setTemperature(responseAsJson.main.temp);
-					setDescription(responseAsJson.weather[0].description)	
-					setWind(responseAsJson.wind.speed);
-					setIcon(responseAsJson.weather[0].icon);
-					setCountry(responseAsJson.sys.country);
-				})
+		// 		.then(responseAsJson => {				
+		// 			setTemperature(responseAsJson.main.temp);
+		// 			setDescription(responseAsJson.weather[0].description)	
+		// 			setWind(responseAsJson.wind.speed);
+		// 			setIcon(responseAsJson.weather[0].icon);
+		// 			setCountry(responseAsJson.sys.country);
+		// 		})
 
-				.catch(error => {
-					console.error("Looks like there was a problem: \n", error);
-				});		
-		}
+		// 		.catch(error => {
+		// 			console.error("Looks like there was a problem: \n", error);
+		// 		});		
+		// }
 
-		// check if the location was typed
-		const checkCity = () => {
-			if(city==="") { 
-				alert("Insert a location name please!...")
-			} else {
-				getWeatherFromApi();  
-			}
-		}
-		// Creating a date field
-		const dateBuilder = (d) => {
-			let months = ["January", "February", "March", "April", "May", "June", "July", "August",
-			"September", "October", "November", "December"];
-			let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+		// // check if the location was typed
+		// const checkCity = () => {
+		// 	if(city==="") { 
+		// 		alert("Insert a location name please!...")
+		// 	} else {
+		// 		getWeatherFromApi();  
+		// 	}
+		// }
+		// // Creating a date field
+		// const dateBuilder = (d) => {
+		// 	let months = ["January", "February", "March", "April", "May", "June", "July", "August",
+		// 	"September", "October", "November", "December"];
+		// 	let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-			let day = days[d.getDay()];
-			let date = d.getDate();
-			let month = months[d.getMonth()];
-			let year = d.getFullYear();
+		// 	let day = days[d.getDay()];
+		// 	let date = d.getDate();
+		// 	let month = months[d.getMonth()];
+		// 	let year = d.getFullYear();
 
-			return `${day} ${date} ${month} ${year}`
-		}
+		// 	return `${day} ${date} ${month} ${year}`
+		// }
 		// logging in function
 		const submit=()=> {
 			if(email.trim() === ""){
@@ -125,27 +125,26 @@ export const Navbar = () => {
 						"Content-Type": 
 						"application/json" 
 					},
-					body: JSON.stringify({ email: email.trim(), password}) 
-				 })
+					body: JSON.stringify({ email: email.trim(), password }) 
+				})
 				.then((res) => res.json())
 				.then((result) => {
 					console.log("Token is here!", result);
 					localStorage.setItem("jwt-token", result.token);
 					actions.storeUserId(result.user_id);
-					alert("You are logged in!");
-					setEmail();
-					setPassword();
+					setEmail("");
+					setPassword("");
 					toggleIsModalOpen();
-	
+					alert(`User ${email} Successfully LOGIN!!`);
 				}).catch((err) => {
-					console.error("There was an ERROR LOGGIN IN!!", err);
+					console.error("There was an ERROR LOGIN IN!!", err);
 				});
 			};
 		}
 
 		const ifUserLoggIn = () => {	
 			if(token){
-				setIsLoggedIn(true);
+				setIsLogedIn(true);
 				// alert("You are logged in!");
 			}
 		}
@@ -153,15 +152,16 @@ export const Navbar = () => {
 		const ifUserLoggout = () => {
 			const token = localStorage.removeItem("jwt-token");
 			if(!token){
-				setIsLoggedOut(true);
-				alert("You are logged out!");
+				setIsLogedOut(true);
+				setIsLogedIn(false);
+				alert(`User ${email} Successfully LOGOUT!!`);
 				navigate("/");
 			}
 		}
 
 		useEffect(()=>{
 			ifUserLoggIn();
-		},[token])
+		},[token, ifUserLoggIn])
 
 		// Register a user
 		const registerUser=()=> {
@@ -229,64 +229,76 @@ export const Navbar = () => {
 						/>
 					</div>
 					<Link to="/">
-						<li className="px-3 active menu-item ff-sans-cond letter-spacing-3 fs-400">
+						<li className="px-3 active menu-item ff-sans-cond letter-spacing-3 fs-390">
 							<a className="linkit" href="#"><span className="num">00</span><i className="fa-solid fa-house"></i></a>
 						</li>	
 					</Link>
 					<Link to="/ourmission">
-						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-400">
+						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-390">
 							<a className="linkit" href="#"><span className="num">01</span>Our Mission</a>
 						</li>
 					</Link>
 					
-					<li className="px-3 ff-sans-cond letter-spacing-3 fs-400">
+					{/* <li className="px-3 ff-sans-cond letter-spacing-3 fs-400">
 						<a className="menu-item1" onClick ={toggleIsWeatherOpen }><span className="num">02</span>Weather<i className="fa-solid fa-cloud-sun-rain"></i></a>
-					</li>
-					{!isLoggedIn &&
-					<li className="px-3 ff-sans-cond letter-spacing-3 fs-400">
-						<a className="menu-item1" onClick ={toggleIsModalOpen} title="Login"><span className="num">03</span><i className="fa-solid fa-right-to-bracket"></i></a>
+					</li> */}
+					{!isLogedIn &&
+					<li className="px-3 ff-sans-cond letter-spacing-3 fs-390">
+						<a className="menu-item1" onClick ={toggleIsModalOpen} title="Login"><span className="num">03</span><i className="fa-solid fa-circle-user"></i></a>
 					</li>
 					}
-					{isLoggedIn &&
+					{isLogedIn &&
 					<Link to="/createpost">
-						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-400">
+						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-390">
 							<a className="linkit" href="#"><span className="num">04</span>Create Post</a>
 						</li>
 					</Link>
 					}
 					
-					{isLoggedIn &&
+					{isLogedIn &&
 					<div className="select-menu">
-						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-400">
+						<li className="px-3 menu-item ff-sans-cond letter-spacing-3 fs-390">
 								<a className="select-btn" onClick ={toggleMenu} href="#"><span className="num-btn">05</span>My Stuff<i className="px-5 fa-solid fa-chevron-down"></i></a>
 									{shownMenu && (
 									<ul className="dropdown">
 										<Link className="abc" to="/myprofile">
-											<li className="dropdown-item" onClick ={toggleMenu}>
+											<li className="dropdown-item" onClick={toggleMenu}>
 												<i className="fa-solid fa-user"></i>
 												<span className="item-text">My Profile</span>	
 											</li>
 										</Link>	
 										<Link className="abc" to="/myreadings">
-											<li className="dropdown-item"onClick ={toggleMenu}>
+											<li className="dropdown-item"onClick={toggleMenu}>
 												<i className="fa-sharp fa-solid fa-book-open"></i>
 												<span className="item-text">My Readings</span>	
 											</li>
 										</Link>			
 									</ul>
 									)}
-						</li>			
+						</li>				
 					</div>
 					}
-					{isLoggedIn &&
+					{isLogedIn &&
 					<li className="px-3 ff-sans-cond letter-spacing-3 fs-400">
-						<button className="signout-btn" onClick ={ifUserLoggout} title="Logout"><i className="fa-solid fa-right-from-bracket"></i></button>
+						<button className="signout-btn" onClick={ifUserLoggout} title="Logout"><i className="fa-solid fa-right-from-bracket"></i></button>
 					</li>
 					}
-				</ul>				
+					{isLogedIn &&
+					<li className="px-3 ff-sans-cond letter-spacing-3 fs-400">
+						<p>{email}</p>
+					</li>
+					}
+				</ul>
+				<div>
+					<img 
+						src={hambtn} 
+						onClick={handleToggleMenu} 
+						className="hamburger-btn"
+					/>
+				</div>
 			</div>
 			
-			{(isWeather) && (
+			{/* {(isWeather) && (
 			<div className="wrapper-weather" >	
 				<span className="icon-close-wt" onClick={toggleIsWeatherOpen}><i className="fa-solid fa-xmark" ></i></span>
 				<div className="weather-container">
@@ -322,15 +334,9 @@ export const Navbar = () => {
 					</div>
 				</div>
 			</div>
-				)}
+				)} */}
 
-				<div>
-					<img 
-						src={hambtn} 
-						onClick={handleToggleMenu} 
-						className="hamburger-btn"
-					/>
-				</div>
+				
 				{/* login form */}
 				{( isModalOpen && isLoginVisible) && (
 				<div className="wrapper ff-sans-normal" >
@@ -365,12 +371,11 @@ export const Navbar = () => {
 								<a href="#">I agree to the terms & conditions</a>
 							</div>
 							<div className="btn-login-parent">
-								<button type="submit" className="btn-submit" onClick = {submit}>Login</button>	
+								<button type="submit" className="btn-submit" onClick={submit}>Login</button>	
 							</div>
 							<div className="login-register">
 								<p>Don't have an account? 
-									<a href="#" className="register-link" onClick={toggleIsVisibleLogin}>Register</a>
-								
+									<a href="#" className="register-link" onClick={toggleIsVisibleLogin}>Signup</a>
 								</p>	
 							</div>
 						</form>
@@ -385,7 +390,7 @@ export const Navbar = () => {
 						<div className="form-box-register">
 							<div className="title-login mt-4">
 								<span className="iconRegist"><i className="fa-regular fa-id-card"></i></span>
-								<h2>Registration</h2>
+								<h2>Signup</h2>
 							</div>
 							<form action="#">
 								<div className="input-box">
@@ -426,7 +431,7 @@ export const Navbar = () => {
 									</label>	
 								</div>
 								<div className="btn-register-parent">
-									<button type="submit" className="btn-submit" onClick={registerUser}>Register</button>
+									<button type="submit" className="btn-submit" onClick={registerUser}>Signup</button>
 								</div>
 								<div className="login-register">
 									<p>Already have an account? 
