@@ -12,9 +12,8 @@ export const MyProfile = () => {
 	const [abstract, setAbstract] = useState("");
 	const [posts, setPosts] = useState([])
 
-	const userID = store.userId
-
 	const getOneUser = () => {
+		const userID = store.userId
 		fetch(process.env.BACKEND_URL + "/api/user/" + userID, { 
 			method: "GET",
 			headers: { 
@@ -32,6 +31,7 @@ export const MyProfile = () => {
 	}
 	
 	const getPostsByUser = () => {
+		const userID = store.userId
 		fetch(process.env.BACKEND_URL + "/api/user/" + userID + "/posts", { 
 			method: "GET",
 			headers: { 
