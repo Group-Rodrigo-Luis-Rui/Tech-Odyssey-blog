@@ -3,8 +3,10 @@ import { Context } from "../store/appContext";
 import backgroundimage from "../../img/backgroundimage2.jpg";
 // import avatarImage from "../../img/rigo-baby.jpg";
 import "../../styles/myprofile.css";
+import { useNavigate } from "react-router-dom";
 
 export const MyProfile = () => {
+	const navigate = useNavigate();
 	const {store, actions} =  useContext(Context);
 	const [email, setEmail] = useState();
 	const [name, setName] = useState();
@@ -49,39 +51,28 @@ export const MyProfile = () => {
 		});
 	}
 
+	// getoneuser and getPostsByUser render just one time
 	useEffect(() => {
 		getOneUser();
 		getPostsByUser();
 	},[])
 
-	const goToSinglePost = () => {
-		const userID = store.userId
-		fetch(process.env.BACKEND_URL + "/api/post/" + userID, { 
-			method: "GET",
-			headers: { 
-				"Content-Type": "application/json" 
-			},
-		})
-		.then((res) => res.json())
-		.then((result) => {
-
-		})
-		.catch((err) => {
-			console.log(err);
-		});
+	const goToSinglePost = (postID) => {
+		navigate(`/single/${postID}`);
 	}
-	const addReadings = () => {
+
+	const addReadings = (postID) => {
 		fetch(process.env.BACKEND_URL + "/api/myreading", { 
 			method: "POST",
 			headers: { 
 				"Content-Type": 
 				"application/json" 
 			},
-			body: JSON.stringify(post.id) 
+			body: JSON.stringify({user_id: store.userId, post_id: postID}) 
 		})
 		.then((res) => res.json())
 		.then((result) => {
-			// i need to push the post (post id ??) to my readings
+			//if (result) return alert("My reading added successfully to your profile!")
 
 		}).catch((err) => {
 			console.log(err);
@@ -110,14 +101,27 @@ export const MyProfile = () => {
 										<div class="col-md-5">
 											<img src="https://picsum.photos/300" class="img-fluid rounded-start" alt="some image"/>
 											<div className="buttonProfileDiv">
-												<button type="button" class="btn btn-secondary btn-sm fs-6">View Post</button>
+												<button type="button" 
+												class="btn btn-secondary btn-sm fs-6"
+												onClick={() => goToSinglePost(item.id)}
+												>
+													View Post
+												</button>
 											</div>
 										</div>
 										<div class="col-md-7">
 											<div class="card-body">
 												<div className="container d-flex justify-content-between m-2">
 													<h4 class="card-title pText pe-2"><strong>{item.title}</strong></h4>
-													<a href="..." className="iconLink" title="Add to my reading list">
+													<a 
+														href="#" 
+														className="iconLink" 
+														title="Add to my reading list"
+														onClick={() => {
+															
+															addReadings(item.id);
+														}}
+													>
 														<i class="far fa-bookmark pe-2 fs-3 "></i>
 													</a>
 												</div>
