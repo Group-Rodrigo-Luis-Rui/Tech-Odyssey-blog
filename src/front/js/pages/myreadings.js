@@ -1,16 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
-import backgroundimage from "../../img/backgroundimage.jpg";
+import { useNavigate } from "react-router-dom";
+import backgroundimage from "../../img/backgroundimage2.jpg";
 import avatarImage from "../../img/rigo-baby.jpg";
 import "../../styles/myreadings.css";
+
 
 export const MyReadings = () => {
 
 	const {store, actions} =  useContext(Context);
 
+	const navigate = useNavigate();
+
 	const [email, setEmail] = useState();
 	const [name, setName] = useState();
-	const [readings, setReadings] = useState()
+	const [readings, setReadings] = useState([])
 
 	const getOneUser = () => {
 		const userID = store.userId
@@ -40,8 +44,7 @@ export const MyReadings = () => {
 		})
 		.then((res) => res.json())
 		.then((result) => {
-			console.log(result);
-			// setReadings(result);
+			setReadings(result.posts);
 		})
 		.catch((err) => {
 			console.log(err);
@@ -52,6 +55,10 @@ export const MyReadings = () => {
 		getOneUser();
 		getMyReadings();
 	},[])
+
+	const goToSinglePost = (postID) => {
+		navigate(`/single/${postID}`);
+	}
 
 	// const deleteReading = () => {
 	// 	fetch(process.env.BACKEND_URL + "/api//myreading" + userID, { 
@@ -92,7 +99,13 @@ export const MyReadings = () => {
 										<div class="col-md-5">
 											<img src="https://picsum.photos/300" class="img-fluid rounded-start" alt="..."/>
 											<div className="buttonProfileDivReadings">
-												<button type="button" class="btn btn-secondary btn-sm fs-6">View Post</button>
+												<button 
+													type="button" 
+													class="btn btn-secondary btn-sm fs-6"
+													onClick={() => goToSinglePost(item.id)}
+													>
+														View Post
+												</button>
 											</div>
 										</div>
 										<div class="col-md-7">
