@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
-import backgroundimage from "../../img/backgroundimage.jpg";
+import backgroundimage from "../../img/backgroundimage2.jpg";
 // import avatarImage from "../../img/rigo-baby.jpg";
 import "../../styles/myprofile.css";
 
@@ -8,8 +8,8 @@ export const MyProfile = () => {
 	const {store, actions} =  useContext(Context);
 	const [email, setEmail] = useState();
 	const [name, setName] = useState();
-	const [title, setTitle] = useState("");
-	const [abstract, setAbstract] = useState("");
+	// const [title, setTitle] = useState("");
+	// const [abstract, setAbstract] = useState("");
 	const [posts, setPosts] = useState([])
 
 	const getOneUser = () => {
@@ -53,7 +53,23 @@ export const MyProfile = () => {
 		getOneUser();
 		getPostsByUser();
 	},[])
-	
+
+	const goToSinglePost = () => {
+		const userID = store.userId
+		fetch(process.env.BACKEND_URL + "/api/post/" + userID, { 
+			method: "GET",
+			headers: { 
+				"Content-Type": "application/json" 
+			},
+		})
+		.then((res) => res.json())
+		.then((result) => {
+
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+	}
 	const addReadings = () => {
 		fetch(process.env.BACKEND_URL + "/api/myreading", { 
 			method: "POST",
