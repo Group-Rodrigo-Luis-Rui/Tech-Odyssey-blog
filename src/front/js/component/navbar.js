@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.css";
-import logo from "../../img/Tech-Odyssey-Logo.png";
-import clsbtn from "../../img/power-button.png";
+import logo from "../../img/Tech-Odyssey-Logo3.png";
+import clsbtn from "../../img/power-off.png";
 import hambtn from "../../img/hamburger-icon.png";
 import { Context } from "../store/appContext";
 import {useNavigate} from "react-router-dom";
@@ -215,9 +215,9 @@ export const Navbar = () => {
 		<header className="metallic-element">
 			<div className="d-flex justify-content-center align-items-center">
 				<img src={logo} alt="" className="logoB"/>
-				<a href="#" className="logo uppercase ff-sans-cond letter-spacing-2">
+				{/* <a href="#" className="logo uppercase ff-sans-cond letter-spacing-2">
 					Tech Odyssey
-				</a>
+				</a> */}
 			</div>
 
 			<div className={`navigation ${closeBtn? "menu-active":""}`}>

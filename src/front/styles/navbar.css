@@ -37,8 +37,10 @@
 }
 
 .logoB {
-    width: 3rem;
-    height: 3rem;  
+    width: 86.5px;
+    height: 100px;
+    border-bottom: rgb(114, 78, 11);
+    mix-blend-mode: darken;  
 }
     
 .metallic-element{
@@ -51,7 +53,7 @@
     align-items: center;
     background-color: #FFFAF0;
     padding: 0 1rem;
-    height: 5rem;
+    height: 120px;
     border-bottom: 3px solid #6B8E23;
 }
 
@@ -133,9 +135,9 @@
 
  .close-btn{
     position: absolute;
-    width: 2.5rem;
-    height: 2.5rem;
-    background-size: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    /* background-size: 1.5rem; */
     background-position: center;
     top: 0;
     left: 0;
@@ -143,6 +145,13 @@
     margin: 50px;
     display: none;  
 }
+
+.close-btn:hover{
+    width: 1.7rem;
+    height: 1.7rem;
+    transition: 0.5s ease-out;    
+}
+
 
 .hamburger-btn{
     width: 3rem;
