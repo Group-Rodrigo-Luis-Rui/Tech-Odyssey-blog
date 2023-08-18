@@ -41,7 +41,7 @@ export const MyReadings = () => {
 		.then((res) => res.json())
 		.then((result) => {
 			console.log(result);
-			// setReadings();
+			// setReadings(result);
 		})
 		.catch((err) => {
 			console.log(err);
@@ -85,8 +85,8 @@ export const MyReadings = () => {
 				<div>
 					<h3 className="myBoxBackgroundReadings mb-2 pb-1">My Readings</h3>
 					<ul className="list-group">
-						{/* {readings.map((item, index) => ( */}
-							<li key={"index"}>
+						{readings.map((item, index) => (
+							<li key={index}>
 								<div class="card mb-3 cardContainerReadings">
 									<div class="row g-0">
 										<div class="col-md-5">
@@ -98,20 +98,20 @@ export const MyReadings = () => {
 										<div class="col-md-7">
 											<div class="card-body">
 												<div className="container d-flex justify-content-between m-2">
-													<h4 class="card-title pTextReadings pe-2"><strong>{"item.title"}</strong></h4>
+													<h4 class="card-title pTextReadings pe-2"><strong>{item.title}</strong></h4>
 													<a href="..." className="iconLinkReadings" title="Delete from my reading list">
 														<i class="fas fa-trash pe-2 fs-3" ></i>
 													</a>
 												</div>
 												<div className="cardTextProfile">
-													<p>{"item.abstract"}</p>
+													<p>{item.abstract}</p>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</li>
-						{/* ))} */}
+						))}
 					</ul>
 				</div>
 			</div>
