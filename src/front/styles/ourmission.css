@@ -4,17 +4,21 @@
   background-attachment: fixed;
   background-position: center center;
   font-family: "Barlow";
-  font-size: large;
+  font-size:larger;
+  padding-top: 0;
 }
 
 .textBackground{
-  background: rgba(1, 0, 41, 0.7); 
-  color: #f1f1f1;
+  background: rgba(105, 105, 105, 0.2);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px); 
+  color: #00336D;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
 .text{
+  text-shadow: 2px 2px 3px #ffffff;
   text-align: justify;
   text-justify: inter-word;
 }
@@ -29,7 +33,7 @@
 }
 
 .icon:hover{
-  background-color: #469DFF;
+  background-color: #00336D;
   cursor: pointer;
 }
 
