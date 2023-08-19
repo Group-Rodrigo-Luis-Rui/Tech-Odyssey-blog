@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import backgroundimage from "../../img/backgroundimage.jpg";
+import backgroundimage from "../../img/backgroundimage2.jpg";
 import "../../styles/createpost.css";
 
 export const Createpost = () => {
@@ -36,12 +36,14 @@ export const Createpost = () => {
 			})
 			.then((res) => res.json())
 			.then((result) => {
-				setTitle();
+				setTitle("");
 				// setCategory();
-				setEmail();
-				setPassword();
+				setEmail("");
+				setAbstract("");
+				setMainText("");
+				alert("Post successfully created!")
 			}).catch((err) => {
-				console.error("There was an ERROR LOGGIN IN!!", err);
+				console.error(err);
 			});
 		};
 	}
