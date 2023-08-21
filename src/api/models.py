@@ -57,8 +57,6 @@ class Post(db.Model):
 
     comments = db.relationship("Comment", back_populates="post")
 
-    # myreading = db.relationship("MyReading", back_populates="myreading")
-    
 
     def __repr__(self):
         return '<Posts %r>' % self.id
@@ -114,6 +112,5 @@ class MyReading(db.Model):
             print(post.serialize())
         return {
             "id": self.id,
-            "posts": [post.serialize() for post in self.posts],
             "user": self.user_id
         }
