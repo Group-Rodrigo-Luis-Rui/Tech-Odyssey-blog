@@ -32,9 +32,10 @@ padding-right: 3rem;
 }
 .iconLink{
   cursor: pointer;
+  color: #00336D;
 }
-.iconLink:hover{
-  color: white;
+.iconLink i:hover{
+  color: rgb(255, 0, 0);
 }
 .cardContainer{
   color: #00336D;

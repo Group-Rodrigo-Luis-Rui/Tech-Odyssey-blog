@@ -264,8 +264,8 @@ def get_my_readings(id):
     except NameError:
         return jsonify({"error" : "Namerror"}), 500
 
-@api.route('/myreading/<int:id>', methods=['DELETE'])
-def delete_my_readings(id):
+@api.route('/myreading/<int:id>/post/<int:post_id>', methods=['DELETE'])
+def delete_my_readings(id, post_id):
     try:
         # Get the MyReading for the given user_id from the database
         myreading = MyReading.query.get(id)
@@ -273,7 +273,17 @@ def delete_my_readings(id):
         if not myreading:
             return jsonify({"My readings not found"}), 404
 
-        db.session.delete(myreading)
+        post_to_delete = None
+
+        for post in myreading.posts:
+            if post.id == post_id:
+                post_to_delete = post
+                break
+
+        if not post_to_delete:
+            return jsonify({"Post not found!"}), 404
+
+        db.session.delete(post_to_delete)
         db.session.commit()
 
         return jsonify({"message": "My readings deleted successfully"}), 200
