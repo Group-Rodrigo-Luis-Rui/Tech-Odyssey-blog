@@ -15,6 +15,7 @@ export const MyReadings = () => {
 	const [email, setEmail] = useState();
 	const [name, setName] = useState();
 	const [readings, setReadings] = useState([])
+	const [myreadingID, setMyreadingID] = useState();
 
 	const getOneUser = () => {
 		const userID = store.userId
@@ -44,6 +45,8 @@ export const MyReadings = () => {
 		})
 		.then((res) => res.json())
 		.then((result) => {
+			console.log(result);
+			setMyreadingID(result.id)
 			setReadings(result.posts);
 		})
 		.catch((err) => {
@@ -60,20 +63,21 @@ export const MyReadings = () => {
 		navigate(`/single/${postID}`);
 	}
 
-	// const deleteReading = () => {
-	// 	fetch(process.env.BACKEND_URL + "/api//myreading" + userID, { 
-	// 		method: "DELETE",
-	// 		headers: { 
-	// 			"Content-Type": 
-	// 			"application/json" 
-	// 		},
-	// 	})
-	// 	.then((res) => res.json())
-	// 	.then((result) => {
-	// 	}).catch((err) => {
-	// 		console.log(err);
-	// 	})
-	// }
+	const deleteReading = (id) => {
+		fetch(process.env.BACKEND_URL + "/api/myreading/" + myreadingID + "/post/" + id, { 
+			method: "DELETE",
+			headers: { 
+				"Content-Type": 
+				"application/json" 
+			},
+		})
+		.then((res) => res.json())
+		.then((result) => {
+			
+		}).catch((err) => {
+			console.log(err);
+		})
+	}
 
 	
 	
@@ -92,39 +96,45 @@ export const MyReadings = () => {
 				<div>
 					<h3 className="myBoxBackgroundReadings mb-2 pb-1">My Readings</h3>
 					<ul className="list-group">
-						{readings.map((item, index) => (
-							<li key={index}>
-								<div class="card mb-3 cardContainerReadings">
-									<div class="row g-0">
-										<div class="col-md-5">
-											<img src="https://picsum.photos/300" class="img-fluid rounded-start" alt="..."/>
-											<div className="buttonProfileDivReadings">
-												<button 
-													type="button" 
-													class="btn btn-secondary btn-sm fs-6"
-													onClick={() => goToSinglePost(item.id)}
-													>
-														View Post
-												</button>
-											</div>
-										</div>
-										<div class="col-md-7">
-											<div class="card-body">
-												<div className="container d-flex justify-content-between m-2">
-													<h4 class="card-title pTextReadings pe-2"><strong>{item.title}</strong></h4>
-													<a href="..." className="iconLinkReadings" title="Delete from my reading list">
-														<i class="fas fa-trash pe-2 fs-3" ></i>
-													</a>
+						{readings? (
+							readings.map((item, index) => (
+								<li key={index}>
+									<div class="card mb-3 cardContainerReadings">
+										<div class="row g-0">
+											<div class="col-md-5">
+												<img src="https://picsum.photos/300" class="img-fluid rounded-start" alt="..."/>
+												<div className="buttonProfileDivReadings">
+													<button 
+														type="button" 
+														class="btn btn-secondary btn-sm fs-6"
+														onClick={() => goToSinglePost(item.id)}
+														>
+															View Post
+													</button>
 												</div>
-												<div className="cardTextProfile">
-													<p>{item.abstract}</p>
+											</div>
+											<div class="col-md-7">
+												<div class="card-body">
+													<div className="container d-flex justify-content-between m-2">
+														<h4 class="card-title pTextReadings pe-2"><strong>{item.title}</strong></h4>
+														<div 
+															className="iconLinkReadings" 
+															title="Delete from my reading list"
+															onClick={() => deleteReading(item.id)}
+														>
+																<i class="fas fa-trash pe-2 fs-3" ></i>
+														</div>
+													</div>
+													<div className="cardTextProfile">
+														<p>{item.abstract}</p>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-							</li>
-						))}
+								</li>
+							))
+						): ""}
 					</ul>
 				</div>
 			</div>
