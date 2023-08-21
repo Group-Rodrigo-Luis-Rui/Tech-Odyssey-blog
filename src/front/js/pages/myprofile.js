@@ -14,8 +14,6 @@ export const MyProfile = () => {
 	// const [abstract, setAbstract] = useState("");
 	const [posts, setPosts] = useState([])
 
-	
-
 	const getOneUser = () => {
 		const userID = localStorage.getItem("userID");
 		fetch(process.env.BACKEND_URL + "/api/user/" + userID, { 
