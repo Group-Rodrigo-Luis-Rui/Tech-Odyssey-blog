@@ -111,6 +111,5 @@ class MyReading(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "posts": [post.serialize() for post in self.posts],
             "user": self.user_id
         }

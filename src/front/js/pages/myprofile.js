@@ -14,8 +14,10 @@ export const MyProfile = () => {
 	// const [abstract, setAbstract] = useState("");
 	const [posts, setPosts] = useState([])
 
+	
+
 	const getOneUser = () => {
-		const userID = store.userId
+		const userID = localStorage.getItem("userID");
 		fetch(process.env.BACKEND_URL + "/api/user/" + userID, { 
 			method: "GET",
 			headers: { 
@@ -33,7 +35,7 @@ export const MyProfile = () => {
 	}
 	
 	const getPostsByUser = () => {
-		const userID = store.userId
+		const userID = localStorage.getItem("userID")
 		fetch(process.env.BACKEND_URL + "/api/user/" + userID + "/posts", { 
 			method: "GET",
 			headers: { 
@@ -72,7 +74,7 @@ export const MyProfile = () => {
 		})
 		.then((res) => res.json())
 		.then((result) => {
-			//if (result) return alert("My reading added successfully to your profile!")
+			console.log(result);
 
 		}).catch((err) => {
 			console.log(err);
