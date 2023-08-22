@@ -26,11 +26,12 @@ body{
   backdrop-filter: blur(4.8px);
   -webkit-backdrop-filter: blur(4.8px);
   color: #00336d;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
+  margin-top: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 200px;
   padding-bottom: 10px;
 }
 
@@ -59,9 +60,10 @@ body{
   width: 50%;
   margin-top: 50px;
   display: flex;
-  justify-content: end;
   align-items: center;
-  padding-right: 400px;
+  padding: 40px;
+  padding-left: 100px;
+  font-size: 45px;
 }
 .cardmiddle h5{
   margin: 20px;
@@ -121,8 +123,9 @@ figcaption{
 .card2{
     width: 700px;
     height: 300px;
-    background: rgba(255, 255, 255, 0.555);
+    background: rgba(255, 255, 255, 0.849);
     border-radius: 16px;
+    border: none;
     box-shadow: rgba(0, 0, 0, 0.4) 0 2px 4px,rgba(0, 0, 0, 0.3) 0 7px 13px -3px,#00005a 0 -2px 0 inset;
     backdrop-filter: blur(4.8px);
     -webkit-backdrop-filter: blur(4.8px);
@@ -254,9 +257,11 @@ figcaption{
   top: 41.5%;
   z-index: 1; 
   border: none;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
   padding: 8px 12px;
   color: #fff;
-  background-color: rgba(0, 2, 90, 0.418);
+  background-color: rgba(0, 2, 90, 0.781);
   box-shadow: rgb(0, 0, 0) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;  height: 320px;
   border-radius: 15px;
 }
@@ -273,7 +278,7 @@ figcaption{
 
 .scroll-control-prev:hover,
 .scroll-control-next:hover {
-  background-color: rgba(143, 139, 192, 0.747);
+  background-color: rgba(11, 0, 133, 0.037);
   transition: background-color 0.5s;
   width: 200px;
   transition: .5s ease;

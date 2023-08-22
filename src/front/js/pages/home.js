@@ -95,6 +95,9 @@ export const Home = () => {
 		.catch(error => console.error(error));
 	
 	}
+	const goToSinglePost = (postID) => {
+		navigate(`/single/${postID}`);
+	}
 
 	useEffect(() => {
 		getPosts();
@@ -106,8 +109,8 @@ export const Home = () => {
 
 	const { store, actions } = useContext(Context);
 
-	const Letters = ["W","E","L","C","O","M","E","-","T","O",
-	"-","T","H","E","-","T","E","C","H","-","W","O","R","L","D"];
+	const Letters = ["T","H","I","S","-","I","S","-","T","H",
+	"E","-","T","E","C","H","-","W","O","R","L","D"];
 	
 	const Title1 = ["C","O","M","P","U","T","E","R","S"];
 	const Title2 = ["M","O","V","I","E","-","T","E","C","H"];
@@ -156,22 +159,6 @@ export const Home = () => {
 	return (
 		<div  className="container-fluid background" style={{backgroundImage:'url(' + backgroundurl + ')'}}>
 			<div className="row text-center mt-5 d-flex justify-content-center" >
-				<div className="letters-card">
-					{Letters.map((letter, index) => (
-						<MovingComponent
-							key={index}
-							type="effect3D"
-							duration="1100ms"
-							delay={index * 100 + "ms"} 
-							direction="alternate-reverse"
-							timing="ease"
-							iteration="infinite"
-							fillMode="both"
-						>
-							{letter}
-						</MovingComponent>
-					))}
-				</div>
 				<div className="card-carousel-header d-flex justify-content-center">
 					{/* carousel*/}
 					<div id="carouselExampleControls" class=" col-6 carousel slide d-block " data-bs-ride="carousel">
@@ -207,10 +194,7 @@ export const Home = () => {
 						</button>
 						</div>
 					</div>
-					<div className="container-fluid container-cardmiddle d-flex justify-content-center">
-						<div className="cardmiddle">
-							Everything you must to know about tech
-						</div>
+					<div className="container-fluid container-cardmiddle d-flex justify-content-center mt-5">
 					</div>
 					<div className="cardtitle mt-5">
 						{Title1.map((Title1, index) => (
@@ -252,11 +236,9 @@ export const Home = () => {
 											<p>{post.description}</p>
 											<p>{post.abstract}</p>
 											<div className="readmore">
-												<Link to={`/single/${post.id}`}>
-													<button className="btn col">
+													<button className="btn col" onClick={() => goToSinglePost(item.id)}>
 														Read More
 													</button>
-												</Link>
 											</div>
 										</div>
 									</div>
