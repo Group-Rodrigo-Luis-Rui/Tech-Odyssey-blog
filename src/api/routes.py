@@ -311,6 +311,7 @@ def add_comment():
     
 @api.route('/comment/<int:id>', methods=['GET'])
 def get_comments_by_post(id):
+    print(id)
     try:
         comment = Comment.query.get(id)
 
