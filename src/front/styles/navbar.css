@@ -41,7 +41,6 @@
     border-bottom: 2px solid rgb(179, 138, 64);
 }
 
-
 .logoB {
     width: 86.5px;
     height: 100px;
@@ -54,7 +53,6 @@
     justify-content: center;
 }
 
-
 .sub-logo {
     width: 50px;
     height: 50px;
@@ -62,7 +60,18 @@
     margin-top: 10px; 
 }
 
+.upper-header{
+    background-color: #00336d;
     
+}
+
+.user-name{
+    color: white;
+    margin-bottom: 0;
+    margin-left: 90%;
+    width: 100%;  
+}
+
 .metallic-element{
     z-index:999;
     top: 0;
@@ -75,6 +84,7 @@
     padding: 0 1rem;
     height: 120px;
     border-bottom: 3px solid #6B8E23;
+    
 }
 
 .metallic-element .logo {
@@ -93,7 +103,7 @@
 
 .metallic-element .navigation{
     position: relative;
-    line-height: 3rem;  
+    line-height: 2rem;  
 }
 
 .navigation, .menu, ul{
@@ -133,8 +143,7 @@
 
 .num:hover{
     color: #00336d;
-    transition: 0.3s;
-  
+    transition: 0.3s;  
 }
 
 :Link {
@@ -171,7 +180,6 @@
     height: 1.7rem;
     transition: 0.5s ease-out;    
 }
-
 
 .hamburger-btn{
     width: 3rem;
@@ -269,7 +277,7 @@ ul.dropdown{
         position: fixed;
         display: block;
         background: hsl(var(--clr-white) /1);
-        background: linear-gradient(to bottom, hsl( var(--clr-white) / 0.6), hsl( var(--clr-white) / 1));
+        background: linear-gradient(to bottom, hsl( var(--clr-white) / 0.7), hsl( var(--clr-white) / 1));
         backdrop-filter: blur(5px);
         min-width: 5rem;
         height: 100vh;
@@ -318,26 +326,6 @@ ul.dropdown{
     right: 30px;   
 }
 
-/*.wrapper {
-    z-index: 1001;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-    width: 25rem;
-    height: 27.5rem;
-    background: linear-gradient(to bottom, hsl(var(--clr-light) /1), hsl( var(--clr-light) / .2));
-    border: 2px solid rgba(255, 255, 255, .5);
-    border-radius: 1.2rem;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}*/
 .wrapper {
     position: absolute;
     width: 22rem;
@@ -690,14 +678,18 @@ ul.dropdown{
 }
 
 .signout-btn{
-    border: none;
+    border: 1px solid #000080;
+    border-radius: 5px;
     background-color: transparent;
-    scale: 0.6;
+   
+    width: 80px;
+    
 }
 
 .signout-btn:hover{
-   color:#469DFF;
+   color:white;
    transition: 0.3s;
+   background-color: #000080;
    
 }
 
