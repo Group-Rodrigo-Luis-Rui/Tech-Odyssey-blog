@@ -18,10 +18,7 @@ export const MyReadings = () => {
 	const [myreadingID, setMyreadingID] = useState();
 
 	const getOneUser = () => {
-		// delete the next line after updating navbar
-		// const userID = store.userId
 
-		//uncomment this line after updating navbar
 		const userID = localStorage.getItem("userID");
 
 		fetch(process.env.BACKEND_URL + "/api/user/" + userID, { 
@@ -41,10 +38,7 @@ export const MyReadings = () => {
 	}
 
 	const getMyReadings = () => {
-		// delete the next line after updating navbar
-		// const userID = store.userId
 
-		//uncomment this line after updating navbar
 		const userID = localStorage.getItem("userID");
 
 		fetch(process.env.BACKEND_URL + "/api/myreading/" + userID, { 
@@ -74,10 +68,7 @@ export const MyReadings = () => {
 	}
 
 	const deleteReading = (id) => {
-		const confirmDelete = window.confirm("Are you sure you want to delete this post?");
-		if (!confirmDelete) {
-			return;
-		}
+
 		fetch(process.env.BACKEND_URL + "/api/myreading/" + myreadingID + "/post/" + id, { 
 			method: "DELETE",
 			headers: { 
@@ -87,7 +78,9 @@ export const MyReadings = () => {
 		})
 		.then((res) => res.json())
 		.then((result) => {
-			
+
+			setReadings((prevReadings) => prevReadings.filter((item) => item.id !== id));	
+
 		}).catch((err) => {
 			console.log(err);
 		})
@@ -99,16 +92,16 @@ export const MyReadings = () => {
 		<div className="backgroundReadings" style={{backgroundImage:'url(' + backgroundimage + ')'}}>
 			<div className="container textBackgroundReadings text-center">
 				<div className="userAvatar d-flex justify-content-center align-items-center mt-5 mb-5">
-					<img src="https://loremflickr.com/g/320/240/paris,man/all" alt="User Avatar" className="avatarImageReadings rounded-circle" />
+					<img src="https://loremflickr.com/g/320/240/paris,man/all" alt="User Avatar" className="avatarImageReadings" />
 					<div className="myBoxBackgroundReadings">
-						<h3><strong>{name}</strong>'s My Reading List</h3>
+						<h3><strong><em>{name}</em>'s My Reading List</strong></h3>
 					</div>
 				</div>
 				<div className="myBoxBackgroundReadings mb-5">
-					<h4>Email:&nbsp;&nbsp;{email}</h4>
+					<h4><strong>Email:&nbsp;&nbsp;{email}</strong></h4>
 				</div>
 				<div>
-					<h3 className="myBoxBackgroundReadings mb-2 pb-1">My Readings</h3>
+					<h3 className="myBoxBackgroundReadings mb-2 pb-1"><strong>My Readings</strong></h3>
 					<ul className="list-group">
 						{readings? (
 							readings.map((item, index) => (
@@ -116,21 +109,16 @@ export const MyReadings = () => {
 									<div class="card mb-3 cardContainerReadings">
 										<div class="row g-0">
 											<div class="col-md-5">
-												<img src="https://picsum.photos/300" class="img-fluid rounded-start" alt="..."/>
-												<div className="buttonProfileDivReadings">
-													<button 
-														type="button" 
-														class="btn btn-secondary btn-sm fs-6"
-														onClick={() => goToSinglePost(item.id)}
-														>
-															View Post
-													</button>
-												</div>
+												<img src="https://picsum.photos/300" class="img-fluid rounded-start mt-2 imageCardMyReadings" alt="..."/>
 											</div>
 											<div class="col-md-7">
 												<div class="card-body">
-													<div className="container d-flex justify-content-between m-2">
-														<h4 class="card-title pTextReadings pe-2"><strong>{item.title}</strong></h4>
+													<div className="container d-flex justify-content-between titleCardMyReading">
+														<h4 
+															class="card-title pTextReadings pe-2" 
+															onClick={() => goToSinglePost(item.id)}>
+																<strong>{item.title}</strong>
+														</h4>
 														<div 
 															className="iconLinkReadings" 
 															title="Delete from my reading list"
@@ -140,7 +128,7 @@ export const MyReadings = () => {
 														</div>
 													</div>
 													<div className="cardTextProfile">
-														<p>{item.abstract}</p>
+														<p className="cardTextMyReading">{item.abstract}</p>
 													</div>
 												</div>
 											</div>
