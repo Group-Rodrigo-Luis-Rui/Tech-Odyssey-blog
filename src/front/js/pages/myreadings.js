@@ -2,11 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 import backgroundimage from "../../img/backgroundimage2.jpg";
-import avatarImage from "../../img/rigo-baby.jpg";
 import "../../styles/myreadings.css";
 
 
 export const MyReadings = () => {
+	
 
 	const {store, actions} =  useContext(Context);
 
@@ -18,7 +18,12 @@ export const MyReadings = () => {
 	const [myreadingID, setMyreadingID] = useState();
 
 	const getOneUser = () => {
-		const userID = store.userId
+		// delete the next line after updating navbar
+		// const userID = store.userId
+
+		//uncomment this line after updating navbar
+		const userID = localStorage.getItem("userID");
+
 		fetch(process.env.BACKEND_URL + "/api/user/" + userID, { 
 			method: "GET",
 			headers: { 
@@ -36,7 +41,12 @@ export const MyReadings = () => {
 	}
 
 	const getMyReadings = () => {
-		const userID = store.userId
+		// delete the next line after updating navbar
+		// const userID = store.userId
+
+		//uncomment this line after updating navbar
+		const userID = localStorage.getItem("userID");
+
 		fetch(process.env.BACKEND_URL + "/api/myreading/" + userID, { 
 			method: "GET",
 			headers: { 
@@ -64,6 +74,10 @@ export const MyReadings = () => {
 	}
 
 	const deleteReading = (id) => {
+		const confirmDelete = window.confirm("Are you sure you want to delete this post?");
+		if (!confirmDelete) {
+			return;
+		}
 		fetch(process.env.BACKEND_URL + "/api/myreading/" + myreadingID + "/post/" + id, { 
 			method: "DELETE",
 			headers: { 
@@ -87,7 +101,7 @@ export const MyReadings = () => {
 				<div className="userAvatar d-flex justify-content-center align-items-center mt-5 mb-5">
 					<img src="https://loremflickr.com/g/320/240/paris,man/all" alt="User Avatar" className="avatarImageReadings rounded-circle" />
 					<div className="myBoxBackgroundReadings">
-						<h3><strong>{name}</strong>'s profile</h3>
+						<h3><strong>{name}</strong>'s My Reading List</h3>
 					</div>
 				</div>
 				<div className="myBoxBackgroundReadings mb-5">
