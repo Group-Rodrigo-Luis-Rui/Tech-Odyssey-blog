@@ -270,7 +270,7 @@ export const Navbar = () => {
 							/>
 						</div>
 					</div>
-						
+				</div>		
 						{/* login form */}
 						{( isModalOpen && isLoginVisible) && (
 						<div className="wrapper ff-sans-normal" >
@@ -383,7 +383,7 @@ export const Navbar = () => {
 							</div>
 							)
 						}
-			</div>			
+						
 		</header>
 	);
 };

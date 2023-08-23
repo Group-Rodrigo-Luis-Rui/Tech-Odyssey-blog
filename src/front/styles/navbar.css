@@ -62,7 +62,7 @@
 
 .upper-header{
     background-color: #00336d;
-    
+   
 }
 
 .user-name{
@@ -84,6 +84,7 @@
     padding: 0 1rem;
     height: 120px;
     border-bottom: 3px solid #6B8E23;
+   
     
 }
 
@@ -210,8 +211,8 @@
 
 ul.dropdown{
     position: absolute;
-    top: 5.5rem;
-    right: 1.15rem;
+    top: 3rem;
+    right: 6.7rem;
     padding:2px;
     width: 245px;
     border-radius: 8px;
@@ -289,10 +290,10 @@ ul.dropdown{
 
     ul.dropdown{
         position: absolute;
-        top: 25rem;
-        right: 4.45rem;
+        top: 15em;
+        right: 4.4em;
         padding:2px;
-        width: 245px;
+        width: 200px;
         border-radius: 8px;
         background-color: hsl( var(--clr-white) / 1);
         box-shadow: 0 0px 5px rgb(0 0 0 / 40%);
@@ -318,7 +319,13 @@ ul.dropdown{
        
     .hamburger-btn{
         display: block;
-    }         
+    } 
+    
+    .signout-btn {
+        position: absolute;
+        top:22em;
+        left:4em;
+    }
 }
   
 .btn-close{
