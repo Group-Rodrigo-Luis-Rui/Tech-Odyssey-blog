@@ -8,7 +8,7 @@ export const OurMission = () => {
 	return (
 		<div className="background" style={{backgroundImage:'url(' + backgroundimage + ')'}}>
 			<div className="container textBackground">
-				<h2 className="pt-3"><strong>Tech Odyssey</strong>: Exploring the Cutting-Edge Convergence of Computers, Movie Tech, AI, EV Mobility, and More!</h2><br/>
+				<h1 className="pt-3"><strong>Tech Odyssey</strong>: Exploring the Cutting-Edge Convergence of Computers, Movie Tech, AI, EV Mobility, and More!</h1><br/>
 				<h3 className="text"><em>Welcome to our Tech Odyssey - Where Boundaries Blur and Innovations Unite!</em></h3>
 				<p className="text">In the ever-evolving landscape of technology, groundbreaking advancements are revolutionizing every aspect of our lives. From the fascinating world of computers to the captivating magic of movie tech, the limitless potential of artificial intelligence, and the eco-conscious realm of electric vehicle (EV) mobility, there's an array of exciting topics to explore. Join us on a journey through the realm of technology, where barriers between different domains dissolve, and extraordinary synergies are discovered.</p>
 				<h3><strong>Beyond Binary: Unraveling the Future of Computers</strong></h3>
