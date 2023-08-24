@@ -272,7 +272,7 @@ def delete_my_readings(id, post_id):
 
         if not myreading:
             return jsonify({"My readings not found"}), 404
-
+        
         post_to_delete = None
 
         for post in myreading.posts:
@@ -282,14 +282,15 @@ def delete_my_readings(id, post_id):
 
         if not post_to_delete:
             return jsonify({"Post not found!"}), 404
-
+        
         db.session.delete(post_to_delete)
         db.session.commit()
 
-        return jsonify({"message": "My readings deleted successfully"}), 200
+        return jsonify({"message": "My reading deleted successfully"}), 200
 
     except NameError:
         return jsonify({"error" : "Namerror"}), 500
+
 
 # COMMENT endpoints
 @api.route('/comment', methods=['POST'])

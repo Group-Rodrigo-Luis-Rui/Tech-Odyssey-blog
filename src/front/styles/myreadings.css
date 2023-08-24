@@ -1,61 +1,69 @@
 .backgroundReadings{
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center center;
-    font-family: "Barlow";
-    font-size: large;
-    min-height: 100rem;
-  }
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  font-family: "Barlow";
+  font-size: large;
+  min-height: 100rem;
+}
   
-  .textBackgroundReadings{
-  background: rgba(1, 0, 41, 0.534); 
-  color: #f1f1f1;
+.textBackgroundReadings{
+  background: rgba(255, 255, 255, 0.8); 
+  color: #00336D;
   padding-top: 1rem;
   padding-bottom: 1rem;
   /* min-height: 100rem; */
-  }
-  .myBoxBackgroundReadings{
+}
+.myBoxBackgroundReadings{
   backdrop-filter: invert(20%);
   padding: 0.3rem;
   padding-bottom: 0.1rem;
   border-radius: 5px;
-  }
-  .avatarImageReadings{
+}
+.avatarImageReadings{
   height: 10rem;
   padding-right: 3rem;
-  }
-/*   
-  .emailBoxReadings::value{
-  color: #ffffff;
-  font-size: small;
-  } */
-  .buttonProfileDivReadings{
-    margin-top: 2em;
-  }
-  .buttonProfileDivReadings button:hover{
-    background-color: #469DFF;
-  }
-  .iconLinkReadings{
-    cursor: pointer;
-    color: rgb(255, 1, 1);
-  }
-  .iconLinkReadings:hover{
-    color: gray;
+  border-radius: 5px;
+}
+.pTextReadings:hover{
+  color: #00336d7c;
+  cursor: pointer;
+}
+/* .cardTextMyReading{
+  font-weight:  530;
+} */
+.buttonProfileDivReadings{
+  margin-top: 2em;
+}
+.buttonProfileDivReadings button:hover{
+  background-color: #00336D;
+}
+.iconLinkReadings{
+  cursor: pointer;
+  color: rgb(255, 1, 1);
+}
+.iconLinkReadings:hover{
+  color: gray;
+}
+.cardContainerReadings{
+  color: #00336D;
+  background: rgba(105, 105, 105, 0.1);
+  box-shadow: rgba(255, 255, 255, 0.9) 0 2px 4px,rgba(10, 0, 53, 0.267) 0 7px 13px -3px,#000038 0 -1.5px 0 inset;
+  height: 20rem;
+  padding-bottom: 5rem;
+}
+.titleCardMyReading{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 767px) {
+  .pTextReadings{
+    font-size:medium;
   }
   .cardContainerReadings{
-    box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    height: 25rem;
   }
-  
-  @media (max-width: 767px) {
-    .pTextReadings{
-      font-size:medium;
-    }
-    .buttonProfileDivReadings{
-      margin-top: 1em;
-    }
-    .cardTextProfileReadings {
-      display: none;
-    }
-  }
-  
+}
+
