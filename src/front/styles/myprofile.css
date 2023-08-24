@@ -20,6 +20,13 @@ padding: 0.3rem;
 padding-bottom: 0.1rem;
 border-radius: 5px;
 }
+.myEmailBoxBackground{
+  background-color: #00336D;
+  color: #ffffff;
+  padding: 0.3rem;
+  padding-bottom: 0.1rem;
+  border-radius: 5px;
+  }
 .avatarImage{
 height: 10rem;
 padding-right: 3rem;
@@ -49,6 +56,11 @@ border-radius: 5px;
 .titleTextProfile:hover{
   color: #00336d7c;
   cursor: pointer;
+}
+.cardTextProfile{
+  text-align: justify;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 767px) {

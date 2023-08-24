@@ -112,8 +112,8 @@ export const MyProfile = () => {
 						<h3><strong>{name}</strong>'s profile</h3>
 					</div>
 				</div>
-				<div className="myBoxBackground mb-5">
-					<h4>Email:&nbsp;&nbsp;{email}</h4>
+				<div className="myEmailBoxBackground mb-5">
+					<h4>Email:&nbsp;&nbsp;<strong>{email}</strong></h4>
 				</div>
 				<div>
 					<h3 className="myBoxBackground mb-2 pb-1">My Posts</h3>
