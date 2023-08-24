@@ -4,15 +4,19 @@ import backgroundimage from "../../img/backgroundimage2.jpg";
 import "../../styles/createpost.css";
 
 export const Createpost = () => {
-
+	
 	const [title, setTitle] = useState("");
-	//category ??
+	const [category, setCategory] = useState("");
 	const [abstract, setAbstract] = useState("");
 	const [mainText, setMainText] = useState("");
 
-	const createpost = () => {
+
+	const createpost = (event) => {
+		event.preventDefault()
 		if(title === "" || title.length > 60){
 			alert("Please insert the title with a maximum of 60 characters");
+		} else if (category === ""){
+			alert ("Please choose a category");
 		} else if (abstract === "" || abstract.length > 300){
 			alert ("Please insert the abstract with a maximum of 300 characters");
 		} else if (mainText === "" || title.length > 5000) {
@@ -21,7 +25,7 @@ export const Createpost = () => {
 
 			const postData = {
 				"title": title,
-				// "category": Category,
+				"category": category,
 				"abstract": abstract,
 				"main_text": mainText,
 			}
@@ -36,9 +40,9 @@ export const Createpost = () => {
 			})
 			.then((res) => res.json())
 			.then((result) => {
+				console.log(result);
 				setTitle("");
-				// setCategory();
-				setEmail("");
+				setCategory("");
 				setAbstract("");
 				setMainText("");
 				alert("Post successfully created!")
@@ -75,13 +79,19 @@ export const Createpost = () => {
 							</div>
 							<div className="form-group mb-4">
 								<label for="exampleFormControlSelect1" className="mb-1 titlesText">Select category</label>
-								<select className="form-control" id="exampleFormControlSelect1">
-									<option value="" selected disabled hidden>Choose here</option>
-									<option value="1">Computers</option>
-									<option value="2">Movie Tech</option>
-									<option value="3">AI - Artificial intelligence</option>
-									<option value="4">EV Mobility</option>
-									<option value="5">Other Stuff</option>
+								<select 
+									className="form-control" 
+									id="exampleFormControlSelect1"
+									required
+									value={category}
+									onChange={(e) => setCategory(e.target.value)}
+								>
+									<option value="" disabled hidden>Choose here</option>
+									<option value="COM">Computers</option>
+									<option value="MT">Movie Tech</option>
+									<option value="AI">AI - Artificial intelligence</option>
+									<option value="EV">EV Mobility</option>
+									<option value="OTHER">Other Stuff</option>
 								</select>
 							</div>
 							<div className="form-group mb-4">
