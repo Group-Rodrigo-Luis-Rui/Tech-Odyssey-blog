@@ -68,7 +68,8 @@
 .user-name{
     color: white;
     margin-bottom: 0;
-    margin-left: 90%;
+    text-align: right;
+    padding-right: 10px;
     width: 100%;  
 }
 
