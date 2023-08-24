@@ -12,11 +12,8 @@ export const MyProfile = () => {
 	const [posts, setPosts] = useState([])
 
 	const getOneUser = () => {
-		// delete the next line after updating navbar
-		const userID = store.userId
-
-		//uncomment this line after updating navbar
-		// const userID = localStorage.getItem("userID");
+		
+		const userID = localStorage.getItem("userID");
 
 		fetch(process.env.BACKEND_URL + "/api/user/" + userID, { 
 			method: "GET",
@@ -35,11 +32,8 @@ export const MyProfile = () => {
 	}
 	
 	const getPostsByUser = () => {
-		// delete the next line after updating navbar
-		const userID = store.userId
 
-		//uncomment this line after updating navbar
-		// const userID = localStorage.getItem("userID");
+		const userID = localStorage.getItem("userID");
 
 		fetch(process.env.BACKEND_URL + "/api/user/" + userID + "/posts", { 
 			method: "GET",
@@ -113,7 +107,7 @@ export const MyProfile = () => {
 		<div className="backgroundProfile" style={{backgroundImage:'url(' + backgroundimage + ')'}}>
 			<div className="container textBackgroundProfile text-center">
 				<div className="userAvatar d-flex justify-content-center align-items-center mt-5 mb-5">
-					<img src="https://loremflickr.com/g/320/240/paris,man/all" alt="User Avatar" className="avatarImage rounded-circle" />
+					<img src="https://loremflickr.com/g/320/240/paris,man/all" alt="User Avatar" className="avatarImage" />
 					<div className="myBoxBackground">
 						<h3><strong>{name}</strong>'s profile</h3>
 					</div>
@@ -126,23 +120,19 @@ export const MyProfile = () => {
 					<ul className="list-group">
 						{posts.map((item, index) => (
 							<li key={index}>
-								<div class="card mb-3 cardContainer">
+								<div class="card mb-3 cardContainerProfile">
 									<div class="row g-0">
 										<div class="col-md-5">
-											<img src="https://picsum.photos/300" class="img-fluid rounded-start" alt="some image"/>
-											<div className="buttonProfileDiv">
-												<button type="button" 
-												class="btn btn-secondary btn-sm fs-6"
-												onClick={() => goToSinglePost(item.id)}
-												>
-													View Post
-												</button>
-											</div>
+											<img src="https://picsum.photos/300" class="img-fluid mt-2 rounded-start" alt="some image"/>
 										</div>
 										<div class="col-md-7">
 											<div class="card-body">
-												<div className="container d-flex justify-content-between m-2">
-													<h4 class="card-title pText pe-2"><strong>{item.title}</strong></h4>
+												<div className="container d-flex justify-content-between titleCardProfile">
+													<h4 
+														class="card-title pText pe-2 titleTextProfile"
+														onClick={() => goToSinglePost(item.id)}
+													>
+														<strong>{item.title}</strong></h4>
 													<div 
 														href="#" 
 														className="iconLink" 
