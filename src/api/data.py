@@ -3,14 +3,14 @@ from api.models import db, User,Post,Comment,Category,MyReading
 def populate_user():
     Post.query.delete()
     User.query.delete()
-    db.session.add(User(email = 'Luís_Santos@jmail.com', name='Luís Santos', password= '123456', is_active=True))
-    db.session.add(User(email = 'Rodrigo_Almeida@jmail.com', name='Rodrigo Almeida', password= '123456', is_active=True))
-    db.session.add(User(email = 'Rui_Silva@jmail.com', name='Rui Silva', password= '123456', is_active=True))
+    db.session.add(User(email = 'luis_santos@jmail.com', name='Luís Santos', password= '123', is_active=True))
+    db.session.add(User(email = 'rodrigo_almeida@jmail.com', name='Rodrigo Almeida', password= '123', is_active=True))
+    db.session.add(User(email = 'rui_silva@jmail.com', name='Rui Silva', password= '123', is_active=True))
     db.session.commit()
 
 
 def populate_post_user1():
-    user = User.query.filter_by(email = "Luís_Santos@jmail.com")
+    user = User.query.filter_by(email = "luis_santos@jmail.com")
     user = list(map(lambda x: x.serialize(), user))
 
     db.session.add(Post(
@@ -86,7 +86,7 @@ def populate_post_user1():
     db.session.commit()
 
 def populate_post_user2():
-    user = User.query.filter_by(email = "Rodrigo_Almeida@jmail.com")
+    user = User.query.filter_by(email = "rodrigo_almeida@jmail.com")
     user = list(map(lambda x: x.serialize(), user))
 
     db.session.add(Post(
@@ -162,7 +162,7 @@ def populate_post_user2():
     db.session.commit()
 
 def populate_post_user3():
-    user = User.query.filter_by(email = "Rui_Silva@jmail.com")
+    user = User.query.filter_by(email = "rui_silva@jmail.com")
     user = list(map(lambda x: x.serialize(), user))
 
     db.session.add(Post(

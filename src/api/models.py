@@ -73,7 +73,6 @@ class Post(db.Model):
             "comments": [comments.serialize() for comments in self.comments] if self.comments else []
         }
     
-
 class Comment(db.Model):
     __tablename__ = 'comment'
     id = db.Column(db.Integer, primary_key=True)
@@ -101,13 +100,18 @@ class MyReading(db.Model):
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
-    posts = db.relationship("Post", back_populates="myreading")
+    posts = db.relationship("Post", back_populates="myreading", cascade="all, delete-orphan")
 
     def __repr__(self):
         return '<MyReadings %r>' % self.id
 
     def serialize(self):
+        print("serialize: ", self.id)
+        for post in self.posts: 
+            print("post: ", post.id)
+            print(post.serialize())
         return {
             "id": self.id,
+            "posts": [post.serialize() for post in self.posts],
             "user": self.user_id
         }
