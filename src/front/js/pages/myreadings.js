@@ -94,14 +94,14 @@ export const MyReadings = () => {
 				<div className="userAvatar d-flex justify-content-center align-items-center mt-5 mb-5">
 					<img src="https://loremflickr.com/g/320/240/paris,man/all" alt="User Avatar" className="avatarImageReadings" />
 					<div className="myBoxBackgroundReadings">
-						<h3><strong><em>{name}</em>'s My Reading List</strong></h3>
+						<h3><strong><em>{name}</em></strong>'s My Reading List</h3>
 					</div>
 				</div>
 				<div className="myBoxBackgroundReadings mb-5">
-					<h4><strong>Email:&nbsp;&nbsp;{email}</strong></h4>
+					<h4>Email:&nbsp;&nbsp;<strong>{email}</strong></h4>
 				</div>
 				<div>
-					<h3 className="myBoxBackgroundReadings mb-2 pb-1"><strong>My Readings</strong></h3>
+					<h3 className="myBoxBackgroundReadings mb-2 pb-1">My Readings</h3>
 					<ul className="list-group">
 						{readings? (
 							readings.map((item, index) => (
@@ -128,7 +128,7 @@ export const MyReadings = () => {
 														</div>
 													</div>
 													<div className="cardTextProfile">
-														<p className="cardTextMyReading">{item.abstract}</p>
+														<p>{item.abstract}</p>
 													</div>
 												</div>
 											</div>

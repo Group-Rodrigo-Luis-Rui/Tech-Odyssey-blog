@@ -9,7 +9,7 @@
 }
   
 .textBackgroundReadings{
-  background: rgba(1, 0, 41, 0.178); 
+  background: rgba(255, 255, 255, 0.8); 
   color: #00336D;
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -27,13 +27,12 @@
   border-radius: 5px;
 }
 .pTextReadings:hover{
-  color: #00336D;
+  color: #00336d7c;
   cursor: pointer;
-  text-shadow: -1px 1px white;
 }
-.cardTextMyReading{
+/* .cardTextMyReading{
   font-weight:  530;
-}
+} */
 .buttonProfileDivReadings{
   margin-top: 2em;
 }
@@ -62,12 +61,6 @@
 @media (max-width: 767px) {
   .pTextReadings{
     font-size:medium;
-  }
-  .buttonProfileDivReadings{
-    margin-top: 1em;
-  }
-  .cardTextProfileReadings {
-    display: none;
   }
   .cardContainerReadings{
     height: 25rem;
