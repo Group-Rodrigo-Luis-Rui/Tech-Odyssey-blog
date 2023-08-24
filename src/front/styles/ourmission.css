@@ -9,7 +9,7 @@
 }
 
 .textBackground{
-  background: rgba(105, 105, 105, 0.2);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px); 
   color: #00336D;
@@ -18,8 +18,11 @@
 }
 
 .text{
+  /* text-shadow: 2px 2px 3px #ffffff; */
   text-align: justify;
   text-justify: inter-word;
+  /* font-weight: bold; */
+  /* background-color: #fff; */
 }
 
 .teamName{
