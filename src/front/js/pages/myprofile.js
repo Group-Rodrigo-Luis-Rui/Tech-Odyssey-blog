@@ -1,20 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
-import backgroundimage from "../../img/backgroundimage.jpg";
-// import avatarImage from "../../img/rigo-baby.jpg";
+import backgroundimage from "../../img/backgroundimage2.jpg";
 import "../../styles/myprofile.css";
+import { useNavigate } from "react-router-dom";
 
 export const MyProfile = () => {
+	const navigate = useNavigate();
 	const {store, actions} =  useContext(Context);
 	const [email, setEmail] = useState();
 	const [name, setName] = useState();
-	const [title, setTitle] = useState("");
-	const [abstract, setAbstract] = useState("");
 	const [posts, setPosts] = useState([])
 
-	const userID = store.userId
-
 	const getOneUser = () => {
+		// delete the next line after updating navbar
+		const userID = store.userId
+
+		//uncomment this line after updating navbar
+		// const userID = localStorage.getItem("userID");
+
 		fetch(process.env.BACKEND_URL + "/api/user/" + userID, { 
 			method: "GET",
 			headers: { 
@@ -32,6 +35,12 @@ export const MyProfile = () => {
 	}
 	
 	const getPostsByUser = () => {
+		// delete the next line after updating navbar
+		const userID = store.userId
+
+		//uncomment this line after updating navbar
+		// const userID = localStorage.getItem("userID");
+
 		fetch(process.env.BACKEND_URL + "/api/user/" + userID + "/posts", { 
 			method: "GET",
 			headers: { 
@@ -49,23 +58,51 @@ export const MyProfile = () => {
 		});
 	}
 
+	// getoneuser and getPostsByUser render just one time
 	useEffect(() => {
 		getOneUser();
 		getPostsByUser();
 	},[])
-	
-	const addReadings = () => {
-		fetch(process.env.BACKEND_URL + "/api/myreading", { 
-			method: "POST",
+
+	const goToSinglePost = (postID) => {
+		navigate(`/single/${postID}`);
+	}
+
+
+	// const addReadings = (postID) => {
+	// 	fetch(process.env.BACKEND_URL + "/api/myreading", { 
+	// 		method: "POST",
+	// 		headers: { 
+	// 			"Content-Type": 
+	// 			"application/json" 
+	// 		},
+	// 		body: JSON.stringify({user_id: store.userId, post_id: postID}) 
+	// 	})
+	// 	.then((res) => res.json())
+	// 	.then((result) => {
+
+	// 	}).catch((err) => {
+	// 		console.log(err);
+	// 	})
+	// }
+
+	const deletePost = (id) => {
+		const confirmDelete = window.confirm("Are you sure you want to delete this post?");
+		if (!confirmDelete) {
+			return;
+		}
+		fetch(process.env.BACKEND_URL + "/api/post/" + id, { 
+			method: "DELETE",
 			headers: { 
 				"Content-Type": 
 				"application/json" 
 			},
-			body: JSON.stringify(post.id) 
 		})
 		.then((res) => res.json())
 		.then((result) => {
-			// i need to push the post (post id ??) to my readings
+			console.log(result);
+			const updatedPosts = posts.filter((post) => post.id !== id);
+			setPosts(updatedPosts);
 
 		}).catch((err) => {
 			console.log(err);
@@ -94,16 +131,29 @@ export const MyProfile = () => {
 										<div class="col-md-5">
 											<img src="https://picsum.photos/300" class="img-fluid rounded-start" alt="some image"/>
 											<div className="buttonProfileDiv">
-												<button type="button" class="btn btn-secondary btn-sm fs-6">View Post</button>
+												<button type="button" 
+												class="btn btn-secondary btn-sm fs-6"
+												onClick={() => goToSinglePost(item.id)}
+												>
+													View Post
+												</button>
 											</div>
 										</div>
 										<div class="col-md-7">
 											<div class="card-body">
 												<div className="container d-flex justify-content-between m-2">
 													<h4 class="card-title pText pe-2"><strong>{item.title}</strong></h4>
-													<a href="..." className="iconLink" title="Add to my reading list">
-														<i class="far fa-bookmark pe-2 fs-3 "></i>
-													</a>
+													<div 
+														href="#" 
+														className="iconLink" 
+														title="Delete post"
+														onClick={() => {
+															
+															deletePost(item.id);
+														}}
+													>
+														<i class="far fa-minus-square pe-2 fs-3 "></i>
+													</div>
 												</div>
 												<div className="cardTextProfile">
 													<p>{item.abstract}</p>

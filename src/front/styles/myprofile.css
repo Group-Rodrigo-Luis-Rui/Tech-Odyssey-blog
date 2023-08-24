@@ -7,10 +7,9 @@
   font-size: large;
   min-height: 100rem;
 }
-
 .textBackgroundProfile{
-background: rgba(1, 0, 41, 0.534); 
-color: #f1f1f1;
+background: rgba(105, 105, 105, 0.178); 
+color: #00336D;
 padding-top: 1rem;
 padding-bottom: 1rem;
 /* min-height: 100rem; */
@@ -25,22 +24,23 @@ border-radius: 5px;
 height: 10rem;
 padding-right: 3rem;
 }
-
-.emailBox::value{
-color: #ffffff;
-font-size: small;
-}
 .buttonProfileDiv{
   margin-top: 2em;
 }
 .buttonProfileDiv button:hover{
-  background-color: #469DFF;;
+  background-color: #00336D;
 }
 .iconLink{
   cursor: pointer;
+  color: #00336D;
+}
+.iconLink i:hover{
+  color: rgb(255, 0, 0);
 }
 .cardContainer{
-  box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  color: #00336D;
+  background: rgba(105, 105, 105, 0.1);
+  box-shadow: rgba(255, 255, 255, 0.9) 0 2px 4px,rgba(10, 0, 53, 0.267) 0 7px 13px -3px,#000038 0 -1.5px 0 inset;
 }
 
 @media (max-width: 767px) {

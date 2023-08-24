@@ -46,10 +46,10 @@ export const Navbar = () => {
 
 		const [user, setUser] = useState("");
 
-		// is user logged in
+		// is user loged in
 		const [isLogedIn, setIsLogedIn] =useState(false);
 
-		// to loggout the user
+		// to logout the user
 		const [isLogedout, setIsLogedOut] =useState(false);
 
 		// Register variables
@@ -58,7 +58,7 @@ export const Navbar = () => {
 		const [regPassword, setRegPassword]=useState("");
 		const [regIsActive, setRegIsActive]=useState(false);
 
-		// logging in function
+		// loging in function
 		const submit=(event)=> {
 			event.preventDefault()
 			if(email.trim() === ""){
@@ -76,15 +76,19 @@ export const Navbar = () => {
 				})
 				.then((res) => res.json())
 				.then((result) => {
-
-
+				if("token" in result){
 					console.log("Token is here!", result);
 					localStorage.setItem("jwt-token", result.token);
+					localStorage.setItem("userID", result.user_id);
 					actions.storeUserId(result.user_id);
 					setEmail("");
 					setPassword("");
 					toggleIsModalOpen();
 					alert(`User ${email} Successfully LOGIN!!`);
+					ifUserLoggIn();
+				} else {
+					alert("Bad username or password.Please try again");
+				}
 				}).catch((err) => {
 					console.error("There was an ERROR LOGIN IN!!", err);
 				});
@@ -94,22 +98,25 @@ export const Navbar = () => {
 		const ifUserLoggIn = () => {	
 			if(token){
 				setIsLogedIn(true);
+				getUser(store.userId);
 			}
 		}
 
 		const ifUserLoggout = () => {
 			const token = localStorage.removeItem("jwt-token");
+
 			if(!token){
+				alert(`User Successfully LOGOUT!!`);
 				setIsLogedOut(true);
 				setIsLogedIn(false);
-				alert(`User ${email} Successfully LOGOUT!!`);
 				navigate("/");
 			}
 		}
-		console.log(user);
-		useEffect(()=>{
-			const getUser=(id) => {
-				fetch(process.env.BACKEND_URL + "/api/user/"+id, { 
+		// this will insert the username on the upper bar
+		// useEffect(()=>{
+			const getUser=() => {
+				const userID = localStorage.getItem("userID");
+				fetch(process.env.BACKEND_URL + "/api/user/" + userID, { 
 					method: "GET",
 					headers: { 
 						"Content-Type": 
@@ -118,18 +125,18 @@ export const Navbar = () => {
 				})
 				.then((res) => res.json())
 				.then((result) => {
-					console.log(result);
+					// console.log(result);
 					setUser(result);	
 				}).catch((err) => {
 					console.error("There was an ERROR LOGIN IN!!", err);
 				});
 			}	
-			getUser(store.userId);
-		},[store.userId])
+		// 	getUser(store.userId);
+		// },[store.userId])
 
 		useEffect(()=>{
 			ifUserLoggIn();
-		},[token, ifUserLoggIn])
+		},[token, isLogedIn]);
 
 		// Register a user
 		const registerUser=(event)=> {
@@ -182,15 +189,17 @@ export const Navbar = () => {
 	
 	return (
 		<header>
+				{isLogedIn && user && (
+				<div className="upper-header">
+					<p className="user-name ff-sans-cond letter-spacing-3 fs-390">User: {user.name}</p>
+				</div>
+				)}
 				<div className="metallic-element">
 					<div className="d-flex justify-content-center align-items-center">
 						<div className="main-logo">
 							<img src={logo} alt="" className="logoB"/>
 						</div>
 						
-						{/* <a href="#" className="logo uppercase ff-sans-cond letter-spacing-2">
-							Tech Odyssey
-						</a> */}
 					</div>
 
 					<div className={`navigation ${closeBtn? "menu-active":""}`}>
@@ -214,7 +223,7 @@ export const Navbar = () => {
 							
 							{!isLogedIn &&
 							<li className="px-3 ff-sans-cond letter-spacing-3 fs-390">
-								<a className="menu-item1" onClick ={toggleIsModalOpen} title="Login"><span className="num">02</span><i className="fa-solid fa-circle-user"></i></a>
+								<a className="menu-item1" onClick ={toggleIsModalOpen}><span className="num">02</span>Sign In<i className="fa-solid fa-circle-user"></i></a>
 							</li>
 							}
 							
@@ -250,15 +259,8 @@ export const Navbar = () => {
 							</div>
 							}
 							{isLogedIn &&
-							<li className="px-3 ff-sans-cond letter-spacing-3 fs-400">
-								<button className="signout-btn" onClick={ifUserLoggout} title="Logout"><i className="fa-solid fa-right-from-bracket"></i></button>
-							</li>
-							}
-							{isLogedIn &&
-							<li className="px-3 ff-sans-cond letter-spacing-3 fs-400">
-								<p>{user && user.name}</p>
-							</li>
-							}
+								<button className="signout-btn ff-sans-cond menu-item letter-spacing-3" onClick={ifUserLoggout}>Sign Out</button>
+							}	
 						</ul>
 						<div>
 							<img 
@@ -301,10 +303,10 @@ export const Navbar = () => {
 										/>	
 										<label>Password</label>
 									</div>
-									<div className="remember-forgot">
+									{/* <div className="remember-forgot">
 										<label><input type="checkbox"/>Remember me</label>
 										<a href="#">I agree to the terms & conditions</a>
-									</div>
+									</div> */}
 									<div className="btn-login-parent">
 										<button type="submit" className="btn-submit" onClick={submit}>Login</button>	
 									</div>
