@@ -1,17 +1,22 @@
 import React, { useState, useEffect, useContext } from "react";
 import backgroundurl from "../../img/background.jpg"
 import { Link, useParams } from "react-router-dom";
+import { Context } from "../store/appContext";
+
 
 
 export const Single = props => {
-	// const { store, actions } = useContext(Context);
+	 const { store, actions } = useContext(Context);
 	const params = useParams();
 	console.log(params.uid);
 
 	const [comments,setComments] = useState([]);
-	console.log(process.env.BACKEND_URL + "/api/comment/" + params.uid);
-	const getComments =()=>{
-		fetch(process.env.BACKEND_URL + "/api/comment/" + params.uid, {
+	const [post,setPost] = useState([]);
+	const [addComment,setAddComment] = useState('')
+	
+
+	const getSinglePost =()=>{
+		fetch(process.env.BACKEND_URL + "/api/post/" + params.uid, {
 			method: 'GET',
 			headers:{
 				'Content-Type': 'application/json'
@@ -19,16 +24,43 @@ export const Single = props => {
 		})
 		.then(res => {
 			if (!res.ok) throw Error(res.statusText);
-			console.log(res.json());
 			return res.json();
 		})
-		.then(response => setComments(response))
+		.then(response => {
+			setPost(response)
+			setComments(response.comments);
+		})
 		.catch(error => console.error(error));
 	
 	}
+	console.log(process.env.BACKEND_URL + "/api/post/" + params.uid);
+
+	const postComment =()=>{
+		fetch(process.env.BACKEND_URL + "/api/comment/", {
+			method: 'POST',
+			headers:{
+				'Content-Type': 'application/json'
+			},
+			body:JSON.stringify({
+				user_id:store.userId,
+				post_id:post.id,
+				text: addComment
+			})
+		})
+		.then(res => {
+			if (!res.ok) throw Error(res.statusText);
+			return res.json();
+		})
+		.then(response => {
+			console.log(response);
+		})
+		.catch(error => console.error(error));
+	
+	}
+	console.log(process.env.BACKEND_URL + "/api/comment/");
 
 	useEffect(()=>{
-		getComments()
+		getSinglePost()
 	},[])
 
 	return (
@@ -36,11 +68,11 @@ export const Single = props => {
 			<div className="container-fluid  d-flex justify-content-center">
 				<div className="container-card card-single">
 					<div className="card-body-single">
-						<h2 className="card-title">Something about computers</h2>
-						<h4 className="card-subtitle mb-2">Computers</h4>
-						<p>Abstract</p>
+						<h2 className="card-title">{post.title}</h2>
+						<h4 className="card-subtitle mb-2">{post.category}</h4>
+						<p>{post.abstract}</p>
 						<p>Posted by: Robert Julius</p>
-						<p>Date: Nov 17</p>
+						<p>Date: {post.date_created}</p>
 						<div className="comments d-flex justify-content-start">
 							<button type="button" className="btn-comments">
 								<i class="fa-regular fa-comment me-3"></i>
@@ -57,6 +89,7 @@ export const Single = props => {
 							className="single-image"
 						/>
 						<p className="card-text">
+							{post.main_text}
 						</p>
 					</div>
 				</div>
@@ -64,7 +97,11 @@ export const Single = props => {
 			<div className="container-card card-single">
 				<h3 className="comments-title">Comments:</h3>
 				<div className="single-comments">
-					(user) <p>gf</p>
+					(user) {comments.map(comment=>{
+						return(
+							<p>{comment.text}</p>
+						)
+					})}
 					<button className="btn ms-1" type="button">
 						<i class="fa-regular fa-comment-dots"> - Reply</i>
 					</button>
@@ -83,9 +120,11 @@ export const Single = props => {
 				</div>
 				<div className="mb-3">
 					<label for="exampleFormControlTextarea1" class="form-label">Make a comment</label>
-					<textarea className="form-control" id="exampleFormControlTextarea1" placeholder="Add a comment"
+					<textarea value={addComment} onChange={(e)=> setAddComment(e.target.value)} className="form-control" id="exampleFormControlTextarea1" placeholder="Add a comment"
 					rows="3"></textarea>
-					<button className="btn ms-1 mt-3" type="button">
+					<button className="btn ms-1 mt-3" type="button" onClick={()=>{
+						postComment();
+						getSinglePost();}}>
 						Comment
 					</button>
 				</div>
