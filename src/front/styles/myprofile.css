@@ -32,6 +32,11 @@ height: 10rem;
 padding-right: 3rem;
 border-radius: 5px;
 }
+.imagePostProfile{
+  height: 10rem;
+  padding-left: 2rem;
+  border-radius: 5px;
+  }
 .buttonProfileDiv{
   margin-top: 2em;
 }
@@ -73,4 +78,9 @@ border-radius: 5px;
   .cardContainerProfile{
     height: 25rem;
   }
+  .imagePostProfile{
+    width: 20rem;
+    padding-left: 0rem;
+    border-radius: 5px;
+    }
 }

@@ -10,6 +10,8 @@ export const MyProfile = () => {
 	const [email, setEmail] = useState();
 	const [name, setName] = useState();
 	const [posts, setPosts] = useState([])
+	const [imageUser, setImageUser] = useState();
+	const [postImage, setPostImage] = useState();
 
 	const getOneUser = () => {
 		
@@ -25,6 +27,8 @@ export const MyProfile = () => {
 		.then((result) => {
 			setName(result.name);
 			setEmail(result.email);
+			setImageUser(result.user_image);
+			// setPostImage(result.image_post);
 		})
 		.catch((err) => {
 			console.log(err);
@@ -94,7 +98,6 @@ export const MyProfile = () => {
 		})
 		.then((res) => res.json())
 		.then((result) => {
-			console.log(result);
 			const updatedPosts = posts.filter((post) => post.id !== id);
 			setPosts(updatedPosts);
 
@@ -107,7 +110,7 @@ export const MyProfile = () => {
 		<div className="backgroundProfile" style={{backgroundImage:'url(' + backgroundimage + ')'}}>
 			<div className="container textBackgroundProfile text-center">
 				<div className="userAvatar d-flex justify-content-center align-items-center mt-5 mb-5">
-					<img src="https://loremflickr.com/g/320/240/paris,man/all" alt="User Avatar" className="avatarImage" />
+					<img src={imageUser} alt="User Avatar" className="avatarImage" />
 					<div className="myBoxBackground">
 						<h3><strong>{name}</strong>'s profile</h3>
 					</div>
@@ -123,7 +126,7 @@ export const MyProfile = () => {
 								<div class="card mb-3 cardContainerProfile">
 									<div class="row g-0">
 										<div class="col-md-5">
-											<img src="https://picsum.photos/300" class="img-fluid mt-2 rounded-start" alt="some image"/>
+											<img src={item.image_post} class="img-fluid mt-2 rounded-start imagePostProfile" alt="some image"/>
 										</div>
 										<div class="col-md-7">
 											<div class="card-body">
