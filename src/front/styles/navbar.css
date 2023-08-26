@@ -60,6 +60,14 @@
     margin-top: 10px; 
 }
 
+.navbar-block {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
 .upper-header{
     background-color: #00336d;
    
@@ -84,9 +92,7 @@
     background-color: #FFFAF0;
     padding: 0 1rem;
     height: 120px;
-    border-bottom: 3px solid #6B8E23;
-   
-    
+    border-bottom: 3px solid #6B8E23;    
 }
 
 .metallic-element .logo {

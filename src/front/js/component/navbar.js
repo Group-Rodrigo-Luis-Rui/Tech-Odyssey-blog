@@ -189,6 +189,7 @@ export const Navbar = () => {
 	
 	return (
 		<header>
+			<div className="navbar-block">
 				{isLogedIn && user && (
 				<div className="upper-header">
 					<p className="user-name ff-sans-cond letter-spacing-3 fs-390">User: {user.name}</p>
@@ -270,7 +271,8 @@ export const Navbar = () => {
 							/>
 						</div>
 					</div>
-				</div>		
+				</div>	
+			</div>	
 						{/* login form */}
 						{( isModalOpen && isLoginVisible) && (
 						<div className="wrapper ff-sans-normal" >
