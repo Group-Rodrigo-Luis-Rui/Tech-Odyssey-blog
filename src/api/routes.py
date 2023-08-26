@@ -12,10 +12,10 @@ api = Blueprint('api', __name__)
 
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
-    # populate_user()
-    # populate_post_user1()
-    # populate_post_user2()
-    # populate_post_user3()
+    populate_user()
+    populate_post_user1()
+    populate_post_user2()
+    populate_post_user3()
     response_body = {
         "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
     }
