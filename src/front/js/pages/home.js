@@ -1,18 +1,113 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
-import backgroundurl from "../../img/background.jpg"
+import backgroundurl from "../../img/backgroundimage2.jpg"
 import { Link } from "react-router-dom";
 import MovingComponent from "../component/movingcomponent";
 
 
 export const Home = () => {
 
+	const [posts, setPosts] = useState([]);
+	const [posts2, setPosts2] = useState([]);
+	const [posts3, setPosts3] = useState([]);
+	const [posts4, setPosts4] = useState([]);
+	const [posts5, setPosts5] = useState([]);
+
+
+	const getPosts =()=>{
+		fetch(process.env.BACKEND_URL + "/api/posts/category/COM", {
+			method: 'GET',
+			headers:{
+				'Content-Type': 'application/json'
+			}
+		})
+		.then(res => {
+			if (!res.ok) throw Error(res.statusText);
+			return res.json();
+		})
+		.then(response => setPosts(response))
+		.catch(error => console.error(error));
+	
+	}
+
+	const getPosts2 =()=>{
+		fetch(process.env.BACKEND_URL + "/api/posts/category/MT", {
+			method: 'GET',
+			headers:{
+				'Content-Type': 'application/json'
+			}
+		})
+		.then(res => {
+			if (!res.ok) throw Error(res.statusText);
+			return res.json();
+		})
+		.then(response => setPosts2(response))
+		.catch(error => console.error(error));
+	
+	}
+
+	const getPosts3 =()=>{
+		fetch(process.env.BACKEND_URL + "/api/posts/category/AI", {
+			method: 'GET',
+			headers:{
+				'Content-Type': 'application/json'
+			}
+		})
+		.then(res => {
+			if (!res.ok) throw Error(res.statusText);
+			return res.json();
+		})
+		.then(response => setPosts3(response))
+		.catch(error => console.error(error));
+	
+	}
+
+	const getPosts4 =()=>{
+		fetch(process.env.BACKEND_URL + "/api/posts/category/EVM", {
+			method: 'GET',
+			headers:{
+				'Content-Type': 'application/json'
+			}
+		})
+		.then(res => {
+			if (!res.ok) throw Error(res.statusText);
+			return res.json();
+		})
+		.then(response => setPosts4(response))
+		.catch(error => console.error(error));
+	
+	}
+
+	const getPosts5 =()=>{
+		fetch(process.env.BACKEND_URL + "/api/posts/category/OTHER", {
+			method: 'GET',
+			headers:{
+				'Content-Type': 'application/json'
+			}
+		})
+		.then(res => {
+			if (!res.ok) throw Error(res.statusText);
+			return res.json();
+		})
+		.then(response => setPosts5(response))
+		.catch(error => console.error(error));
+	
+	}
+
+	useEffect(() => {
+		getPosts();
+		getPosts2();
+		getPosts3();
+		getPosts4();
+		getPosts5();
+	},[]);
+
 	const { store, actions } = useContext(Context);
 
-	const Letters = ["W","e","l","c","o","m","e","-","T","o",
-	"-","T","h","e","-","T","e","c","h","-","W","o","r","l","d"];
+	const Letters = ["W","E","L","C","O","M","E","-","T","O",
+	"-","T","H","E","-","T","E","C","H","-","W","O","R","L","D"];
 	
 	const Title1 = ["C","o","m","p","u","t","e","r","s"];
 	const Title2 = ["M","o","v","i","e","-","T","e","c","h"];
@@ -20,56 +115,7 @@ export const Home = () => {
 	const Title4 = ["E","V","-","M","o","b","i","l","i","t","y"];
 	const Title5 = ["O","t","h","e","r","-","S","t","u","f","f"];
 
-	const cards = [
-		"/card1",
-		"/card2",
-		"/card3",
-		"/card4",
-		"/card5",
-		"/card6",
-		"/card7",
-		"/card8",
-	];
-	const cards2 = [
-		"/card1",
-		"/card2",
-		"/card3",
-		"/card4",
-		"/card5",
-		"/card6",
-		"/card7",
-		"/card8",
-	];
-	const cards3 = [
-		"/card1",
-		"/card2",
-		"/card3",
-		"/card4",
-		"/card5",
-		"/card6",
-		"/card7",
-		"/card8",
-	];
-	const cards4 = [
-		"/card1",
-		"/card2",
-		"/card3",
-		"/card4",
-		"/card5",
-		"/card6",
-		"/card7",
-		"/card8",
-	];
-	const cards5 = [
-		"/card1",
-		"/card2",
-		"/card3",
-		"/card4",
-		"/card5",
-		"/card6",
-		"/card7",
-		"/card8",
-	];
+
 	const [scrollPosition, setScrollPosition] = useState(0);
 	const [scrollPositions2, setScrollPositions2] = useState(0);
 	const [scrollPositions3, setScrollPositions3] = useState(0);
@@ -93,19 +139,19 @@ export const Home = () => {
 	
 	  // Function to scroll the cards to the right
 	const scrollRight = (className) => {
-		if (className === "container1" && scrollPosition < (cards.length * 45.5)) {
+		if (className === "container1" && scrollPosition < (posts.length * 45.5)) {
             setScrollPosition(prevPosition => prevPosition + 90);
-        } else if (className === "container2" && scrollPositions2 < (cards.length * 45.5)) {
+        } else if (className === "container2" && scrollPositions2 < (posts.length * 45.5)) {
             setScrollPositions2(prevPosition => prevPosition + 90);
-        } else if (className === "container3" && scrollPositions3 < (cards.length * 45.5)) {
+        } else if (className === "container3" && scrollPositions3 < (posts.length * 45.5)) {
             setScrollPositions3(prevPosition => prevPosition + 90);
-        } else if (className === "container4" && scrollPositions4 < (cards.length * 45.5)) {
+        } else if (className === "container4" && scrollPositions4 < (posts.length * 45.5)) {
             setScrollPositions4(prevPosition => prevPosition + 90);
-        } else if (className === "container5" && scrollPositions5 < (cards.length * 45.5)) {
+        } else if (className === "container5" && scrollPositions5 < (posts.length * 45.5)) {
             setScrollPositions5(prevPosition => prevPosition + 90);
         }
 		console.log("this is the log of the scroll right: "+scrollPosition);
-	  };
+	};
 
 	return (
 		<div  className="container-fluid background" style={{backgroundImage:'url(' + backgroundurl + ')'}}>
@@ -126,26 +172,7 @@ export const Home = () => {
 						</MovingComponent>
 					))}
 				</div>
-				<div className="card-carousel-header d-flex">
-					<div class="card col-6 card-top me-2">
-						<div class="card-body">
-							<img src="https://static.vecteezy.com/system/resources/previews/006/430/145/original/technology-background-concept-circuit-board-electronic-system-futuristic-hi-tech-light-on-dark-blue-free-vector.jpg" class="card-img-top" alt="..."/>
-							<div className="row">
-								<div className="col-6">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">Some quick example text to build on
-										the card title and make up the bulk of the card's content.
-									</p>
-								</div>
-								<div className="col-6">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">Some quick example text to build on
-										the card title and make up the bulk of the card's content.
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
+				<div className="card-carousel-header d-flex justify-content-center">
 					{/* carousel*/}
 					<div id="carouselExampleControls" class=" col-6 carousel slide d-block " data-bs-ride="carousel">
 						<div className="carousel-inner">
@@ -180,11 +207,9 @@ export const Home = () => {
 						</button>
 						</div>
 					</div>
-					<div className="container-fluid container-cardmiddle">
+					<div className="container-fluid container-cardmiddle d-flex justify-content-center">
 						<div className="cardmiddle">
-							<h5>Here you will find</h5>
 							Everything you must to know about tech
-							<p>And much more...</p>
 						</div>
 					</div>
 					<div className="cardtitle mt-5">
@@ -205,9 +230,9 @@ export const Home = () => {
 					</div>
 						{/* scrolling cards*/}
 						<div className="scrolling-container container1 mt-1"  >										
-							{cards.map((src, index) => (
+							{posts.map((post, index) => (
 								<div
-									key={src}
+									key={post.id}
 									className="mt-3 me-3 sliding-card"
 									style={{
 										transform: `translateX(${(index - scrollPosition) * 10}px)`,
@@ -215,41 +240,28 @@ export const Home = () => {
 								>
 									<div className="card2 row">
 										<div className="img col-6">
-											<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
+											<img src={post.Url} class="card-img-top" alt="..." />
 											<figcaption className="fig position-absolute bottom-0 start-0 p-3">
-												<p>something</p>
+												<p>{post.abstract}</p>
 											</figcaption>
-											{/* fontAwsome icons (like, heart and favorites)*/}
-											<div className="font">
-												<a href="#" className=" col-2 mt-2 ms-2 mt-1">
-													<i class="me-0 fa solid fa-thumbs-up"></i>
-												</a>
-											</div>
-											<div className="font1">
-												<a href="#" className="col-2 mt-2 ms-2 mt-1">
-													<i class="me-0 fa-solid fa-heart"></i>
-												</a>
-											</div>
-											<div className="font2">
-												<a href="#" className="col-2 mt-2 ms-2 mt-1">
-													<i class="me-0 fa duotone fa-bookmark"></i>
-												</a>
-											</div>
+											{/* fontAwsome icons (like, heart and favorites) */}
+											{/* ... */}
 										</div>
 										<div className="col-6 text">
-											<h5 className="card-title">Card title</h5>
-											<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+											<h3 className="card-title">{post.title}</h3>
+											<p>{post.description}</p>
+											<p>{post.abstract}</p>
 											<div className="readmore">
-												<Link to={"/single"}>
-													<button className="btn col ">
+												<Link to={`/single/${post.id}`}>
+													<button className="btn col">
 														Read More
 													</button>
 												</Link>
 											</div>
 										</div>
 									</div>
-								</div>					
-							))}	
+								</div>
+							))}
 					{/* Scroll buttons */}
 					<button className="scroll-control-prev" type="button" onClick={()=>scrollLeft('container1')}>
 						<span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -278,57 +290,44 @@ export const Home = () => {
 				</div>
 				{/* scrolling cards*/}
 				<div className="scrolling-container container3 mt-1"  >										
-							{cards3.map((src, index) => (
-								<div
-									key={src}
-									className="mt-3 me-3 sliding-card"
-									style={{
-										transform: `translateX(${(index - scrollPositions3) * 10}px)`,
-									}}
-								>
-									<div className="card2 row">
-										<div className="img col-6">
-											<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
-											<figcaption className="fig position-absolute bottom-0 start-0 p-3">
-												<p>something</p>
-											</figcaption>
-											{/* fontAwsome icons (like, heart and favorites)*/}
-											<div className="font">
-												<a href="#" className=" col-2 mt-2 ms-2 mt-1">
-													<i class="me-0 fa solid fa-thumbs-up"></i>
-												</a>
-											</div>
-											<div className="font1">
-												<a href="#" className="col-2 mt-2 ms-2 mt-1">
-													<i class="me-0 fa-solid fa-heart"></i>
-												</a>
-											</div>
-											<div className="font2">
-												<a href="#" className="col-2 mt-2 ms-2 mt-1">
-													<i class="me-0 fa duotone fa-bookmark"></i>
-												</a>
-											</div>
-										</div>
-										<div className="col-6 text">
-											<h5 className="card-title">Card title</h5>
-											<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-											<div className="readmore">
-												<Link to={"/single"}>
-													<button className="btn col ">
-														Read More
-													</button>
-												</Link>
-											</div>
-										</div>
+					{posts2.map((posts2, index) => (
+						<div
+							key={posts2.id}
+							className="mt-3 me-3 sliding-card"
+							style={{
+								transform: `translateX(${(index - scrollPositions2) * 10}px)`,
+							}}
+						>
+							<div className="card2 row">
+								<div className="img col-6">
+									<img src={posts2.Url} class="card-img-top" alt="..." />
+									<figcaption className="fig position-absolute bottom-0 start-0 p-3">
+										<p>{posts2.abstract}</p>
+									</figcaption>
+									{/* fontAwsome icons (like, heart and favorites) */}
+									{/* ... */}
+								</div>
+								<div className="col-6 text">
+									<h3 className="card-title">{posts2.title}</h3>
+									<p>{posts2.description}</p>
+									<p>{posts2.abstract}</p>
+									<div className="readmore">
+										<Link to={`/single/${posts2.id}`}>
+											<button className="btn col">
+												Read More
+											</button>
+										</Link>
 									</div>
-								</div>					
-							))}	
+								</div>
+							</div>
+						</div>
+					))}
 					{/* Scroll buttons */}
-					<button className="scroll-control-prev" type="button" onClick={()=>scrollLeft('container3')}>
+					<button className="scroll-control-prev" type="button" onClick={()=>scrollLeft('container2')}>
 						<span className="carousel-control-prev-icon" aria-hidden="true"></span>
 						<span className="visually-hidden">Previous</span>
 					</button>
-					<button className="scroll-control-next" type="button" onClick={()=>scrollRight('container3')}>
+					<button className="scroll-control-next" type="button" onClick={()=>scrollRight('container2')}>
 						<span className="carousel-control-next-icon" aria-hidden="true"></span>
 						<span className="visually-hidden">Next</span>
 					</button>
@@ -351,57 +350,44 @@ export const Home = () => {
 				</div>
 				{/* scrolling cards*/}
 				<div className="scrolling-container container4 mt-1"  >										
-							{cards4.map((src, index) => (
-								<div
-									key={src}
-									className="mt-3 me-3 sliding-card"
-									style={{
-										transform: `translateX(${(index - scrollPositions4) * 10}px)`,
-									}}
-								>
-									<div className="card2 row">
-										<div className="img col-6">
-											<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
-											<figcaption className="fig position-absolute bottom-0 start-0 p-3">
-												<p>something</p>
-											</figcaption>
-											{/* fontAwsome icons (like, heart and favorites)*/}
-											<div className="font">
-												<a href="#" className=" col-2 mt-2 ms-2 mt-1">
-													<i class="me-0 fa solid fa-thumbs-up"></i>
-												</a>
-											</div>
-											<div className="font1">
-												<a href="#" className="col-2 mt-2 ms-2 mt-1">
-													<i class="me-0 fa-solid fa-heart"></i>
-												</a>
-											</div>
-											<div className="font2">
-												<a href="#" className="col-2 mt-2 ms-2 mt-1">
-													<i class="me-0 fa duotone fa-bookmark"></i>
-												</a>
-											</div>
-										</div>
-										<div className="col-6 text">
-											<h5 className="card-title">Card title</h5>
-											<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-											<div className="readmore">
-												<Link to={"/single"}>
-													<button className="btn col ">
-														Read More
-													</button>
-												</Link>
-											</div>
-										</div>
+					{posts3.map((posts3, index) => (
+						<div
+							key={posts3.id}
+							className="mt-3 me-3 sliding-card"
+							style={{
+								transform: `translateX(${(index - scrollPositions3) * 10}px)`,
+							}}
+						>
+							<div className="card2 row">
+								<div className="img col-6">
+									<img src={posts3.Url} class="card-img-top" alt="..." />
+									<figcaption className="fig position-absolute bottom-0 start-0 p-3">
+										<p>{posts3.abstract}</p>
+									</figcaption>
+									{/* fontAwsome icons (like, heart and favorites) */}
+									{/* ... */}
+								</div>
+								<div className="col-6 text">
+									<h3 className="card-title">{posts3.title}</h3>
+									<p>{posts3.description}</p>
+									<p>{posts3.abstract}</p>
+									<div className="readmore">
+										<Link to={`/single/${posts3.id}`}>
+											<button className="btn col">
+												Read More
+											</button>
+										</Link>
 									</div>
-								</div>					
-							))}	
-					{/* Scroll buttons */}
-					<button className="scroll-control-prev" type="button" onClick={()=>scrollLeft('container4')}>
+								</div>
+							</div>
+						</div>
+					))}
+						{/* Scroll buttons */}
+					<button className="scroll-control-prev" type="button" onClick={()=>scrollLeft('container3')}>
 						<span className="carousel-control-prev-icon" aria-hidden="true"></span>
 						<span className="visually-hidden">Previous</span>
 					</button>
-					<button className="scroll-control-next" type="button" onClick={()=>scrollRight('container4')}>
+					<button className="scroll-control-next" type="button" onClick={()=>scrollRight('container3')}>
 						<span className="carousel-control-next-icon" aria-hidden="true"></span>
 						<span className="visually-hidden">Next</span>
 					</button>
@@ -424,57 +410,44 @@ export const Home = () => {
 				</div>
 				{/* scrolling cards*/}
 				<div className="scrolling-container container2 mt-1"  >										
-							{cards5.map((src, index) => (
-								<div
-									key={src}
-									className="mt-3 me-3 sliding-card"
-									style={{
-										transform: `translateX(${(index - scrollPositions5) * 10}px)`,
-									}}
-								>
-									<div className="card2 row">
-										<div className="img col-6">
-											<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
-											<figcaption className="fig position-absolute bottom-0 start-0 p-3">
-												<p>something</p>
-											</figcaption>
-											{/* fontAwsome icons (like, heart and favorites)*/}
-											<div className="font">
-												<a href="#" className=" col-2 mt-2 ms-2 mt-1">
-													<i class="me-0 fa solid fa-thumbs-up"></i>
-												</a>
-											</div>
-											<div className="font1">
-												<a href="#" className="col-2 mt-2 ms-2 mt-1">
-													<i class="me-0 fa-solid fa-heart"></i>
-												</a>
-											</div>
-											<div className="font2">
-												<a href="#" className="col-2 mt-2 ms-2 mt-1">
-													<i class="me-0 fa duotone fa-bookmark"></i>
-												</a>
-											</div>
-										</div>
-										<div className="col-6 text">
-											<h5 className="card-title">Card title</h5>
-											<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-											<div className="readmore">
-												<Link to={"/single"}>
-													<button className="btn col ">
-														Read More
-													</button>
-												</Link>
-											</div>
-										</div>
+					{posts4.map((posts4, index) => (
+						<div
+							key={posts4.id}
+							className="mt-3 me-3 sliding-card"
+							style={{
+								transform: `translateX(${(index - scrollPositions4) * 10}px)`,
+							}}
+						>
+							<div className="card2 row">
+								<div className="img col-6">
+									<img src={posts4.Url} class="card-img-top" alt="..." />
+									<figcaption className="fig position-absolute bottom-0 start-0 p-3">
+										<p>{posts4.abstract}</p>
+									</figcaption>
+									{/* fontAwsome icons (like, heart and favorites) */}
+									{/* ... */}
+								</div>
+								<div className="col-6 text">
+									<h3 className="card-title">{posts4.title}</h3>
+									<p>{posts4.description}</p>
+									<p>{posts4.abstract}</p>
+									<div className="readmore">
+										<Link to={`/single/${posts4.id}`}>
+											<button className="btn col">
+												Read More
+											</button>
+										</Link>
 									</div>
-								</div>					
-							))}	
+								</div>
+							</div>
+						</div>
+					))}
 					{/* Scroll buttons */}
-					<button className="scroll-control-prev" type="button" onClick={()=>scrollLeft('container5')}>
+					<button className="scroll-control-prev" type="button" onClick={()=>scrollLeft('container4')}>
 						<span className="carousel-control-prev-icon" aria-hidden="true"></span>
 						<span className="visually-hidden">Previous</span>
 					</button>
-					<button className="scroll-control-next" type="button" onClick={()=>scrollRight('container5')}>
+					<button className="scroll-control-next" type="button" onClick={()=>scrollRight('container4')}>
 						<span className="carousel-control-next-icon" aria-hidden="true"></span>
 						<span className="visually-hidden">Next</span>
 					</button>
@@ -497,57 +470,44 @@ export const Home = () => {
 				</div>
 				{/* scrolling cards*/}
 				<div className="scrolling-container container2 mt-1"  >										
-							{cards2.map((src, index) => (
-								<div
-									key={src}
-									className="mt-3 me-3 sliding-card"
-									style={{
-										transform: `translateX(${(index - scrollPositions2) * 10}px)`,
-									}}
-								>
-									<div className="card2 row">
-										<div className="img col-6">
-											<img src="https://images.unsplash.com/photo-1470350576089-539d5a852bf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA1fHxoaWdoJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..."/>
-											<figcaption className="fig position-absolute bottom-0 start-0 p-3">
-												<p>something</p>
-											</figcaption>
-											{/* fontAwsome icons (like, heart and favorites)*/}
-											<div className="font">
-												<a href="#" className=" col-2 mt-2 ms-2 mt-1">
-													<i class="me-0 fa solid fa-thumbs-up"></i>
-												</a>
-											</div>
-											<div className="font1">
-												<a href="#" className="col-2 mt-2 ms-2 mt-1">
-													<i class="me-0 fa-solid fa-heart"></i>
-												</a>
-											</div>
-											<div className="font2">
-												<a href="#" className="col-2 mt-2 ms-2 mt-1">
-													<i class="me-0 fa duotone fa-bookmark"></i>
-												</a>
-											</div>
-										</div>
-										<div className="col-6 text">
-											<h5 className="card-title">Card title</h5>
-											<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-											<div className="readmore">
-												<Link to={"/single"}>
-													<button className="btn col ">
-														Read More
-													</button>
-												</Link>
-											</div>
-										</div>
+					{posts5.map((posts5, index) => (
+						<div
+							key={posts5.id}
+							className="mt-3 me-3 sliding-card"
+							style={{
+								transform: `translateX(${(index - scrollPositions5) * 10}px)`,
+							}}
+						>
+							<div className="card2 row">
+								<div className="img col-6">
+									<img src={posts5.Url} class="card-img-top" alt="..." />
+									<figcaption className="fig position-absolute bottom-0 start-0 p-3">
+										<p>{posts5.abstract}</p>
+									</figcaption>
+									{/* fontAwsome icons (like, heart and favorites) */}
+									{/* ... */}
+								</div>
+								<div className="col-6 text">
+									<h3 className="card-title">{posts5.title}</h3>
+									<p>{posts5.description}</p>
+									<p>{posts5.abstract}</p>
+									<div className="readmore">
+										<Link to={`/single/${posts5.id}`}>
+											<button className="btn col">
+												Read More
+											</button>
+										</Link>
 									</div>
-								</div>					
-							))}	
+								</div>
+							</div>
+						</div>
+					))}
 					{/* Scroll buttons */}
-					<button className="scroll-control-prev" type="button" onClick={()=>scrollLeft('container2')}>
+					<button className="scroll-control-prev" type="button" onClick={()=>scrollLeft('container5')}>
 						<span className="carousel-control-prev-icon" aria-hidden="true"></span>
 						<span className="visually-hidden">Previous</span>
 					</button>
-					<button className="scroll-control-next" type="button" onClick={()=>scrollRight('container2')}>
+					<button className="scroll-control-next" type="button" onClick={()=>scrollRight('container5')}>
 						<span className="carousel-control-next-icon" aria-hidden="true"></span>
 						<span className="visually-hidden">Next</span>
 					</button>

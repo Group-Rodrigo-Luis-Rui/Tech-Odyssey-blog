@@ -7,10 +7,9 @@
   font-size: large;
   min-height: 100rem;
 }
-
 .textBackgroundProfile{
-background: rgba(1, 0, 41, 0.534); 
-color: #f1f1f1;
+background: rgba(255, 255, 255, 0.8); 
+color: #00336D;
 padding-top: 1rem;
 padding-bottom: 1rem;
 /* min-height: 100rem; */
@@ -21,36 +20,67 @@ padding: 0.3rem;
 padding-bottom: 0.1rem;
 border-radius: 5px;
 }
+.myEmailBoxBackground{
+  background-color: #00336D;
+  color: #ffffff;
+  padding: 0.3rem;
+  padding-bottom: 0.1rem;
+  border-radius: 5px;
+  }
 .avatarImage{
 height: 10rem;
 padding-right: 3rem;
+border-radius: 5px;
 }
-
-.emailBox::value{
-color: #ffffff;
-font-size: small;
-}
+.imagePostProfile{
+  height: 10rem;
+  padding-left: 2rem;
+  border-radius: 5px;
+  }
 .buttonProfileDiv{
   margin-top: 2em;
 }
-.buttonProfileDiv button:hover{
-  background-color: #469DFF;;
-}
 .iconLink{
   cursor: pointer;
+  color: #00336D;
 }
-.cardContainer{
-  box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+.iconLink i:hover{
+  color: rgb(255, 0, 0);
+}
+.cardContainerProfile{
+  color: #00336D;
+  background: rgba(105, 105, 105, 0.1);
+  box-shadow: rgba(255, 255, 255, 0.9) 0 2px 4px,rgba(10, 0, 53, 0.267) 0 7px 13px -3px,#000038 0 -1.5px 0 inset;
+  height: 20rem;
+  padding-bottom: 5rem;
+}
+.titleCardProfile{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.titleTextProfile:hover{
+  color: #00336d7c;
+  cursor: pointer;
+}
+.cardTextProfile{
+  text-align: justify;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 767px) {
   .pText{
     font-size:medium;
   }
-  .buttonProfileDiv{
-    margin-top: 1em;
-  }
   .cardTextProfile {
     display: none;
   }
+  .cardContainerProfile{
+    height: 25rem;
+  }
+  .imagePostProfile{
+    width: 20rem;
+    padding-left: 0rem;
+    border-radius: 5px;
+    }
 }
