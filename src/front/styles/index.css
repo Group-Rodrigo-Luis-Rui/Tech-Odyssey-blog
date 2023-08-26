@@ -12,6 +12,13 @@
     padding-right: 100px;
 
 }
+.card-title{
+    margin-top: 30px;
+}
+.card-subtitle{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.117);
+    margin-top: 30px;
+}
 .main-container{
     overflow: auto; 
     position: relative;
@@ -29,12 +36,12 @@
     z-index: -1;
 }
 .container-card{
-    background: rgba(1, 0, 41, 0.534);
+    background: rgba(255, 255, 255, 0.853);
+    color: black;
     border-radius: 16px;
-    box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    box-shadow: rgba(17, 17, 17, 0.4) 0 2px 4px,rgba(0, 0, 0, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
     backdrop-filter: blur(4.8px);
-    -webkit-backdrop-filter: blur(4.8px);
-    color: rgb(255, 255, 255);
+    -webkit-backdrop-filter: blur(5.8px);
     margin-bottom: 50px;
 }
 .card-text{
@@ -54,7 +61,8 @@
 .btn-comments{
     border: none;
     background-color: transparent;
-    color: white;
+    color: black;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.117);
 }
 .single-image{
     height: 600px;
@@ -64,7 +72,10 @@
 .single-comments{
     padding-top: 10px;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.247);
+}
+.single-comments p{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.117);
+
 }
 .comments-title{
     padding-bottom: 10px;
@@ -83,7 +94,7 @@
     background-color: #FCFCFD;
     border-radius: 10px;
     border-width: 0;
-    box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#000055d3 0 -3px 0 inset;
+    box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#000087f8 0 -3px 0 inset;
     box-sizing: border-box;
     color: #36395A;
     cursor: pointer;
@@ -123,5 +134,9 @@
 }
 .form-control{
     box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+
+}
+.abstract{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.117);
 
 }

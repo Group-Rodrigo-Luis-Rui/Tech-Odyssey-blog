@@ -240,10 +240,12 @@ export const Home = () => {
 								>
 									<div className="card2 row">
 										<div className="img col-6">
-											<img src={post.Url} class="card-img-top" alt="..." />
-											<figcaption className="fig position-absolute bottom-0 start-0 p-3">
-												<p>{post.abstract}</p>
-											</figcaption>
+											<figure>
+												<img src={post.Url} class="card-img-top" alt="..." />
+												<figcaption className="fig position-absolute bottom-0 start-0 p-3">
+													<p>{post.abstract}</p>
+												</figcaption>
+											</figure>
 											{/* fontAwsome icons (like, heart and favorites) */}
 											{/* ... */}
 										</div>

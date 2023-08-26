@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import backgroundurl from "../../img/background.jpg"
+import backgroundurl from "../../img/backgroundimage2.jpg"
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
@@ -65,14 +65,14 @@ export const Single = props => {
 
 	return (
 		<div className="container-fluid background main-container" style={{backgroundImage:'url(' + backgroundurl + ')'}}>
-			<div className="container-fluid  d-flex justify-content-center">
+			<div className="container-fluid  d-flex justify-content-center mt-5">
 				<div className="container-card card-single">
 					<div className="card-body-single">
 						<h2 className="card-title">{post.title}</h2>
 						<h4 className="card-subtitle mb-2">{post.category}</h4>
-						<p>{post.abstract}</p>
-						<p>Posted by: Robert Julius</p>
-						<p>Date: {post.date_created}</p>
+						<p className="abstract">{post.abstract}</p>
+						<p><strong>Posted by:</strong> Robert Julius</p>
+						<p><strong>Date:</strong> {post.date_created}</p>
 						<div className="comments d-flex justify-content-start">
 							<button type="button" className="btn-comments">
 								<i class="fa-regular fa-comment me-3"></i>
@@ -81,7 +81,7 @@ export const Single = props => {
 							<button type="button" className="btn-comments">
 							<i class="fa-regular fa-bookmark ms-5 me-3"></i>
 							</button>
-							Add to favorites
+							Add to my readings
 						</div>
 						<img
 							src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXBwbGUlMjBsYXB0b3B8ZW58MHx8MHx8fDA%3D&w=1000&q=80" 
@@ -99,24 +99,18 @@ export const Single = props => {
 				<div className="single-comments">
 					(user) {comments.map(comment=>{
 						return(
-							<p>{comment.text}</p>
+							<p>{comment.text} 
+								<div className="d-flex justify-content-end">
+									<button className="btn me-3" type="button">
+										<i class="fa-regular fa-comment-dots"> - Reply</i>
+									</button>
+									<button className="btn" type="button">
+									<i class="fa-solid fa-trash"></i>
+									</button>
+								</div>
+							</p>
 						)
 					})}
-					<button className="btn ms-1" type="button">
-						<i class="fa-regular fa-comment-dots"> - Reply</i>
-					</button>
-					<div className="reply-comments">
-						(user) <p>The reply comes here</p>
-						<button className="btn-reply ms-1" type="button">
-						<i class="fa-regular fa-comment-dots fa-xs"> - Reply</i>
-						</button>
-					</div>
-				</div>
-				<div className="single-comments">
-					(user) <p>some other comment</p>
-					</div>
-					<div className="single-comments">
-					(user) <p>some other comment</p>
 				</div>
 				<div className="mb-3">
 					<label for="exampleFormControlTextarea1" class="form-label">Make a comment</label>
