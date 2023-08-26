@@ -2,17 +2,47 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    height: 5rem;
-    margin-top: 2rem;
+    height: 3rem; 
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #FFFAF0;
+    padding: 0 1rem;
+    border-top: 3px solid #6B8E23;
+}
+
+.bellow-footer {
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100px;
+   
+}
+
+.geeklogo {
+    width:auto;
+    mix-blend-mode: darken;
+    background: transparent;
+    
 }
 
 .footer-text {
     margin-top: 0.2em;
+    color: black;
+    margin-bottom: 0;
+}
+
+.aux-footer {
+    color: black;
+    margin-bottom: 0;
 }
 
 .footer-logo {
     width:1.5em;
     height:1.5em;
+    mix-blend-mode:darken; 
 }
 
 .logo-space {
