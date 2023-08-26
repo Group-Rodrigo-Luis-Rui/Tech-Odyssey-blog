@@ -99,6 +99,23 @@ export const Home = () => {
 		navigate(`/single/${postID}`);
 	}
 
+	const addReadings = (postID) => {
+		fetch(process.env.BACKEND_URL + "/api/myreading", { 
+			method: "POST",
+			headers: { 
+				"Content-Type": 
+				"application/json" 
+			},
+			body: JSON.stringify({user_id: store.userId, post_id: postID}) 
+		})
+		.then((res) => res.json())
+		.then((result) => {
+
+		}).catch((err) => {
+			console.log(err);
+		})
+	}
+
 	useEffect(() => {
 		getPosts();
 		getPosts2();
@@ -228,10 +245,13 @@ export const Home = () => {
 											<figcaption className="fig position-absolute bottom-0 start-0 p-3">
 												<p>{post.abstract}</p>
 											</figcaption>
-											{/* fontAwsome icons (like, heart and favorites) */}
-											{/* ... */}
 										</div>
 										<div className="col-6 text">
+											<div className="d-flex justify-content-end mt-2">
+												<button type="button" className="btn">
+													<i class="fa-regular fa-star">{addReadings}</i>
+												</button>
+											</div>
 											<h3 className="card-title">{post.title}</h3>
 											<p>{post.description}</p>
 											<p>{post.abstract}</p>
