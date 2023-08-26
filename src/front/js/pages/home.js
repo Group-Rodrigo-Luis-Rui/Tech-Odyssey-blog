@@ -98,6 +98,7 @@ export const Home = () => {
 	const goToSinglePost = (postID) => {
 		navigate(`/single/${postID}`);
 	}
+	const userID = localStorage.getItem("userID");
 
 	const addReadings = (postID) => {
 		fetch(process.env.BACKEND_URL + "/api/myreading", { 
@@ -106,7 +107,7 @@ export const Home = () => {
 				"Content-Type": 
 				"application/json" 
 			},
-			body: JSON.stringify({user_id: store.userId, post_id: postID}) 
+			body: JSON.stringify({user_id: userID, post_id: postID}) 
 		})
 		.then((res) => res.json())
 		.then((result) => {
@@ -114,6 +115,7 @@ export const Home = () => {
 		}).catch((err) => {
 			console.log(err);
 		})
+		console.log('add to my readings');
 	}
 
 	useEffect(() => {
@@ -175,8 +177,8 @@ export const Home = () => {
 
 	return (
 		<div  className="container-fluid background" style={{backgroundImage:'url(' + backgroundurl + ')'}}>
-			<div className="row text-center mt-5 d-flex justify-content-center" >
-				<div className="card-carousel-header d-flex justify-content-center">
+			<div className="row text-center d-flex justify-content-center" >
+				<div className="card-carousel-header mt-5 d-flex justify-content-center">
 					{/* carousel*/}
 					<div id="carouselExampleControls" class=" col-6 carousel slide d-block " data-bs-ride="carousel">
 						<div className="carousel-inner">
@@ -241,13 +243,13 @@ export const Home = () => {
 								>
 									<div className="card2 row">
 										<div className="img col-6">
-											<img src={post.Url} class="card-img-top" alt="..." />
+											<img src={post.image_post} class="card-img-top" alt="..." />
 											<figcaption className="fig position-absolute bottom-0 start-0 p-3">
 												<p>{post.abstract}</p>
 											</figcaption>
 										</div>
 										<div className="col-6 text">
-											<div className="d-flex justify-content-end mt-2">
+											<div className="d-flex justify-content-end mt-2" title="Add to My readings list">
 												<button type="button" className="btn">
 													<i class="fa-regular fa-star">{addReadings}</i>
 												</button>
@@ -302,7 +304,7 @@ export const Home = () => {
 						>
 							<div className="card2 row">
 								<div className="img col-6">
-									<img src={posts2.Url} class="card-img-top" alt="..." />
+									<img src={post.image_post} class="card-img-top" alt="..." />
 									<figcaption className="fig position-absolute bottom-0 start-0 p-3">
 										<p>{posts2.abstract}</p>
 									</figcaption>
