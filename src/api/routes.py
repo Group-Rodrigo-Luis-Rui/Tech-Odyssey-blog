@@ -264,6 +264,31 @@ def get_my_readings(id):
     except NameError:
         return jsonify({"error" : "Namerror"}), 500
 
+# create a endpoit to remove a post from myreading
+@api.route('/myreading/<int:id>/post/<int:post_id>', methods=['PUT'])
+def remove_post_from_my_readings(id, post_id):
+    try:
+        # Get the MyReading for the given user_id from the database
+        myreading = MyReading.query.get(id)
+
+        if not myreading:
+            return jsonify({"My readings not found"}), 404
+        
+        post_to_remove = Post.query.get(post_id)
+
+        if not post_to_remove:
+            return jsonify({"Post not found"}), 404
+        
+        # db.session.remove(post_to_remove)
+        post_to_remove.myreading_id = None
+
+        db.session.commit()
+
+        return jsonify({"message": "My reading updated successfully"}), 200
+
+    except NameError:
+        return jsonify({"error" : "Namerror"}), 500
+
 @api.route('/myreading/<int:id>/post/<int:post_id>', methods=['DELETE'])
 def delete_my_readings(id, post_id):
     try:

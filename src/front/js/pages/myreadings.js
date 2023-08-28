@@ -67,19 +67,20 @@ export const MyReadings = () => {
 		navigate(`/single/${postID}`);
 	}
 
-	const deleteReading = (id) => {
+	const removeReading = (id) => {
 
 		fetch(process.env.BACKEND_URL + "/api/myreading/" + myreadingID + "/post/" + id, { 
-			method: "DELETE",
+			method: "PUT",
 			headers: { 
 				"Content-Type": 
 				"application/json" 
 			},
+			body: JSON.stringify({user_id: store.userId, post_id: postID})
 		})
 		.then((res) => res.json())
 		.then((result) => {
 
-			setReadings((prevReadings) => prevReadings.filter((item) => item.id !== id));	
+			getMyReadings();	
 
 		}).catch((err) => {
 			console.log(err);
@@ -122,7 +123,7 @@ export const MyReadings = () => {
 														<div 
 															className="iconLinkReadings" 
 															title="Delete from my reading list"
-															onClick={() => deleteReading(item.id)}
+															onClick={() => removeReading(item.id)}
 														>
 																<i class="fas fa-trash pe-2 fs-3" ></i>
 														</div>
