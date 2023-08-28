@@ -223,7 +223,7 @@ export const Navbar = () => {
 							
 							{!isLogedIn &&
 							<li className="px-3 ff-sans-cond letter-spacing-3 fs-390">
-								<a className="menu-item1" onClick ={toggleIsModalOpen}><span className="num">02</span>Sign In<i className="fa-solid fa-circle-user"></i></a>
+								<a className="menu-item1" onClick ={toggleIsModalOpen}><span className="num">02</span>Sign In <i className="fa-solid fa-circle-user"></i></a>
 							</li>
 							}
 							
@@ -270,7 +270,7 @@ export const Navbar = () => {
 							/>
 						</div>
 					</div>
-						
+				</div>		
 						{/* login form */}
 						{( isModalOpen && isLoginVisible) && (
 						<div className="wrapper ff-sans-normal" >
@@ -383,7 +383,7 @@ export const Navbar = () => {
 							</div>
 							)
 						}
-			</div>			
+						
 		</header>
 	);
 };
