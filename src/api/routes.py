@@ -264,8 +264,9 @@ def get_my_readings(id):
     except NameError:
         return jsonify({"error" : "Namerror"}), 500
 
-@api.route('/myreading/<int:id>/post/<int:post_id>', methods=['DELETE'])
-def delete_my_readings(id, post_id):
+# create a endpoit to remove a post from myreading
+@api.route('/myreading/<int:id>/post/<int:post_id>', methods=['PUT'])
+def remove_post_from_my_readings(id, post_id):
     try:
         # Get the MyReading for the given user_id from the database
         myreading = MyReading.query.get(id)
@@ -273,20 +274,44 @@ def delete_my_readings(id, post_id):
         if not myreading:
             return jsonify({"My readings not found"}), 404
         
-        post_to_delete = None
+        post_to_remove = Post.query.get(post_id)
 
-        for post in myreading.posts:
-            if post.id == post_id:
-                post_to_delete = post
-                break
-
-        if not post_to_delete:
-            return jsonify({"Post not found!"}), 404
+        if not post_to_remove:
+            return jsonify({"Post not found"}), 404
         
-        db.session.delete(post_to_delete)
+        post_to_remove.myreading_id = None
+
         db.session.commit()
 
-        return jsonify({"message": "My reading deleted successfully"}), 200
+        return jsonify({"message": "My reading updated successfully"}), 200
+
+    except NameError:
+        return jsonify({"error" : "Namerror"}), 500
+
+#not needed
+# @api.route('/myreading/<int:id>/post/<int:post_id>', methods=['DELETE'])
+# def delete_my_readings(id, post_id):
+#     try:
+#         # Get the MyReading for the given user_id from the database
+#         myreading = MyReading.query.get(id)
+
+#         if not myreading:
+#             return jsonify({"My readings not found"}), 404
+        
+#         post_to_delete = None
+
+#         for post in myreading.posts:
+#             if post.id == post_id:
+#                 post_to_delete = post
+#                 break
+
+#         if not post_to_delete:
+#             return jsonify({"Post not found!"}), 404
+        
+#         db.session.delete(post_to_delete)
+#         db.session.commit()
+
+#         return jsonify({"message": "My reading deleted successfully"}), 200
 
     except NameError:
         return jsonify({"error" : "Namerror"}), 500
