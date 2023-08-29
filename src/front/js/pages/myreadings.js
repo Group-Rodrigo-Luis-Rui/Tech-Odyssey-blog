@@ -16,6 +16,7 @@ export const MyReadings = () => {
 	const [name, setName] = useState();
 	const [readings, setReadings] = useState([])
 	const [myreadingID, setMyreadingID] = useState();
+	const [imageUser, setImageUser] = useState();
 
 	const getOneUser = () => {
 
@@ -31,6 +32,7 @@ export const MyReadings = () => {
 		.then((result) => {
 			setName(result.name);
 			setEmail(result.email);
+			setImageUser(result.user_image);
 		})
 		.catch((err) => {
 			console.log(err);
@@ -49,9 +51,9 @@ export const MyReadings = () => {
 		})
 		.then((res) => res.json())
 		.then((result) => {
-			console.log(result);
 			setMyreadingID(result.id)
 			setReadings(result.posts);
+			console.log(result.posts);
 		})
 		.catch((err) => {
 			console.log(err);
@@ -68,37 +70,36 @@ export const MyReadings = () => {
 	}
 
 	const removeReading = (id) => {
-
+		const confirmDelete = window.confirm("Are you sure you want to delete this post from your reading list?");
+		if (!confirmDelete) {
+			return;
+		}
 		fetch(process.env.BACKEND_URL + "/api/myreading/" + myreadingID + "/post/" + id, { 
 			method: "PUT",
 			headers: { 
 				"Content-Type": 
 				"application/json" 
 			},
-			body: JSON.stringify({user_id: store.userId, post_id: postID})
+			body: JSON.stringify({user_id: store.userId, post_id: id})
 		})
 		.then((res) => res.json())
 		.then((result) => {
-
 			getMyReadings();	
-
 		}).catch((err) => {
 			console.log(err);
 		})
 	}
 
-	
-	
 	return (
 		<div className="backgroundReadings" style={{backgroundImage:'url(' + backgroundimage + ')'}}>
 			<div className="container textBackgroundReadings text-center">
 				<div className="userAvatar d-flex justify-content-center align-items-center mt-5 mb-5">
-					<img src="https://loremflickr.com/g/320/240/paris,man/all" alt="User Avatar" className="avatarImageReadings" />
+					<img src={imageUser} alt="User avatar or image" className="img-fluid rounded-3 avatarImageReadings" />
 					<div className="myBoxBackgroundReadings">
-						<h3><strong><em>{name}</em></strong>'s My Reading List</h3>
+						<h3><strong>{name}</strong>'s My Reading List</h3>
 					</div>
 				</div>
-				<div className="myBoxBackgroundReadings mb-5">
+				<div className="myEmailBoxBackgroundReadings mb-5">
 					<h4>Email:&nbsp;&nbsp;<strong>{email}</strong></h4>
 				</div>
 				<div>
@@ -107,16 +108,16 @@ export const MyReadings = () => {
 						{readings? (
 							readings.map((item, index) => (
 								<li key={index}>
-									<div class="card mb-3 cardContainerReadings">
-										<div class="row g-0">
-											<div class="col-md-5">
-												<img src="https://picsum.photos/300" class="img-fluid rounded-start mt-2 imageCardMyReadings" alt="..."/>
+									<div className="card mb-3 cardContainerReadings">
+										<div className="row g-0">
+											<div className="col-md-5">
+												<img src={item.image_post} className="img-fluid mt-2 rounded-3 imageCardMyReadings" alt="post image"/>
 											</div>
-											<div class="col-md-7">
-												<div class="card-body">
+											<div className="col-md-7">
+												<div className="card-body">
 													<div className="container d-flex justify-content-between titleCardMyReading">
 														<h4 
-															class="card-title pTextReadings pe-2" 
+															className="card-title pTextReadings pe-2" 
 															onClick={() => goToSinglePost(item.id)}>
 																<strong>{item.title}</strong>
 														</h4>
@@ -125,7 +126,7 @@ export const MyReadings = () => {
 															title="Delete from my reading list"
 															onClick={() => removeReading(item.id)}
 														>
-																<i class="fas fa-trash pe-2 fs-3" ></i>
+																<i className="fas fa-trash pe-2 fs-3" ></i>
 														</div>
 													</div>
 													<div className="cardTextProfile">
