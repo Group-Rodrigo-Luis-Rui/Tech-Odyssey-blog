@@ -9,25 +9,58 @@ export const Createpost = () => {
 	const [category, setCategory] = useState("");
 	const [abstract, setAbstract] = useState("");
 	const [mainText, setMainText] = useState("");
+	const [image, setImage] = useState(null);
+	const [imageURL, setImageURL] = useState("");
 
+	const uploadImage = async () => {
+		const formData = new FormData();
+		formData.append("file", image);
+		try {
+			const res = await fetch(
+				`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload?upload_preset=${process.env.CLOUDINARY_UPLOAD_PRESET}`,
+				{
+				method: "POST",
+				body: formData,
+				}
+			);
+			const data = await res.json();
+				console.log(data.secure_url);
+				setImageURL(data.secure_url);
+			} catch (error) {
+			console.error("Error uploading image:", error);
+		}
+	};
 
-	const createpost = (event) => {
+	const createpost =  (event) => {
 		event.preventDefault()
+		// await uploadImage();
+		const confirmDelete = window.confirm("Have you finished creating the new post?");
+		if (!confirmDelete) {
+			return;
+		}
 		if(title === "" || title.length > 60){
 			alert("Please insert the title with a maximum of 60 characters");
 		} else if (category === ""){
 			alert ("Please choose a category");
 		} else if (abstract === "" || abstract.length > 300){
 			alert ("Please insert the abstract with a maximum of 300 characters");
-		} else if (mainText === "" || title.length > 5000) {
+		} 
+		else if (imageURL === ""){
+			alert ("Please insert an image");
+		} 
+		else if (mainText === "" || title.length > 5000) {
 			alert ("Please insert the text with a maximum of 5000 characters");
 		} else {
+			
+			const user_id = localStorage.getItem("userID");
 
 			const postData = {
+				"user_id": user_id,
 				"title": title,
 				"category": category,
 				"abstract": abstract,
 				"main_text": mainText,
+				"image_post": imageURL
 			}
 
 			fetch(process.env.BACKEND_URL + "/api/post", { 
@@ -53,6 +86,10 @@ export const Createpost = () => {
 	}
 
 	const cancelPost = () => {
+		const confirmDelete = window.confirm("Are you sure you to stop creating the new post? Everything will be lost. Do you want to continue?");
+		if (!confirmDelete) {
+			return;
+		}
 		setTitle("");
 		// setCategory();
 		setAbstract("");
@@ -107,7 +144,7 @@ export const Createpost = () => {
 								<div class="d-flex justify-content-left mb-4">
 									<div class="btn btn-light btn-rounded buttonCreate">
 										<label class="form-label m-1" for="customFile1">Choose file</label>
-										<input type="file" className="form-control d-none" id="customFile1" />
+										<input type="file" className="form-control d-none" id="customFile1" onChange={(e) => {setImage(e.target.files[0])}}/>
 									</div>
 									<div>
 										<p class="pt-2 ms-3 titlesText">Insert image</p>
@@ -124,10 +161,15 @@ export const Createpost = () => {
 								></textarea>
 							</div>
 							<div className="form-group d-flex justify-content-center">
-								<button type="submit" className="btn me-5 buttonCreate" onClick={createpost} >
+								<button type="submit" 
+										className="btn me-5 buttonCreate" 
+										onClick={event => {
+											createpost(event);
+											uploadImage(image);
+										}} >
 									Create
 								</button>
-								<button className="btn btn-default btn-danger" onClick={cancelPost}>
+								<button className="btn btn-default btn-danger cancelButtonCreate" onClick={cancelPost}>
 									Cancel
 								</button>
 							</div>
