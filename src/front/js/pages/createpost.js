@@ -24,65 +24,61 @@ export const Createpost = () => {
 				}
 			);
 			const data = await res.json();
-				console.log(data.secure_url);
-				setImageURL(data.secure_url);
+				return data.secure_url;
 			} catch (error) {
 			console.error("Error uploading image:", error);
 		}
 	};
 
-	const createpost =  (event) => {
+	const createpost = async (event) => {
 		event.preventDefault()
-		// await uploadImage();
 		const confirmDelete = window.confirm("Have you finished creating the new post?");
-		if (!confirmDelete) {
-			return;
-		}
-		if(title === "" || title.length > 60){
-			alert("Please insert the title with a maximum of 60 characters");
-		} else if (category === ""){
-			alert ("Please choose a category");
-		} else if (abstract === "" || abstract.length > 300){
-			alert ("Please insert the abstract with a maximum of 300 characters");
-		} 
-		else if (imageURL === ""){
-			alert ("Please insert an image");
-		} 
-		else if (mainText === "" || title.length > 5000) {
-			alert ("Please insert the text with a maximum of 5000 characters");
-		} else {
+		
 			
-			const user_id = localStorage.getItem("userID");
-
-			const postData = {
-				"user_id": user_id,
-				"title": title,
-				"category": category,
-				"abstract": abstract,
-				"main_text": mainText,
-				"image_post": imageURL
+		try {
+			const imageURL = await uploadImage();
+			if (!confirmDelete) {
+				return;
 			}
-
-			fetch(process.env.BACKEND_URL + "/api/post", { 
+			if(title === "" || title.length > 60){
+				alert("Please insert the title with a maximum of 60 characters");
+			} else if (category === ""){
+				alert ("Please choose a category");
+			} else if (abstract === "" || abstract.length > 300){
+				alert ("Please insert the abstract with a maximum of 300 characters");
+			} else if (image === null){
+				alert ("Please insert the image");
+			} else if (mainText === "" || title.length > 5000) {
+				alert ("Please insert the text with a maximum of 5000 characters");
+			} else {
+				const user_id = localStorage.getItem("userID");
+			const postData = {
+				user_id,
+				title,
+				category,
+				abstract,
+				main_text: mainText,
+				image_post: imageURL
+			};
+	
+			const res = await fetch(process.env.BACKEND_URL + "/api/post", { 
 				method: "POST",
-				headers: { 
-					"Content-Type": 
-					"application/json" 
-				},
-				body: JSON.stringify(postData) 
-			})
-			.then((res) => res.json())
-			.then((result) => {
-				console.log(result);
-				setTitle("");
-				setCategory("");
-				setAbstract("");
-				setMainText("");
-				alert("Post successfully created!")
-			}).catch((err) => {
-				console.error(err);
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(postData)
 			});
-		};
+	
+			if (!res.ok) throw new Error("Network response was not ok");
+	
+			setTitle("");
+			setCategory("");
+			setAbstract("");
+			setMainText("");
+			alert("Post successfully created!")
+			}
+			
+		} catch (error) {
+			console.error(error);
+		}		
 	}
 
 	const cancelPost = () => {
@@ -91,7 +87,6 @@ export const Createpost = () => {
 			return;
 		}
 		setTitle("");
-		// setCategory();
 		setAbstract("");
 		setMainText("");
 	}
@@ -127,7 +122,7 @@ export const Createpost = () => {
 									<option value="COM">Computers</option>
 									<option value="MT">Movie Tech</option>
 									<option value="AI">AI - Artificial intelligence</option>
-									<option value="EV">EV Mobility</option>
+									<option value="EVM">EV Mobility</option>
 									<option value="OTHER">Other Stuff</option>
 								</select>
 							</div>
@@ -163,10 +158,8 @@ export const Createpost = () => {
 							<div className="form-group d-flex justify-content-center">
 								<button type="submit" 
 										className="btn me-5 buttonCreate" 
-										onClick={event => {
-											createpost(event);
-											uploadImage(image);
-										}} >
+										onClick={createpost} 
+								>
 									Create
 								</button>
 								<button className="btn btn-default btn-danger cancelButtonCreate" onClick={cancelPost}>
