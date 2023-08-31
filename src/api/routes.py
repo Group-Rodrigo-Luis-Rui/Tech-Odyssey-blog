@@ -120,7 +120,7 @@ def delete_user():
 
 #POST endpoints
 @api.route('/post', methods=['POST'])
-@jwt_required()
+# @jwt_required()
 def create_post():
     try:
         data = request.get_json()
@@ -129,8 +129,9 @@ def create_post():
         category = data.get("category")
         abstract = data.get("abstract")
         main_text = data.get("main_text")
+        image_post = data.get("image_post")
 
-        new_post = Post(user_id=user_id, title=title, category=category, abstract=abstract, main_text=main_text)
+        new_post = Post(user_id=user_id, title=title, category=category, abstract=abstract, main_text=main_text, image_post=image_post)
         db.session.add(new_post)
         db.session.commit()
 
