@@ -118,6 +118,7 @@ figcaption{
   height: 300px;
   display: flex;
   justify-content: center;
+  color: white;
 }
 
 .card2{
@@ -164,6 +165,12 @@ figcaption{
 
 .text{
   overflow: auto;
+  height: 230px;
+}
+.readings{
+  display: flex;
+  justify-content: end;
+  align-items: end;
 }
 
 .scrolling-container {
@@ -300,6 +307,10 @@ figcaption{
 .carousel{
   width: 50%;
 }
+/* .added-to-readings {
+  color: gold; 
+} */
+
 
 @media only screen and (max-width:600px) {
   .card-carousel-header{
