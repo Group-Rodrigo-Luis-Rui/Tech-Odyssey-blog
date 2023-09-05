@@ -59,6 +59,23 @@ export const Single = props => {
 	}
 	console.log(process.env.BACKEND_URL + "/api/comment/");
 
+	const deleteComment = (commentID) => {
+		fetch(process.env.BACKEND_URL + "/api/comment/" + commentID, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+		})
+		.then((res) => {
+			if (!res.ok) throw Error(res.statusText);
+			return res.json();
+		})
+		.then((response) => {
+			console.log(response);
+		})
+		.catch((error) => console.error(error));
+	};
+
 	useEffect(()=>{
 		getSinglePost()
 	},[])
@@ -101,10 +118,10 @@ export const Single = props => {
 						return(
 							<p>{comment.text} 
 								<div className="d-flex justify-content-end">
-									<button className="btn me-3" type="button">
-										<i class="fa-regular fa-comment-dots"> - Reply</i>
-									</button>
-									<button className="btn" type="button">
+									<button className="btn" type="button" onClick={()=>{
+										deleteComment(comment.id);
+										getSinglePost();}}
+									>
 									<i class="fa-solid fa-trash"></i>
 									</button>
 								</div>
