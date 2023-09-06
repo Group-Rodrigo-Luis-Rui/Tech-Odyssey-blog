@@ -21,10 +21,22 @@
   padding-bottom: 0.1rem;
   border-radius: 5px;
 }
+.myEmailBoxBackgroundReadings{
+  background-color: #00336D;
+  color: #ffffff;
+  padding: 0.3rem;
+  padding-bottom: 0.1rem;
+  border-radius: 5px;
+}
 .avatarImageReadings{
   height: 10rem;
   padding-right: 3rem;
   border-radius: 5px;
+}
+.imageCardMyReadings{
+  height: 10rem;
+  padding-left: 1rem;
+  /* border-radius: 20px; */
 }
 .pTextReadings:hover{
   color: #00336d7c;
@@ -65,5 +77,10 @@
   .cardContainerReadings{
     height: 25rem;
   }
+  .imageCardMyReadings{
+    width: 20rem;
+    padding-left: 0rem;
+  }
 }
+
 
