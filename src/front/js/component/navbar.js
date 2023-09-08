@@ -43,6 +43,7 @@ export const Navbar = () => {
 		// Login variables
 		const [email, setEmail] = useState("");
 		const [password, setPassword] = useState("");
+		const [showPassword, setShowPassword] = useState(false);
 
 		const [user, setUser] = useState("");
 
@@ -57,6 +58,11 @@ export const Navbar = () => {
 		const [regEmail, setRegEmail]=useState("");
 		const [regPassword, setRegPassword]=useState("");
 		const [regIsActive, setRegIsActive]=useState(false);
+
+		//function that shows the password
+		const togglePasswordVisibility=()=> {
+			setShowPassword(!showPassword);
+		}
 
 		// loging in function
 		const submit=(event)=> {
@@ -296,19 +302,20 @@ export const Navbar = () => {
 										<label>Email ID:</label>
 									</div>
 									<div className="input-box">
-											
-										<span className="iconlog"><i className="fa-solid fa-lock"></i></span>
 										<input 
-											type="password" required
+											type={showPassword?"text":"password"}
+											 required
 											value={password}
 											onChange={(e)=> setPassword(e.target.value)} 
 										/>	
 										<label>Password</label>
+										<span className="hiddenPass" onClick={togglePasswordVisibility}>
+											{showPassword? (
+												<i className="fa-solid fa-eye"></i>): (
+													<i className="fa-solid fa-eye-slash"></i>
+											)}
+										</span>
 									</div>
-									{/* <div className="remember-forgot">
-										<label><input type="checkbox"/>Remember me</label>
-										<a href="#">I agree to the terms & conditions</a>
-									</div> */}
 									<div className="btn-login-parent">
 										<button type="submit" className="btn-submit" onClick={submit}>Login</button>	
 									</div>

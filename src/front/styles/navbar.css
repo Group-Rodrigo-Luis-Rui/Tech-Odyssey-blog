@@ -203,7 +203,7 @@
     scale: 0.6;    
 }
 
-.fa-user, .fa-book-open, .fa-id-card, .fa-envelope, .fa-lock{
+.fa-user, .fa-book-open, .fa-id-card, .fa-envelope, .fa-lock, .fa-eye, .fa-eye-slash{
     scale: 0.6;
     color: #00336d;
 }
@@ -457,6 +457,15 @@ ul.dropdown{
     color: hsl( var(--clr-dark) / 1);
     line-height: 57px;
 }
+
+.input-box .hiddenPass{
+    position: absolute;
+    right: 10px;
+    font-size: 1.2em;
+    color: hsl( var(--clr-dark) / 1);
+    line-height: 57px;
+}
+
 
 .remember-forgot{
     font-size: .9em;
