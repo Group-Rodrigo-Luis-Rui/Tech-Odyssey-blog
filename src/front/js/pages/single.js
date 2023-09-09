@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import backgroundurl from "../../img/backgroundimage2.jpg"
+import backgroundurl from "../../img/background.jpg"
 import { Link } from "react-router-dom";
 
 
@@ -8,7 +8,6 @@ export const Single = props => {
 	// const params = useParams();
 
 	const [comments,setComments] = useState([]);
-	const [SinglePost,setSinglePost] = useState([]);
 
 	const getComments =()=>{
 		fetch(process.env.BACKEND_URL + "/api/comments", {
@@ -21,36 +20,11 @@ export const Single = props => {
 			if (!res.ok) throw Error(res.statusText);
 			return res.json();
 		})
-		.then(response => {
-			console.log(response);
-			setComments(response);
-		})
+		.then(response => setComments(response))
 		.catch(error => console.error(error));
 	
 	}
 
-	const getSinglePost =()=>{
-		fetch(process.env.BACKEND_URL + "api/post/<int:id>", {
-			method: 'GET',
-			headers:{
-				'Content-Type': 'application/json'
-			}
-		})
-		.then(res => {
-			if (!res.ok) throw Error(res.statusText);
-			return res.json();
-		})
-		.then(response => {
-			console.log(response);
-			setSinglePost(response);
-		})
-		.catch(error => console.error(error));
-	
-	}
-	useEffect(() => {
-		getComments();
-		getSinglePost();
-	},[]);
 
 	return (
 		<div className="container-fluid background main-container" style={{backgroundImage:'url(' + backgroundurl + ')'}}>
@@ -70,14 +44,63 @@ export const Single = props => {
 							<button type="button" className="btn-comments">
 							<i class="fa-regular fa-bookmark ms-5 me-3"></i>
 							</button>
-							Add to reading list
+							Add to favorites
 						</div>
 						<img
 							src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXBwbGUlMjBsYXB0b3B8ZW58MHx8MHx8fDA%3D&w=1000&q=80" 
 							alt="Description of the image" 
 							className="single-image"
 						/>
-						<p className="card-text">
+						<p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
+							Some quick example text to build on the card title and make up the bulk of the card's content.
 						</p>
 					</div>
 				</div>
@@ -85,8 +108,7 @@ export const Single = props => {
 			<div className="container-card card-single">
 				<h3 className="comments-title">Comments:</h3>
 				<div className="single-comments">
-					{(comments.user)} <p>{comments.main_text}</p>
-					{comments.date_created}
+					(user) <p>some comment</p>
 					<button className="btn ms-1" type="button">
 						<i class="fa-regular fa-comment-dots"> - Reply</i>
 					</button>
