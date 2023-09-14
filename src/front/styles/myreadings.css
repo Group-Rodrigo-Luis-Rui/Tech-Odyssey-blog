@@ -7,13 +7,11 @@
   font-size: large;
   min-height: 100rem;
 }
-  
 .textBackgroundReadings{
   background: rgba(255, 255, 255, 0.8); 
   color: #00336D;
-  padding-top: 1rem;
+  padding-top: 10rem;
   padding-bottom: 1rem;
-  /* min-height: 100rem; */
 }
 .myBoxBackgroundReadings{
   backdrop-filter: invert(20%);
@@ -36,15 +34,11 @@
 .imageCardMyReadings{
   height: 10rem;
   padding-left: 1rem;
-  /* border-radius: 20px; */
 }
 .pTextReadings:hover{
   color: #00336d7c;
   cursor: pointer;
 }
-/* .cardTextMyReading{
-  font-weight:  530;
-} */
 .buttonProfileDivReadings{
   margin-top: 2em;
 }
@@ -69,7 +63,6 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-
 @media (max-width: 767px) {
   .pTextReadings{
     font-size:medium;

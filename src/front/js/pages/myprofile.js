@@ -6,12 +6,10 @@ import { useNavigate } from "react-router-dom";
 
 export const MyProfile = () => {
 	const navigate = useNavigate();
-	const {store, actions} =  useContext(Context);
 	const [email, setEmail] = useState();
 	const [name, setName] = useState();
 	const [posts, setPosts] = useState([])
 	const [imageUser, setImageUser] = useState();
-	const [postImage, setPostImage] = useState();
 
 	const getOneUser = () => {
 		
@@ -28,7 +26,6 @@ export const MyProfile = () => {
 			setName(result.name);
 			setEmail(result.email);
 			setImageUser(result.user_image);
-			// setPostImage(result.image_post);
 		})
 		.catch((err) => {
 			console.log(err);
@@ -65,24 +62,6 @@ export const MyProfile = () => {
 	const goToSinglePost = (postID) => {
 		navigate(`/single/${postID}`);
 	}
-
-
-	// const addReadings = (postID) => {
-	// 	fetch(process.env.BACKEND_URL + "/api/myreading", { 
-	// 		method: "POST",
-	// 		headers: { 
-	// 			"Content-Type": 
-	// 			"application/json" 
-	// 		},
-	// 		body: JSON.stringify({user_id: store.userId, post_id: postID}) 
-	// 	})
-	// 	.then((res) => res.json())
-	// 	.then((result) => {
-
-	// 	}).catch((err) => {
-	// 		console.log(err);
-	// 	})
-	// }
 
 	const deletePost = (id) => {
 		const confirmDelete = window.confirm("Are you sure you want to delete this post?");
