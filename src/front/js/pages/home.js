@@ -132,18 +132,23 @@ export const Home = () => {
 
 	const getAllPosts = (limit = 10) => {
 		fetch(`${process.env.BACKEND_URL}/api/posts?limit=${limit}`, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json'
-			}
+		  method: 'GET',
+		  headers: {
+			'Content-Type': 'application/json'
+		  }
 		})
 		.then(res => {
-			if (!res.ok) throw Error(res.statusText);
-			return res.json();
+		  if (!res.ok) throw Error(res.statusText);
+		  return res.json();
 		})
-		.then(response => setAllPosts(response)) 
+		.then(response => {
+		  // Select the last 3 posts
+		  const last3Posts = response.slice(-3);
+		  setAllPosts(last3Posts);
+		})
 		.catch(error => console.error(error));
-	}	
+	  }
+	  
 	
 
 	useEffect(() => {
@@ -225,36 +230,20 @@ export const Home = () => {
 			<div className="main-container row text-center d-flex justify-content-center" >
 				<div className="card-carousel-header mt-5 d-flex justify-content-center">
 					{/* carousel*/}
-					<div id="carouselExampleControls" class=" col-6 carousel slide d-block " data-bs-ride="carousel">
+					<div id="carouselExampleControls" className="carousel slide carousel-container" data-bs-ride="carousel">
 						<div className="carousel-inner">
-							<div className="carousel-indicators">
-								<button type="button" data-bs-target="#carouselExampleIndicators"
-									data-bs-slide-to="0" classd="active" aria-current="true" aria-label="Slide 1">
-								</button>
-								<button type="button" data-bs-target="#carouselExampleIndicators"
-									data-bs-slide-to="1" aria-label="Slide 2">
-								</button>
-								<button type="button" data-bs-target="#carouselExampleIndicators"
-									data-bs-slide-to="2" aria-label="Slide 3">
-								</button>
-							</div>
-							<div className="carousel-item active">
-							{allposts.slice(-3).map((allPosts, index) => {
-								console.log(allPosts);
-								return (
-								<div
-									key={allPosts.id}
-									className={`carousel-item ${index === 0 ? 'active' : ''}`}
-								>
-									<img src={allPosts.image_post} className="d-block w-100" alt="..." />
-									<div className="carousel-caption">
-									<h4><strong>{allPosts.title}</strong></h4>
-									<p>{allPosts.abstract}</p>
-									</div>
+							{allposts.map((post, index) => (
+							<div
+								key={post.id}
+								className={`carousel-item ${index === 0 ? 'active' : ''}`}
+							>
+								<img src={post.image_post} className="d-block w-100" alt="..." />
+								<div className="carousel-caption">
+								<h4><strong>{post.title}</strong></h4>
+								<p>{post.abstract}</p>
 								</div>
-								);
-							})}
 							</div>
+							))}
 						</div>
 						<button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
 							<span className="carousel-control-prev-icon" aria-hidden="true"></span>
