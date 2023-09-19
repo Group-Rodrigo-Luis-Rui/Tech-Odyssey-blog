@@ -222,7 +222,7 @@ export const Home = () => {
 
 	return (
 		<div  className="container-fluid background" style={{backgroundImage:'url(' + backgroundurl + ')'}}>
-			<div className="row text-center d-flex justify-content-center" >
+			<div className="main-container row text-center d-flex justify-content-center" >
 				<div className="card-carousel-header mt-5 d-flex justify-content-center">
 					{/* carousel*/}
 					<div id="carouselExampleControls" class=" col-6 carousel slide d-block " data-bs-ride="carousel">

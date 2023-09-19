@@ -172,7 +172,9 @@ figcaption{
   justify-content: end;
   align-items: end;
 }
-
+.main-container{
+  margin-top: 140px;
+}
 .scrolling-container {
     display: flex;
     overflow-x: auto;
