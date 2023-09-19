@@ -14,6 +14,8 @@ export const Home = () => {
 	const [posts4, setPosts4] = useState([]);
 	const [posts5, setPosts5] = useState([]);
 
+	const userID = localStorage.getItem("userID");
+	const [isAddedToReadings, setIsAddedToReadings] = useState(false);
 
 	const getPosts =()=>{
 		fetch(process.env.BACKEND_URL + "/api/posts/category/COM", {
@@ -97,30 +99,34 @@ export const Home = () => {
 	const goToSinglePost = (postID) => {
 		navigate(`/single/${postID}`);
 	}
-	const userID = localStorage.getItem("userID");
-
-	const [isAddedToReadings, setIsAddedToReadings] = useState(false);
 
 
 	const addReadings = (postID) => {
-		fetch(process.env.BACKEND_URL + "/api/myreading", { 
+		const userID = localStorage.getItem("userID");
+		if (!userID) {
+			window.alert("Please log in to add posts to your readings list.");
+			return;
+		}
+
+		fetch(process.env.BACKEND_URL + "/api/myreading", {
 			method: "POST",
-			headers: { 
-				"Content-Type": 
-				"application/json" 
+			headers: {
+				"Content-Type": "application/json",
 			},
-			body: JSON.stringify({user_id: userID, post_id: postID}) 
+			body: JSON.stringify({ user_id: userID, post_id: postID }),
 		})
 		.then((res) => res.json())
 		.then((result) => {
 			console.log('Added to My Readings:', result);
 			setIsAddedToReadings(true);
-
-		}).catch((err) => {
-			console.log(err);
+			window.alert("Post added to your readings list successfully!");
 		})
+		.catch((err) => {
+			console.log(err);
+		});
 		console.log('add to my readings');
-	}
+	};
+
 
 	const [allposts, setAllPosts] = useState([]);
 
@@ -233,20 +239,21 @@ export const Home = () => {
 								</button>
 							</div>
 							<div className="carousel-item active">
-								{allposts.slice(0, 3).map((allPosts, index) => {
-									console.log(allPosts); // Add this line to check the data
-									return (
-										<div key={allPosts.id} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-											<div className="carousel-caption-title">
-												<p>{allPosts.title}</p>
-											</div>
-											<img src={allPosts.image_post} className="d-block w-100" alt="..." />
-											<div className="carousel-caption">
-												<p>{allPosts.abstract}</p>
-											</div>
-										</div>
-									);
-								})}
+							{allposts.slice(-3).map((allPosts, index) => {
+								console.log(allPosts);
+								return (
+								<div
+									key={allPosts.id}
+									className={`carousel-item ${index === 0 ? 'active' : ''}`}
+								>
+									<img src={allPosts.image_post} className="d-block w-100" alt="..." />
+									<div className="carousel-caption">
+									<h4><strong>{allPosts.title}</strong></h4>
+									<p>{allPosts.abstract}</p>
+									</div>
+								</div>
+								);
+							})}
 							</div>
 						</div>
 						<button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -304,9 +311,11 @@ export const Home = () => {
 											<p>{post.description}</p>
 											<p>{post.abstract}</p>
 											<div className="readmore">
-													<button className="btn col" onClick={() => goToSinglePost(item.id)}>
+												<Link to={`/single/${post.id}`}>
+													<button className="btn col">
 														Read More
 													</button>
+												</Link>
 											</div>
 										</div>
 									</div>
