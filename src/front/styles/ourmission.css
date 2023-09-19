@@ -13,16 +13,13 @@
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px); 
   color: #00336D;
-  padding-top: 1rem;
+  padding-top: 10rem;
   padding-bottom: 1rem;
 }
 
-.text{
-  /* text-shadow: 2px 2px 3px #ffffff; */
+.textOurmission{
   text-align: justify;
   text-justify: inter-word;
-  /* font-weight: bold; */
-  /* background-color: #fff; */
 }
 
 .teamName{

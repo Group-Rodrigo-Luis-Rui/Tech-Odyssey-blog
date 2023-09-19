@@ -10,9 +10,8 @@
 .textBackgroundProfile{
 background: rgba(255, 255, 255, 0.8); 
 color: #00336D;
-padding-top: 1rem;
+padding-top: 10rem;
 padding-bottom: 1rem;
-/* min-height: 100rem; */
 }
 .myBoxBackground{
 backdrop-filter: invert(20%);

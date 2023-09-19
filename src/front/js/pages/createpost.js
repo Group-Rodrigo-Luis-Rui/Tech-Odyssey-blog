@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import backgroundimage from "../../img/backgroundimage2.jpg";
 import "../../styles/createpost.css";
 
@@ -10,7 +9,6 @@ export const Createpost = () => {
 	const [abstract, setAbstract] = useState("");
 	const [mainText, setMainText] = useState("");
 	const [image, setImage] = useState(null);
-	const [imageURL, setImageURL] = useState("");
 
 	const uploadImage = async () => {
 		const formData = new FormData();
