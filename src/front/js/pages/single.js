@@ -150,7 +150,7 @@ export const Single = (props) => {
 				<h4 className="card-subtitle mb-2">{post.category}</h4>
 				<p className="abstract">{post.abstract}</p>
 				<p>
-				<strong>Posted by:</strong>{post.name}</p>
+				<strong>Posted by:</strong>{post.user}</p>
 				<p>
 				<strong>Date:</strong> {post.date_created}
 				</p>
@@ -170,10 +170,10 @@ export const Single = (props) => {
 			<div className="single-comments">
 				{comments.map((comment) => (
 					<div key={comment.id}>
-						<div className="name">{comment.name}</div>
+						<div className="name">{name}</div>
 					<p>{comment.text}</p>
 					<div className="d-flex justify-content-end">
-					{comment.user_id === userID &&(
+					{comment.user_id ? userID: (
 						<button
 							className="btn commentbtn"
 							type="button"
