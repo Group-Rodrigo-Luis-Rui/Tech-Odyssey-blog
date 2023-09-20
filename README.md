@@ -1,4 +1,6 @@
-# WebApp boilerplate with React JS and Flask API
+# Welcome to Tech Odyssey blog
+
+## WebApp with React JS and Flask API
 
 Build web applications using React.js for the front end and python/flask for your backend API.
 
