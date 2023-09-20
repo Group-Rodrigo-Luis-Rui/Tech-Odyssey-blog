@@ -1,5 +1,7 @@
-![image](https://github.com/Group-Rodrigo-Luis-Rui/4Geeks-Final-Project-Team-1/assets/64076622/d6055c00-dd38-4c66-8854-c8fe56856932)
-  # Welcome to Tech Odyssey blog
+
+<img align="center" src="https://github.com/Group-Rodrigo-Luis-Rui/4Geeks-Final-Project-Team-1/assets/64076622/d6055c00-dd38-4c66-8854-c8fe56856932" />
+
+# Welcome to Tech Odyssey blog
 
 ## WebApp with React JS and Flask API
 
@@ -22,45 +24,17 @@ pipenv run start
 CLOUDINARY_CLOUD_NAME="deog4jy3t"
 CLOUDINARY_UPLOAD_PRESET="u8sisass"
 ```
-- See below how to populate the blog with posts.
-
-
-
-### Backend Populate Table Users and Posts
-
-To insert test users in the database execute the following command:
-
+- See below how to populate the blog with fictional users and posts.
+- Then, run the following command:
 ```sh
-$ flask insert-test-users 5
+pipenv run start
 ```
+### Backend populate table users and posts
 
-And you will see the following message:
+To insert test fictional users and posts in the database got to backend web page and click on */api/hello*
 
-```
-  Creating test users
-  test_user1@test.com created.
-  test_user2@test.com created.
-  test_user3@test.com created.
-  test_user4@test.com created.
-  test_user5@test.com created.
-  Users created successfully!
-```
+![howto_populate](https://github.com/Group-Rodrigo-Luis-Rui/4Geeks-Final-Project-Team-1/assets/64076622/0857b175-cefa-4531-8827-373f04c8ea4b)
 
-To update with all yours tables you can edit the file app.py and go to the line 80 to insert the code to populate others tables
-
-### Front-End Manual Installation:
-
--   Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
-
-1. Install the packages: `$ npm install`
-2. Start coding! start the webpack dev server `$ npm run start`
-
-## Publish your website!
-
-This boilerplate it's 100% read to deploy with Render.com and Heroku in a matter of minutes. Please read the [official documentation about it](https://start.4geeksacademy.com/deploy).
 
 ### Contributors
-
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
-
-You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
+<a target="_blank" src="https://www.linkedin.com/in/ruisilva775/"><strong>Rui Silva<strong/><a/>
