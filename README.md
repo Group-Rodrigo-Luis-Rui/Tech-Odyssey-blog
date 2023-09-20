@@ -16,7 +16,7 @@ Finally, the user can view the post in its entirety via the link on the main pag
 pipenv run start
 ```
 - Open the page and copy the backend URL;
-- paste the backend URL on the .env file at #BACKEND_URL= (uncomment first);
+- paste the backend URL on the .env file at "#BACKEND_URL=" (uncomment first);
 - paste cloudinary credentials on the same file:
 - 
 - See below how to populate the blog with posts.
