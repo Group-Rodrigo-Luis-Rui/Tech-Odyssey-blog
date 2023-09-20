@@ -11,9 +11,9 @@ Finally, the user can view the post in its entirety via the link on the main pag
 
 ### Instruction to test this Webapp
 
-- Start backend ($ pipenv run start);
+- Start backend;
 ```sh
-$ flask insert-test-users 5
+$ pipenv run start
 ```
 - Open the page and copy the backend URL;
 - paste the backend URL on the .env file at #BACKEND_URL= (uncomment first);
