@@ -11,7 +11,7 @@ Finally, the user can view the post in its entirety via the link on the main pag
 
 ### Instruction to test this Webapp
 
-- Start backend ($ pipenv run start), open teh page and copy the backend URL;
+- Start backend ($ pipenv run start), open the page and copy the backend URL;
 - paste the backend URL on the .env file at #BACKEND_URL= (uncomment first);
 - paste cloudinary credentials on the same file:
 - 
