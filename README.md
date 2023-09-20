@@ -4,10 +4,9 @@
 ## WebApp with React JS and Flask API
 
 “Tech Odyssey blog” is an app where you can post and read reviews and opinions related to technology. There are 4 main themes like computers, movies related to tech, artificial inteligence and electric mobility as well as other topics that the user may find relevant.
-On the main page you’ll find the 3 most recent posts and the posts listed by category where you can find an abstract and a link to the main post. Then there is a brief description of blog’s propose.
-After login or create account the user can create a post where can upload an image to wrap with the text.
-There is a “My Stuff” section where users can find their profile (“My Profile” subsection) with their information and a list of the posts created by them where posts can be deleted. There’s also a subsection, “My Readings” where users can find the posts they want to read later and after that they can delete from the reading list.
-Finally, users can view the entire post from the main page, from “My Profile” section and from “My Readings”
+On the main page you’ll find the 3 most recent posts and the posts listed by category where you can find an abstract and a link to the main post. Then there is a brief description of blog’s propose.<br>
+After login or create account the user can create a post where can upload an image to wrap with the text.<br>
+There is a “My Stuff” section where users can find their profile (“My Profile” subsection) with their information and a list of the posts created by them where posts can be deleted. There’s also a subsection, “My Readings” where users can find the posts they want to read later and after that they can delete from the reading list.<br>
 Finally, the user can view the post in its entirety via the link on the main page, “My Profile” section or from “My Readings” that takes them to the single view page where they can add the post to the reading list.
 
 ### Instruction to test this Webapp
