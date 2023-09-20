@@ -13,7 +13,7 @@ Finally, the user can view the post in its entirety via the link on the main pag
 
 - Start backend;
 ```sh
-$ pipenv run start
+pipenv run start
 ```
 - Open the page and copy the backend URL;
 - paste the backend URL on the .env file at #BACKEND_URL= (uncomment first);
