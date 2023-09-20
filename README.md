@@ -18,7 +18,8 @@ pipenv run start
 - Open the page and copy the backend URL;
 - paste the backend URL on the .env file at "#BACKEND_URL=" (uncomment first);
 - paste cloudinary credentials on the same file:
-- 
+- - CLOUDINARY_CLOUD_NAME="deog4jy3t"
+  - CLOUDINARY_UPLOAD_PRESET="u8sisass"
 - See below how to populate the blog with posts.
 
 
