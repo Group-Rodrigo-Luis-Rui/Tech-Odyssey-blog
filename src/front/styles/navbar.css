@@ -42,8 +42,8 @@
 }
 
 .logoB {
-    width: 86.5px;
-    height: 100px;
+    width: 66.5px;
+    height: 80px;
     mix-blend-mode: darken;
     margin: auto;  
 }
@@ -89,10 +89,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #FFFAF0;
+    background-color: white;
     padding: 0 1rem;
-    height: 120px;
-    border-bottom: 3px solid #6B8E23;    
+    height: 100px;
+    border-bottom: 3px solid #00336d;    
 }
 
 .metallic-element .logo {

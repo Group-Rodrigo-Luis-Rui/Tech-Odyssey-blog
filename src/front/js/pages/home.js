@@ -14,6 +14,8 @@ export const Home = () => {
 	const [posts4, setPosts4] = useState([]);
 	const [posts5, setPosts5] = useState([]);
 
+	const userID = localStorage.getItem("userID");
+	const [isAddedToReadings, setIsAddedToReadings] = useState(false);
 
 	const getPosts =()=>{
 		fetch(process.env.BACKEND_URL + "/api/posts/category/COM", {
@@ -97,47 +99,56 @@ export const Home = () => {
 	const goToSinglePost = (postID) => {
 		navigate(`/single/${postID}`);
 	}
-	const userID = localStorage.getItem("userID");
-
-	const [isAddedToReadings, setIsAddedToReadings] = useState(false);
 
 
 	const addReadings = (postID) => {
-		fetch(process.env.BACKEND_URL + "/api/myreading", { 
+		const userID = localStorage.getItem("userID");
+		if (!userID) {
+			window.alert("Please log in to add posts to your readings list.");
+			return;
+		}
+
+		fetch(process.env.BACKEND_URL + "/api/myreading", {
 			method: "POST",
-			headers: { 
-				"Content-Type": 
-				"application/json" 
+			headers: {
+				"Content-Type": "application/json",
 			},
-			body: JSON.stringify({user_id: userID, post_id: postID}) 
+			body: JSON.stringify({ user_id: userID, post_id: postID }),
 		})
 		.then((res) => res.json())
 		.then((result) => {
 			console.log('Added to My Readings:', result);
 			setIsAddedToReadings(true);
-
-		}).catch((err) => {
-			console.log(err);
+			window.alert("Post added to your readings list successfully!");
 		})
+		.catch((err) => {
+			console.log(err);
+		});
 		console.log('add to my readings');
-	}
+	};
+
 
 	const [allposts, setAllPosts] = useState([]);
 
 	const getAllPosts = (limit = 10) => {
 		fetch(`${process.env.BACKEND_URL}/api/posts?limit=${limit}`, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json'
-			}
+		  method: 'GET',
+		  headers: {
+			'Content-Type': 'application/json'
+		  }
 		})
 		.then(res => {
-			if (!res.ok) throw Error(res.statusText);
-			return res.json();
+		  if (!res.ok) throw Error(res.statusText);
+		  return res.json();
 		})
-		.then(response => setAllPosts(response)) 
+		.then(response => {
+		  // Select the last 3 posts
+		  const last3Posts = response.slice(-3);
+		  setAllPosts(last3Posts);
+		})
 		.catch(error => console.error(error));
-	}	
+	  }
+	  
 	
 
 	useEffect(() => {
@@ -208,38 +219,23 @@ export const Home = () => {
 
 	return (
 		<div  className="container-fluid background" style={{backgroundImage:'url(' + backgroundurl + ')'}}>
-			<div className="row text-center d-flex justify-content-center" >
+			<div className="main-container row text-center d-flex justify-content-center" >
 				<div className="card-carousel-header mt-5 d-flex justify-content-center">
 					{/* carousel*/}
-					<div id="carouselExampleControls" class=" col-6 carousel slide d-block " data-bs-ride="carousel">
+					<div id="carouselExampleControls" className="carousel slide carousel-container" data-bs-ride="carousel">
 						<div className="carousel-inner">
-							<div className="carousel-indicators">
-								<button type="button" data-bs-target="#carouselExampleIndicators"
-									data-bs-slide-to="0" classd="active" aria-current="true" aria-label="Slide 1">
-								</button>
-								<button type="button" data-bs-target="#carouselExampleIndicators"
-									data-bs-slide-to="1" aria-label="Slide 2">
-								</button>
-								<button type="button" data-bs-target="#carouselExampleIndicators"
-									data-bs-slide-to="2" aria-label="Slide 3">
-								</button>
+							{allposts.map((post, index) => (
+							<div
+								key={post.id}
+								className={`carousel-item ${index === 0 ? 'active' : ''}`}
+							>
+								<img src={post.image_post} className="d-block w-100" alt="..." />
+								<div className="carousel-caption">
+								<h4><strong>{post.title}</strong></h4>
+								<p>{post.abstract}</p>
+								</div>
 							</div>
-							<div className="carousel-item active">
-								{allposts.slice(0, 3).map((allPosts, index) => {
-									console.log(allPosts); // Add this line to check the data
-									return (
-										<div key={allPosts.id} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-											<div className="carousel-caption-title">
-												<p>{allPosts.title}</p>
-											</div>
-											<img src={allPosts.image_post} className="d-block w-100" alt="..." />
-											<div className="carousel-caption">
-												<p>{allPosts.abstract}</p>
-											</div>
-										</div>
-									);
-								})}
-							</div>
+							))}
 						</div>
 						<button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
 							<span className="carousel-control-prev-icon" aria-hidden="true"></span>

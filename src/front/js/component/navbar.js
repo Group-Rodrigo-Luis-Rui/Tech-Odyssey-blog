@@ -304,7 +304,7 @@ export const Navbar = () => {
 									<div className="input-box">
 										<input 
 											type={showPassword?"text":"password"}
-											 required
+											required
 											value={password}
 											onChange={(e)=> setPassword(e.target.value)} 
 										/>	
@@ -361,13 +361,19 @@ export const Navbar = () => {
 											<label>Email ID:</label>
 										</div>
 										<div className="input-box">
-											<span className="iconlog"><i className="fa-solid fa-lock"></i></span>
 											<input 
-												type="password" required
+												type={showPassword?"text":"password"} 
+												required
 												value={regPassword}
 												onChange={(e)=> setRegPassword(e.target.value)} 
 											/>
 											<label>Password</label>
+											<span className="hiddenPass" onClick={togglePasswordVisibility}>
+												{showPassword? (
+													<i className="fa-solid fa-eye"></i>): (
+														<i className="fa-solid fa-eye-slash"></i>
+												)}
+											</span>
 										</div>
 										<div className="remember-forgot">
 											<label htmlFor="termsCheckbox"><input 
