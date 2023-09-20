@@ -9,7 +9,7 @@ Build web applications using React.js for the front end and python/flask for you
 - Use of .env file.
 - SQLAlchemy integration for database abstraction.
 
-### 1) Installation:
+## 1) Installation:
 
 > If you use Github Codespaces (recommended) or Gitpod this template will already come with Python, Node and the Posgres Database installed. If you are working locally make sure to install Python 3.10, Node 
 
