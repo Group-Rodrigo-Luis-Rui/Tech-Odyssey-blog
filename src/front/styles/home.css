@@ -295,17 +295,16 @@ figcaption{
   transition: transform 0.7s ease;
 }
 
-/* Add this CSS to your styles */
 .carousel-container {
-  width: 800px; /* Adjust the width as needed */
-  height: 400px; /* Calculate the height based on the aspect ratio */
+  width: 800px; 
+  height: 500px; 
 }
 
 .carousel-inner img {
   width: 100%;
   -webkit-text-stroke: 2px #000;
-  height: 100%; /* Ensure that the images fill the container without cropping */
-  object-fit: contain; /* Maintain aspect ratio and fit the whole image within the container */
+  height: 30%; 
+  object-fit: contain; 
 }
 
 #carouselExampleControls{
@@ -316,6 +315,7 @@ figcaption{
 .carousel-item{
   border-radius: 15px;
   overflow: hidden;
+  text-shadow: 1px 1px 2px rgb(0, 0, 0);
 }
 .carousel{
   width: 50%;
