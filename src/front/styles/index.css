@@ -10,7 +10,19 @@
     width: 1190px;
     padding-left: 100px;
     padding-right: 100px;
-
+}
+.comments-single{
+    width: 1050px;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-bottom: 30px;
+}
+.card-title{
+    margin-top: 30px;
+}
+.card-subtitle{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.117);
+    margin-top: 30px;
 }
 .main-container{
     overflow: auto; 
@@ -31,11 +43,12 @@
 .container-card{
     background: rgba(255, 255, 255, 0.747);
     border-radius: 16px;
-    box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    box-shadow: rgba(17, 17, 17, 0.4) 0 2px 4px,rgba(0, 0, 0, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
     backdrop-filter: blur(4.8px);
     -webkit-backdrop-filter: blur(4.8px);
     color: black;
-    margin-bottom: 50px;
+    /* margin-bottom: 10px; */
+    margin-top: 30px;
 }
 .card-text{
     padding-bottom: 50px;
@@ -66,9 +79,31 @@
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.247);
 }
+.single-comments p {
+    border-top: 1px solid rgba(0, 0, 0, 0.223);
+}
+.commentbtn{
+    margin-top: -40px;
+    margin-bottom: 7px;
+}
 .comments-title{
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.247);
+    padding-top: 20px;
+    /* padding-bottom: 5px; */
+}
+
+.addtext{
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 15px;
+    width: 20%;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
 .reply-comments{
     padding-top: 10px;
@@ -83,7 +118,7 @@
     background-color: #FCFCFD;
     border-radius: 10px;
     border-width: 0;
-    box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#000055d3 0 -3px 0 inset;
+    box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#000087f8 0 -3px 0 inset;
     box-sizing: border-box;
     color: #36395A;
     cursor: pointer;
@@ -123,5 +158,9 @@
 }
 .form-control{
     box-shadow: rgba(255, 255, 255, 0.4) 0 2px 4px,rgba(255, 255, 255, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+
+}
+.abstract{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.117);
 
 }

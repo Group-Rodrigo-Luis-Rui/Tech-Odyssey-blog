@@ -1,0 +1,16 @@
+.TextSingle{
+    font-family: "Barlow";
+}
+.backgroundSingle{
+    padding-top: 0;
+    margin-top: none;
+}
+.mainTextSingle{
+    text-align: justify;
+    text-justify: inter-word;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.abstract{
+    text-align: justify;
+}

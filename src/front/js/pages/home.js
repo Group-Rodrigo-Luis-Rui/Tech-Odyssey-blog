@@ -186,14 +186,6 @@ export const Home = () => {
 	const [scrollPositions5, setScrollPositions5] = useState(0);
 
 
-
-	// const scrollleft =()=>{
-		
-	// }
-
-	// const scrollright =()=>{
-		
-	// }
 	  // Function to scroll the cards to the left
 	const scrollLeft = (className) => {
         if (className === "container1" && scrollPosition > 0) {
@@ -300,11 +292,11 @@ export const Home = () => {
 											<p>{post.description}</p>
 											<p>{post.abstract}</p>
 											<div className="readmore">
-												<Link to={`/single/${post.id}`}>
-													<button className="btn col">
-														Read More
-													</button>
-												</Link>
+											<Link to={`/single/${post.id}`}>
+												<button className="btn col">
+													Read More
+												</button>
+											</Link>
 											</div>
 										</div>
 									</div>
