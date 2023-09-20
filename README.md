@@ -1,4 +1,5 @@
-# Welcome to Tech Odyssey blog
+![image](https://github.com/Group-Rodrigo-Luis-Rui/4Geeks-Final-Project-Team-1/assets/64076622/d6055c00-dd38-4c66-8854-c8fe56856932)
+  # Welcome to Tech Odyssey blog
 
 ## WebApp with React JS and Flask API
 
