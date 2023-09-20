@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import backgroundurl from "../../img/backgroundimage2.jpg";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import "../../styles/single.css"
 
 export const Single = (props) => {
 	const { store, actions } = useContext(Context);
@@ -12,10 +13,11 @@ export const Single = (props) => {
 	const [post, setPost] = useState([]);
 	const [addComment, setAddComment] = useState("");
 	const [name, setName] = useState();
+	const [nameUser, setNameUser] = useState();
 	const [posts, setPosts] = useState([]);
 	const [imageUser, setImageUser] = useState("");
 	const [isAddedToReadings, setIsAddedToReadings] = useState(false);
-	const data = `lorem ipsum <img src="" onerror="alert('message');" />`;
+	// const data = `lorem ipsum <img src="" />`;
 	const userID = localStorage.getItem("userID");
 
 	const getSinglePost = () => {
@@ -80,25 +82,25 @@ export const Single = (props) => {
 		})
 		.catch((error) => console.error(error));
 	};
-	const addReadings = (postID) => {
-		fetch(process.env.BACKEND_URL + "/api/myreading", { 
-			method: "POST",
-			headers: { 
-				"Content-Type": 
-				"application/json" 
-			},
-			body: JSON.stringify({ user_id: store.userId, post_id: postID })
-		})
-		.then((res) => res.json())
-		.then((result) => {
-			console.log('Added to My Readings:', result);
-			setIsAddedToReadings(true);
+	// const addReadings = (postID) => {
+	// 	fetch(process.env.BACKEND_URL + "/api/myreading", { 
+	// 		method: "POST",
+	// 		headers: { 
+	// 			"Content-Type": 
+	// 			"application/json" 
+	// 		},
+	// 		body: JSON.stringify({ user_id: store.userId, post_id: postID })
+	// 	})
+	// 	.then((res) => res.json())
+	// 	.then((result) => {
+	// 		console.log('Added to My Readings:', result);
+	// 		setIsAddedToReadings(true);
 
-		}).catch((err) => {
-			console.log(err);
-		})
-		console.log('add to my readings');
-	}
+	// 	}).catch((err) => {
+	// 		console.log(err);
+	// 	})
+	// 	console.log('add to my readings');
+	// }
 	const getOneUser = () => {
 
 		const userID = localStorage.getItem("userID");
@@ -111,7 +113,7 @@ export const Single = (props) => {
 		})
 		.then((res) => res.json())
 		.then((result) => {
-			setName(result.name);
+			setNameUser(result.name);
 			setEmail(result.email);
 			setImageUser(result.user_image);
 		})
@@ -142,70 +144,65 @@ export const Single = (props) => {
 
 	return (
 		<div className="container-fluid background main-container" style={{ backgroundImage: "url(" + backgroundurl + ")" }}>
-		<div dangerouslySetInnerHTML={{ __html: data }} />
-		<div className="container-fluid  d-flex justify-content-center mt-5">
+			<div className="container-fluid  d-flex justify-content-center backgroundSingle">
+				<div className="container-card card-single">
+					<div className="card-body-single TextSingle">
+						<h2 className="card-title">{post.title}</h2>
+						<h5 className="card-subtitle TextSingle"><strong>Abstract</strong></h5>
+						<p className="abstract mt-2  pb-2">{post.abstract}</p>
+						<pre className="TextSingle">
+							<p>
+							<strong>Posted by: </strong>{nameUser}</p>
+							<p>
+							<strong>Date created: </strong>{post.date_created}
+							</p>
+						</pre>
+						<img src={post.image_post} className="card-img-top" alt="..." />
+						<div className="mainTextSingle" dangerouslySetInnerHTML={{ __html: post.main_text }}></div>	
+					</div>
+				</div>
+			</div>
 			<div className="container-card card-single">
-			<div className="card-body-single">
-				<h2 className="card-title">{post.title}</h2>
-				<h4 className="card-subtitle mb-2">{post.category}</h4>
-				<p className="abstract">{post.abstract}</p>
-				<p>
-				<strong>Posted by:</strong>{post.user}</p>
-				<p>
-				<strong>Date:</strong> {post.date_created}
-				</p>
-				<div className="comments d-flex justify-content-end">
-				<p className="addtext">Add to my readings</p>
-				<button type="button" className="btn buttonadd" onClick={() => addReadings(post.id)}>
-					<i className={`fa-regular fa-star ${isAddedToReadings ? 'added-to-readings' : ''}`}></i>
+				<h3 className="comments-title">Comments:</h3>
+				<div className="single-comments">
+					{comments.map((comment) => (
+						<div key={comment.id}>
+							<div className="name">{name}</div>
+						<p>{comment.text}</p>
+						<div className="d-flex justify-content-end">
+						{comment.user_id ? userID: (
+							<button
+								className="btn commentbtn"
+								type="button"
+								onClick={() => {
+								deleteComment(comment.id);
+								getSinglePost();
+								}}
+							>
+								<i className="fa-solid fa-trash"></i>
+							</button>
+							)}
+						</div>
+						</div>
+					))}
+				</div>
+				<div className="mb-3">
+				<label htmlFor="exampleFormControlTextarea1" className="form-label">
+					Make a comment
+				</label>
+				<textarea
+					value={addComment}
+					onChange={(e) => setAddComment(e.target.value)}
+					className="form-control"
+					id="exampleFormControlTextarea1"
+					placeholder="Add a comment"
+					rows="3"
+				></textarea>
+				<button className="btn ms-1 mt-3" type="button" onClick={() => { postComment(); getSinglePost(); }}>
+					Comment
 				</button>
 				</div>
-				<img src={post.image_post} className="card-img-top" alt="..." />
-				<p className="card-text">{post.main_text}</p>
 			</div>
-			</div>
-		</div>
-		<div className="container-card card-single">
-			<h3 className="comments-title">Comments:</h3>
-			<div className="single-comments">
-				{comments.map((comment) => (
-					<div key={comment.id}>
-						<div className="name">{name}</div>
-					<p>{comment.text}</p>
-					<div className="d-flex justify-content-end">
-					{comment.user_id ? userID: (
-						<button
-							className="btn commentbtn"
-							type="button"
-							onClick={() => {
-							deleteComment(comment.id);
-							getSinglePost();
-							}}
-						>
-							<i className="fa-solid fa-trash"></i>
-						</button>
-						)}
-					</div>
-					</div>
-				))}
-			</div>
-			<div className="mb-3">
-			<label htmlFor="exampleFormControlTextarea1" className="form-label">
-				Make a comment
-			</label>
-			<textarea
-				value={addComment}
-				onChange={(e) => setAddComment(e.target.value)}
-				className="form-control"
-				id="exampleFormControlTextarea1"
-				placeholder="Add a comment"
-				rows="3"
-			></textarea>
-			<button className="btn ms-1 mt-3" type="button" onClick={() => { postComment(); getSinglePost(); }}>
-				Comment
-			</button>
-			</div>
-		</div>
 		</div>
 	);
 	};
