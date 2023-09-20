@@ -162,7 +162,7 @@ export const Single = (props) => {
 					</div>
 				</div>
 			</div>
-			<div className="container-card card-single">
+			<div className="container-card comments-single">
 				<h3 className="comments-title">Comments:</h3>
 				<div className="single-comments">
 					{comments.map((comment) => (
